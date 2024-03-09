@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react-swc";
 
+import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 // @ts-ignore
@@ -21,6 +22,7 @@ export default defineConfig({
       lintInWorker: true,
       cache: false,
     }),
+    TanStackRouterVite(),
   ],
   resolve: {
     alias: {
