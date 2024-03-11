@@ -2,8 +2,16 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
+import { CssBaseline } from "@mui/material";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 import { routeTree } from "./routeTree.gen";
+
+import "@styles/main.scss";
 
 const router = createRouter({
   routeTree,
@@ -21,7 +29,7 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      {/* eslint-disable-next-line react/jsx-no-undef */}
+      <CssBaseline />
       <Suspense fallback={<div>Loading...</div>}>
         <RouterProvider router={router} />
       </Suspense>

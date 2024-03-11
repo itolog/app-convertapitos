@@ -33,6 +33,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
+        "import/no-unresolved": "off",
         "no-unused-vars": [
             "error",
             {

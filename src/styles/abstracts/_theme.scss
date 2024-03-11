@@ -1,0 +1,20 @@
+:root[data-theme='light'] {
+  --primary-color: rgb(0 0 0 / 83%);
+  --secondary-color: #dadada;
+  --app-bar-bg: #009cb1;
+  --app-bar-color: #fdfdfd;
+  --app-bg: rgb(92 255 255 / 50%);
+  --drawer-bg-primary: #009cb1;
+  --drawer-bg-secondary: #009cb1;
+}
+
+:root[data-theme='dark'] {
+  --primary-color: rgb(255 243 226);
+  --secondary-color: #e31088;
+  --app-bar-bg: rgb(26 20 59 / 100%);
+  --app-bg: #1a143b;
+  --app-bar-color: #fff3e2;
+  --drawer-bg-primary:  linear-gradient(180deg, rgb(0 0 0 / 100%) 0%, rgb(121 9 102 / 100%) 100%);
+  --drawer-bg-secondary: linear-gradient(360deg, rgb(0 0 0 / 100%) 0%, rgb(121 9 102 / 100%) 100%);;
+}
+
