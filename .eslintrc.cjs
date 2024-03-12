@@ -33,6 +33,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
+        "import/named": "off",
         "import/no-unresolved": "off",
         "no-unused-vars": [
             "error",
@@ -65,6 +66,6 @@ module.exports = {
         "no-inner-declarations": "warn",
         "require-yield": "warn",
         "spaced-comment": "error",
-        "no-duplicate-imports": "error"
+        "no-duplicate-imports": "off"
     },
 }
