@@ -33,6 +33,14 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
+        "react/self-closing-comp": [
+            "warn",
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "import/no-named-as-default": "off",
         "import/named": "off",
         "import/no-unresolved": "off",
         "no-unused-vars": [

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -27,20 +28,24 @@ declare module "@tanstack/react-router" {
   }
 }
 
+const theme = createTheme({});
+
 // Render the app
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <CssBaseline />
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <RouterProvider router={router} />
-          </Suspense>
-        </PersistGate>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Suspense fallback={<div>Loading...</div>}>
+              <RouterProvider router={router} />
+            </Suspense>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
     </StrictMode>,
   );
 }
