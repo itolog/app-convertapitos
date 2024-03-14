@@ -35,13 +35,20 @@ module.exports = {
     rules: {
         "import/named": "off",
         "import/no-unresolved": "off",
-        "no-unused-vars": [
+        "no-unused-vars": "off",
+        "react/self-closing-comp": [
+            "warn",
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "@typescript-eslint/no-unused-vars": [
             "error",
             {
-                "vars": "all",
-                "args": "after-used",
-                "ignoreRestSiblings": true,
-                "argsIgnorePattern": "^_"
+                "vars": "local",
+                "ignoreRestSiblings": false,
+                "varsIgnorePattern": "React"
             }
         ],
         "react/react-in-jsx-scope": "off",
