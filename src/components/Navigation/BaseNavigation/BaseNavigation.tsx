@@ -1,0 +1,21 @@
+import { Link } from "@tanstack/react-router";
+
+import useNavigationItems from "@/hooks/navigations/useNavigationItems.tsx";
+
+import Box from "@mui/material/Box";
+
+const BaseNavigation = () => {
+	const navigations = useNavigationItems();
+
+	return (
+		<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+			{navigations.map((page) => (
+				<Link key={page.label} to={page.to} className="[&.active]:font-bold">
+					{page.label}
+				</Link>
+			))}
+		</Box>
+	);
+};
+
+export default BaseNavigation;
