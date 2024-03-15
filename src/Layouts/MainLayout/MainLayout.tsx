@@ -2,25 +2,25 @@ import { Outlet } from "@tanstack/react-router";
 
 import useTheme from "@/hooks/settings/useTheme.tsx";
 
-import { Box } from "@mui/material";
-
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import TanStackRouterDevtools from "@/components/TanStackRouterDevtools/TanStackRouterDevtools";
 
+import classes from "./mainLayout.module.scss";
+
 const MainLayout = () => {
-  useTheme();
+	useTheme();
 
-  return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <CoAppBar />
+	return (
+		<div className={classes.MainLayout}>
+			<CoAppBar />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Outlet />
-      </Box>
+			<main className={classes.Main}>
+				<Outlet />
+			</main>
 
-      <TanStackRouterDevtools />
-    </Box>
-  );
+			<TanStackRouterDevtools />
+		</div>
+	);
 };
 
 export default MainLayout;

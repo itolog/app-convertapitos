@@ -1,4 +1,16 @@
 .MainLayout {
   display: flex;
   flex-direction: column;
+  height: 100%;
+
+}
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  flex-grow: 1;
+  max-width: var(--app-max-width);
+  width: 100%;
+  padding: var(--app-padding);
 }

@@ -1,10 +1,11 @@
 import { MouseEvent, useState } from "react";
 
+import ThemeSwitch from "@/shared/ui/ThemeSwitch/ThemeSwitch.tsx";
+
 import AdbIcon from "@mui/icons-material/Adb";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,6 +15,8 @@ import Typography from "@mui/material/Typography";
 
 import BaseNavigation from "@/components/Navigation/BaseNavigation/BaseNavigation.tsx";
 import MobileNavigation from "@/components/Navigation/MobileNavigation/MobileNavigation.tsx";
+
+import classes from "./coAppBar.module.scss";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -29,9 +32,13 @@ function CoAppBar() {
 	};
 
 	return (
-		<AppBar position="static">
-			<Container maxWidth="xl">
-				<Toolbar disableGutters>
+		<AppBar
+			classes={{
+				root: classes.coAppBar,
+			}}
+			position="static">
+			<div className={classes.AppBarContainer}>
+				<Toolbar className={classes.AppBarToolbar} disableGutters>
 					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 					<Typography
 						variant="h6"
@@ -72,6 +79,8 @@ function CoAppBar() {
 					</Typography>
 					<BaseNavigation />
 
+					<ThemeSwitch />
+
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -101,7 +110,7 @@ function CoAppBar() {
 						</Menu>
 					</Box>
 				</Toolbar>
-			</Container>
+			</div>
 		</AppBar>
 	);
 }

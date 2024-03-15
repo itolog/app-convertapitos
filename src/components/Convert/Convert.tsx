@@ -7,7 +7,7 @@ const Convert = () => {
 	const { files, onUpdateFiles } = useFileUpload();
 
 	return (
-		<div>
+		<div className={"Convert"}>
 			<FileUpload
 				acceptedFileTypes={ACCEPTED_IMAGE_TYPES}
 				files={files}
