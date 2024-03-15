@@ -11,10 +11,10 @@ const MainLayout = () => {
 	useTheme();
 
 	return (
-		<div className={classes.MainLayout}>
+		<div className={classes.mainLayout}>
 			<CoAppBar />
 
-			<main className={classes.Main}>
+			<main className={classes.main}>
 				<Outlet />
 			</main>
 

@@ -3,7 +3,7 @@
   color: var(--primary-color);
 }
 
-.AppBarContainer {
+.appBarContainer {
   display: flex;
   justify-content: space-between;
   align-self: center;
@@ -12,6 +12,6 @@
   padding: 0  var(--app-padding);
 }
 
-.AppBarToolbar {
+.appBarToolbar {
   width: 100%;
 }

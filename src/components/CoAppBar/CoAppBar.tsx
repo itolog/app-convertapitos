@@ -1,117 +1,27 @@
-import { MouseEvent, useState } from "react";
-
-import ThemeSwitch from "@/shared/ui/ThemeSwitch/ThemeSwitch.tsx";
-
-import AdbIcon from "@mui/icons-material/Adb";
 import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
 
-import BaseNavigation from "@/components/Navigation/BaseNavigation/BaseNavigation.tsx";
-import MobileNavigation from "@/components/Navigation/MobileNavigation/MobileNavigation.tsx";
+import AppSettings from "@/components/AppSettings/AppSettings.tsx";
+import HeaderNavigation from "@/components/Navigation/HeaderNavigation/HeaderNavigation.tsx";
 
 import classes from "./coAppBar.module.scss";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 function CoAppBar() {
-	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-	const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
-		setAnchorElUser(event.currentTarget);
-	};
-
-	const handleCloseUserMenu = () => {
-		setAnchorElUser(null);
-	};
-
 	return (
 		<AppBar
 			classes={{
 				root: classes.coAppBar,
 			}}
 			position="static">
-			<div className={classes.AppBarContainer}>
-				<Toolbar className={classes.AppBarToolbar} disableGutters>
-					<AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="#app-bar-with-responsive-menu"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}>
-						LOGO
-					</Typography>
+			<div className={classes.appBarContainer}>
+				<Toolbar className={classes.appBarToolbar} disableGutters>
+					<HeaderNavigation />
 
-					<MobileNavigation />
-
-					<AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href="#app-bar-with-responsive-menu"
-						sx={{
-							mr: 2,
-							display: { xs: "flex", md: "none" },
-							flexGrow: 1,
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}>
-						LOGO
-					</Typography>
-					<BaseNavigation />
-
-					<ThemeSwitch />
-
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-							</IconButton>
-						</Tooltip>
-						<Menu
-							sx={{ mt: "45px" }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
-					</Box>
+					<AppSettings />
 				</Toolbar>
 			</div>
 		</AppBar>
 	);
 }
+
 export default CoAppBar;
