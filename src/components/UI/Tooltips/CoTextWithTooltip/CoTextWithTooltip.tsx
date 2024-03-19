@@ -1,8 +1,8 @@
 import { FC, ReactElement, useMemo, useRef } from "react";
 
-import CoText from "@/shared/ui/CoText/CoText.tsx";
-
 import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
+
+import CoText from "@/components/UI/CoText/CoText.tsx";
 
 import classes from "./coTextWithTooltip.module.scss";
 

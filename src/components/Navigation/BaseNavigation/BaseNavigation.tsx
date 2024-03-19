@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
 
 import useNavigationItems from "@/hooks/navigations/useNavigationItems.tsx";
-import CoText from "@/shared/ui/CoText/CoText.tsx";
 
 import AdbIcon from "@mui/icons-material/Adb";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+
+import CoText from "@/components/UI/CoText/CoText.tsx";
 
 const BaseNavigation = () => {
 	const navigations = useNavigationItems();

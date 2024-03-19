@@ -1,7 +1,7 @@
-import FileUpload from "@/shared/components/FileUpload/FileUpload.tsx";
-import useFileUpload from "@/shared/components/FileUpload/hooks/useFileUpload.tsx";
-
 import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants.ts";
+
+import FileUpload from "@/components/FileUpload/FileUpload.tsx";
+import useFileUpload from "@/components/FileUpload/hooks/useFileUpload.tsx";
 
 const ConvertPage = () => {
 	const { files, onUpdateFiles } = useFileUpload();

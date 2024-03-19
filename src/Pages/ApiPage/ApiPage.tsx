@@ -1,6 +1,6 @@
-import CoTextWithTooltip from "@/shared/ui/CoTextWithTooltip/CoTextWithTooltip.tsx";
-
 import { Grid } from "@mui/material";
+
+import CoTextWithTooltip from "@/components/UI/Tooltips/CoTextWithTooltip/CoTextWithTooltip.tsx";
 
 const ApiPage = () => {
 	const Tool = () => {
