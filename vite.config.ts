@@ -8,7 +8,7 @@ import eslintPlugin from "vite-plugin-eslint";
 // @ts-ignore
 import oxlintPlugin from "vite-plugin-oxlint";
 import stylelint from "vite-plugin-stylelint";
-
+import webfontDownload from 'vite-plugin-webfont-dl';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -23,6 +23,9 @@ export default defineConfig({
       cache: false,
     }),
     TanStackRouterVite(),
+    webfontDownload([
+      'https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;700&display=swap'
+    ]),
   ],
   resolve: {
     alias: {
