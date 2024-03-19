@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {  forwardRef, ForwardRefExoticComponent, PropsWithoutRef, RefAttributes } from "react";
 
 import Typography, { TypographyProps } from "@mui/material/Typography";
 
@@ -6,16 +6,18 @@ interface CoTextProps extends TypographyProps {
 	children: string;
 	colorType?: "primary" | "secondary";
 }
-const CoText: FC<CoTextProps> = ({
-	fontFamily = "Vollkorn",
-	children,
-	variant = "h4",
-	component = "span",
-	colorType = "primary",
-	...props
-}) => {
+
+const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> &RefAttributes<unknown>> = forwardRef(({
+																							fontFamily = "Vollkorn",
+																							children,
+																							variant = "h4",
+																							component = "span",
+																							colorType = "primary",
+																							...props
+																						}, ref) => {
 	return (
 		<Typography
+			ref={ref}
 			style={{
 				color: colorType === "primary" ? "var(--primary-color)" : "var(--secondary-color)",
 			}}
@@ -26,6 +28,8 @@ const CoText: FC<CoTextProps> = ({
 			{children}
 		</Typography>
 	);
-};
+});
+
+CoText.displayName = "CoText";
 
 export default CoText;

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Convert from "@/components/Convert/Convert.tsx";
+import ConvertPage from "@/components/Pages/ConvertPage/ConvertPage.tsx";
 
 export const Route = createFileRoute("/")({
-	component: Convert,
+	component: ConvertPage,
 });

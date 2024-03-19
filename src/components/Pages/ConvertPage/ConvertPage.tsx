@@ -3,11 +3,11 @@ import useFileUpload from "@/shared/components/FileUpload/hooks/useFileUpload.ts
 
 import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants.ts";
 
-const Convert = () => {
+const ConvertPage = () => {
 	const { files, onUpdateFiles } = useFileUpload();
 
 	return (
-		<div className={"Convert"}>
+		<div className={"ConvertPage"}>
 			<FileUpload
 				acceptedFileTypes={ACCEPTED_IMAGE_TYPES}
 				files={files}
@@ -17,4 +17,4 @@ const Convert = () => {
 	);
 };
 
-export default Convert;
+export default ConvertPage;

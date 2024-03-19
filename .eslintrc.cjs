@@ -33,6 +33,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['react-refresh'],
     rules: {
+        "react/prop-types": "off",
         "import/named": "off",
         "import/no-unresolved": "off",
         "no-unused-vars": "off",
@@ -44,7 +45,7 @@ module.exports = {
             }
         ],
         "@typescript-eslint/no-unused-vars": [
-            "error",
+            "warn",
             {
                 "vars": "local",
                 "ignoreRestSiblings": false,

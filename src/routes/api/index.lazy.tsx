@@ -1,8 +1,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 
-const Api = () => {
-  return <div>API</div>;
-};
+import ApiPage from "@/components/Pages/ApiPage/ApiPage.tsx";
+
 export const Route = createLazyFileRoute("/api/")({
-  component: Api,
+	component: ApiPage,
 });
