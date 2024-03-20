@@ -2,7 +2,7 @@
   --app-font-family: Vollkorn, sans-serif;
 }
 
-:root[data-theme='light'] {
+:root[data-theme$='light'] {
   --primary-color: #0f172a;
   --secondary-color: #64748b;
   --accent-color: #e30c2d;
@@ -14,7 +14,7 @@
   --menu-bg: #ffffff;
 }
 
-:root[data-theme='dark'] {
+:root[data-theme$='dark'] {
   --primary-color: rgb(255 243 226);
   --secondary-color: #94a3b8;
   --accent-color: #22d3ee;
