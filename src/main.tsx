@@ -1,6 +1,7 @@
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -14,6 +15,7 @@ import "@fontsource/roboto/700.css";
 import { persistor, store } from "@/store/store.ts";
 
 import { routeTree } from "./routeTree.gen";
+import i18n from "./translations";
 
 import "@styles/main.scss";
 
@@ -37,7 +39,9 @@ if (!rootElement.innerHTML) {
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
 					<Suspense fallback={<div>Loading...</div>}>
-						<RouterProvider router={router} />
+						<I18nextProvider i18n={i18n}>
+							<RouterProvider router={router} />
+						</I18nextProvider>
 					</Suspense>
 				</PersistGate>
 			</Provider>

@@ -7,7 +7,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 
-import ThemeSwitch from "@/components/UI/ThemeSwitch/ThemeSwitch.tsx";
+import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher.tsx";
+import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch.tsx";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const AppSettings = () => {
@@ -59,6 +60,9 @@ const AppSettings = () => {
 				))}
 				<MenuItem>
 					<ThemeSwitch />
+				</MenuItem>
+				<MenuItem>
+					<LangSwitcher />
 				</MenuItem>
 			</Menu>
 		</div>

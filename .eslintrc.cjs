@@ -37,6 +37,7 @@ module.exports = {
         "import/named": "off",
         "import/no-unresolved": "off",
         "no-unused-vars": "off",
+        "import/no-named-as-default-member": "off",
         "react/self-closing-comp": [
             "warn",
             {
