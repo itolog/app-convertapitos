@@ -8,19 +8,25 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
-  background-color: var( --app-bar-bg);
+  background-color: var(--app-bg);
+  place-items: center;
 }
 
 @include scroll-bar;
 
 #root {
   height: 100%;
-  font-family: Vollkorn, sans-serif;
+  font-family: var(--app-font-family);
   font-size: calc(var(--base-unit) * .85);
   line-height: normal;
   font-weight: 400;
   color: var(--primary-color);
   background-color: var(--app-bg);
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .active {

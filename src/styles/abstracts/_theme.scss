@@ -1,20 +1,28 @@
+:root {
+  --app-font-family: Vollkorn, sans-serif;
+}
+
 :root[data-theme='light'] {
-  --primary-color: rgb(0 0 0 / 83%);
-  --secondary-color: #dadada;
-  --app-bar-bg: #009cb1;
-  --app-bar-color: #fdfdfd;
-  --app-bg: rgb(92 255 255 / 50%);
-  --drawer-bg-primary: #009cb1;
-  --drawer-bg-secondary: #009cb1;
+  --primary-color: #0f172a;
+  --secondary-color: #64748b;
+  --accent-color: #e30c2d;
+  --app-bg: rgba(255, 255, 255, 0.5);
+  --app-bar-bg: #ffffff;
+  --app-bar-color: #0f172a;
+  --theme-switcher-thumb-bg: #0f172a;
+  --theme-switcher-track-bg: #aab4be;
+  --menu-bg: #ffffff;
 }
 
 :root[data-theme='dark'] {
   --primary-color: rgb(255 243 226);
-  --secondary-color: #e31088;
-  --app-bar-bg: rgb(26 20 59 / 100%);
-  --app-bg: #1a143b;
+  --secondary-color: #94a3b8;
+  --accent-color: #22d3ee;
+  --app-bg: #0f172a;
+  --app-bar-bg: #1e293b;
   --app-bar-color: #fff3e2;
-  --drawer-bg-primary:  linear-gradient(180deg, rgb(0 0 0 / 100%) 0%, rgb(121 9 102 / 100%) 100%);
-  --drawer-bg-secondary: linear-gradient(360deg, rgb(0 0 0 / 100%) 0%, rgb(121 9 102 / 100%) 100%);;
-}
+  --theme-switcher-thumb-bg:  #fff3e2;
+  --theme-switcher-track-bg: #aab4be;
+  --menu-bg: #1e293b;
+ }
 

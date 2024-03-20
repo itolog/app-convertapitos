@@ -28,6 +28,11 @@ const AppSettings = () => {
 				</IconButton>
 			</Tooltip>
 			<Menu
+				classes={{
+					root: "co-menu",
+					paper: "co-menu--paper",
+					list: "co-menu--list",
+				}}
 				sx={{ mt: "45px", justifyItems: "center" }}
 				id="menu-appbar"
 				anchorEl={anchorElUser}
@@ -43,7 +48,12 @@ const AppSettings = () => {
 				open={Boolean(anchorElUser)}
 				onClose={handleCloseUserMenu}>
 				{settings.map((setting) => (
-					<MenuItem key={setting} onClick={handleCloseUserMenu}>
+					<MenuItem
+						classes={{
+							root: "co-menu--item",
+						}}
+						key={setting}
+						onClick={handleCloseUserMenu}>
 						<Typography textAlign="center">{setting}</Typography>
 					</MenuItem>
 				))}
