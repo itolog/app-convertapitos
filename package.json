@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@reduxjs/toolkit": "^2.2.2",
-    "@tanstack/react-router": "^1.21.0",
+    "@tanstack/react-router": "^1.22.0",
     "classnames": "^2.5.1",
     "filepond": "^4.30.6",
     "filepond-plugin-file-validate-size": "^2.2.8",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@tanstack/router-cli": "^1.20.5",
-    "@tanstack/router-devtools": "^1.21.0",
+    "@tanstack/router-devtools": "^1.22.0",
     "@tanstack/router-vite-plugin": "^1.20.5",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.11.30",
