@@ -6,9 +6,6 @@ import CoTextWithTooltip from "@/components/UI/Tooltips/CoTextWithTooltip/CoText
 
 const ApiPage = () => {
 	const { t } = useTranslation();
-	const Tool = () => {
-		return <div>ALALALLALALALALLAL</div>;
-	};
 
 	return (
 		<Grid container spacing={2}>
@@ -16,7 +13,7 @@ const ApiPage = () => {
 				<CoTextWithTooltip tooltipAutoDetect text={"Api PAage Looooooooooooooo"} />
 			</Grid>
 			<Grid item xs={4}>
-				<CoTextWithTooltip tooltip={<Tool />} text={"Api PAage"} />
+				101010101001
 			</Grid>
 			<Grid item xs={4}>
 				{t("Welcome to React")}
