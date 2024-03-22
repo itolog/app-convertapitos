@@ -22,9 +22,6 @@ i18n
 		fallbackLng: AppLang.EN,
 		debug: process.env.NODE_ENV === APP_ENV.DEV,
 
-		ns: ["translations"],
-		defaultNS: "translations",
-
 		keySeparator: false,
 
 		nsSeparator: ">>",

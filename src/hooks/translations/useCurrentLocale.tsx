@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AppLang } from "@/constants";
@@ -8,22 +8,15 @@ const useCurrentLocale = () => {
 	const { i18n } = useTranslation();
 	const { logError } = useErrors();
 
-	const currentLang = useMemo(() => {
+	useEffect(() => {
 		const lang = i18n.language;
 		const parsedLang = lang?.split("-")?.[0] ?? AppLang.EN;
 		const supportedLanguages = Object.keys(i18n.store.data ?? {});
 
-		if (supportedLanguages.includes(parsedLang)) {
-			return parsedLang;
-		} else {
+		if (!supportedLanguages.includes(parsedLang)) {
 			i18n.changeLanguage(AppLang.EN).catch(logError);
-			return AppLang.EN;
 		}
 	}, [i18n, logError]);
-
-	return {
-		currentLang,
-	};
 };
 
 export default useCurrentLocale;

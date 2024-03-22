@@ -1,8 +1,6 @@
 import { FC, SyntheticEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import useCurrentLocale from "@/hooks/translations/useCurrentLocale.tsx";
-
 import { createFilterOptions, InputAdornment } from "@mui/material";
 import { AutocompleteRenderInputParams } from "@mui/material/Autocomplete/Autocomplete";
 import Box from "@mui/material/Box";
@@ -21,9 +19,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	const { options, optionsNormalized } = useOptions();
 	const { i18n } = useTranslation();
 
-	const { currentLang } = useCurrentLocale();
-
-	const [value, setValue] = useState<Option>(optionsNormalized[currentLang]);
+	const [value, setValue] = useState<Option>(optionsNormalized[i18n.language]);
 
 	const handleChange = useCallback(
 		async (
@@ -41,7 +37,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	);
 
 	const renderInput = (params: AutocompleteRenderInputParams) => {
-		const option: Option = optionsNormalized[currentLang];
+		const option: Option = optionsNormalized[i18n.language];
 		return (
 			<TextField
 				{...params}

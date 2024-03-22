@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 
-import useTheme from "@/hooks/settings/useTheme.tsx";
+import useBootstrapApp from "@/hooks/useBootstrapApp.tsx";
 
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import TanStackRouterDevtools from "@/components/TanStackRouterDevtools/TanStackRouterDevtools";
@@ -8,7 +8,7 @@ import TanStackRouterDevtools from "@/components/TanStackRouterDevtools/TanStack
 import classes from "./mainLayout.module.scss";
 
 const MainLayout = () => {
-	useTheme();
+	useBootstrapApp();
 
 	return (
 		<div className={classes.mainLayout}>
