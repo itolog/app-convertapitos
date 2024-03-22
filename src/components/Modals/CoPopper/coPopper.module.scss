@@ -21,6 +21,8 @@ body {
   }
 
   .popper {
+    width: 280px;
+
     &[x-placement*="bottom"] #arrow {
       top: 0;
       left: 0;
