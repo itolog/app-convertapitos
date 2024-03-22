@@ -32,11 +32,14 @@ const BaseNavigation = () => {
 				LOGO
 			</Typography>
 			<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-				{navigations.map((page) => (
-					<Link key={page.label} to={page.to} className="[&.active]:font-bold">
-						<CoText>{page.label}</CoText>
-					</Link>
-				))}
+				{navigations.map(({ to, label }) => {
+					return (
+						// @ts-ignore
+						<Link key={label} to={to} className="[&.active]:font-bold">
+							<CoText>{label}</CoText>
+						</Link>
+					);
+				})}
 			</Box>
 		</>
 	);
