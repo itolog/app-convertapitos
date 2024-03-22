@@ -1,8 +1,8 @@
-import { cloneElement, FC, PropsWithChildren, ReactElement, useState } from "react";
+import { cloneElement, FC, PropsWithChildren, ReactElement, ReactNode, useState } from "react";
 
 import cl from "classnames";
 import { bindPopper, bindTrigger } from "material-ui-popup-state";
-import { usePopupState } from "material-ui-popup-state/hooks";
+import { PopupState, usePopupState } from "material-ui-popup-state/hooks";
 
 import { Fade } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -25,6 +25,7 @@ interface CoPopperProps extends Omit<PopperProps, "open"> {
 	trigger: ReactElement;
 	arrow?: boolean;
 	classes?: Classes;
+	renderChildren?: (props: PopupState) => ReactNode;
 }
 
 const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
@@ -32,6 +33,7 @@ const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
 	classes,
 	children,
 	trigger,
+	renderChildren,
 	...props
 }) => {
 	const popupState = usePopupState({
@@ -99,7 +101,10 @@ const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
 							<ClickAwayListener onClickAway={popupState.close}>
 								<Paper className={popoverRootClass}>
 									{arrow ? <span id="arrow" className={arrowClass} ref={setArrowRef} /> : null}
-									<Box className={contentClass}>{children}</Box>
+									<Box className={contentClass}>
+										{renderChildren && renderChildren(popupState)}
+										{children && children}
+									</Box>
 								</Paper>
 							</ClickAwayListener>
 						</Paper>

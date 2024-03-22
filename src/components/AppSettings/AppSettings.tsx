@@ -14,12 +14,18 @@ const AppSettings = () => {
 
 	return (
 		<div>
-			<CoPopper arrow trigger={trigger}>
-				<Grid item xs={2}>
-					<ThemeSwitch />
-					<LangSwitcher />
-				</Grid>
-			</CoPopper>
+			<CoPopper
+				arrow
+				trigger={trigger}
+				renderChildren={() => {
+					return (
+						<Grid item xs={2}>
+							<ThemeSwitch />
+							<LangSwitcher />
+						</Grid>
+					);
+				}}
+			/>
 		</div>
 	);
 };
