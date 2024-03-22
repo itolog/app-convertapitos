@@ -69,6 +69,7 @@ const MobileNavigation = () => {
 						display: { xs: "flex", md: "none" },
 					}}>
 					{navigations.map((page) => (
+						// @ts-ignore
 						<Link key={page.label} to={page.to} className="[&.active]:font-bold">
 							{page.label}
 						</Link>
