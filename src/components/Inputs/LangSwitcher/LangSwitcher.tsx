@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useCallback, useState } from "react";
+import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { createFilterOptions, InputAdornment } from "@mui/material";
@@ -17,7 +17,7 @@ interface LangSwitcherProps {
 
 const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	const { options, optionsNormalized } = useOptions();
-	const { i18n } = useTranslation();
+	const { i18n, t } = useTranslation();
 
 	const [value, setValue] = useState<Option>(optionsNormalized[i18n.language]);
 
@@ -41,7 +41,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 		return (
 			<TextField
 				{...params}
-				placeholder={"placeholder"}
+				placeholder={t("Choose a language")}
 				inputProps={{
 					...params.inputProps,
 					autoComplete: "new-password",
@@ -65,6 +65,21 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 		);
 	};
 
+	const renderOption = (props: HTMLAttributes<HTMLLIElement>, option: Option) => {
+		return (
+			<Box component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} {...props}>
+				<img
+					loading="lazy"
+					width="20"
+					srcSet={`https://flagcdn.com/w40/${option?.code.toLowerCase()}.png 2x`}
+					src={`https://flagcdn.com/w20/${option?.code.toLowerCase()}.png`}
+					alt=""
+				/>
+				{option.label} ({option.code})
+			</Box>
+		);
+	};
+
 	const filterOptions = createFilterOptions({
 		stringify: (option: Option) => option.code + option.label,
 	});
@@ -74,6 +89,11 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 			classes={{
 				root: classes.langSwitcherRoot,
 				inputRoot: classes.inputRoot,
+				input: classes.input,
+				popupIndicator: classes.endAdornment,
+				clearIndicator: classes.clearIndicator,
+				listbox: classes.listbox,
+				paper: classes.paper,
 			}}
 			placeholder="Choose a country"
 			onChange={handleChange}
@@ -87,20 +107,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 			}}
 			customRenderInput={renderInput}
 			filterOptions={filterOptions}
-			renderOption={(props, option) => {
-				return (
-					<Box component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} {...props}>
-						<img
-							loading="lazy"
-							width="20"
-							srcSet={`https://flagcdn.com/w40/${option?.code.toLowerCase()}.png 2x`}
-							src={`https://flagcdn.com/w20/${option?.code.toLowerCase()}.png`}
-							alt=""
-						/>
-						{option.label} ({option.code})
-					</Box>
-				);
-			}}
+			renderOption={renderOption}
 		/>
 	);
 };

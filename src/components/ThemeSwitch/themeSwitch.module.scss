@@ -1,6 +1,12 @@
 body {
   .themeBtnRoot {
     width: 100px;
+    border-color: var(--text-field-border-color);
+    color: var(--secondary-color);
+
+    &:hover {
+      border-color: var(--text-field-border-color);
+    }
   }
 
   .themeBtnRootFullWidth {
@@ -9,5 +15,11 @@ body {
 
   .themeArrow {
     width: 40px;
+    border-color: var(--text-field-border-color);
+    color: var(--text-field-border-color);
+
+    &:hover {
+      border-color: var(--text-field-border-color);
+    }
   }
 }
