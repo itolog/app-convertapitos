@@ -1,4 +1,6 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useMemo, useRef, useState } from "react";
+
+import cl from "classnames";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useMediaQuery } from "@mui/material";
@@ -20,7 +22,11 @@ import classes from "./themeSwitch.module.scss";
 
 const options: ThemeOptions[] = ["dark", "light", "system"];
 
-const ThemeSwitch = () => {
+interface ThemeSwitchProps {
+	fullWidth?: boolean;
+}
+
+const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 	const dispatch = useAppDispatch();
 	const theme = useAppSelector(getTheme);
 
@@ -64,15 +70,24 @@ const ThemeSwitch = () => {
 
 	return (
 		<>
-			<ButtonGroup variant="outlined" ref={anchorRef} aria-label="Button group with a nested menu">
+			<ButtonGroup
+				fullWidth={fullWidth}
+				variant="outlined"
+				ref={anchorRef}
+				aria-label="Button group with a nested menu">
 				<Button
 					classes={{
-						root: classes.themeBtnRoot,
+						root: cl(classes.themeBtnRoot, {
+							[classes.themeBtnRootFullWidth]: fullWidth,
+						}),
 					}}
 					onClick={handleToggle}>
 					{themeName}
 				</Button>
 				<Button
+					classes={{
+						root: cl(classes.themeArrow),
+					}}
 					size="small"
 					aria-controls={open ? "split-button-menu" : undefined}
 					aria-expanded={open ? "true" : undefined}

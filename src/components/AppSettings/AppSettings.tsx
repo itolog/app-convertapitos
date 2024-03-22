@@ -19,9 +19,14 @@ const AppSettings = () => {
 				trigger={trigger}
 				renderChildren={() => {
 					return (
-						<Grid item xs={2}>
-							<ThemeSwitch />
-							<LangSwitcher />
+						<Grid container spacing={2}>
+							<Grid item xs={12}>
+								<ThemeSwitch />
+							</Grid>
+
+							<Grid item xs={12}>
+								<LangSwitcher width={"100%"} />
+							</Grid>
 						</Grid>
 					);
 				}}
