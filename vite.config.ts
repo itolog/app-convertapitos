@@ -29,6 +29,7 @@ export default defineConfig({
 			"https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;700&display=swap",
 		]),
 		VitePWA({
+			useCredentials: true,
 			manifest: {
 				display: "standalone",
 				theme_color: "#0f172a",
