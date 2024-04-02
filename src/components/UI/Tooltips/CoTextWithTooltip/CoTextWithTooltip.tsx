@@ -1,4 +1,4 @@
-import { FC, ReactElement, useMemo, useRef } from "react";
+import { FC, ReactElement, useEffect, useMemo, useRef, useState } from "react";
 
 import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
 
@@ -19,35 +19,40 @@ const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
 	arrow = true,
 	...props
 }) => {
-	const textElementRef = useRef<HTMLElement | null>(null);
+	const textRef = useRef<HTMLSpanElement | null>(null);
+	const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
 
-	const isOverflowed = useMemo(() => {
-		if (tooltip) {
-			return false;
-		}
-		if (textElementRef.current && tooltipAutoDetect) {
-			return textElementRef.current.scrollWidth < textElementRef.current.clientWidth;
+	useEffect(() => {
+		const resizeObserver = new ResizeObserver(([entry]) => {
+			const isOverflowing = entry.target.clientWidth < entry.target.scrollWidth;
+			setIsTooltipVisible(isOverflowing);
+		});
+
+		if (textRef.current) {
+			resizeObserver.observe(textRef.current);
 		}
 
-		return false;
-	}, [tooltip, tooltipAutoDetect]);
+		return () => {
+			resizeObserver.disconnect();
+		};
+	}, [text]);
 
 	const _tooltip = useMemo(() => {
 		if (tooltip) {
 			return tooltip;
 		}
 
-		if (!tooltip && tooltipAutoDetect) {
+		if (!tooltip && tooltipAutoDetect && isTooltipVisible) {
 			return text;
 		}
 
 		return "";
-	}, [text, tooltip, tooltipAutoDetect]);
+	}, [isTooltipVisible, text, tooltip, tooltipAutoDetect]);
 
 	return (
-		<Tooltip title={_tooltip} arrow={arrow} {...props} disableHoverListener={isOverflowed}>
+		<Tooltip title={_tooltip} arrow={arrow} {...props}>
 			<CoText
-				ref={textElementRef}
+				ref={textRef}
 				classes={{
 					root: classes.coTextWithTooltip,
 				}}>

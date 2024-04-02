@@ -10,7 +10,7 @@ const ApiPage = () => {
 	return (
 		<Grid container spacing={2}>
 			<Grid overflow={"hidden"} item xs={4}>
-				<CoTextWithTooltip tooltipAutoDetect text={"Api PAage Looooooooooooooo"} />
+				<CoTextWithTooltip tooltipAutoDetect text={"Api PAage "} />
 			</Grid>
 			<Grid item xs={4}>
 				101010101001
