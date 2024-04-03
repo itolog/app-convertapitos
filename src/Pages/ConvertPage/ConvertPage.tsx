@@ -1,18 +1,16 @@
-import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants.ts";
+import { useCallback } from "react";
 
-import FileUpload from "@/components/FileUpload/FileUpload.tsx";
-import useFileUpload from "@/components/FileUpload/hooks/useFileUpload.tsx";
+import FileForm from "@/Pages/ConvertPage/components/forms/FileForm/FileForm.tsx";
+import { FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.ts";
 
 const ConvertPage = () => {
-	const { files, onUpdateFiles } = useFileUpload();
+	const handleSubmit = useCallback((values: FormValues) => {
+		console.log(values.convert_to);
+	}, []);
 
 	return (
 		<div className={"ConvertPage"}>
-			<FileUpload
-				acceptedFileTypes={ACCEPTED_IMAGE_TYPES}
-				files={files}
-				onupdatefiles={onUpdateFiles}
-			/>
+			<FileForm onSubmit={handleSubmit} />
 		</div>
 	);
 };

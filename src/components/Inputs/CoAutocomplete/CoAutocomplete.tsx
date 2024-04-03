@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import cl from "classnames";
+
 import Autocomplete from "@mui/material/Autocomplete";
 import {
 	AutocompleteProps,
@@ -7,16 +9,31 @@ import {
 } from "@mui/material/Autocomplete/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-interface CoAutocompleteProps<T> extends Omit<AutocompleteProps<T, any, any, any>, "renderInput"> {
+import _classes from "./coAutocomplete.module.scss";
+
+interface Classes {
+	root?: string;
+	inputRoot?: string;
+	input?: string;
+	popupIndicator?: string;
+	clearIndicator?: string;
+	listbox?: string;
+	paper?: string;
+}
+
+interface CoAutocompleteProps<T>
+	extends Omit<AutocompleteProps<T, any, any, any>, "renderInput" | "classes"> {
 	label?: string;
 	placeholder?: string;
 	customRenderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
+	classes?: Classes;
 }
 
 const CoAutocomplete = <T extends object>({
 	label,
 	placeholder,
 	customRenderInput,
+	classes,
 	...props
 }: CoAutocompleteProps<T>) => {
 	const renderInput = (params: AutocompleteRenderInputParams) => (
@@ -32,7 +49,19 @@ const CoAutocomplete = <T extends object>({
 	);
 
 	return (
-		<Autocomplete {...props} renderInput={customRenderInput ? customRenderInput : renderInput} />
+		<Autocomplete
+			{...props}
+			classes={{
+				root: cl(_classes.root, classes?.root),
+				inputRoot: cl(_classes.inputRoot, classes?.inputRoot),
+				input: (_classes.input, classes?.input),
+				popupIndicator: cl(_classes.endAdornment, classes?.popupIndicator),
+				clearIndicator: cl(_classes.clearIndicator, classes?.clearIndicator),
+				listbox: cl(_classes.listbox, classes?.listbox),
+				paper: cl(_classes.paper, classes?.paper),
+			}}
+			renderInput={customRenderInput ? customRenderInput : renderInput}
+		/>
 	);
 };
 

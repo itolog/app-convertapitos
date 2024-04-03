@@ -9,8 +9,6 @@ import TextField from "@mui/material/TextField";
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete.tsx";
 import useOptions, { Option } from "@/components/Inputs/LangSwitcher/hooks/useOptions.tsx";
 
-import classes from "./langSwitcher.module.scss";
-
 interface LangSwitcherProps {
 	width?: string | number;
 }
@@ -86,15 +84,6 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 
 	return (
 		<CoAutocomplete<Option>
-			classes={{
-				root: classes.langSwitcherRoot,
-				inputRoot: classes.inputRoot,
-				input: classes.input,
-				popupIndicator: classes.endAdornment,
-				clearIndicator: classes.clearIndicator,
-				listbox: classes.listbox,
-				paper: classes.paper,
-			}}
 			placeholder="Choose a country"
 			onChange={handleChange}
 			value={value}
