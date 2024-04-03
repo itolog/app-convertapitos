@@ -13,8 +13,6 @@ html, body {
   place-items: center;
 }
 
-@include scroll-bar;
-
 #root {
   height: 100%;
   font-family: var(--app-font-family);
