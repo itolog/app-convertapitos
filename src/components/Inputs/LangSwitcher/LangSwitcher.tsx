@@ -42,7 +42,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 				placeholder={t("Choose a language")}
 				inputProps={{
 					...params.inputProps,
-					autoComplete: "new-password",
+					autoComplete: "new-password1",
 				}}
 				InputProps={{
 					...params.InputProps,

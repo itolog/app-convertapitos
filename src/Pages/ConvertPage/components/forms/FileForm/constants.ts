@@ -1,27 +1,20 @@
 import { FileOption, FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.ts";
 
+import { SUPPORTED_IMAGE_FORMATS } from "@/constants/fileUploadConstants.ts";
+
 export const FORM_FIELD = {
 	CONVERT_TO: "convert_to",
-	FILES: "files",
+	IMAGE_FILE: "image_file",
 } as const;
-
-export const FILE_EX = {
-	PNG: "png",
-	JPG: "jpg",
-};
 
 export const initialValues: FormValues = {
 	[FORM_FIELD.CONVERT_TO]: "",
-	[FORM_FIELD.FILES]: [],
+	[FORM_FIELD.IMAGE_FILE]: null,
 };
 
-export const fileTypeOptions: FileOption[] = [
-	{
-		label: FILE_EX.JPG,
-		value: FILE_EX.JPG,
-	},
-	{
-		label: FILE_EX.PNG,
-		value: FILE_EX.PNG,
-	},
-];
+export const fileTypeOptions: FileOption[] = SUPPORTED_IMAGE_FORMATS.map((item): FileOption => {
+	return {
+		label: item,
+		value: item,
+	};
+});

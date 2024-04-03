@@ -5,7 +5,7 @@ import { FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.
 
 const ConvertPage = () => {
 	const handleSubmit = useCallback((values: FormValues) => {
-		console.log(values.convert_to);
+		console.log(values);
 	}, []);
 
 	return (

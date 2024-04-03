@@ -10,6 +10,10 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "filepond/dist/filepond.min.css";
 
+import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants.ts";
+
+import _classes from "./fileUpload.module.scss";
+
 registerPlugin(
 	FilePondPluginImageExifOrientation,
 	FilePondPluginImagePreview,
@@ -19,10 +23,10 @@ registerPlugin(
 );
 
 interface Classes {
-	root?: string;
+	filePond?: string;
 }
 
-interface FileUploadProps extends FilePondProps {
+interface FileUploadProps extends Omit<FilePondProps, "acceptedFileTypes"> {
 	classes?: Classes;
 }
 
@@ -35,15 +39,13 @@ const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, ...props }) =
 		allowMultiple: false,
 		labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
 		...props,
+		allowFileTypeValidation: true,
+		acceptedFileTypes: ACCEPTED_IMAGE_TYPES,
 	};
 
-	const rootClass = cl(classes.root);
+	const filePondClass = cl(_classes.filePond, classes.filePond);
 
-	return (
-		<div className={rootClass}>
-			<FilePond {...config} />
-		</div>
-	);
+	return <FilePond className={filePondClass} {...config} />;
 };
 
 export default FileUpload;
