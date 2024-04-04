@@ -10,6 +10,7 @@ import {
 	FileOption,
 	FormValues,
 } from "@/Pages/ConvertPage/components/forms/FileForm/types.ts";
+import validationSchema from "@/Pages/ConvertPage/components/forms/FileForm/validationSchema.ts";
 import { useFormik } from "formik";
 
 import { Grid } from "@mui/material";
@@ -18,9 +19,10 @@ import FileUpload, { OnUpdateFilesType } from "@/components/FileUpload/FileUploa
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete.tsx";
 
 const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
-	const { handleSubmit, setFieldValue } = useFormik<FormValues>({
+	const { handleSubmit, setFieldValue, errors } = useFormik<FormValues>({
 		initialValues,
 		onSubmit,
+		validationSchema,
 	});
 
 	const handleChangeFile = useCallback<OnUpdateFilesType>(
@@ -29,6 +31,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 		},
 		[setFieldValue],
 	);
+	console.log(errors);
 
 	const handleChangeFileType = useCallback(
 		(
