@@ -9,9 +9,12 @@ import {
 } from "@mui/material/Autocomplete/Autocomplete";
 import TextField from "@mui/material/TextField";
 
+import FormError from "@/components/Errors/FormError/FormError.tsx";
+
 import _classes from "./coAutocomplete.module.scss";
 
 interface Classes {
+	container?: string;
 	root?: string;
 	inputRoot?: string;
 	input?: string;
@@ -27,6 +30,7 @@ interface CoAutocompleteProps<T>
 	placeholder?: string;
 	customRenderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
 	classes?: Classes;
+	error?: string;
 }
 
 const CoAutocomplete = <T extends object>({
@@ -34,6 +38,7 @@ const CoAutocomplete = <T extends object>({
 	placeholder,
 	customRenderInput,
 	classes,
+	error,
 	...props
 }: CoAutocompleteProps<T>) => {
 	const renderInput = (params: AutocompleteRenderInputParams) => (
@@ -50,19 +55,22 @@ const CoAutocomplete = <T extends object>({
 	);
 
 	return (
-		<Autocomplete
-			{...props}
-			classes={{
-				root: cl(_classes.root, classes?.root),
-				inputRoot: cl(_classes.inputRoot, classes?.inputRoot),
-				input: (_classes.input, classes?.input),
-				popupIndicator: cl(_classes.endAdornment, classes?.popupIndicator),
-				clearIndicator: cl(_classes.clearIndicator, classes?.clearIndicator),
-				listbox: cl(_classes.listbox, classes?.listbox),
-				paper: cl(_classes.paper, classes?.paper),
-			}}
-			renderInput={customRenderInput ? customRenderInput : renderInput}
-		/>
+		<div className={cl(_classes.container, classes?.container)}>
+			<Autocomplete
+				{...props}
+				classes={{
+					root: cl(_classes.root, classes?.root),
+					inputRoot: cl(_classes.inputRoot, classes?.inputRoot),
+					input: cl(_classes.input, classes?.input),
+					popupIndicator: cl(_classes.endAdornment, classes?.popupIndicator),
+					clearIndicator: cl(_classes.clearIndicator, classes?.clearIndicator),
+					listbox: cl(_classes.listbox, classes?.listbox),
+					paper: cl(_classes.paper, classes?.paper),
+				}}
+				renderInput={customRenderInput ? customRenderInput : renderInput}
+			/>
+			<FormError error={error} />
+		</div>
 	);
 };
 

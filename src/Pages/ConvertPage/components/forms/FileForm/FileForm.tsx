@@ -19,11 +19,13 @@ import FileUpload, { OnUpdateFilesType } from "@/components/FileUpload/FileUploa
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete.tsx";
 
 const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
-	const { handleSubmit, setFieldValue, errors } = useFormik<FormValues>({
-		initialValues,
-		onSubmit,
-		validationSchema,
-	});
+	const { handleSubmit, setFieldValue, errors, touched, isValid, values, isSubmitting } =
+		useFormik<FormValues>({
+			initialValues,
+			onSubmit,
+			validationSchema,
+			enableReinitialize: true,
+		});
 
 	const handleChangeFile = useCallback<OnUpdateFilesType>(
 		(files) => {
@@ -31,7 +33,6 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 		},
 		[setFieldValue],
 	);
-	console.log(errors);
 
 	const handleChangeFileType = useCallback(
 		(
@@ -39,24 +40,43 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 			value: (string | FileOption)[] | NonNullable<string | FileOption> | null,
 		) => {
 			const val = value as FileOption;
-			setFieldValue(FORM_FIELD.CONVERT_TO, val?.value ?? "");
+
+			setFieldValue(FORM_FIELD.CONVERT_TO, val?.value.toLowerCase() ?? "");
 		},
 		[setFieldValue],
 	);
 
 	return (
 		<form onSubmit={handleSubmit} autoComplete={"off"}>
-			<Grid container spacing={2}>
+			<Grid container rowSpacing={3} columnSpacing={2} mb={2}>
 				<Grid item xs={6}>
-					<CoAutocomplete<FileOption> onChange={handleChangeFileType} options={fileTypeOptions} />
+					<CoAutocomplete<FileOption>
+						disabled={!values[FORM_FIELD.IMAGE_FILE]}
+						onChange={handleChangeFileType}
+						options={fileTypeOptions}
+						error={
+							(touched[FORM_FIELD.CONVERT_TO] &&
+								errors[FORM_FIELD.CONVERT_TO] &&
+								errors[FORM_FIELD.CONVERT_TO]) as string
+						}
+					/>
 				</Grid>
 
 				<Grid item xs={12}>
-					<FileUpload onupdatefiles={handleChangeFile} />
+					<FileUpload
+						onupdatefiles={handleChangeFile}
+						error={
+							(touched[FORM_FIELD.IMAGE_FILE] &&
+								errors[FORM_FIELD.IMAGE_FILE] &&
+								errors[FORM_FIELD.IMAGE_FILE]) as string
+						}
+					/>
 				</Grid>
 			</Grid>
 
-			<button type="submit">Submit</button>
+			<button disabled={!isValid || isSubmitting} type="submit">
+				Submit
+			</button>
 		</form>
 	);
 };

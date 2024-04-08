@@ -1,4 +1,10 @@
 body {
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
   .root {
     .inputRoot {
       color: var(--secondary-color);

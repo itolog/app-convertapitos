@@ -12,6 +12,8 @@ import "filepond/dist/filepond.min.css";
 
 import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants.ts";
 
+import FormError from "@/components/Errors/FormError/FormError.tsx";
+
 import _classes from "./fileUpload.module.scss";
 
 registerPlugin(
@@ -23,18 +25,20 @@ registerPlugin(
 );
 
 interface Classes {
+	container?: string;
 	filePond?: string;
 }
 
 interface FileUploadProps extends Omit<FilePondProps, "acceptedFileTypes"> {
 	classes?: Classes;
+	error?: string;
 }
 
 export type Files = FilePondFile[];
 export type File = FilePondFile;
 export type OnUpdateFilesType = (files: Files) => void;
 
-const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, ...props }) => {
+const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, error, ...props }) => {
 	const config: FilePondProps = {
 		allowMultiple: false,
 		labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
@@ -45,7 +49,12 @@ const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, ...props }) =
 
 	const filePondClass = cl(_classes.filePond, classes.filePond);
 
-	return <FilePond className={filePondClass} {...config} />;
+	return (
+		<div className={cl(_classes.container, classes.container)}>
+			<FilePond className={filePondClass} {...config} />
+			<FormError error={error} />
+		</div>
+	);
 };
 
 export default FileUpload;

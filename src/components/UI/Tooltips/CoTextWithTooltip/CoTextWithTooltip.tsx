@@ -1,15 +1,22 @@
 import { FC, ReactElement, useEffect, useMemo, useRef, useState } from "react";
 
+import cl from "classnames";
+
 import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
 
 import CoText from "@/components/UI/CoText/CoText.tsx";
 
-import classes from "./coTextWithTooltip.module.scss";
+import _classes from "./coTextWithTooltip.module.scss";
 
-interface CoTextWithTooltipProps extends Omit<TooltipProps, "children" | "title"> {
+interface Classes {
+	text?: string;
+}
+
+interface CoTextWithTooltipProps extends Omit<TooltipProps, "children" | "title" | "classes"> {
 	text: string;
 	tooltip?: string | ReactElement;
 	tooltipAutoDetect?: boolean;
+	classes?: Classes;
 }
 
 const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
@@ -17,6 +24,7 @@ const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
 	tooltip,
 	tooltipAutoDetect = false,
 	arrow = true,
+	classes,
 	...props
 }) => {
 	const textRef = useRef<HTMLSpanElement | null>(null);
@@ -52,9 +60,10 @@ const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
 	return (
 		<Tooltip title={_tooltip} arrow={arrow} {...props}>
 			<CoText
+				colorType={"default"}
 				ref={textRef}
 				classes={{
-					root: classes.coTextWithTooltip,
+					root: cl(_classes.coTextWithTooltip, classes?.text),
 				}}>
 				{text}
 			</CoText>
