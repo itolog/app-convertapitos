@@ -1,9 +1,9 @@
 export const FILE_EXTENSION = {
 	AVIF: "avif",
 	BMP: "bmp",
-	DDS: "dds",
+	// DDS: "dds",
 	GIF: "gif",
-	HDR: "hdr",
+	// HDR: "hdr",
 	ICO: "ico",
 	JPEG: "jpeg",
 	EXR: "exr",

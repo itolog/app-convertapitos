@@ -29,7 +29,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 
 	const handleChangeFile = useCallback<OnUpdateFilesType>(
 		(files) => {
-			setFieldValue(FORM_FIELD.IMAGE_FILE, files[0].file);
+			setFieldValue(FORM_FIELD.IMAGE_FILE, files?.[0]?.file);
 		},
 		[setFieldValue],
 	);

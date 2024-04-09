@@ -49,7 +49,7 @@ const CoAutocomplete = <T extends object>({
 			autoComplete="off"
 			inputProps={{
 				...params.inputProps,
-				autoComplete: "new-password",
+				autoComplete: "off",
 			}}
 		/>
 	);

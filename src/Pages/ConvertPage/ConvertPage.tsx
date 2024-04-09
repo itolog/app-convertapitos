@@ -6,7 +6,7 @@ import { FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.
 import { useConvertImageMutation } from "@/store/services/Image";
 
 const ConvertPage = () => {
-	const [convertImage, { data }] = useConvertImageMutation();
+	const [convertImage, { data, isLoading }] = useConvertImageMutation();
 	const handleSubmit = useCallback(
 		async (values: FormValues) => {
 			await convertImage(values);
@@ -14,17 +14,33 @@ const ConvertPage = () => {
 		[convertImage],
 	);
 
+	const handleDownload = () => {
+		if (!data?.data) return;
+
+		const url = `${import.meta.env.VITE_API_BASE_URL}/${data.data.image_link}`;
+		fetch(url)
+			.then((response) => response.blob())
+			.then((blob) => {
+				const url = window.URL.createObjectURL(new Blob([blob]));
+				const link = document.createElement("a");
+				link.href = url;
+				link.download = data?.data?.file_name || "downloaded-file";
+				document.body.appendChild(link);
+
+				link.click();
+
+				document.body.removeChild(link);
+				window.URL.revokeObjectURL(url);
+			})
+			.catch((error) => {
+				console.error("Error fetching the file:", error);
+			});
+	};
 	return (
 		<div className={"ConvertPage"}>
+			{isLoading && "Loading ..."}
 			<FileForm onSubmit={handleSubmit} />
-			{data?.data?.image_link && (
-				<img
-					width={200}
-					height={200}
-					src={`${import.meta.env.VITE_API_BASE_URL}/${data.data.image_link}`}
-					alt=""
-				/>
-			)}
+			{data?.data?.image_link && <button onClick={handleDownload}>download</button>}
 		</div>
 	);
 };
