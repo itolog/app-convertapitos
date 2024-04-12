@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import FileForm from "@/Pages/ConvertPage/components/forms/FileForm/FileForm.tsx";
 import { FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.ts";
@@ -9,6 +10,7 @@ import { ResponseError } from "@/types/apiTypes.ts";
 import { useConvertImageMutation } from "@/store/services/Image";
 
 const ConvertPage = () => {
+	const { t } = useTranslation();
 	const { enqueueSnackbar } = useSnackbar();
 
 	const [convertImage, { data, isLoading, error }] = useConvertImageMutation();
@@ -22,11 +24,12 @@ const ConvertPage = () => {
 	useEffect(() => {
 		if (error) {
 			const { data } = error as ResponseError;
-			enqueueSnackbar(data.message, {
+			const msg = data?.message ?? t("Something went wrong");
+			enqueueSnackbar(msg, {
 				variant: "error",
 			});
 		}
-	}, [data, enqueueSnackbar, error]);
+	}, [enqueueSnackbar, error, t]);
 
 	const handleDownload = () => {
 		if (!data?.data) return;
