@@ -5,6 +5,9 @@ import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
+import { snackbar } from "@/config";
+import { SnackbarProvider } from "notistack";
+
 import { CssBaseline } from "@mui/material";
 
 import "@fontsource/roboto/300.css";
@@ -40,7 +43,9 @@ if (!rootElement.innerHTML) {
 				<PersistGate loading={null} persistor={persistor}>
 					<Suspense fallback={<div>Loading...</div>}>
 						<I18nextProvider i18n={i18n}>
-							<RouterProvider router={router} />
+							<SnackbarProvider {...snackbar}>
+								<RouterProvider router={router} />
+							</SnackbarProvider>
 						</I18nextProvider>
 					</Suspense>
 				</PersistGate>

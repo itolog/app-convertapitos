@@ -1,18 +1,32 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import FileForm from "@/Pages/ConvertPage/components/forms/FileForm/FileForm.tsx";
 import { FormValues } from "@/Pages/ConvertPage/components/forms/FileForm/types.ts";
+import { useSnackbar } from "notistack";
+
+import { ResponseError } from "@/types/apiTypes.ts";
 
 import { useConvertImageMutation } from "@/store/services/Image";
 
 const ConvertPage = () => {
-	const [convertImage, { data, isLoading }] = useConvertImageMutation();
+	const { enqueueSnackbar } = useSnackbar();
+
+	const [convertImage, { data, isLoading, error }] = useConvertImageMutation();
 	const handleSubmit = useCallback(
 		async (values: FormValues) => {
 			await convertImage(values);
 		},
 		[convertImage],
 	);
+
+	useEffect(() => {
+		if (error) {
+			const { data } = error as ResponseError;
+			enqueueSnackbar(data.message, {
+				variant: "error",
+			});
+		}
+	}, [data, enqueueSnackbar, error]);
 
 	const handleDownload = () => {
 		if (!data?.data) return;
@@ -32,10 +46,13 @@ const ConvertPage = () => {
 				document.body.removeChild(link);
 				window.URL.revokeObjectURL(url);
 			})
-			.catch((error) => {
-				console.error("Error fetching the file:", error);
+			.catch(() => {
+				enqueueSnackbar("Error fetching the file:", {
+					variant: "error",
+				});
 			});
 	};
+
 	return (
 		<div className={"ConvertPage"}>
 			{isLoading && "Loading ..."}
