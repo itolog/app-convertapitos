@@ -1,10 +1,10 @@
-import { createRouter, RouterProvider } from "@tanstack/react-router";
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
+import App from "@/App.tsx";
 import { snackbar } from "@/config";
 import { SnackbarProvider } from "notistack";
 
@@ -17,20 +17,9 @@ import "@fontsource/roboto/700.css";
 
 import { persistor, store } from "@/store/store.ts";
 
-import { routeTree } from "./routeTree.gen";
 import i18n from "./translations";
 
 import "@styles/main.scss";
-
-const router = createRouter({
-	routeTree,
-});
-
-declare module "@tanstack/react-router" {
-	interface Register {
-		router: typeof router;
-	}
-}
 
 // Render the app
 const rootElement = document.getElementById("root")!;
@@ -41,13 +30,11 @@ if (!rootElement.innerHTML) {
 			<CssBaseline />
 			<Provider store={store}>
 				<PersistGate loading={null} persistor={persistor}>
-					<Suspense fallback={<div>Loading...</div>}>
-						<I18nextProvider i18n={i18n}>
-							<SnackbarProvider {...snackbar}>
-								<RouterProvider router={router} />
-							</SnackbarProvider>
-						</I18nextProvider>
-					</Suspense>
+					<I18nextProvider i18n={i18n}>
+						<SnackbarProvider {...snackbar}>
+							<App />
+						</SnackbarProvider>
+					</I18nextProvider>
 				</PersistGate>
 			</Provider>
 		</StrictMode>,

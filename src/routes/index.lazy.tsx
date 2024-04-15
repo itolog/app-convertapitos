@@ -1,10 +1,10 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 
-import ApiPage from "@/Pages/ApiPage/ApiPage.tsx";
+import ConvertPage from "@/Pages/ConvertPage/ConvertPage.tsx";
 
 import PageLoader from "@/components/Loaders/PageLoader/PageLoader.tsx";
 
-export const Route = createLazyFileRoute("/api/")({
-	component: ApiPage,
+export const Route = createLazyFileRoute("/")({
+	component: ConvertPage,
 	pendingComponent: PageLoader,
 });
