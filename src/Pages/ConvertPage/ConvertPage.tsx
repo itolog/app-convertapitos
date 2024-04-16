@@ -29,7 +29,8 @@ const ConvertPage = () => {
 				variant: "error",
 			});
 		}
-	}, [enqueueSnackbar, error, t]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [error]);
 
 	const handleDownload = () => {
 		if (!data?.data) return;
