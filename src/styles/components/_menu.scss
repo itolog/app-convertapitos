@@ -6,10 +6,15 @@
 
 
 .co-menu--list {
+  display: flex;
   background: var(--menu-bg);
 
+  &__column {
+    flex-direction: column;
+  }
+
   .co-menu--item {
-    color: var(--primary-color);
+    padding: 8px;
 
     &, p {
       font-family: var(--app-font-family);

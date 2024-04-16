@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { MouseEvent, useState } from "react";
 
 import useNavigationItems from "@/hooks/navigations/useNavigationItems.tsx";
@@ -9,6 +8,8 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Typography from "@mui/material/Typography";
+
+import CoLink from "@/components/Navigation/CoLink/CoLink.tsx";
 
 const MobileNavigation = () => {
 	const navigations = useNavigationItems();
@@ -52,11 +53,15 @@ const MobileNavigation = () => {
 					<MenuIcon />
 				</IconButton>
 				<Menu
-					id="menu-appbar"
 					anchorEl={anchorElNav}
 					anchorOrigin={{
 						vertical: "bottom",
 						horizontal: "left",
+					}}
+					classes={{
+						root: "co-menu",
+						paper: "co-menu--paper",
+						list: "co-menu--list co-menu--list__column",
 					}}
 					keepMounted
 					transformOrigin={{
@@ -69,10 +74,14 @@ const MobileNavigation = () => {
 						display: { xs: "flex", md: "none" },
 					}}>
 					{navigations.map((page) => (
-						// @ts-ignore
-						<Link key={page.label} to={page.to} className="[&.active]:font-bold">
-							{page.label}
-						</Link>
+						<CoLink
+							classes={{
+								root: "co-menu--item",
+							}}
+							key={page.label}
+							to={page.to}
+							label={page.label}
+						/>
 					))}
 				</Menu>
 			</Box>
