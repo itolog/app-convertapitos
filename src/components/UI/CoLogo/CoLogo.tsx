@@ -1,11 +1,5 @@
-import React from "react";
-
 const CoLogo = () => {
-	return (
-		<div>
-			
-		</div>
-	);
+	return <div>Logo</div>;
 };
 
 export default CoLogo;
