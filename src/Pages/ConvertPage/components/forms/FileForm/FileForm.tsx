@@ -61,6 +61,13 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 						}
 					/>
 				</Grid>
+				<Grid item xs={6}>
+					{values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO] && (
+						<button disabled={!isValid || isSubmitting} type="submit">
+							Submit
+						</button>
+					)}
+				</Grid>
 
 				<Grid item xs={12}>
 					<FileUpload
@@ -73,12 +80,6 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 					/>
 				</Grid>
 			</Grid>
-
-			{values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO] && (
-				<button disabled={!isValid || isSubmitting} type="submit">
-					Submit
-				</button>
-			)}
 		</form>
 	);
 };
