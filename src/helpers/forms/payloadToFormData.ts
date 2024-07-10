@@ -1,4 +1,4 @@
-const payloadToFormData = (payload: Record<string, any>) => {
+const payloadToFormData = (payload: object) => {
 	const formData = new FormData();
 
 	Object.entries(payload ?? {}).map(([key, value]) => {

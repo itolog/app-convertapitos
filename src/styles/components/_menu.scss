@@ -14,10 +14,11 @@
   }
 
   .co-menu--item {
-    padding: 8px;
+    padding: 8px 16px;
+    color: var(--secondary-color);
 
     &, p {
-      font-family: var(--app-font-family);
+      font-family: var(--app-font-family), serif;
       font-weight: 500;
       font-size: 20px;
       text-transform: capitalize;

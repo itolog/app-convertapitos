@@ -37,6 +37,7 @@ module.exports = {
         "import/named": "off",
         "import/no-unresolved": "off",
         "no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
         "import/no-named-as-default-member": "off",
         "react/self-closing-comp": [
             "warn",

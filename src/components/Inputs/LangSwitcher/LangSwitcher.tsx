@@ -13,6 +13,10 @@ interface LangSwitcherProps {
 	width?: string | number;
 }
 
+interface RenderOptionProps extends HTMLAttributes<HTMLLIElement> {
+	key: string;
+}
+
 const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	const { options, optionsNormalized } = useOptions();
 	const { i18n, t } = useTranslation();
@@ -63,24 +67,28 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 		);
 	};
 
-	const renderOption = (props: HTMLAttributes<HTMLLIElement>, option: Option) => {
+	const renderOption = useCallback(({ key, ...props }: RenderOptionProps, option: Option) => {
 		return (
-			<Box component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} {...props}>
+			<Box component="li" sx={{ "& > img": { mr: 2, flexShrink: 0 } }} key={key} {...props}>
 				<img
 					loading="lazy"
 					width="20"
 					srcSet={`https://flagcdn.com/w40/${option?.code.toLowerCase()}.png 2x`}
 					src={`https://flagcdn.com/w20/${option?.code.toLowerCase()}.png`}
-					alt=""
+					alt={option.code}
 				/>
 				{option.label} ({option.code})
 			</Box>
 		);
-	};
+	}, []);
 
 	const filterOptions = createFilterOptions({
 		stringify: (option: Option) => option.code + option.label,
 	});
+
+	const getOptionLabel = (option: Option | string) => {
+		return (option as Option).code;
+	};
 
 	return (
 		<CoAutocomplete<Option>
@@ -91,9 +99,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 			autoHighlight
 			sx={{ width }}
 			isOptionEqualToValue={(option, value) => option.value === value.value}
-			getOptionLabel={(option) => {
-				return (option as Option).code;
-			}}
+			getOptionLabel={getOptionLabel}
 			customRenderInput={renderInput}
 			filterOptions={filterOptions}
 			renderOption={renderOption}

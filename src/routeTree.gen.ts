@@ -36,10 +36,16 @@ const ApiIndexLazyRoute = ApiIndexLazyImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
     '/api/': {
+      id: '/api/'
+      path: '/api'
+      fullPath: '/api'
       preLoaderRoute: typeof ApiIndexLazyImport
       parentRoute: typeof rootRoute
     }
@@ -48,9 +54,29 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
+export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   ApiIndexLazyRoute,
-])
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/api/"
+      ]
+    },
+    "/": {
+      "filePath": "index.lazy.tsx"
+    },
+    "/api/": {
+      "filePath": "api/index.lazy.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */

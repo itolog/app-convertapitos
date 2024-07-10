@@ -100,6 +100,8 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 			<Popper
 				sx={{
 					zIndex: 1,
+					width: "100%",
+					maxWidth: "248px",
 				}}
 				open={open}
 				anchorEl={anchorRef.current}
@@ -116,7 +118,7 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 							<ClickAwayListener onClickAway={handleClose}>
 								<MenuList
 									classes={{
-										root: "co-menu--list",
+										root: "co-menu--list co-menu--list__column",
 									}}
 									id="split-button-menu"
 									autoFocusItem>
