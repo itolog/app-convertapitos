@@ -74,9 +74,11 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 				</Grid>
 			</Grid>
 
-			<button disabled={!isValid || isSubmitting} type="submit">
-				Submit
-			</button>
+			{values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO] && (
+				<button disabled={!isValid || isSubmitting} type="submit">
+					Submit
+				</button>
+			)}
 		</form>
 	);
 };
