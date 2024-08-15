@@ -24,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: ReactNode;
 }>) {
-	console.log("as");
 	return (
 		<html lang="en">
 			<AppRouterCacheProvider>
