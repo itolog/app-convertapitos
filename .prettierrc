@@ -15,7 +15,6 @@
     "<THIRD_PARTY_MODULES>",
     "^@mui/(.*)$",
     "^@fontsource/(.*)$",
-    "^@/router/(.*)$",
     "^@/assets/(.*)$",
     "^@/types/(.*)$",
     "^@/constants/(.*)$",
@@ -25,6 +24,7 @@
     "^@/ui/(.*)$",
     "^@/components/(.*)$",
     "^@/store/(.*)$",
+    "^@/providers/(.*)$",
     "^[./]",
     "^(?!.*[.]scss$)[./].*$", ".scss$"
   ],

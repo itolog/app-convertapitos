@@ -28,7 +28,9 @@
       "@/styles/*": ["./src/styles/*"],
       "@/ui/*": ["./src/ui/*"],
       "@/types/*": ["./src/types/*"],
-      "@/constants/*": ["./src/constants/*"]
+      "@/constants/*": ["./src/constants/*"],
+      "@/providers/*": ["./src/providers/*"],
+      "@/navigation/*": ["./src/navigation.ts"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
