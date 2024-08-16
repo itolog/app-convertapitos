@@ -1,11 +1,11 @@
 "use client";
 
-import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState } from "react";
+import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState, useTransition } from "react";
 
-import { AppLang } from "@/constants";
+import { usePathname, useRouter } from "@/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 import { createFilterOptions, InputAdornment } from "@mui/material";
 import { AutocompleteRenderInputParams } from "@mui/material/Autocomplete/Autocomplete";
@@ -27,12 +27,16 @@ const IMAGE_SIZE = 20;
 
 const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	const t = useTranslations();
-	const router = useRouter();
 	const localActive = useLocale();
+	const [isPending, startTransition] = useTransition();
+
+	const router = useRouter();
+	const pathname = usePathname();
+	const params = useParams();
 
 	const { options, optionsNormalized } = useOptions();
 
-	const [value, setValue] = useState<Option>(optionsNormalized[AppLang.EN]);
+	const [value, setValue] = useState<Option>(optionsNormalized[localActive]);
 
 	const handleChange = async (
 		_e: SyntheticEvent<Element, Event>,
@@ -40,9 +44,23 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	) => {
 		const val = value as Option;
 		if (val) {
-			console.log("VAL", value);
-			router.replace(`/${val.value}`);
+			const nextLocale = val.value;
 			setValue(val);
+			console.log("nextLocale", nextLocale);
+			console.log("params", params);
+
+			startTransition(() => {
+				router.replace(
+					{
+						pathname,
+						// @ts-expect-error -- TypeScript will validate that only known `params`
+						// are used in combination with a given `pathname`. Since the two will
+						// always match for the current route, we can skip runtime checks.
+						params,
+					},
+					{ locale: nextLocale },
+				);
+			});
 		}
 	};
 
@@ -105,6 +123,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 			value={value}
 			options={options}
 			autoHighlight
+			disabled={isPending}
 			sx={{ width }}
 			isOptionEqualToValue={(option, value) => option.value === value.value}
 			getOptionLabel={getOptionLabel}
