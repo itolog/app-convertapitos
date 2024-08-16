@@ -1,0 +1,42 @@
+body {
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .root {
+    .inputRoot {
+      color: var(--secondary-color);
+      padding-top: 0;
+      padding-bottom: 0;
+
+      & fieldset {
+        border-color: var(--text-field-border-color) !important;
+      }
+
+      &:hover {
+        & fieldset {
+          border-color: var(--text-field-border-color);
+        }
+      }
+    }
+
+    .input {
+      color: var(--secondary-color);
+    }
+
+    .endAdornment, .clearIndicator {
+      color: var(--text-field-border-color);
+    }
+  }
+
+  .paper {
+    background: var(--menu-bg);
+  }
+
+  .listbox {
+    background: var(--menu-bg);
+    color: var(--secondary-color);
+  }
+}

@@ -1,0 +1,19 @@
+body {
+  .coAppBar {
+    background-color: var(--app-bar-bg);
+    color: var(--primary-color);
+  }
+
+  .appBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    width: 100%;
+    max-width: var(--app-max-width);
+    padding: 0  var(--app-padding);
+  }
+
+  .appBarToolbar {
+    width: 100%;
+  }
+}

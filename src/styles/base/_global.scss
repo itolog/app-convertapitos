@@ -1,0 +1,33 @@
+@import "/src/styles/abstracts";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  background-color: var(--app-bg);
+  place-items: center;
+}
+
+#root {
+  height: 100%;
+  font-family: var(--app-font-family), serif;
+  font-size: calc(var(--base-unit) * .85);
+  line-height: normal;
+  font-weight: 400;
+  color: var(--primary-color);
+  background-color: var(--app-bg);
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+  list-style: none;
+}
