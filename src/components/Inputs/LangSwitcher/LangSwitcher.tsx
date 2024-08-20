@@ -46,8 +46,6 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 		if (val) {
 			const nextLocale = val.value;
 			setValue(val);
-			console.log("nextLocale", nextLocale);
-			console.log("params", params);
 
 			startTransition(() => {
 				router.replace(

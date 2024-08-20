@@ -8,6 +8,10 @@ const useNavigationItems = () => {
 			href: "/api",
 			label: "Api",
 		},
+		{
+			href: "/profile",
+			label: "Profile",
+		},
 	];
 };
 

@@ -42,7 +42,7 @@ const MobileNavigation = () => {
 					color: "inherit",
 					textDecoration: "none",
 				}}>
-				LOGO
+				CAT
 			</Typography>
 			<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 				<IconButton
@@ -76,7 +76,7 @@ const MobileNavigation = () => {
 						display: { xs: "flex", md: "none" },
 					}}>
 					{navigations.map((page) => (
-						<li key={page.label}>
+						<li key={page.label} onClick={handleCloseNavMenu}>
 							<NavigationLink
 								classes={{
 									root: "co-menu--item",

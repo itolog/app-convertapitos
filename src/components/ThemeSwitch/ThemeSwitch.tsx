@@ -1,11 +1,11 @@
 "use client";
 
-import { FC, useCallback, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useRef, useState } from "react";
 
 import cl from "classnames";
+import { useTheme } from "next-themes";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useMediaQuery } from "@mui/material";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -15,22 +15,17 @@ import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { getTheme } from "@/store/settings/selectors";
-import { setTheme } from "@/store/settings/settingsSlice";
-import { ThemeOptions } from "@/store/settings/types";
-
 import classes from "./themeSwitch.module.scss";
 
-const options: ThemeOptions[] = ["dark", "light", "system"];
+const options = ["dark", "light", "system"] as const;
+type Options = (typeof options)[number];
 
 interface ThemeSwitchProps {
 	fullWidth?: boolean;
 }
 
 const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
-	const dispatch = useAppDispatch();
-	const theme = useAppSelector(getTheme);
+	const { theme, setTheme } = useTheme();
 
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
@@ -47,28 +42,14 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 		setOpen(false);
 	};
 
-	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
 	const handleMenuItemClick = useCallback(
-		(option: ThemeOptions) => {
-			if (option === "system") {
-				dispatch(setTheme(prefersDarkMode ? "system-dark" : "system-light"));
-			} else {
-				dispatch(setTheme(option));
-			}
+		(option: Options) => {
+			setTheme(option);
 
 			setOpen(false);
 		},
-		[dispatch, prefersDarkMode],
+		[setTheme],
 	);
-
-	const themeName = useMemo(() => {
-		if (theme === "system-light" || theme === "system-dark") {
-			return "system";
-		}
-
-		return theme;
-	}, [theme]);
 
 	return (
 		<>
@@ -84,7 +65,7 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 						}),
 					}}
 					onClick={handleToggle}>
-					{themeName}
+					{theme}
 				</Button>
 				<Button
 					classes={{

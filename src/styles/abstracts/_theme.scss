@@ -1,8 +1,5 @@
 :root {
   --app-font-family: vollkorn;
-}
-
-:root[data-theme$='light'] {
   --primary-color: #0f172a;
   --secondary-color: #64748b;
   --accent-color: #e30c2d;
@@ -17,7 +14,7 @@
   --link-color: #0f172a;
 }
 
-:root[data-theme$='dark'] {
+[data-theme='dark'] {
   --primary-color: rgb(255 243 226);
   --secondary-color: #94a3b8;
   --accent-color: #22d3ee;

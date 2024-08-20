@@ -13,21 +13,6 @@ html, body {
   place-items: center;
 }
 
-#root {
-  height: 100%;
-  font-family: var(--app-font-family), serif;
-  font-size: calc(var(--base-unit) * .85);
-  line-height: normal;
-  font-weight: 400;
-  color: var(--primary-color);
-  background-color: var(--app-bg);
-  color-scheme: light dark;
-  font-synthesis: none;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 li {
   list-style: none;
 }

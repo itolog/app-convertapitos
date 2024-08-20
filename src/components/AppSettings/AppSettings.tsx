@@ -9,10 +9,18 @@ import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
 import CoPopper from "@/components/Modals/CoPopper/CoPopper";
 import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch";
 
+import { useAppSelector } from "@/store/hooks";
+import { getUser } from "@/store/user/selectors";
+
 const AppSettings = () => {
+	const user = useAppSelector(getUser);
+
 	const trigger = useMemo(() => {
-		return <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />;
-	}, []);
+		const ava = user.image ?? undefined;
+		const alt = user.name ?? "Anonymous";
+
+		return <Avatar alt={alt} src={ava} />;
+	}, [user]);
 
 	return (
 		<CoPopper

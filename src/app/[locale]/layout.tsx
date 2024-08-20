@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 import { Roboto, Vollkorn } from "next/font/google";
 
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
@@ -11,7 +12,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 
 import StoreProvider from "@/providers/StoreProvider";
-import ThemeProvider from "@/providers/ThemeProvider";
 
 import styles from "@/app/[locale]/layout.module.scss";
 import "@/styles/main.scss";
@@ -43,19 +43,19 @@ export default async function LocaleLayout({
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale} className={roboto.className}>
+		<html lang={locale} suppressHydrationWarning className={roboto.className}>
 			<AppRouterCacheProvider>
 				<CssBaseline />
 				<StoreProvider>
 					<NextIntlClientProvider messages={messages}>
-						<ThemeProvider>
-							<body className={vollkorn.className}>
+						<body className={vollkorn.className}>
+							<ThemeProvider>
 								<div className={styles.mainLayout}>
 									<CoAppBar />
-									<main>{children}</main>
+									<main className={styles.main}>{children}</main>
 								</div>
-							</body>
-						</ThemeProvider>
+							</ThemeProvider>
+						</body>
 					</NextIntlClientProvider>
 				</StoreProvider>
 			</AppRouterCacheProvider>

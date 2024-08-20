@@ -2,11 +2,11 @@ import { IS_PROD } from "@/constants";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { imageApi } from "./services/Image";
-import settingsSlice from "./settings/settingsSlice";
+import userSlice from "./user/userSlice";
 
 const rootReducer = combineReducers({
 	[imageApi.reducerPath]: imageApi.reducer,
-	settings: settingsSlice,
+	user: userSlice,
 });
 
 export const makeStore = () => {

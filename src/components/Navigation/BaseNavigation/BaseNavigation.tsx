@@ -27,16 +27,18 @@ const BaseNavigation = () => {
 					color: "inherit",
 					textDecoration: "none",
 				}}>
-				LOGO
+				CAT
 			</Typography>
-			<Box component={"ul"} sx={{ flexGrow: 1, display: { xs: "none", md: "flex", gap: 10 } }}>
-				{navigations.map(({ href, label }) => {
-					return (
-						<li key={label}>
-							<NavigationLink href={href}>{label}</NavigationLink>
-						</li>
-					);
-				})}
+			<Box component={"nav"} sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+				<Box component={"ul"} sx={{ display: { md: "flex", gap: 10 } }}>
+					{navigations.map(({ href, label }) => {
+						return (
+							<li key={label}>
+								<NavigationLink href={href}>{label}</NavigationLink>
+							</li>
+						);
+					})}
+				</Box>
 			</Box>
 		</>
 	);
