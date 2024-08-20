@@ -5,8 +5,12 @@ interface AppError extends Error {
 }
 
 const useErrors = () => {
-	// TODO: add error logging (Sentry)
-	const handleError = useCallback((error: AppError) => {}, []);
+	const handleError = useCallback((error: AppError): AppError => {
+		// TODO: add error logging (Sentry)
+		// console.log(error);
+
+		return error;
+	}, []);
 
 	return {
 		handleError,
