@@ -2,10 +2,10 @@
 
 import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState, useTransition } from "react";
 
-import { usePathname, useRouter } from "@/navigation";
+import { Locale } from "@/config";
+import { setUserLocale } from "@/services/locale";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 
 import { createFilterOptions, InputAdornment } from "@mui/material";
 import { AutocompleteRenderInputParams } from "@mui/material/Autocomplete/Autocomplete";
@@ -30,10 +30,6 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	const localActive = useLocale();
 	const [isPending, startTransition] = useTransition();
 
-	const router = useRouter();
-	const pathname = usePathname();
-	const params = useParams();
-
 	const { options, optionsNormalized } = useOptions();
 
 	const [value, setValue] = useState<Option>(optionsNormalized[localActive]);
@@ -44,20 +40,11 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 	) => {
 		const val = value as Option;
 		if (val) {
-			const nextLocale = val.value;
+			const nextLocale = val.value as Locale;
 			setValue(val);
 
 			startTransition(() => {
-				router.replace(
-					{
-						pathname,
-						// @ts-expect-error -- TypeScript will validate that only known `params`
-						// are used in combination with a given `pathname`. Since the two will
-						// always match for the current route, we can skip runtime checks.
-						params,
-					},
-					{ locale: nextLocale },
-				);
+				setUserLocale(nextLocale);
 			});
 		}
 	};
