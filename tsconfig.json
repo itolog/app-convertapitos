@@ -30,6 +30,7 @@
       "@/types/*": ["./src/types/*"],
       "@/constants/*": ["./src/constants/*"],
       "@/providers/*": ["./src/providers/*"],
+      "@/services/*": ["./src/services/*"],
       "@/navigation/*": ["./src/navigation.ts"],
       "@/auth": ["./auth"],
     }

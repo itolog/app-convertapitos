@@ -5,7 +5,7 @@ const useNavigationItems = () => {
 			label: "Home",
 		},
 		{
-			href: "/api",
+			href: "/co-api",
 			label: "Api",
 		},
 		{

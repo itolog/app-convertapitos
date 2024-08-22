@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { Roboto, Vollkorn } from "next/font/google";
 
@@ -13,7 +13,7 @@ import CoAppBar from "@/components/CoAppBar/CoAppBar";
 
 import StoreProvider from "@/providers/StoreProvider";
 
-import styles from "@/app/[locale]/layout.module.scss";
+import styles from "@/app/layout.module.scss";
 import "@/styles/main.scss";
 
 const roboto = Roboto({
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
 	children,
-	params: { locale },
 }: {
 	children: ReactNode;
 	params: { locale: string };
 }) {
+	const locale = await getLocale();
 	const messages = await getMessages();
 
 	return (
