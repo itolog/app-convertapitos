@@ -2,6 +2,7 @@
 
 import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState, useTransition } from "react";
 
+import { Locale } from "@/configs";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -14,8 +15,6 @@ import { setUserLocale } from "@/services/locale";
 
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import useOptions, { Option } from "@/components/Inputs/LangSwitcher/hooks/useOptions";
-
-import { Locale } from "../../../configs";
 
 interface LangSwitcherProps {
 	width?: string | number;
