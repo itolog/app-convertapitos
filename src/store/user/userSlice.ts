@@ -2,16 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { User, UserState } from "@/store/user/types";
 
-export const InitialUserState: User = {
-	id: null,
+export const initialUserState: User = {
 	name: null,
 	email: null,
 	image: null,
-	emailVerified: null,
 };
 
 const initialState: UserState = {
-	me: InitialUserState,
+	me: null,
 };
 
 export const userSlice = createSlice({

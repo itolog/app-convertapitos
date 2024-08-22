@@ -1,3 +1,4 @@
+import { SessionProvider } from "next-auth/react";
 import React, { ReactNode } from "react";
 
 import type { Metadata } from "next";
@@ -11,6 +12,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 
+import BootstrapAppProvider from "@/providers/BootstrapAppProvider";
 import StoreProvider from "@/providers/StoreProvider";
 
 import styles from "@/app/layout.module.scss";
@@ -48,14 +50,18 @@ export default async function LocaleLayout({
 				<CssBaseline />
 				<StoreProvider>
 					<NextIntlClientProvider messages={messages}>
-						<body className={vollkorn.className}>
-							<ThemeProvider>
-								<div className={styles.mainLayout}>
-									<CoAppBar />
-									<main className={styles.main}>{children}</main>
-								</div>
-							</ThemeProvider>
-						</body>
+						<SessionProvider>
+							<BootstrapAppProvider>
+								<body className={vollkorn.className}>
+									<ThemeProvider>
+										<div className={styles.mainLayout}>
+											<CoAppBar />
+											<main className={styles.main}>{children}</main>
+										</div>
+									</ThemeProvider>
+								</body>
+							</BootstrapAppProvider>
+						</SessionProvider>
 					</NextIntlClientProvider>
 				</StoreProvider>
 			</AppRouterCacheProvider>

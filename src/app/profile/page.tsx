@@ -1,14 +1,11 @@
-"use client";
+import { auth } from "@/auth";
 
-import React from "react";
+const Page = async () => {
+	const session = await auth();
 
-import { useAppSelector } from "@/store/hooks";
-import { getUser } from "@/store/user/selectors";
+	if (!session?.user) return null;
 
-const Page = () => {
-	const user = useAppSelector(getUser);
-
-	return <div>{user.image}</div>;
+	return <div>prof</div>;
 };
 
 export default Page;

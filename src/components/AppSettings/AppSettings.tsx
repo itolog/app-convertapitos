@@ -5,6 +5,8 @@ import { useMemo } from "react";
 import { Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 
+import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
+import SignOut from "@/components/Buttons/SignOut/SignOut";
 import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
 import CoPopper from "@/components/Modals/CoPopper/CoPopper";
 import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch";
@@ -16,8 +18,8 @@ const AppSettings = () => {
 	const user = useAppSelector(getUser);
 
 	const trigger = useMemo(() => {
-		const ava = user.image ?? undefined;
-		const alt = user.name ?? "Anonymous";
+		const ava = user?.image ?? undefined;
+		const alt = user?.name ?? "Anonymous";
 
 		return <Avatar alt={alt} src={ava} />;
 	}, [user]);
@@ -35,6 +37,10 @@ const AppSettings = () => {
 
 						<Grid item xs={12}>
 							<LangSwitcher width={"100%"} />
+						</Grid>
+
+						<Grid item xs={12}>
+							{user ? <SignOut /> : <SignInButton />}
 						</Grid>
 					</Grid>
 				);

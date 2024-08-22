@@ -2,8 +2,6 @@
 
 import { FC, HTMLAttributes, SyntheticEvent, useCallback, useState, useTransition } from "react";
 
-import { Locale } from "@/config";
-import { setUserLocale } from "@/services/locale";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -12,8 +10,12 @@ import { AutocompleteRenderInputParams } from "@mui/material/Autocomplete/Autoco
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+import { setUserLocale } from "@/services/locale";
+
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import useOptions, { Option } from "@/components/Inputs/LangSwitcher/hooks/useOptions";
+
+import { Locale } from "../../../configs";
 
 interface LangSwitcherProps {
 	width?: string | number;
