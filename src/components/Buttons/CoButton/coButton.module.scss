@@ -5,12 +5,13 @@ body {
   .CoButton {
     position: relative;
     display: flex;
-    gap: 5px;
+    gap: 10px;
     padding: 5px 7px;
     min-width: fit-content;
     color: var(--primary-color);
     font-size: 16px;
     text-transform: initial;
+    border-color: var(--text-field-border-color);
 
     &:hover {
       background-color: var(--label-bg);

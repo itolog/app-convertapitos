@@ -1,8 +1,10 @@
 {
-  "title": "Привіт!",
-  "Welcome to React": "Ласкаво просимо до React та react-i18next",
   "Ukraine": "Україна",
   "United States": "США",
   "Choose a language": "Вибери мову",
-  "Something went wrong": "Щось пішло не так."
+  "Something went wrong": "Щось пішло не так.",
+  "Auth": {
+    "Sign In": "Увійти",
+    "Continue with": "Продовжити з {provider}"
+  }
 }

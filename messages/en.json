@@ -1,8 +1,10 @@
 {
-  "title": "Hello world!",
-  "Welcome to React": "Welcome to React and react-i18next",
   "Ukraine": "Ukraine",
   "United States": "United States",
   "Choose a language": "Choose a language",
-  "Something went wrong": "Something went wrong."
+  "Something went wrong": "Something went wrong.",
+  "Auth": {
+    "Sign In": "Sign In",
+    "Continue with": "Continue with {provider}"
+  }
 }
