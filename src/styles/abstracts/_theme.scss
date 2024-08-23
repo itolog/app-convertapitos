@@ -1,5 +1,4 @@
 :root {
-  --app-font-family: vollkorn;
   --primary-color: #0f172a;
   --secondary-color: #64748b;
   --accent-color: #e30c2d;
@@ -12,6 +11,8 @@
   --popper-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
   --text-field-border-color: #0f172a;
   --link-color: #0f172a;
+  --label-bg: #0f172a;
+  --label-color: #fff3e2;
 }
 
 [data-theme='dark'] {
@@ -25,6 +26,8 @@
   --theme-switcher-track-bg: #aab4be;
   --menu-bg: #1e293b;
   --popper-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
-  --text-field-border-color: #22d3ee
+  --text-field-border-color: #22d3ee;
+  --label-bg: purple;
+  --label-color: #fff3e2;
 }
 

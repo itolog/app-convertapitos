@@ -2688,14 +2688,14 @@ next-auth@^5.0.0-beta.20:
   dependencies:
     "@auth/core" "0.34.2"
 
-next-intl@^3.17.4:
-  version "3.17.4"
-  resolved "https://registry.npmjs.org/next-intl/-/next-intl-3.17.4.tgz"
-  integrity sha512-ro3yNIaMNVhCmCdG6u9R00HllMdJXsGdKkBaBq75iM0sSnjLr7IytiGmCuZsUMDqCnGswXfXvs/FjI/lC8OAOw==
+next-intl@^3.17.5:
+  version "3.17.5"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.17.5.tgz#9b6882bd14c50cb3016e586a95e8b29c73bb3783"
+  integrity sha512-fmHg5ruItLKpsNFoOW4KqfaG8gCQy8HQQBcprOljiaU2ttSGlT+FPwySS3BOUtEIcpBVG63J+ISZqAbc7JksWg==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     negotiator "^0.6.3"
-    use-intl "^3.17.4"
+    use-intl "^3.17.5"
 
 next-themes@^0.3.0:
   version "0.3.0"
@@ -3707,10 +3707,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^3.17.4:
-  version "3.17.4"
-  resolved "https://registry.npmjs.org/use-intl/-/use-intl-3.17.4.tgz"
-  integrity sha512-6t3tScvli9TvIBwordjZul59ubYzStcMTCgYJEkEikVGqBJKzfpdpifZhRTU7CxgSoB63rt9+AOPGKklXvtebA==
+use-intl@^3.17.5:
+  version "3.17.5"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.17.5.tgz#ceb9a4d76baeb655e672c422a62b199fa7e4ef00"
+  integrity sha512-Hstfjvui4PgFIEnQb5c3Yl+aMzD1qKE4Jzei+XwoizVsy1IhS1HcxTZgtLH5bPAVbQYcML/+7BqKO7nE1+Oa3A==
   dependencies:
     "@formatjs/fast-memoize" "^2.2.0"
     intl-messageformat "^10.5.14"

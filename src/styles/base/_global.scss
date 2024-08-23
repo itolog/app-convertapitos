@@ -11,6 +11,9 @@ html, body {
   text-size-adjust: 100%;
   background-color: var(--app-bg);
   place-items: center;
+  font-family: var(--app-font-family), serif;
+  font-size: calc(var(--base-unit) * .8);
+  box-sizing: border-box;
 }
 
 li {
