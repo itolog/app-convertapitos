@@ -5,6 +5,7 @@
   "Something went wrong": "Something went wrong.",
   "Auth": {
     "Sign In": "Sign In",
+    "Sign Out": "Sign Out",
     "Continue with": "Continue with {provider}"
   }
 }

@@ -18,10 +18,13 @@ const CoButton: FC<CoButtonProps> = ({
 	classes,
 	iconSize = "24px",
 	label,
-	textProps,
+	textProps = {
+		target: undefined,
+	},
 	...props
 }) => {
-	const t = useTranslations(textProps?.target);
+	const { target, ...textOption } = textProps;
+	const t = useTranslations(target);
 
 	const rootClass = cl(_classes.CoButton, classes?.root, {
 		[_classes.CoButtonWithLabel]: label,
@@ -38,7 +41,7 @@ const CoButton: FC<CoButtonProps> = ({
 			variant="outlined"
 			{...props}>
 			{icon && <SvgIcons color={"var(--primary-color)"} size={iconSize} name={icon} />}
-			{text && <span className={textClass}>{t(text, textProps)}</span>}
+			{text && <span className={textClass}>{t(text, textOption)}</span>}
 		</Button>
 	);
 };

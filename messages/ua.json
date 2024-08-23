@@ -5,6 +5,7 @@
   "Something went wrong": "Щось пішло не так.",
   "Auth": {
     "Sign In": "Увійти",
+    "Sign Out": "Вийти",
     "Continue with": "Продовжити з {provider}"
   }
 }

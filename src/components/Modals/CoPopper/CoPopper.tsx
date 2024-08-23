@@ -63,6 +63,8 @@ const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
 				className: styles.trigger,
 			})}
 			<Popper
+				sx={{ zIndex: 100 }}
+				disablePortal={false}
 				{...bindPopper(popupState)}
 				anchorEl={childNode}
 				modifiers={[

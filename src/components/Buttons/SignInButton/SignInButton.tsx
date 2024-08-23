@@ -1,15 +1,35 @@
 "use client";
 
+import React, { FC, useCallback } from "react";
+
 import { useRouter } from "next/navigation";
 
-const SignInButton = () => {
+import CoButton from "@/components/Buttons/CoButton/CoButton";
+
+interface SignInButtonProps {
+	onClick?: () => void;
+}
+
+const SignInButton: FC<SignInButtonProps> = ({ onClick }) => {
 	const router = useRouter();
 
-	const handleSignIn = async () => {
+	const handleSignIn = useCallback(async () => {
 		router.push("signin");
-	};
 
-	return <button onClick={handleSignIn}>Sign In</button>;
+		if (onClick) {
+			onClick();
+		}
+	}, [onClick, router]);
+
+	return (
+		<CoButton
+			onClick={handleSignIn}
+			fullWidth
+			type={"button"}
+			text={"Sign In"}
+			textProps={{ target: "Auth" }}
+		/>
+	);
 };
 
 export default SignInButton;

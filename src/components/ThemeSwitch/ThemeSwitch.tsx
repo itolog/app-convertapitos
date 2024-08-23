@@ -22,9 +22,10 @@ type Options = (typeof options)[number];
 
 interface ThemeSwitchProps {
 	fullWidth?: boolean;
+	close?: () => void;
 }
 
-const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
+const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true, close }) => {
 	const { theme, setTheme } = useTheme();
 
 	const [open, setOpen] = useState(false);
@@ -47,8 +48,12 @@ const ThemeSwitch: FC<ThemeSwitchProps> = ({ fullWidth = true }) => {
 			setTheme(option);
 
 			setOpen(false);
+
+			if (close) {
+				close();
+			}
 		},
-		[setTheme],
+		[close, setTheme],
 	);
 
 	return (

@@ -1,11 +1,30 @@
 import { signOut } from "next-auth/react";
+import React, { FC } from "react";
 
-const SignOut = () => {
+import CoButton from "@/components/Buttons/CoButton/CoButton";
+
+interface SignOutProps {
+	onClick?: () => void;
+}
+
+const SignOut: FC<SignOutProps> = ({ onClick }) => {
 	const handleLogOut = async () => {
 		await signOut();
+
+		if (onClick) {
+			onClick();
+		}
 	};
 
-	return <button onClick={handleLogOut}>Sign Out</button>;
+	return (
+		<CoButton
+			onClick={handleLogOut}
+			fullWidth
+			type={"button"}
+			text={"Sign Out"}
+			textProps={{ target: "Auth" }}
+		/>
+	);
 };
 
 export default SignOut;

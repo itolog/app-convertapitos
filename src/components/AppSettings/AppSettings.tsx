@@ -28,19 +28,19 @@ const AppSettings = () => {
 		<CoPopper
 			arrow
 			trigger={trigger}
-			renderChildren={() => {
+			renderChildren={({ close }) => {
 				return (
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
-							<ThemeSwitch />
+							<ThemeSwitch close={close} />
 						</Grid>
 
 						<Grid item xs={12}>
-							<LangSwitcher width={"100%"} />
+							<LangSwitcher close={close} width={"100%"} />
 						</Grid>
 
 						<Grid item xs={12}>
-							{user ? <SignOut /> : <SignInButton />}
+							{user ? <SignOut onClick={close} /> : <SignInButton onClick={close} />}
 						</Grid>
 					</Grid>
 				);

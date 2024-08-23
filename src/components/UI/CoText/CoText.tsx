@@ -8,12 +8,9 @@ import {
 
 import { useTranslations } from "next-intl";
 
-import Typography, { TypographyProps } from "@mui/material/Typography";
+import Typography from "@mui/material/Typography";
 
-interface CoTextProps extends TypographyProps {
-	children: string;
-	colorType?: "primary" | "secondary" | "default";
-}
+import { CoTextProps } from "@/components/UI/CoText/types";
 
 const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttributes<unknown>> =
 	forwardRef(
@@ -24,11 +21,15 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 				variant = "h4",
 				component = "span",
 				colorType = "primary",
+				textProps = {
+					target: undefined,
+				},
 				...props
 			},
 			ref,
 		) => {
-			const t = useTranslations();
+			const { target, ...textOption } = textProps;
+			const t = useTranslations(target);
 
 			const color = useMemo(() => {
 				if (colorType === "default") {
@@ -51,7 +52,7 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 					variant={variant}
 					component={component}
 					{...props}>
-					{t(children)}
+					{t(children, textOption)}
 				</Typography>
 			);
 		},

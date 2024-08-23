@@ -14,7 +14,9 @@ const Page = () => {
 		<div className={styles.SignIn}>
 			<CoCard>
 				<div className={styles.SignInContainer}>
-					<CoText component={"h1"}>Sign In</CoText>
+					<CoText component={"h1"} textProps={{ target: "Auth" }}>
+						Sign In
+					</CoText>
 
 					<div className={styles.Providers}>
 						{providerData.map((item) => {

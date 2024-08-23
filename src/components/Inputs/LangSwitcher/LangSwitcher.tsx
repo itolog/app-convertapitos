@@ -18,6 +18,7 @@ import useOptions, { Option } from "@/components/Inputs/LangSwitcher/hooks/useOp
 
 interface LangSwitcherProps {
 	width?: string | number;
+	close?: () => void;
 }
 
 interface RenderOptionProps extends HTMLAttributes<HTMLLIElement> {
@@ -26,7 +27,7 @@ interface RenderOptionProps extends HTMLAttributes<HTMLLIElement> {
 
 const IMAGE_SIZE = 20;
 
-const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
+const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200, close }) => {
 	const t = useTranslations();
 	const localActive = useLocale();
 	const [isPending, startTransition] = useTransition();
@@ -46,6 +47,9 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ width = 200 }) => {
 
 			startTransition(() => {
 				setUserLocale(nextLocale);
+				if (close) {
+					close();
+				}
 			});
 		}
 	};
