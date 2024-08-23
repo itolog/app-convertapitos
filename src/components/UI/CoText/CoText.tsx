@@ -6,6 +6,8 @@ import {
 	useMemo,
 } from "react";
 
+import { useTranslations } from "next-intl";
+
 import Typography, { TypographyProps } from "@mui/material/Typography";
 
 interface CoTextProps extends TypographyProps {
@@ -26,6 +28,8 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 			},
 			ref,
 		) => {
+			const t = useTranslations();
+
 			const color = useMemo(() => {
 				if (colorType === "default") {
 					return "";
@@ -47,7 +51,7 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 					variant={variant}
 					component={component}
 					{...props}>
-					{children}
+					{t(children)}
 				</Typography>
 			);
 		},

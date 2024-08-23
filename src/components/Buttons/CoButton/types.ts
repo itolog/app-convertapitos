@@ -7,10 +7,16 @@ interface Classes {
 	text?: string;
 }
 
+export interface TextProps {
+	[key: string]: string | undefined | null;
+	target?: string;
+}
+
 export interface CoButtonProps extends ButtonProps {
 	classes?: Classes;
 	icon?: Icons;
 	text?: string;
+	textProps?: TextProps;
 	iconSize?: string;
 	label?: string;
 }

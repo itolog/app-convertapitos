@@ -1,6 +1,7 @@
 import React from "react";
 
-import { useTranslations } from "next-intl";
+import { signIn } from "@/auth";
+import { providerData } from "@/data/auth/providers";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/CoCard/CoCard";
@@ -9,22 +10,31 @@ import CoText from "@/components/UI/CoText/CoText";
 import styles from "./styles.module.scss";
 
 const Page = () => {
-	const t = useTranslations("Auth");
-
 	return (
 		<div className={styles.SignIn}>
 			<CoCard>
 				<div className={styles.SignInContainer}>
-					<CoText component={"h1"}>{t("Sign In")}</CoText>
+					<CoText component={"h1"}>Sign In</CoText>
 
-					<div>
-						<CoButton
-							icon={"git"}
-							label={"GitHub"}
-							text={t("Continue with", {
-								provider: "GitHub",
-							})}
-						/>
+					<div className={styles.Providers}>
+						{providerData.map((item) => {
+							return (
+								<form
+									key={item.provider}
+									action={async () => {
+										"use server";
+										await signIn(item.provider, { redirectTo: "/" });
+									}}>
+									<CoButton
+										fullWidth
+										type={"submit"}
+										text={"Continue with"}
+										textProps={{ provider: item.providerMessage, target: "Auth" }}
+										icon={item.icon}
+									/>
+								</form>
+							);
+						})}
 					</div>
 				</div>
 			</CoCard>
