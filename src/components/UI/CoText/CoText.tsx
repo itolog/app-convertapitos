@@ -21,6 +21,7 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 				variant = "h4",
 				component = "span",
 				colorType = "primary",
+				text,
 				textProps = {
 					target: undefined,
 				},
@@ -48,11 +49,13 @@ const CoText: ForwardRefExoticComponent<PropsWithoutRef<CoTextProps> & RefAttrib
 					style={{
 						color,
 					}}
+					sx={{ wordBreak: "break-word" }}
 					fontFamily={fontFamily}
 					variant={variant}
 					component={component}
 					{...props}>
-					{t(children, textOption)}
+					{!text && t(children, textOption)}
+					{text && text}
 				</Typography>
 			);
 		},

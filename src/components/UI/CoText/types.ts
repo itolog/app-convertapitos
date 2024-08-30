@@ -3,7 +3,8 @@ import { TextProps } from "@/types";
 import { TypographyProps } from "@mui/material/Typography";
 
 export interface CoTextProps extends TypographyProps {
-	children: string;
+	children?: string;
 	colorType?: "primary" | "secondary" | "default";
 	textProps?: TextProps;
+	text?: string | null | undefined;
 }

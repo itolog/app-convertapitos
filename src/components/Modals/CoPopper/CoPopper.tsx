@@ -1,6 +1,14 @@
 "use client";
 
-import { cloneElement, FC, PropsWithChildren, ReactElement, ReactNode, useState } from "react";
+import {
+	cloneElement,
+	FC,
+	PropsWithChildren,
+	ReactElement,
+	ReactNode,
+	useCallback,
+	useState,
+} from "react";
 
 import cl from "classnames";
 import { bindPopper, bindTrigger } from "material-ui-popup-state";
@@ -54,6 +62,10 @@ const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
 	const arrowClass = cl(styles.arrow, classes?.arrow);
 	const contentClass = cl(styles.content, classes?.content);
 
+	const handleClickAway = useCallback(() => {
+		popupState.close();
+	}, [popupState]);
+
 	return (
 		<div className={coPopperClass}>
 			{cloneElement(trigger, {
@@ -102,7 +114,7 @@ const CoPopper: FC<PropsWithChildren<CoPopperProps>> = ({
 				{({ TransitionProps }) => (
 					<Fade {...TransitionProps} timeout={350}>
 						<Paper className={popoverRootClass}>
-							<ClickAwayListener onClickAway={popupState.close}>
+							<ClickAwayListener onClickAway={handleClickAway}>
 								<Paper className={popoverRootClass}>
 									{arrow ? <span id="arrow" className={arrowClass} ref={setArrowRef} /> : null}
 									<Box className={contentClass}>
