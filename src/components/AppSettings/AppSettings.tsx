@@ -2,8 +2,9 @@
 
 import { useMemo } from "react";
 
-import { Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import { deepPurple } from "@mui/material/colors";
+import Grid from "@mui/material/Grid2";
 
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
@@ -19,9 +20,9 @@ const AppSettings = () => {
 
 	const trigger = useMemo(() => {
 		const ava = user?.image ?? undefined;
-		const alt = user?.name ?? "Anonymous";
+		const alt = user?.name ?? undefined;
 
-		return <Avatar alt={alt} src={ava} />;
+		return <Avatar sx={{ bgcolor: deepPurple[500] }} alt={alt} src={ava} />;
 	}, [user]);
 
 	return (
@@ -31,15 +32,15 @@ const AppSettings = () => {
 			renderChildren={({ close }) => {
 				return (
 					<Grid container spacing={2}>
-						<Grid item xs={12}>
+						<Grid size={12}>
 							<ThemeSwitch close={close} />
 						</Grid>
 
-						<Grid item xs={12}>
+						<Grid size={12}>
 							<LangSwitcher close={close} width={"100%"} />
 						</Grid>
 
-						<Grid item xs={12}>
+						<Grid size={12}>
 							{user ? <SignOut onClick={close} /> : <SignInButton onClick={close} />}
 						</Grid>
 					</Grid>

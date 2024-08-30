@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { providerData } from "@/data/auth/providers";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
-import CoCard from "@/components/CoCard/CoCard";
+import CoCard from "@/components/Cards/CoCard/CoCard";
 import CoText from "@/components/UI/CoText/CoText";
 
 import styles from "./styles.module.scss";
@@ -25,6 +25,7 @@ const Page = () => {
 									key={item.provider}
 									action={async () => {
 										"use server";
+
 										await signIn(item.provider, { redirectTo: "/" });
 									}}>
 									<CoButton

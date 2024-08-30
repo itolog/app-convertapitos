@@ -1,7 +1,10 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
+
+import { snackbar } from "@/configs";
+import { SnackbarProvider } from "notistack";
 
 import { useAppDispatch } from "@/store/hooks";
 import { User } from "@/store/user/types";
@@ -19,7 +22,7 @@ const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [dispatch, session]);
 
-	return <>{children}</>;
+	return <SnackbarProvider {...snackbar}>{children}</SnackbarProvider>;
 };
 
 export default BootstrapAppProvider;

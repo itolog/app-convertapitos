@@ -51,16 +51,16 @@ export default async function LocaleLayout({
 				<StoreProvider>
 					<NextIntlClientProvider messages={messages}>
 						<SessionProvider>
-							<BootstrapAppProvider>
-								<body className={vollkorn.className}>
+							<body className={vollkorn.className}>
+								<BootstrapAppProvider>
 									<ThemeProvider>
 										<div className={styles.mainLayout}>
 											<CoAppBar />
 											<main className={styles.main}>{children}</main>
 										</div>
 									</ThemeProvider>
-								</body>
-							</BootstrapAppProvider>
+								</BootstrapAppProvider>
+							</body>
 						</SessionProvider>
 					</NextIntlClientProvider>
 				</StoreProvider>
