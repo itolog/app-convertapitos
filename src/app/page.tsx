@@ -13,8 +13,6 @@ import { FormValues } from "@/components/forms/FileForm/types";
 
 import { useConvertImageMutation } from "@/store/services/Image";
 
-import styles from "./page.module.scss";
-
 export default function Home() {
 	const t = useTranslations();
 	const { enqueueSnackbar } = useSnackbar();
@@ -37,7 +35,6 @@ export default function Home() {
 
 	useEffect(() => {
 		if (error) {
-			console.log("Err", error);
 			const { data } = error as ResponseError;
 			const msg = data?.message ?? t("Something went wrong");
 			enqueueSnackbar(msg, {
