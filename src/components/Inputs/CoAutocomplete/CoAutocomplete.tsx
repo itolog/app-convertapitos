@@ -61,7 +61,9 @@ const CoAutocomplete = <T extends object>({
 			<Autocomplete
 				{...props}
 				classes={{
-					root: cl(_classes.root, classes?.root),
+					root: cl(_classes.root, classes?.root, {
+						[_classes.rootDisabled]: props?.disabled,
+					}),
 					inputRoot: cl(_classes.inputRoot, classes?.inputRoot),
 					input: cl(_classes.input, classes?.input),
 					popupIndicator: cl(_classes.endAdornment, classes?.popupIndicator),

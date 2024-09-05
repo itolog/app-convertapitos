@@ -26,7 +26,6 @@ registerPlugin(
 
 interface Classes {
 	container?: string;
-	filePond?: string;
 }
 
 interface FileUploadProps extends Omit<FilePondProps, "acceptedFileTypes"> {
@@ -47,11 +46,9 @@ const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, error, ...pro
 		acceptedFileTypes: ACCEPTED_IMAGE_TYPES,
 	};
 
-	const filePondClass = cl(_classes.filePond, classes.filePond);
-
 	return (
 		<div className={cl(_classes.container, classes.container)}>
-			<FilePond className={filePondClass} {...config} />
+			<FilePond {...config} />
 			<FormError error={error} />
 		</div>
 	);

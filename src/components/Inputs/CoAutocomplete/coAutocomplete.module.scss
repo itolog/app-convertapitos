@@ -4,7 +4,12 @@ body {
     display: flex;
     flex-direction: column;
   }
-  
+
+  .rootDisabled {
+    opacity: .5;
+  }
+
+
   .root {
     .inputRoot {
       color: var(--secondary-color);

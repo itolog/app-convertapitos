@@ -1,14 +1,30 @@
+"use client";
+
 import { FC, SyntheticEvent, useCallback } from "react";
 
 import { useFormik } from "formik";
+import dynamic from "next/dynamic";
 
 import Grid from "@mui/material/Grid2";
+import Skeleton from "@mui/material/Skeleton";
 
-import FileUpload, { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
+import { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
 import { fileTypeOptions, FORM_FIELD, initialValues } from "@/components/forms/FileForm/constants";
 import { FileFormProps, FileOption, FormValues } from "@/components/forms/FileForm/types";
 import validationSchema from "@/components/forms/FileForm/validationSchema";
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
+
+const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
+	ssr: false,
+	loading: () => (
+		<Skeleton
+			sx={{ bgcolor: "grey.400", borderRadius: "6px" }}
+			variant="rounded"
+			width={"100%"}
+			height={76}
+		/>
+	),
+});
 
 const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 	const { handleSubmit, setFieldValue, errors, touched, isValid, values, isSubmitting } =
@@ -41,16 +57,6 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 	return (
 		<form onSubmit={handleSubmit} autoComplete={"off"}>
 			<Grid container rowSpacing={3} columnSpacing={2} mb={2}>
-				<Grid size={12}>
-					<FileUpload
-						onupdatefiles={handleChangeFile}
-						error={
-							(touched[FORM_FIELD.IMAGE_FILE] &&
-								errors[FORM_FIELD.IMAGE_FILE] &&
-								errors[FORM_FIELD.IMAGE_FILE]) as string
-						}
-					/>
-				</Grid>
 				<Grid size={6}>
 					<CoAutocomplete<FileOption>
 						disabled={!values[FORM_FIELD.IMAGE_FILE]}
@@ -69,6 +75,16 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 							Submit
 						</button>
 					)}
+				</Grid>
+				<Grid size={12}>
+					<FileUpload
+						onupdatefiles={handleChangeFile}
+						error={
+							(touched[FORM_FIELD.IMAGE_FILE] &&
+								errors[FORM_FIELD.IMAGE_FILE] &&
+								errors[FORM_FIELD.IMAGE_FILE]) as string
+						}
+					/>
 				</Grid>
 			</Grid>
 		</form>
