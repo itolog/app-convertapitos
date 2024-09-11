@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import Grid from "@mui/material/Grid2";
 import Skeleton from "@mui/material/Skeleton";
 
+import CoButton from "@/components/Buttons/CoButton/CoButton";
 import { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
 import { fileTypeOptions, FORM_FIELD, initialValues } from "@/components/forms/FileForm/constants";
 import { FileFormProps, FileOption, FormValues } from "@/components/forms/FileForm/types";
@@ -26,7 +27,7 @@ const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 	),
 });
 
-const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
+const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 	const { handleSubmit, setFieldValue, errors, touched, isValid, values, isSubmitting } =
 		useFormik<FormValues>({
 			initialValues,
@@ -71,13 +72,17 @@ const FileForm: FC<FileFormProps> = ({ onSubmit }) => {
 				</Grid>
 				<Grid size={6}>
 					{values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO] && (
-						<button disabled={!isValid || isSubmitting} type="submit">
-							Submit
-						</button>
+						<CoButton
+							fullWidth
+							text={"Convert"}
+							disabled={!isValid || isSubmitting}
+							type="submit"
+						/>
 					)}
 				</Grid>
 				<Grid size={12}>
 					<FileUpload
+						onremovefile={onRemoveFile}
 						onupdatefiles={handleChangeFile}
 						error={
 							(touched[FORM_FIELD.IMAGE_FILE] &&

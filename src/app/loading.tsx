@@ -1,3 +1,5 @@
+import PageLoader from "@/components/Loaders/PageLoader/PageLoader";
+
 export default function Loading() {
-	return <p>Loading...</p>;
+	return <PageLoader />;
 }

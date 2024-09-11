@@ -8,6 +8,7 @@ import { useSnackbar } from "notistack";
 
 import { ResponseError } from "@/types/apiTypes";
 
+import CoButton from "@/components/Buttons/CoButton/CoButton";
 import FileForm from "@/components/forms/FileForm/FileForm";
 import { FormValues } from "@/components/forms/FileForm/types";
 
@@ -72,7 +73,7 @@ export default function Home() {
 		<div className={"ConvertPage"}>
 			{isLoading && "Loading ..."}
 			<FileForm onSubmit={handleSubmit} />
-			{data?.data?.image_link && <button onClick={handleDownload}>download</button>}
+			{data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />}
 		</div>
 	);
 }

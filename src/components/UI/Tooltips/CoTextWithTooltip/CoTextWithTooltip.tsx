@@ -64,9 +64,9 @@ const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
 				ref={textRef}
 				classes={{
 					root: cl(_classes.coTextWithTooltip, classes?.text),
-				}}>
-				{text}
-			</CoText>
+				}}
+				text={text}
+			/>
 		</Tooltip>
 	);
 };

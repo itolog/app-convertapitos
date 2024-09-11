@@ -1,3 +1,5 @@
+import { FilePondErrorDescription, FilePondFile } from "filepond";
+
 import { File } from "@/components/FileUpload/FileUpload";
 import { FORM_FIELD } from "@/components/forms/FileForm/constants";
 
@@ -13,4 +15,5 @@ export interface FormValues {
 
 export interface FileFormProps {
 	onSubmit: (values: FormValues) => void;
+	onRemoveFile?: (error: FilePondErrorDescription | null, file: FilePondFile) => void;
 }
