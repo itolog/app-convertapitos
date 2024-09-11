@@ -41,32 +41,31 @@ export default function Home() {
 				variant: "error",
 			});
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [error]);
+	}, [enqueueSnackbar, error, t]);
 
 	const handleDownload = () => {
 		if (!data?.data) return;
 
-		// const url = `${import.meta.env.VITE_API_BASE_URL}/${data.data.image_link}`;
-		// fetch(url)
-		// 	.then((response) => response.blob())
-		// 	.then((blob) => {
-		// 		const url = window.URL.createObjectURL(new Blob([blob]));
-		// 		const link = document.createElement("a");
-		// 		link.href = url;
-		// 		link.download = data?.data?.file_name || "downloaded-file";
-		// 		document.body.appendChild(link);
-		//
-		// 		link.click();
-		//
-		// 		document.body.removeChild(link);
-		// 		window.URL.revokeObjectURL(url);
-		// 	})
-		// 	.catch(() => {
-		// 		enqueueSnackbar("Error fetching the file:", {
-		// 			variant: "error",
-		// 		});
-		// 	});
+		const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.data.image_link}`;
+		fetch(url)
+			.then((response) => response.blob())
+			.then((blob) => {
+				const url = window.URL.createObjectURL(new Blob([blob]));
+				const link = document.createElement("a");
+				link.href = url;
+				link.download = data?.data?.file_name || "downloaded-file";
+				document.body.appendChild(link);
+
+				link.click();
+
+				document.body.removeChild(link);
+				window.URL.revokeObjectURL(url);
+			})
+			.catch(() => {
+				enqueueSnackbar("Error fetching the file:", {
+					variant: "error",
+				});
+			});
 	};
 
 	return (

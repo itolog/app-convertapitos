@@ -15,11 +15,14 @@ const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (session?.data?.user) {
-			const user: User = session.data.user;
+		const user: User = session?.data?.user ?? null;
 
-			dispatch(setUser(user));
-		}
+		dispatch(
+			setUser({
+				user,
+				status: session.status,
+			}),
+		);
 	}, [dispatch, session]);
 
 	return <SnackbarProvider {...snackbar}>{children}</SnackbarProvider>;

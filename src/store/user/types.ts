@@ -7,7 +7,14 @@ export interface Me {
 }
 
 export type User = Me | null | undefined;
+export type UserStatus = "loading" | "authenticated" | "unauthenticated";
+
+export interface UserPayload {
+	user: User;
+	status: UserStatus;
+}
 
 export interface UserState {
 	me: User;
+	status: UserStatus;
 }
