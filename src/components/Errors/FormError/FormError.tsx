@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import cl from "classnames";
+import cl from "clsx";
 
-import CoTextWithTooltip from "@/components/UI/Tooltips/CoTextWithTooltip/CoTextWithTooltip";
+import CoTextWithTooltip from "@/components/ui/Tooltips/CoTextWithTooltip/CoTextWithTooltip";
 
-import _classes from "./formError.module.scss";
+import _classes from "./formError.module.css";
 
 interface Classes {
 	root?: string;

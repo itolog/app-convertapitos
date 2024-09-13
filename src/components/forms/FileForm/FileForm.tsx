@@ -5,25 +5,21 @@ import { FC, SyntheticEvent, useCallback } from "react";
 import { useFormik } from "formik";
 import dynamic from "next/dynamic";
 
-import Grid from "@mui/material/Grid2";
-import Skeleton from "@mui/material/Skeleton";
-
-import CoButton from "@/components/Buttons/CoButton/CoButton";
 import { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
 import { fileTypeOptions, FORM_FIELD, initialValues } from "@/components/forms/FileForm/constants";
 import { FileFormProps, FileOption, FormValues } from "@/components/forms/FileForm/types";
 import validationSchema from "@/components/forms/FileForm/validationSchema";
-import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 	ssr: false,
 	loading: () => (
-		<Skeleton
-			sx={{ bgcolor: "grey.400", borderRadius: "6px" }}
-			variant="rounded"
-			width={"100%"}
-			height={76}
-		/>
+		<div>loading ...</div>
+		// <Skeleton
+		// 	sx={{ bgcolor: "grey.400", borderRadius: "6px" }}
+		// 	variant="rounded"
+		// 	width={"100%"}
+		// 	height={76}
+		// />
 	),
 });
 
@@ -57,30 +53,28 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 
 	return (
 		<form onSubmit={handleSubmit} autoComplete={"off"}>
-			<Grid container rowSpacing={3} columnSpacing={2} mb={2}>
-				<Grid size={6}>
-					<CoAutocomplete<FileOption>
-						disabled={!values[FORM_FIELD.IMAGE_FILE]}
-						onChange={handleChangeFileType}
-						options={fileTypeOptions}
-						error={
-							(touched[FORM_FIELD.CONVERT_TO] &&
-								errors[FORM_FIELD.CONVERT_TO] &&
-								errors[FORM_FIELD.CONVERT_TO]) as string
-						}
-					/>
-				</Grid>
-				<Grid size={6}>
+			<div>
+				<div>
+					as
+					{/* <CoAutocomplete<FileOption> */}
+					{/* 	disabled={!values[FORM_FIELD.IMAGE_FILE]} */}
+					{/* 	onChange={handleChangeFileType} */}
+					{/* 	options={fileTypeOptions} */}
+					{/* 	error={ */}
+					{/* 		(touched[FORM_FIELD.CONVERT_TO] && */}
+					{/* 			errors[FORM_FIELD.CONVERT_TO] && */}
+					{/* 			errors[FORM_FIELD.CONVERT_TO]) as string */}
+					{/* 	} */}
+					{/* /> */}
+				</div>
+				<div>
 					{values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO] && (
-						<CoButton
-							fullWidth
-							text={"Convert"}
-							disabled={!isValid || isSubmitting}
-							type="submit"
-						/>
+						<button disabled={!isValid || isSubmitting} type="submit">
+							Convert
+						</button>
 					)}
-				</Grid>
-				<Grid size={12}>
+				</div>
+				<div>
 					<FileUpload
 						onremovefile={onRemoveFile}
 						onupdatefiles={handleChangeFile}
@@ -90,8 +84,8 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 								errors[FORM_FIELD.IMAGE_FILE]) as string
 						}
 					/>
-				</Grid>
-			</Grid>
+				</div>
+			</div>
 		</form>
 	);
 };

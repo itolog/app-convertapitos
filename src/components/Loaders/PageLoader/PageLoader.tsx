@@ -4,7 +4,7 @@ import { motion, Transition } from "framer-motion";
 
 import { MotionAnimate, MotionInitial } from "@/types/motionTypes";
 
-import classes from "./pageLoader.module.scss";
+import "./page-loader.css";
 
 const initial: MotionInitial = { pathLength: 0, strokeWidth: 0, opacity: 0 };
 const animate: MotionAnimate = {
@@ -24,7 +24,7 @@ const transition: Transition = {
 
 const PageLoader = () => {
 	return (
-		<div className={classes.pageLoader}>
+		<div className={"page-loader"}>
 			<motion.svg
 				width="359.009375px"
 				height="121.39999999999999px"

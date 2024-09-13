@@ -24,7 +24,6 @@ const SignInButton: FC<SignInButtonProps> = ({ onClick }) => {
 	return (
 		<CoButton
 			onClick={handleSignIn}
-			fullWidth
 			type={"button"}
 			text={"Sign In"}
 			textProps={{ target: "Auth" }}

@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 
 import { useTranslations } from "next-intl";
-import { useSnackbar } from "notistack";
 
 interface AppError extends Error {
 	digest?: string;
@@ -17,7 +16,6 @@ const defaultConfig: ErrorConfig = {
 
 const useErrors = () => {
 	const t = useTranslations();
-	const { enqueueSnackbar } = useSnackbar();
 
 	const getErrorMessage = useCallback(
 		(e: unknown, errorText = "Something went wrong") => {
@@ -37,14 +35,12 @@ const useErrors = () => {
 			if (config.withSnackbar) {
 				const msg = getErrorMessage(error);
 
-				enqueueSnackbar(msg, {
-					variant: "error",
-				});
+				console.log(msg);
 			}
 
 			return error;
 		},
-		[enqueueSnackbar, getErrorMessage],
+		[getErrorMessage],
 	);
 
 	return {

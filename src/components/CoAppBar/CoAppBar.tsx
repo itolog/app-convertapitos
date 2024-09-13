@@ -1,28 +1,21 @@
 "use client";
 
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import Link from "next/link";
 
 import AppSettings from "@/components/AppSettings/AppSettings";
-import HeaderNavigation from "@/components/Navigation/HeaderNavigation/HeaderNavigation";
-
-import classes from "./coAppBar.module.scss";
+import CoLogo from "@/components/ui/CoLogo/CoLogo";
 
 function CoAppBar() {
 	return (
-		<AppBar
-			classes={{
-				root: classes.coAppBar,
-			}}
-			position="static">
-			<div className={classes.appBarContainer}>
-				<Toolbar className={classes.appBarToolbar} disableGutters>
-					<HeaderNavigation />
-
-					<AppSettings />
-				</Toolbar>
+		<header className="flex h-16 w-full items-center justify-between px-4 md:px-6">
+			<Link href="/" className="flex items-center gap-2" prefetch={false}>
+				<CoLogo />
+			</Link>
+			<div className="flex items-center gap-4">
+				<h2 className="text-lg font-medium">Dashboard</h2>
+				<AppSettings />
 			</div>
-		</AppBar>
+		</header>
 	);
 }
 

@@ -1,0 +1,10 @@
+.form-error {
+  position: absolute;
+  bottom: -20px;
+}
+
+.form-error .text {
+  color: red;
+  font-size: 14px;
+}
+ 

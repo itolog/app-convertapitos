@@ -4,11 +4,10 @@ import { useCallback, useEffect } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
 import { useTranslations } from "next-intl";
-import { useSnackbar } from "notistack";
 
 import { ResponseError } from "@/types/apiTypes";
 
-import CoButton from "@/components/Buttons/CoButton/CoButton";
+// import CoButton from "@/components/Buttons/CoButton/CoButton";
 import FileForm from "@/components/forms/FileForm/FileForm";
 import { FormValues } from "@/components/forms/FileForm/types";
 
@@ -16,7 +15,6 @@ import { useConvertImageMutation } from "@/store/services/Image";
 
 export default function Home() {
 	const t = useTranslations();
-	const { enqueueSnackbar } = useSnackbar();
 	const { handleError } = useErrors();
 
 	const [convertImage, { data, isLoading, error }] = useConvertImageMutation();
@@ -38,11 +36,8 @@ export default function Home() {
 		if (error) {
 			const { data } = error as ResponseError;
 			const msg = data?.message ?? t("Something went wrong");
-			enqueueSnackbar(msg, {
-				variant: "error",
-			});
 		}
-	}, [enqueueSnackbar, error, t]);
+	}, [error, t]);
 
 	const handleDownload = () => {
 		if (!data?.data) return;
@@ -63,9 +58,9 @@ export default function Home() {
 				window.URL.revokeObjectURL(url);
 			})
 			.catch(() => {
-				enqueueSnackbar("Error fetching the file:", {
-					variant: "error",
-				});
+				// enqueueSnackbar("Error fetching the file:", {
+				// 	variant: "error",
+				// });
 			});
 	};
 
@@ -73,7 +68,7 @@ export default function Home() {
 		<div className={"ConvertPage"}>
 			{isLoading && "Loading ..."}
 			<FileForm onSubmit={handleSubmit} />
-			{data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />}
+			{/* {data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />} */}
 		</div>
 	);
 }

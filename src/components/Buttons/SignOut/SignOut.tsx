@@ -31,7 +31,6 @@ const SignOut: FC<SignOutProps> = ({ onClick }) => {
 	return (
 		<CoButton
 			onClick={handleLogOut}
-			fullWidth
 			type={"button"}
 			text={"Sign Out"}
 			textProps={{ target: "Auth" }}

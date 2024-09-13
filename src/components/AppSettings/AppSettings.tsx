@@ -1,16 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
-
-import Avatar from "@mui/material/Avatar";
-import { deepPurple } from "@mui/material/colors";
-import Grid from "@mui/material/Grid2";
-
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
-import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
-import CoPopper from "@/components/Modals/CoPopper/CoPopper";
-import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch";
+import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import { useAppSelector } from "@/store/hooks";
 import { getUser } from "@/store/user/selectors";
@@ -18,35 +18,25 @@ import { getUser } from "@/store/user/selectors";
 const AppSettings = () => {
 	const user = useAppSelector(getUser);
 
-	const trigger = useMemo(() => {
-		const ava = user?.image ?? undefined;
-		const alt = user?.name ?? undefined;
-
-		return <Avatar sx={{ bgcolor: deepPurple[500] }} alt={alt} src={ava} />;
-	}, [user]);
-
 	return (
-		<CoPopper
-			arrow
-			trigger={trigger}
-			renderChildren={({ close }) => {
-				return (
-					<Grid container spacing={2}>
-						<Grid size={12}>
-							<ThemeSwitch close={close} />
-						</Grid>
-
-						<Grid size={12}>
-							<LangSwitcher close={close} width={"100%"} />
-						</Grid>
-
-						<Grid size={12}>
-							{user ? <SignOut onClick={close} /> : <SignInButton onClick={close} />}
-						</Grid>
-					</Grid>
-				);
-			}}
-		/>
+		<div className="flex flex-row gap-2">
+			<ThemeSwitch />
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Avatar className="h-9 w-9">
+						<AvatarImage src={user?.image ?? undefined} alt={user?.name ?? "avatar"} />
+						<AvatarFallback>JP</AvatarFallback>
+						<span className="sr-only">Toggle user menu</span>
+					</Avatar>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent>
+					<DropdownMenuItem>My Account</DropdownMenuItem>
+					<DropdownMenuItem>Settings</DropdownMenuItem>
+					<DropdownMenuSeparator />
+					<DropdownMenuItem>{user ? <SignOut /> : <SignInButton />}</DropdownMenuItem>
+				</DropdownMenuContent>
+			</DropdownMenu>
+		</div>
 	);
 };
 

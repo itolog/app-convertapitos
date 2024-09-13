@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FilePond, FilePondProps, registerPlugin } from "react-filepond";
 
-import cl from "classnames";
+import cl from "clsx";
 import { FilePondFile } from "filepond";
 import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
@@ -14,7 +14,7 @@ import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants";
 
 import FormError from "@/components/Errors/FormError/FormError";
 
-import _classes from "./fileUpload.module.scss";
+import _classes from "./fileUpload.module.css";
 
 registerPlugin(
 	FilePondPluginImageExifOrientation,

@@ -4,25 +4,14 @@ import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import { ThemeProvider } from "next-themes";
-import { Roboto, Vollkorn } from "next/font/google";
-
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Vollkorn } from "next/font/google";
 
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 
-import BootstrapAppProvider from "@/providers/BootstrapAppProvider";
-import StoreProvider from "@/providers/StoreProvider";
+import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
+import StoreProvider from "@/providers/store-provider";
 
-import styles from "@/app/layout.module.scss";
-import "@/styles/main.scss";
-
-const roboto = Roboto({
-	weight: ["300", "400", "500", "700"],
-	subsets: ["latin"],
-	display: "swap",
-});
+import "./globals.css";
 
 const vollkorn = Vollkorn({
 	weight: ["400", "500", "700"],
@@ -45,26 +34,21 @@ export default async function LocaleLayout({
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale} suppressHydrationWarning className={roboto.className}>
-			<AppRouterCacheProvider>
-				<CssBaseline />
-				<StoreProvider>
-					<NextIntlClientProvider messages={messages}>
-						<SessionProvider>
-							<body className={vollkorn.className}>
-								<BootstrapAppProvider>
-									<ThemeProvider>
-										<div className={styles.mainLayout}>
-											<CoAppBar />
-											<main className={styles.main}>{children}</main>
-										</div>
-									</ThemeProvider>
-								</BootstrapAppProvider>
-							</body>
-						</SessionProvider>
-					</NextIntlClientProvider>
-				</StoreProvider>
-			</AppRouterCacheProvider>
+		<html lang={locale} suppressHydrationWarning>
+			<StoreProvider>
+				<NextIntlClientProvider messages={messages}>
+					<SessionProvider>
+						<body className={vollkorn.className}>
+							<BootstrapAppProvider>
+								<div className="bg-background text-foreground">
+									<CoAppBar />
+									<main>{children}</main>
+								</div>
+							</BootstrapAppProvider>
+						</body>
+					</SessionProvider>
+				</NextIntlClientProvider>
+			</StoreProvider>
 		</html>
 	);
 }

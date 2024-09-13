@@ -1,0 +1,13 @@
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: transparent;
+}
+
+.page-loader circle, .page-loader rect, .page-loader line {
+  stroke-width: 10px;
+  stroke-linecap: round;
+  fill: transparent;
+}

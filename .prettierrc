@@ -13,7 +13,6 @@
   "importOrder": [
     "react",
     "<THIRD_PARTY_MODULES>",
-    "^@mui/(.*)$",
     "^@fontsource/(.*)$",
     "^@/assets/(.*)$",
     "^@/types/(.*)$",
@@ -27,7 +26,7 @@
     "^@/store/(.*)$",
     "^@/providers/(.*)$",
     "^[./]",
-    "^(?!.*[.]scss$)[./].*$", ".scss$"
+    "^(?!.*[.]css$)[./].*$", ".css$"
   ],
   "importOrderSeparation": true,
   "importOrderCaseInsensitive": true,

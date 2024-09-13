@@ -2,18 +2,14 @@
 
 import { FC } from "react";
 
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import { Input, InputProps } from "@/components/ui/input";
 
-interface CoFormInputProps extends Omit<TextFieldProps, "classes" | "label"> {
+interface CoFormInputProps extends InputProps {
 	label?: string;
 }
 
-const CoFormInput: FC<CoFormInputProps> = ({ fullWidth = true, ...props }) => {
-	return (
-		<div>
-			<TextField fullWidth={fullWidth} variant="standard" {...props} />
-		</div>
-	);
+const CoFormInput: FC<CoFormInputProps> = ({ ...props }) => {
+	return <Input {...props} />;
 };
 
 export default CoFormInput;

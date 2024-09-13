@@ -1,16 +1,11 @@
 import { FC, PropsWithChildren } from "react";
 
-import cl from "classnames";
-
-import _classes from "./coCard.module.scss";
+import classes from "./co-card.module.css";
 
 const CoCard: FC<PropsWithChildren> = ({ children }) => {
-	const root = cl(_classes.CoCard);
-	const inner = cl(_classes.CoCardInner);
-
 	return (
-		<div className={root}>
-			<div className={inner}>{children}</div>
+		<div className={classes.coCard}>
+			<div className={classes.coCardInner}>{children}</div>
 		</div>
 	);
 };

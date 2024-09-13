@@ -3,10 +3,10 @@
 import { ComponentProps, FC } from "react";
 
 import { Link } from "@/navigation";
-import cl from "classnames";
+import cl from "clsx";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-import _classes from "./coLink.module.scss";
+import _classes from "./co-link.module.css";
 
 interface Classes {
 	root?: string;
