@@ -12,7 +12,6 @@ function CoAppBar() {
 				<CoLogo />
 			</Link>
 			<div className="flex items-center gap-4">
-				<h2 className="text-lg font-medium">Dashboard</h2>
 				<AppSettings />
 			</div>
 		</header>

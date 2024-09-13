@@ -1,4 +1,4 @@
-.page-loader {
+.pageloader {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   background: transparent;
 }
 
-.page-loader circle, .page-loader rect, .page-loader line {
+.pageloader circle, .pageloader rect, .pageloader line {
   stroke-width: 10px;
   stroke-linecap: round;
   fill: transparent;

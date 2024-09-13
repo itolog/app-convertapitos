@@ -1,4 +1,4 @@
-.co-card {
+.card {
     position: relative;
     z-index: 1;
     padding: 3px;
@@ -7,7 +7,7 @@
     border-radius: 10px;
 }
 
-.co-card .co-card-inner {
+.inner {
     margin: 0 auto;
     border-radius: 10px;
     text-align: center;
@@ -17,7 +17,7 @@
     background: hsl(var(--background));
 }
 
-.co-card .co-card-inner::after, .co-card .co-card-inner::before {
+.inner::after, .inner::before {
     --angle: 45deg;
 
     content: '';
@@ -33,7 +33,7 @@
     animation: 3s spin linear infinite;
 }
 
-.co-card .co-card-inner::before {
+ .inner::before {
     filter: blur(1.5rem);
     opacity: 0.5;
 }
