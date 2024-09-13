@@ -7,14 +7,15 @@ import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import "filepond/dist/filepond.min.css";
 
 import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants";
 
 import FormError from "@/components/Errors/FormError/FormError";
 
 import _classes from "./fileUpload.module.css";
+
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+import "filepond/dist/filepond.min.css";
 
 registerPlugin(
 	FilePondPluginImageExifOrientation,
