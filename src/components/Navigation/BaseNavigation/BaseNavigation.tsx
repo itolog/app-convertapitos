@@ -26,7 +26,7 @@ const BaseNavigation = () => {
 					if (item.content) {
 						return (
 							<NavigationMenuItem key={item.label}>
-								<NavigationMenuTrigger>Components</NavigationMenuTrigger>
+								<NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
 								<NavigationMenuContent>
 									<ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
 										{item.content.map((component) => (

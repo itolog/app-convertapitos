@@ -26,11 +26,11 @@ const useOptions = (): ReturnType => {
 	const optionsNormalized = useMemo(() => {
 		return {
 			[AppLang.EN]: {
-				code: "US",
+				code: "us",
 				label: t("United States"),
 				value: AppLang.EN,
 			},
-			[AppLang.UA]: { code: "UA", label: t("Ukraine"), value: AppLang.UA },
+			[AppLang.UA]: { code: "ua", label: t("Ukraine"), value: AppLang.UA },
 		};
 	}, [t]);
 

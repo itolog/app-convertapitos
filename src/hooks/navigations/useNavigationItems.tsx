@@ -37,7 +37,7 @@ const useNavigationItems = (): NavigationItem[] => {
 			},
 			{
 				href: "/qrcode",
-				label: t("QR code"),
+				label: t("QR Code"),
 			},
 		];
 	}, [t]);

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
+import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -26,6 +27,7 @@ const AppSettings = () => {
 	return (
 		<div className="flex flex-row gap-2">
 			<ThemeSwitch />
+			<LangSwitcher />
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Avatar className="h-9 w-9">
