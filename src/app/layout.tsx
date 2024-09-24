@@ -40,9 +40,9 @@ export default async function LocaleLayout({
 					<SessionProvider>
 						<body className={vollkorn.className}>
 							<BootstrapAppProvider>
-								<div className="bg-background text-foreground">
+								<div className={"antialiased app-font"}>
 									<CoAppBar />
-									<main>{children}</main>
+									<main className={"wrapper"}>{children}</main>
 								</div>
 							</BootstrapAppProvider>
 						</body>

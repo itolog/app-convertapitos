@@ -18,7 +18,7 @@ interface Props {
 }
 
 const SvgIcons: FC<Props> = ({ name, color = "white", classes, size = "100%" }) => {
-	const containerClass = cl(styles.svgIconContainer, classes?.root);
+	const containerClass = cl(styles.container, classes?.root);
 
 	if (!supportedIcons.includes(name)) return null;
 

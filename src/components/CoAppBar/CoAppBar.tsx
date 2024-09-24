@@ -7,12 +7,14 @@ import CoLogo from "@/components/ui/CoLogo/CoLogo";
 
 function CoAppBar() {
 	return (
-		<header className="flex h-16 w-full items-center justify-between px-4 md:px-6">
-			<Link href="/" className="flex items-center gap-2" prefetch={false}>
-				<CoLogo />
-			</Link>
-			<div className="flex items-center gap-4">
-				<AppSettings />
+		<header className="flex mb-6 items-center justify-center h-16 shadow dark:shadow-cyan-400">
+			<div className={"wrapper flex w-full items-center justify-between"}>
+				<Link href="/" className="flex items-center gap-2" prefetch={false}>
+					<CoLogo />
+				</Link>
+				<div className="flex items-center gap-4">
+					<AppSettings />
+				</div>
 			</div>
 		</header>
 	);

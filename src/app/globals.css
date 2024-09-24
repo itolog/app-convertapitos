@@ -4,6 +4,7 @@
 
 @layer base {
     :root {
+        --base-unit: calc(1vw + 1vh);
         --background: 0 0% 100%;
         --foreground: 222.2 84% 4.9%;
         --card: 0 0% 100%;
@@ -62,6 +63,20 @@
 @layer base {
     * {
         @apply border-border;
+    }
+
+    html {
+        .filepond--credits {
+            display: none;
+        }
+    }
+
+    .app-font {
+        font-size: calc(var(--base-unit) * 1.1);
+    }
+
+    .wrapper {
+        @apply xl:container mx-auto px-4;
     }
 
     body {

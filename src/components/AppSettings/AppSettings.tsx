@@ -1,5 +1,8 @@
 "use client";
 
+import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
+
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
 import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
@@ -11,11 +14,13 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import SvgIcons from "@/components/ui/SvgIcon/SvgIcons";
 
 import { useAppSelector } from "@/store/hooks";
 import { getUser } from "@/store/user/selectors";
 
 const AppSettings = () => {
+	const t = useTranslations();
 	const user = useAppSelector(getUser);
 
 	return (
@@ -25,14 +30,26 @@ const AppSettings = () => {
 				<DropdownMenuTrigger asChild>
 					<Avatar className="h-9 w-9">
 						<AvatarImage src={user?.image ?? undefined} alt={user?.name ?? "avatar"} />
-						<AvatarFallback>JP</AvatarFallback>
+						<AvatarFallback>
+							<SvgIcons
+								classes={{
+									root: "p-1",
+								}}
+								name={"anonymous"}
+							/>
+						</AvatarFallback>
 						<span className="sr-only">Toggle user menu</span>
 					</Avatar>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent>
-					<DropdownMenuItem>My Account</DropdownMenuItem>
-					<DropdownMenuItem>Settings</DropdownMenuItem>
-					<DropdownMenuSeparator />
+					{user && (
+						<DropdownMenuItem>
+							<Link className={"text-center w-full"} href={"/profile"}>
+								{t("Profile")}
+							</Link>
+						</DropdownMenuItem>
+					)}
+					{user && <DropdownMenuSeparator />}
 					<DropdownMenuItem>{user ? <SignOut /> : <SignInButton />}</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>

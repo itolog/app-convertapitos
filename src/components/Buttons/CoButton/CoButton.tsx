@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 
+import cl from "clsx";
 import { useTranslations } from "next-intl";
 
 import { CoButtonProps } from "@/components/Buttons/CoButton/types";
@@ -12,6 +13,7 @@ const CoButton: FC<CoButtonProps> = ({
 	icon,
 	text,
 	iconSize = "24px",
+	className,
 	textProps = {
 		target: undefined,
 	},
@@ -20,8 +22,12 @@ const CoButton: FC<CoButtonProps> = ({
 	const { target, ...textOption } = textProps;
 	const t = useTranslations(target);
 
+	const rootClass = cl("w-full", {
+		className: className,
+	});
+
 	return (
-		<Button {...props}>
+		<Button className={rootClass} {...props}>
 			{icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
 			{text && <span>{t(text, textOption)}</span>}
 		</Button>
