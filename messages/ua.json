@@ -8,6 +8,14 @@
   "Convert": "Конвертувати",
   "Required": "Required",
   "Profile": "Профіль",
+  "Navigation": {
+    "Convert": "Конвертація",
+    "Image": "Зображення",
+    "Image conversion": "Конвертація зображень",
+    "Text": "Текст",
+    "Text to speech": "Перетворення тексту на мову",
+    "QR Code": "QR Код"
+  },
   "Auth": {
     "Sign In": "Увійти",
     "Sign Out": "Вийти",

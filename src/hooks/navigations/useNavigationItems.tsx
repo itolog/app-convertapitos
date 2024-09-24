@@ -1,37 +1,46 @@
 import { useMemo } from "react";
 
-import { useAppSelector } from "@/store/hooks";
-import { getUser } from "@/store/user/selectors";
+import { useTranslations } from "next-intl";
 
-const useNavigationItems = () => {
-	const user = useAppSelector(getUser);
+interface Content {
+	title: string;
+	href: string;
+	description?: string;
+}
+
+interface NavigationItem {
+	href: string;
+	label: string;
+	content?: Content[];
+}
+
+const useNavigationItems = (): NavigationItem[] => {
+	const t = useTranslations("Navigation");
 
 	return useMemo(() => {
-		const routes = [
+		return [
 			{
 				href: "/",
-				label: "Home",
-			},
-		];
-
-		if (user) {
-			return [
-				...routes,
-				...[
+				label: t("Convert"),
+				content: [
 					{
-						href: "/co-api",
-						label: "Api",
+						title: t("Image"),
+						href: "/",
+						description: t("Image conversion"),
 					},
 					{
-						href: "/profile",
-						label: "Profile",
+						title: t("Text"),
+						href: "/text",
+						description: t("Text to speech"),
 					},
 				],
-			];
-		}
-
-		return routes;
-	}, [user]);
+			},
+			{
+				href: "/qrcode",
+				label: t("QR code"),
+			},
+		];
+	}, [t]);
 };
 
 export default useNavigationItems;

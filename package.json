@@ -33,6 +33,7 @@
     "next-auth": "^5.0.0-beta.20",
     "next-intl": "^3.19.5",
     "next-themes": "^0.3.0",
+    "qr-code-styling": "^1.6.0-rc.1",
     "react": "^18",
     "react-dom": "^18",
     "react-filepond": "^7.1.2",

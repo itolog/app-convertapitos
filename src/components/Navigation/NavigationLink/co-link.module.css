@@ -1,9 +1,9 @@
-.base-navigation-link {
+.navigation {
   text-decoration: none;
   color: var(--primary);
   font-size: 22px;
 }
 
-.base-navigation-link-active {
+.active {
   color: var(--accent);
 }

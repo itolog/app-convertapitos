@@ -8,6 +8,14 @@
   "Convert": "Convert",
   "Required": "Required",
   "Profile": "Profile",
+  "Navigation": {
+    "Convert": "Convert",
+    "Image": "Image",
+    "Image conversion": "Conversion of images",
+    "Text": "Text",
+    "Text to speech": "Converting text to speech",
+    "QR code": "QR code"
+  },
   "Auth": {
     "Sign In": "Sign In",
     "Sign Out": "Sign Out",
