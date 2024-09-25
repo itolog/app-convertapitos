@@ -1,6 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import React, { ReactNode } from "react";
 
+import cl from "clsx";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -33,16 +34,18 @@ export default async function LocaleLayout({
 	const locale = await getLocale();
 	const messages = await getMessages();
 
+	const bodyClass = cl(vollkorn.className, "h-full");
+
 	return (
-		<html lang={locale} suppressHydrationWarning>
+		<html lang={locale} className={"h-full"} suppressHydrationWarning>
 			<StoreProvider>
 				<NextIntlClientProvider messages={messages}>
 					<SessionProvider>
-						<body className={vollkorn.className}>
+						<body className={bodyClass}>
 							<BootstrapAppProvider>
-								<div className={"antialiased app-font"}>
+								<div className={"antialiased app-font h-full relative"}>
 									<CoAppBar />
-									<main className={"wrapper"}>{children}</main>
+									<main className={"wrapper h-full pt-20"}>{children}</main>
 								</div>
 							</BootstrapAppProvider>
 						</body>

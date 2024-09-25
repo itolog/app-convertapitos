@@ -3,17 +3,20 @@ import React from "react";
 import { signIn } from "@/auth";
 import { providerData } from "@/data/auth/providers";
 
+import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
 import CoText from "@/components/ui/CoText/CoText";
 
 const Page = () => {
 	return (
-		<div>
+		<div className={"flex pt-20 justify-center h-full"}>
 			<CoCard>
-				<div>
-					<CoText textProps={{ target: "Auth" }}>Sign In</CoText>
+				<div className={"flex flex-col p-4 gap-4"}>
+					<CoText className="text-xl md:text-3xl" textProps={{ target: "Auth" }}>
+						Sign In
+					</CoText>
 
-					<div>
+					<div className={"flex flex-col gap-3"}>
 						{providerData.map((item) => {
 							return (
 								<form
@@ -23,12 +26,12 @@ const Page = () => {
 
 										await signIn(item.provider, { redirectTo: "/" });
 									}}>
-									{/* <CoButton */}
-									{/* 	type={"submit"} */}
-									{/* 	text={"Continue with"} */}
-									{/* 	textProps={{ provider: item.providerMessage, target: "Auth" }} */}
-									{/* 	icon={item.icon} */}
-									{/* /> */}
+									<CoButton
+										type={"submit"}
+										text={"Continue with"}
+										textProps={{ provider: item.providerMessage, target: "Auth" }}
+										icon={item.icon}
+									/>
 								</form>
 							);
 						})}

@@ -1,8 +1,9 @@
+import { DetailedHTMLProps, HTMLAttributes } from "react";
+
 import { TextProps } from "@/types";
 
-export interface CoTextProps {
-	children?: string;
-	colorType?: "primary" | "secondary" | "default";
+export interface CoTextProps
+	extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
 	textProps?: TextProps;
 	text?: string | null | undefined;
 }

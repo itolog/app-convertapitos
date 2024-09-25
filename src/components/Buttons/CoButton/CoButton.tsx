@@ -22,7 +22,7 @@ const CoButton: FC<CoButtonProps> = ({
 	const { target, ...textOption } = textProps;
 	const t = useTranslations(target);
 
-	const rootClass = cl("w-full", {
+	const rootClass = cl("flex gap-2 w-full", {
 		className: className,
 	});
 

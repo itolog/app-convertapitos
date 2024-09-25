@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import cl from "clsx";
 
-import CoTextWithTooltip from "@/components/ui/Tooltips/CoTextWithTooltip/CoTextWithTooltip";
+import CoTextWithTooltip from "@/components/ui/CoTextWithTooltip/CoTextWithTooltip";
 
 import _classes from "./formError.module.css";
 

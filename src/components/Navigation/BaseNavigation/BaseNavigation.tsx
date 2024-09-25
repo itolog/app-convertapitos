@@ -26,7 +26,9 @@ const BaseNavigation = () => {
 					if (item.content) {
 						return (
 							<NavigationMenuItem key={item.label}>
-								<NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
+								<NavigationMenuTrigger className={"font-semibold"}>
+									{item.label}
+								</NavigationMenuTrigger>
 								<NavigationMenuContent>
 									<ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
 										{item.content.map((component) => (
@@ -42,7 +44,7 @@ const BaseNavigation = () => {
 						return (
 							<NavigationMenuItem key={item.label}>
 								<Link href={item.href} legacyBehavior passHref>
-									<NavigationMenuLink className={navigationMenuTriggerStyle()}>
+									<NavigationMenuLink className={`font-semibold ${navigationMenuTriggerStyle()}`}>
 										{item.label}
 									</NavigationMenuLink>
 								</Link>
@@ -67,7 +69,7 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
 							className,
 						)}
 						{...props}>
-						<div className="text-sm font-medium leading-none">{title}</div>
+						<div className="text-sm font-semibold leading-none">{title}</div>
 						<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
 					</a>
 				</NavigationMenuLink>
