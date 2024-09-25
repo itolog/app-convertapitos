@@ -13,7 +13,7 @@ module.exports = {
 		extend: {
 			gridTemplateColumns: {
 				header: "40px 1fr 170px",
-				headerMobile: "40px 1fr",
+				headerMobile: "80px 1fr",
 			},
 			borderRadius: {
 				lg: "var(--radius)",

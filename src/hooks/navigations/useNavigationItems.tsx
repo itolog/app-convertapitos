@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 
 interface Content {
-	title: string;
+	label: string;
 	href: string;
 	description?: string;
 }
@@ -14,22 +14,27 @@ interface NavigationItem {
 	content?: Content[];
 }
 
-const useNavigationItems = (): NavigationItem[] => {
+interface ReturnType {
+	navigations: NavigationItem[];
+	flatNavigations: Omit<NavigationItem, "content">[];
+}
+
+const useNavigationItems = (): ReturnType => {
 	const t = useTranslations("Navigation");
 
-	return useMemo(() => {
+	const navigations = useMemo(() => {
 		return [
 			{
 				href: "/",
 				label: t("Convert"),
 				content: [
 					{
-						title: t("Image"),
+						label: t("Image"),
 						href: "/",
 						description: t("Image conversion"),
 					},
 					{
-						title: t("Text"),
+						label: t("Text"),
 						href: "/text",
 						description: t("Text to speech"),
 					},
@@ -41,6 +46,25 @@ const useNavigationItems = (): NavigationItem[] => {
 			},
 		];
 	}, [t]);
+
+	const flatNavigations = useMemo(() => {
+		return [
+			{
+				label: t("Image"),
+				href: "/",
+			},
+			{
+				label: t("Text"),
+				href: "/text",
+			},
+			{
+				href: "/qrcode",
+				label: t("QR Code"),
+			},
+		];
+	}, [t]);
+
+	return { navigations, flatNavigations };
 };
 
 export default useNavigationItems;

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const BaseNavigation = () => {
-	const navigations = useNavigationItems();
+	const { navigations } = useNavigationItems();
 
 	return (
 		<NavigationMenu>
@@ -30,7 +30,7 @@ const BaseNavigation = () => {
 								<NavigationMenuContent>
 									<ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
 										{item.content.map((component) => (
-											<ListItem key={component.title} title={component.title} href={component.href}>
+											<ListItem key={component.label} title={component.label} href={component.href}>
 												{component.description}
 											</ListItem>
 										))}
