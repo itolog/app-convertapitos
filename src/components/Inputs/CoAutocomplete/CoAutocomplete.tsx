@@ -1,13 +1,15 @@
 "use client";
 
-import { CheckIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 import { FC, useCallback, useState, useTransition } from "react";
 
 import { cn } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
+import cl from "clsx";
+import { useTranslations } from "next-intl";
 
 import { CoAutocompleteProps } from "@/components/Inputs/CoAutocomplete/types";
+import { Button } from "@/components/ui/button";
 import {
 	Command,
 	CommandEmpty,
@@ -18,12 +20,19 @@ import {
 } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-const CoAutocomplete: FC<CoAutocompleteProps> = ({ options, trigger, onSelect }) => {
-	const locale = useLocale();
+const CoAutocomplete: FC<CoAutocompleteProps> = ({
+	options,
+	onSelect,
+	classes,
+	defaultValue = "",
+	placeholder = "Select",
+	icon,
+	onlyIcon = false,
+}) => {
 	const t = useTranslations();
 	const [, startTransition] = useTransition();
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(locale);
+	const [value, setValue] = useState(defaultValue);
 
 	const handleChange = useCallback(
 		(value: string) => {
@@ -39,10 +48,26 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({ options, trigger, onSelect })
 		[onSelect],
 	);
 
+	const contentClass = cl("w-[200px] p-0", classes?.content);
+	const triggerClass = cl("justify-between w-full", classes?.trigger);
+
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger asChild>{trigger}</PopoverTrigger>
-			<PopoverContent className="w-[200px] p-0">
+			<PopoverTrigger asChild>
+				<Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
+					<div className={"flex gap-1 relative overflow-hidden overflow-ellipsis"}>
+						{icon && icon}
+						{onlyIcon
+							? null
+							: value
+								? options.find((option) => option.value === value)?.label
+								: t(placeholder)}
+					</div>
+
+					<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+				</Button>
+			</PopoverTrigger>
+			<PopoverContent className={contentClass}>
 				<Command>
 					<CommandInput placeholder={t("Search")} className="h-9" />
 					<CommandList>

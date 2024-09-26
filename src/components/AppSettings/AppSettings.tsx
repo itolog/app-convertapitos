@@ -27,7 +27,10 @@ const AppSettings = () => {
 	return (
 		<div className="flex flex-row gap-2">
 			<ThemeSwitch />
-			<LangSwitcher />
+			<div className={"flex w-[80px]"}>
+				<LangSwitcher />
+			</div>
+
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Avatar className="h-9 w-9">

@@ -1,14 +1,15 @@
 "use client";
 
-import { FC, SyntheticEvent, useCallback } from "react";
+import { FC, useCallback } from "react";
 
 import { useFormik } from "formik";
 import dynamic from "next/dynamic";
 
 import { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
 import { fileTypeOptions, FORM_FIELD, initialValues } from "@/components/forms/FileForm/constants";
-import { FileFormProps, FileOption, FormValues } from "@/components/forms/FileForm/types";
+import { FileFormProps, FormValues } from "@/components/forms/FileForm/types";
 import validationSchema from "@/components/forms/FileForm/validationSchema";
+import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 	ssr: false,
@@ -40,13 +41,8 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 	);
 
 	const handleChangeFileType = useCallback(
-		(
-			_e: SyntheticEvent<Element, Event>,
-			value: (string | FileOption)[] | NonNullable<string | FileOption> | null,
-		) => {
-			const val = value as FileOption;
-
-			setFieldValue(FORM_FIELD.CONVERT_TO, val?.value.toLowerCase() ?? "");
+		(value: string) => {
+			setFieldValue(FORM_FIELD.CONVERT_TO, value.toLowerCase() ?? "");
 		},
 		[setFieldValue],
 	);
@@ -55,7 +51,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 		<form onSubmit={handleSubmit} autoComplete={"off"}>
 			<div>
 				<div>
-					as
+					<CoAutocomplete options={fileTypeOptions} onSelect={handleChangeFileType} />
 					{/* <CoAutocomplete<FileOption> */}
 					{/* 	disabled={!values[FORM_FIELD.IMAGE_FILE]} */}
 					{/* 	onChange={handleChangeFileType} */}

@@ -7,8 +7,17 @@ export interface Option {
 	icon?: ReactElement;
 }
 
+interface Classes {
+	content?: string;
+	trigger?: string;
+}
+
 export interface CoAutocompleteProps {
 	options: Option[];
-	trigger: ReactElement;
 	onSelect?: ((value: string) => void) | undefined;
+	classes?: Classes;
+	defaultValue?: string;
+	placeholder?: string;
+	icon?: ReactElement;
+	onlyIcon?: boolean;
 }
