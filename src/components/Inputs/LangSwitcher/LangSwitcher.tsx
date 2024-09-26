@@ -1,51 +1,38 @@
 "use client";
 
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import * as React from "react";
-import { useCallback, useState, useTransition } from "react";
+import { useCallback, useState } from "react";
 
-import { cn } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 
 import { setUserLocale } from "@/services/locale";
 
+import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import useOptions from "@/components/Inputs/LangSwitcher/hooks/useOptions";
 import { Button } from "@/components/ui/button";
-import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-} from "@/components/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const LangSwitcher = () => {
 	const { options, optionsNormalized } = useOptions();
 	const locale = useLocale();
-	const t = useTranslations();
 
 	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState(locale);
-	const [, startTransition] = useTransition();
 
 	const handleChange = useCallback(
 		async (locale: string) => {
-			startTransition(async () => {
-				await setUserLocale(locale);
+			await setUserLocale(locale);
 
-				setValue(locale === value ? "" : locale);
-				setOpen(false);
-			});
+			setValue(locale === value ? "" : locale);
+			setOpen(false);
 		},
 		[value],
 	);
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger asChild>
+		<CoAutocomplete
+			trigger={
 				<Button
 					variant="outline"
 					role="combobox"
@@ -62,29 +49,10 @@ const LangSwitcher = () => {
 
 					<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
-			</PopoverTrigger>
-			<PopoverContent className="w-[200px] p-0">
-				<Command>
-					<CommandInput placeholder={t("Search")} className="h-9" />
-					<CommandList>
-						<CommandEmpty>{t("No Options")}</CommandEmpty>
-						<CommandGroup>
-							{options.map((framework) => (
-								<CommandItem key={framework.value} value={framework.value} onSelect={handleChange}>
-									{framework.label}
-									<CheckIcon
-										className={cn(
-											"ml-auto h-4 w-4",
-											value === framework.value ? "opacity-100" : "opacity-0",
-										)}
-									/>
-								</CommandItem>
-							))}
-						</CommandGroup>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
+			}
+			options={options}
+			onSelect={handleChange}
+		/>
 	);
 };
 

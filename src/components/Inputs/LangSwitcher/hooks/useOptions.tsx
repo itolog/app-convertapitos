@@ -5,11 +5,7 @@ import { useMemo } from "react";
 import { AppLang } from "@/constants";
 import { useTranslations } from "next-intl";
 
-export interface Option {
-	code: string;
-	label: string;
-	value: string;
-}
+import { Option } from "@/components/Inputs/CoAutocomplete/types";
 
 type OptionsNormalized = {
 	[k: string]: Option;
