@@ -2,10 +2,8 @@ import ProfileCard from "@/components/Cards/ProfileCard/ProfileCard";
 
 const Page = async () => {
 	return (
-		<div>
-			<div>
-				<ProfileCard />
-			</div>
+		<div className={"flex items-center justify-center"}>
+			<ProfileCard />
 		</div>
 	);
 };

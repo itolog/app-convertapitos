@@ -45,7 +45,7 @@ export default async function LocaleLayout({
 							<BootstrapAppProvider>
 								<div className={"antialiased app-font h-full relative"}>
 									<CoAppBar />
-									<main className={"wrapper h-full pt-20"}>{children}</main>
+									<main className={"wrapper h-full pt-28"}>{children}</main>
 								</div>
 							</BootstrapAppProvider>
 						</body>
