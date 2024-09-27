@@ -4,8 +4,6 @@ import cl from "clsx";
 
 import CoTextWithTooltip from "@/components/ui/CoTextWithTooltip/CoTextWithTooltip";
 
-import _classes from "./formError.module.css";
-
 interface Classes {
 	root?: string;
 	text?: string;
@@ -20,10 +18,10 @@ const FormError: FC<FormErrorProps> = ({ error, classes }) => {
 	if (!error) return null;
 
 	return (
-		<div className={cl(_classes.formError, classes?.root)}>
+		<div className={cl("absolute bottom-[-20px] ", classes?.root)}>
 			<CoTextWithTooltip
 				classes={{
-					text: cl(_classes.text, classes?.text),
+					text: cl("text-sm text-red-500", classes?.text),
 				}}
 				tooltipAutoDetect
 				text={error}

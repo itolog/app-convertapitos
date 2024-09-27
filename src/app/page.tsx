@@ -65,7 +65,7 @@ export default function Home() {
 	};
 
 	return (
-		<div className={"ConvertPage"}>
+		<div className={"flex items-center justify-center"}>
 			{isLoading && "Loading ..."}
 			<FileForm onSubmit={handleSubmit} />
 			{/* {data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />} */}

@@ -29,7 +29,8 @@
         --chart-3: 197 37% 24%;
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
-        --radius: 0.5rem
+        --radius: 0.5rem;
+        --upload-bg: #cbd5e1;
     }
 
     .dark {
@@ -56,7 +57,8 @@
         --chart-2: 160 60% 45%;
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%
+        --chart-5: 340 75% 55%;
+        --upload-bg: #475569;
     }
 }
 
@@ -65,10 +67,27 @@
         @apply border-border;
     }
 
-    html { 
+    html {
         .filepond--credits {
             display: none;
         }
+
+        .filepond--root {
+            margin-bottom: 0;
+            height: 288px;
+        }
+
+        .filepond--panel-root {
+            background-color: var(--upload-bg);
+        }
+
+        .filepond--drop-label {
+            color: var(--primary);
+        }
+    }
+
+    body {
+        @apply bg-background text-foreground;
     }
 
     .app-font {
@@ -77,9 +96,5 @@
 
     .wrapper {
         @apply xl:container mx-auto px-4;
-    }
-
-    body {
-        @apply bg-background text-foreground;
     }
 }

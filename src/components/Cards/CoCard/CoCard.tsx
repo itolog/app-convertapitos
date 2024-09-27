@@ -1,10 +1,22 @@
 import { FC, PropsWithChildren } from "react";
 
+import cl from "clsx";
+
 import styles from "./co-card.module.css";
 
-const CoCard: FC<PropsWithChildren> = ({ children }) => {
+interface Classes {
+	root?: string;
+}
+
+interface CoCardProps {
+	classes?: Classes;
+}
+
+const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes }) => {
+	const rootClass = cl("relative z-1 p-[3px] border-r-[px]", classes?.root);
+
 	return (
-		<div className={styles.card}>
+		<div className={rootClass}>
 			<div className={styles.inner}>{children}</div>
 		</div>
 	);

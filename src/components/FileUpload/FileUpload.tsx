@@ -12,8 +12,6 @@ import { ACCEPTED_IMAGE_TYPES } from "@/constants/fileUploadConstants";
 
 import FormError from "@/components/Errors/FormError/FormError";
 
-import _classes from "./fileUpload.module.css";
-
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import "filepond/dist/filepond.min.css";
 
@@ -48,7 +46,7 @@ const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, error, ...pro
 	};
 
 	return (
-		<div className={cl(_classes.container, classes.container)}>
+		<div className={cl("relative", classes.container)}>
 			<FilePond {...config} />
 			<FormError error={error} />
 		</div>
