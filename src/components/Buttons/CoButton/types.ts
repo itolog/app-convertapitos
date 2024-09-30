@@ -8,4 +8,5 @@ export interface CoButtonProps extends ButtonProps {
 	text?: string;
 	textProps?: TextProps;
 	iconSize?: string;
+	loading?: boolean;
 }

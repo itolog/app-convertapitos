@@ -11,4 +11,5 @@ export interface FormValues {
 export interface FileFormProps {
 	onSubmit: (values: FormValues) => void;
 	onRemoveFile?: (error: FilePondErrorDescription | null, file: FilePondFile) => void;
+	loading?: boolean;
 }

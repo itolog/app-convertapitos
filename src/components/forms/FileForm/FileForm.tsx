@@ -19,7 +19,7 @@ const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 	loading: () => <Skeleton className={"w-full h-[288px]"} />,
 });
 
-const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
+const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 	const { handleSubmit, setFieldValue, errors, touched, isValid, values, isSubmitting } =
 		useFormik<FormValues>({
 			initialValues,
@@ -47,24 +47,24 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile }) => {
 			classes={{
 				root: "w-full md:w-fit",
 			}}>
-			<form className={"flex flex-col gap-4 m-5"} onSubmit={handleSubmit} autoComplete={"off"}>
+			<form className={"flex flex-col gap-6 m-5"} onSubmit={handleSubmit} autoComplete={"off"}>
 				<div className={"flex justify-end gap-4"}>
 					<div className={"flex relative w-3/6 md:w-48"}>
 						<CoAutocomplete
 							options={fileTypeOptions}
-							// disabled={!values[FORM_FIELD.IMAGE_FILE]}
-							// error={
-							// 	(touched[FORM_FIELD.CONVERT_TO] &&
-							// 		errors[FORM_FIELD.CONVERT_TO] &&
-							// 		errors[FORM_FIELD.CONVERT_TO]) as string
-							// }
+							error={
+								(touched[FORM_FIELD.CONVERT_TO] &&
+									errors[FORM_FIELD.CONVERT_TO] &&
+									errors[FORM_FIELD.CONVERT_TO]) as string
+							}
 							onSelect={handleChangeFileType}
 						/>
 					</div>
 
 					<CoButton
+						loading={loading}
+						type={"submit"}
 						className={"w-3/6 md:w-48"}
-						// disabled={!Boolean(values[FORM_FIELD.IMAGE_FILE] && values[FORM_FIELD.CONVERT_TO])}
 						text={"Convert"}
 					/>
 				</div>

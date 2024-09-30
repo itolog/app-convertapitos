@@ -65,9 +65,8 @@ export default function Home() {
 	};
 
 	return (
-		<div className={"flex items-center justify-center"}>
-			{isLoading && "Loading ..."}
-			<FileForm onSubmit={handleSubmit} />
+		<div className={"relative flex items-center justify-center"}>
+			<FileForm loading={isLoading} onSubmit={handleSubmit} />
 			{/* {data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />} */}
 		</div>
 	);

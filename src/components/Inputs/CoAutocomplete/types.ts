@@ -20,4 +20,6 @@ export interface CoAutocompleteProps {
 	placeholder?: string;
 	icon?: ReactElement;
 	onlyIcon?: boolean;
+	disabled?: boolean;
+	error?: string;
 }

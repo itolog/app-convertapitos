@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import cl from "clsx";
 import { useTranslations } from "next-intl";
 
+import FormError from "@/components/Errors/FormError/FormError";
 import { CoAutocompleteProps } from "@/components/Inputs/CoAutocomplete/types";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +28,9 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
 	defaultValue = "",
 	placeholder = "Select",
 	icon,
+	disabled,
 	onlyIcon = false,
+	error,
 }) => {
 	const t = useTranslations();
 	const [, startTransition] = useTransition();
@@ -52,43 +55,46 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
 	const triggerClass = cl("justify-between w-full ", classes?.trigger);
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger asChild>
-				<Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
-					<div className={"flex gap-1 relative overflow-hidden overflow-ellipsis"}>
-						{icon && icon}
-						{onlyIcon
-							? null
-							: value
-								? options.find((option) => option.value === value)?.label
-								: t(placeholder)}
-					</div>
+		<div className={"relative flex w-full"}>
+			<Popover open={open} onOpenChange={setOpen}>
+				<PopoverTrigger disabled={disabled} asChild>
+					<Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
+						<div className={"flex gap-1 relative overflow-hidden overflow-ellipsis"}>
+							{icon && icon}
+							{onlyIcon
+								? null
+								: value
+									? options.find((option) => option.value === value)?.label
+									: t(placeholder)}
+						</div>
 
-					<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-				</Button>
-			</PopoverTrigger>
-			<PopoverContent className={contentClass}>
-				<Command>
-					<CommandInput placeholder={t("Search")} className="h-9" />
-					<CommandList>
-						<CommandEmpty>{t("No Options")}</CommandEmpty>
-						<CommandGroup>
-							{options.map((item) => (
-								<CommandItem key={item.value} value={item.value} onSelect={handleChange}>
-									{item.label}
-									<CheckIcon
-										className={cn(
-											"ml-auto h-4 w-4",
-											value === item.value ? "opacity-100" : "opacity-0",
-										)}
-									/>
-								</CommandItem>
-							))}
-						</CommandGroup>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
+						<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+					</Button>
+				</PopoverTrigger>
+				<PopoverContent className={contentClass}>
+					<Command>
+						<CommandInput placeholder={t("Search")} className="h-9" />
+						<CommandList>
+							<CommandEmpty>{t("No Options")}</CommandEmpty>
+							<CommandGroup>
+								{options.map((item) => (
+									<CommandItem key={item.value} value={item.value} onSelect={handleChange}>
+										{item.label}
+										<CheckIcon
+											className={cn(
+												"ml-auto h-4 w-4",
+												value === item.value ? "opacity-100" : "opacity-0",
+											)}
+										/>
+									</CommandItem>
+								))}
+							</CommandGroup>
+						</CommandList>
+					</Command>
+				</PopoverContent>
+			</Popover>
+			<FormError error={error} />
+		</div>
 	);
 };
 
