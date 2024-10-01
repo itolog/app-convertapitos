@@ -16,10 +16,11 @@ export interface CoAutocompleteProps {
 	options: Option[];
 	onSelect?: ((value: string) => void) | undefined;
 	classes?: Classes;
-	defaultValue?: string;
 	placeholder?: string;
 	icon?: ReactElement;
 	onlyIcon?: boolean;
 	disabled?: boolean;
+	disabledOption?: string;
 	error?: string;
+	value?: string;
 }

@@ -25,22 +25,21 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
 	options,
 	onSelect,
 	classes,
-	defaultValue = "",
 	placeholder = "Select",
 	icon,
 	disabled,
+	disabledOption,
 	onlyIcon = false,
+	value,
 	error,
 }) => {
 	const t = useTranslations();
 	const [, startTransition] = useTransition();
 	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(defaultValue);
 
 	const handleChange = useCallback(
 		(value: string) => {
 			startTransition(() => {
-				setValue(value);
 				setOpen(false);
 
 				if (onSelect) {
@@ -78,7 +77,11 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
 							<CommandEmpty>{t("No Options")}</CommandEmpty>
 							<CommandGroup>
 								{options.map((item) => (
-									<CommandItem key={item.value} value={item.value} onSelect={handleChange}>
+									<CommandItem
+										disabled={item.value === disabledOption}
+										key={item.value}
+										value={item.value}
+										onSelect={handleChange}>
 										{item.label}
 										<CheckIcon
 											className={cn(

@@ -1,7 +1,8 @@
 "use client";
 
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 
+import { FilePondErrorDescription, FilePondFile } from "filepond";
 import { useFormik } from "formik";
 import dynamic from "next/dynamic";
 
@@ -20,7 +21,9 @@ const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 });
 
 const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
-	const { handleSubmit, setFieldValue, errors, touched } = useFormik<FormValues>({
+	const [disabledOption, setDisabledOption] = useState("");
+
+	const { handleSubmit, setFieldValue, errors, touched, values } = useFormik<FormValues>({
 		initialValues,
 		onSubmit,
 		validationSchema,
@@ -29,7 +32,10 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 
 	const handleChangeFile = useCallback<OnUpdateFilesType>(
 		(files) => {
-			setFieldValue(FORM_FIELD.IMAGE_FILE, files?.[0]?.file);
+			const file = files?.[0]?.file;
+			setDisabledOption(file?.type.split("/")[1]);
+
+			setFieldValue(FORM_FIELD.IMAGE_FILE, file);
 		},
 		[setFieldValue],
 	);
@@ -50,6 +56,18 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 		);
 	}, [errors, touched]);
 
+	const handleRemoveFile = useCallback(
+		(error: FilePondErrorDescription | null, file: FilePondFile) => {
+			setDisabledOption("");
+			setFieldValue(FORM_FIELD.CONVERT_TO, "");
+
+			if (onRemoveFile) {
+				onRemoveFile(error, file);
+			}
+		},
+		[onRemoveFile, setFieldValue],
+	);
+
 	return (
 		<CoCard
 			classes={{
@@ -60,7 +78,9 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 					<div className={"flex relative w-3/6 md:w-48"}>
 						<CoAutocomplete
 							options={fileTypeOptions}
-							disabled={loading}
+							disabled={loading || !values[FORM_FIELD.IMAGE_FILE]}
+							disabledOption={disabledOption}
+							value={values[FORM_FIELD.CONVERT_TO]}
 							error={
 								(touched[FORM_FIELD.CONVERT_TO] &&
 									errors[FORM_FIELD.CONVERT_TO] &&
@@ -79,7 +99,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 				</div>
 
 				<FileUpload
-					onremovefile={onRemoveFile}
+					onremovefile={handleRemoveFile}
 					onupdatefiles={handleChangeFile}
 					error={fileUploadError}
 				/>

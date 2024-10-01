@@ -23,7 +23,7 @@ const LangSwitcher = () => {
 
 	return (
 		<CoAutocomplete
-			defaultValue={locale}
+			value={value}
 			placeholder={"Choose a language"}
 			onlyIcon
 			icon={
