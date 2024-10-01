@@ -56,7 +56,7 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
 	return (
 		<div className={"relative flex w-full"}>
 			<Popover open={open} onOpenChange={setOpen}>
-				<PopoverTrigger disabled={disabled} asChild>
+				<PopoverTrigger className={"select-border"} disabled={disabled} asChild>
 					<Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
 						<div className={"flex gap-1 relative overflow-hidden overflow-ellipsis"}>
 							{icon && icon}
