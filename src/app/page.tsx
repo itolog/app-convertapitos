@@ -19,10 +19,10 @@ export default function Home() {
 	const handleSubmit = useCallback(
 		async (values: FormValues) => {
 			try {
-				const { data } = await convertImage(values);
+				const { data } = await convertImage(values).unwrap();
 
-				if (data?.data) {
-					setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.data.image_link}`);
+				if (data) {
+					setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
 				}
 			} catch (e) {
 				handleError(e, {

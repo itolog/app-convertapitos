@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
+import { toast } from "sonner";
+
 import { useEventCallback } from "./useEventCallback";
 import { useEventListener } from "./useEventListener";
 
@@ -76,9 +78,12 @@ export function useLocalStorage<T>(
 
 			let parsed: unknown;
 			try {
-				parsed = JSON.parse(value);
+				parsed = JSON.parse(value + "1");
 			} catch (error) {
-				console.error("Error parsing JSON:", error);
+				toast.error("Error parsing JSON:", {
+					description: JSON.stringify(error),
+				});
+
 				return defaultValue; // Return initialValue if parsing fails
 			}
 
@@ -101,7 +106,10 @@ export function useLocalStorage<T>(
 			const raw = window.localStorage.getItem(key);
 			return raw ? deserializer(raw) : initialValueToUse;
 		} catch (error) {
-			console.warn(`Error reading localStorage key “${key}”:`, error);
+			toast.warning(`Error reading localStorage key “${key}`, {
+				description: JSON.stringify(error),
+			});
+
 			return initialValueToUse;
 		}
 	}, [initialValue, key, deserializer]);
@@ -119,7 +127,7 @@ export function useLocalStorage<T>(
 	const setValue: Dispatch<SetStateAction<T>> = useEventCallback((value) => {
 		// Prevent build error "window is undefined" but keeps working
 		if (IS_SERVER) {
-			console.warn(
+			toast.warning(
 				`Tried setting localStorage key “${key}” even though environment is not a client`,
 			);
 		}
@@ -137,14 +145,16 @@ export function useLocalStorage<T>(
 			// We dispatch a custom event so every similar useLocalStorage hook is notified
 			window.dispatchEvent(new StorageEvent("local-storage", { key }));
 		} catch (error) {
-			console.warn(`Error setting localStorage key “${key}”:`, error);
+			toast.warning(`Error setting localStorage key “${key}”:`, {
+				description: JSON.stringify(error),
+			});
 		}
 	});
 
 	const removeValue = useEventCallback(() => {
 		// Prevent build error "window is undefined" but keeps working
 		if (IS_SERVER) {
-			console.warn(
+			toast.warning(
 				`Tried removing localStorage key “${key}” even though environment is not a client`,
 			);
 		}

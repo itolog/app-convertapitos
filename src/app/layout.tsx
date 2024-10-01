@@ -8,6 +8,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Vollkorn } from "next/font/google";
 
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
+import { Toaster } from "@/components/ui/sonner";
 
 import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
 import StoreProvider from "@/providers/store-provider";
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
 								<div className={"antialiased app-font h-full relative"}>
 									<CoAppBar />
 									<main className={"wrapper h-full pt-28"}>{children}</main>
+									<Toaster richColors position="top-center" />
 								</div>
 							</BootstrapAppProvider>
 						</body>

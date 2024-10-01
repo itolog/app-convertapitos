@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 interface AppError extends Error {
 	digest?: string;
@@ -34,8 +35,7 @@ const useErrors = () => {
 		(error: AppError | unknown, config: ErrorConfig = defaultConfig): AppError | unknown => {
 			if (config.withSnackbar) {
 				const msg = getErrorMessage(error);
-
-				console.log(msg);
+				toast.error(msg);
 			}
 
 			return error;
