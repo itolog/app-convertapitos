@@ -9,7 +9,7 @@ import CoText from "@/components/ui/CoText/CoText";
 
 const Page = () => {
 	return (
-		<div className={"flex pt-20 justify-center h-full"}>
+		<div className={"flex pt-20 justify-center"}>
 			<CoCard>
 				<div className={"flex flex-col p-4 gap-4"}>
 					<CoText className="text-xl md:text-3xl" textProps={{ target: "Auth" }}>
