@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useCallback } from "react";
+import { FC, useCallback, useMemo } from "react";
 
 import { useFormik } from "formik";
 import dynamic from "next/dynamic";
@@ -20,13 +20,12 @@ const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
 });
 
 const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
-	const { handleSubmit, setFieldValue, errors, touched, isValid, values, isSubmitting } =
-		useFormik<FormValues>({
-			initialValues,
-			onSubmit,
-			validationSchema,
-			enableReinitialize: true,
-		});
+	const { handleSubmit, setFieldValue, errors, touched } = useFormik<FormValues>({
+		initialValues,
+		onSubmit,
+		validationSchema,
+		enableReinitialize: true,
+	});
 
 	const handleChangeFile = useCallback<OnUpdateFilesType>(
 		(files) => {
@@ -42,6 +41,15 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 		[setFieldValue],
 	);
 
+	const fileUploadError = useMemo(() => {
+		return (
+			(touched[FORM_FIELD.IMAGE_FILE] &&
+				errors[FORM_FIELD.IMAGE_FILE] &&
+				errors[FORM_FIELD.IMAGE_FILE]) ||
+			""
+		);
+	}, [errors, touched]);
+
 	return (
 		<CoCard
 			classes={{
@@ -52,6 +60,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 					<div className={"flex relative w-3/6 md:w-48"}>
 						<CoAutocomplete
 							options={fileTypeOptions}
+							disabled={loading}
 							error={
 								(touched[FORM_FIELD.CONVERT_TO] &&
 									errors[FORM_FIELD.CONVERT_TO] &&
@@ -72,11 +81,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 				<FileUpload
 					onremovefile={onRemoveFile}
 					onupdatefiles={handleChangeFile}
-					error={
-						(touched[FORM_FIELD.IMAGE_FILE] &&
-							errors[FORM_FIELD.IMAGE_FILE] &&
-							errors[FORM_FIELD.IMAGE_FILE]) as string
-					}
+					error={fileUploadError}
 				/>
 				<div />
 			</form>

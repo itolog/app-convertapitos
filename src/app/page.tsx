@@ -1,28 +1,29 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
-import { useTranslations } from "next-intl";
 
-import { ResponseError } from "@/types/apiTypes";
-
-// import CoButton from "@/components/Buttons/CoButton/CoButton";
+import DownloadLink from "@/components/Buttons/DownloadLink/DownloadLink";
 import FileForm from "@/components/forms/FileForm/FileForm";
 import { FormValues } from "@/components/forms/FileForm/types";
 
 import { useConvertImageMutation } from "@/store/services/Image";
 
 export default function Home() {
-	const t = useTranslations();
 	const { handleError } = useErrors();
+	const [downloadUrl, setDownloadUrl] = useState("");
 
-	const [convertImage, { data, isLoading, error }] = useConvertImageMutation();
+	const [convertImage, { data, isLoading }] = useConvertImageMutation();
 
 	const handleSubmit = useCallback(
 		async (values: FormValues) => {
 			try {
-				await convertImage(values);
+				const { data } = await convertImage(values);
+
+				if (data?.data) {
+					setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.data.image_link}`);
+				}
 			} catch (e) {
 				handleError(e, {
 					withSnackbar: true,
@@ -32,42 +33,19 @@ export default function Home() {
 		[convertImage, handleError],
 	);
 
-	useEffect(() => {
-		if (error) {
-			const { data } = error as ResponseError;
-			const msg = data?.message ?? t("Something went wrong");
-		}
-	}, [error, t]);
-
-	const handleDownload = () => {
-		if (!data?.data) return;
-
-		const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.data.image_link}`;
-		fetch(url)
-			.then((response) => response.blob())
-			.then((blob) => {
-				const url = window.URL.createObjectURL(new Blob([blob]));
-				const link = document.createElement("a");
-				link.href = url;
-				link.download = data?.data?.file_name || "downloaded-file";
-				document.body.appendChild(link);
-
-				link.click();
-
-				document.body.removeChild(link);
-				window.URL.revokeObjectURL(url);
-			})
-			.catch(() => {
-				// enqueueSnackbar("Error fetching the file:", {
-				// 	variant: "error",
-				// });
-			});
-	};
+	const handleRemoveFileLink = useCallback(() => {
+		setDownloadUrl("");
+	}, []);
 
 	return (
-		<div className={"relative flex items-center justify-center"}>
-			<FileForm loading={isLoading} onSubmit={handleSubmit} />
-			{/* {data?.data?.image_link && <CoButton text={"Download"} onClick={handleDownload} />} */}
+		<div className={"relative flex items-center gap-6 flex-col  justify-center"}>
+			<FileForm loading={isLoading} onRemoveFile={handleRemoveFileLink} onSubmit={handleSubmit} />
+			<DownloadLink
+				className={"w-full md:w-[440px]"}
+				disabled={!Boolean(downloadUrl) || isLoading}
+				url={downloadUrl}
+				fileName={data?.data?.file_name}
+			/>
 		</div>
 	);
 }
