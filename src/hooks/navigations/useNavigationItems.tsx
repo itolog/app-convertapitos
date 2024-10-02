@@ -16,7 +16,6 @@ interface NavigationItem {
 
 interface ReturnType {
 	navigations: NavigationItem[];
-	flatNavigations: Omit<NavigationItem, "content">[];
 }
 
 const useNavigationItems = (): ReturnType => {
@@ -47,24 +46,7 @@ const useNavigationItems = (): ReturnType => {
 		];
 	}, [t]);
 
-	const flatNavigations = useMemo(() => {
-		return [
-			{
-				label: t("Image"),
-				href: "/",
-			},
-			{
-				label: t("Text"),
-				href: "/text",
-			},
-			{
-				href: "/qrcode",
-				label: t("QR Code"),
-			},
-		];
-	}, [t]);
-
-	return { navigations, flatNavigations };
+	return { navigations };
 };
 
 export default useNavigationItems;

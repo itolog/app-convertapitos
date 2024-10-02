@@ -20,17 +20,17 @@ const BaseNavigation = () => {
 	const { navigations } = useNavigationItems();
 
 	return (
-		<NavigationMenu>
+		<NavigationMenu orientation={"vertical"}>
 			<NavigationMenuList>
 				{navigations.map((item) => {
 					if (item.content) {
 						return (
 							<NavigationMenuItem key={item.label}>
-								<NavigationMenuTrigger className={"font-semibold"}>
+								<NavigationMenuTrigger className={"font-semibold leading-normal items-baseline"}>
 									{item.label}
 								</NavigationMenuTrigger>
 								<NavigationMenuContent>
-									<ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+									<ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
 										{item.content.map((component) => (
 											<ListItem key={component.label} title={component.label} href={component.href}>
 												{component.description}
