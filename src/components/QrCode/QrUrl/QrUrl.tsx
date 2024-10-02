@@ -33,7 +33,7 @@ const QrUrl = () => {
 					alert(JSON.stringify(values, null, 2));
 					actions.setSubmitting(false);
 				}}>
-				{({ errors, handleChange }) => {
+				{({ errors }) => {
 					return (
 						<Form className={"flex flex-col justify-center items-center gap-6 p-4"}>
 							<CoFormInput
