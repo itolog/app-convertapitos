@@ -11,8 +11,8 @@ const CoText = forwardRef<HTMLSpanElement, CoTextProps & { children?: ReactNode 
 
 		return (
 			<span {...props} ref={ref}>
-				{!text && t(children, textOption)}
-				{text && text}
+				{!text && children && children}
+				{text && !children && t(text, textOption)}
 			</span>
 		);
 	},

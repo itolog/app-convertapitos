@@ -34,7 +34,7 @@ const AppSettings = () => {
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Avatar className="h-9 w-9">
-						<AvatarImage src={user?.image ?? undefined} alt={user?.name ?? "avatar"} />
+						<AvatarImage src={user?.image} alt={user?.name ?? "avatar"} />
 						<AvatarFallback>
 							<SvgIcons
 								classes={{

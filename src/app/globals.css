@@ -97,10 +97,9 @@
     .wrapper {
         @apply xl:container mx-auto px-4;
     }
-
-
 }
 
 .select-border {
     @apply border-indigo-800 dark:border-cyan-500;
 }
+

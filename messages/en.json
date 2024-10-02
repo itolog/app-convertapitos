@@ -3,6 +3,7 @@
   "United States": "United States",
   "Choose a language": "Choose a language",
   "Something went wrong": "Something went wrong.",
+  "Error": "Error",
   "Try again": "Try again.",
   "Download": "Download",
   "Convert": "Convert",
@@ -18,7 +19,11 @@
     "Image conversion": "Conversion of images",
     "Text": "Text",
     "Text to speech": "Converting text to speech",
-    "QR Code": "QR Code"
+    "QR Code": "QR Code",
+    "url": "url",
+    "text": "text",
+    "email": "email",
+    "phone": "phone"
   },
   "Auth": {
     "Sign In": "Sign In",

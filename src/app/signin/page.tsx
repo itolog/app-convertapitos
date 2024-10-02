@@ -12,9 +12,7 @@ const Page = () => {
 		<div className={"flex pt-20 justify-center"}>
 			<CoCard>
 				<div className={"flex flex-col p-4 gap-4"}>
-					<CoText className="text-xl md:text-3xl" textProps={{ target: "Auth" }}>
-						Sign In
-					</CoText>
+					<CoText className="text-xl md:text-3xl" text={"Sign In"} textProps={{ target: "Auth" }} />
 
 					<div className={"flex flex-col gap-3"}>
 						{providerData.map((item) => {

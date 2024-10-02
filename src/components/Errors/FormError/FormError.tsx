@@ -23,9 +23,9 @@ const FormError: FC<FormErrorProps> = ({ error, classes }) => {
 				classes={{
 					text: cl("text-sm text-red-500", classes?.text),
 				}}
-				tooltipAutoDetect
-				text={error}
-			/>
+				tooltipAutoDetect>
+				{error}
+			</CoTextWithTooltip>
 		</div>
 	);
 };

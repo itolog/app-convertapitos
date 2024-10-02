@@ -42,6 +42,24 @@ const useNavigationItems = (): ReturnType => {
 			{
 				href: "/qrcode",
 				label: t("QR Code"),
+				content: [
+					{
+						label: t("url"),
+						href: "/qrcode/url",
+					},
+					{
+						label: t("text"),
+						href: "/qrcode/text",
+					},
+					{
+						label: t("email"),
+						href: "/qrcode/email",
+					},
+					{
+						label: t("phone"),
+						href: "/qrcode/phone",
+					},
+				],
 			},
 		];
 	}, [t]);

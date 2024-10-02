@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import SvgIcons from "@/components/ui/SvgIcon/SvgIcons";
 
 const CoButton: FC<CoButtonProps> = ({
+	children,
 	icon,
 	text,
 	iconSize = "24px",
@@ -36,8 +37,11 @@ const CoButton: FC<CoButtonProps> = ({
 				</div>
 			)}
 			{icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
-			{text && (
+			{text && !children && (
 				<span className={"truncate hover:text-clip leading-normal"}>{t(text, textOption)}</span>
+			)}
+			{!text && children && (
+				<span className={"truncate hover:text-clip leading-normal"}>{children}</span>
 			)}
 		</Button>
 	);

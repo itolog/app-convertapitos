@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactElement, useEffect, useRef, useState } from "react";
+import { FC, PropsWithChildren, ReactElement, useEffect, useRef, useState } from "react";
 
 import { TextProps } from "@/types";
 import cl from "clsx";
@@ -20,7 +20,7 @@ interface Classes {
 }
 
 interface CoTextWithTooltipProps {
-	text: string;
+	text?: string;
 	tooltip?: string | ReactElement;
 	tooltipAutoDetect?: boolean;
 	classes?: Classes;
@@ -29,7 +29,8 @@ interface CoTextWithTooltipProps {
 	arrow?: boolean;
 }
 
-const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
+const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
+	children,
 	text,
 	tooltip,
 	tooltipAutoDetect = false,
@@ -69,14 +70,14 @@ const CoTextWithTooltip: FC<CoTextWithTooltipProps> = ({
 			<TooltipProvider delayDuration={400}>
 				<Tooltip>
 					<TooltipTrigger className={"w-full block overflow-hidden"}>
-						<CoText textProps={textProps} className={textClass} ref={textRef}>
-							{text}
+						<CoText text={text} textProps={textProps} className={textClass} ref={textRef}>
+							{children}
 						</CoText>
 					</TooltipTrigger>
 					{!tooltip && tooltipAutoDetect && isTooltipVisible && (
 						<TooltipContent sideOffset={5} className={"max-w-[300px]"}>
-							<CoText className={tooltipClass} textProps={textProps}>
-								{text}
+							<CoText text={text} className={tooltipClass} textProps={textProps}>
+								{children}
 							</CoText>
 							{arrow && <TooltipArrow />}
 						</TooltipContent>
