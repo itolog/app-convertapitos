@@ -22,8 +22,9 @@ const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), 
   loading: () => (
     <div className={"flex flex-col gap-4 items-center px-4"}>
       <Skeleton className={"rounded-none w-[300px] h-[300px]"} />
-      <div className={"flex flex-row justify-between items-center flex-wrap"}>
-        <Skeleton className={"rounded-md w-48 h-[36px]"} />
+      <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
+        <Skeleton className={"rounded-md w-36 h-[36px]"} />
+        <Skeleton className={"rounded-md w-36 h-[36px]"} />
       </div>
     </div>
   ),
