@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
-import { useTranslations } from "next-intl";
 import QRCodeStyling, { Options } from "qr-code-styling";
 import { FileExtension } from "qr-code-styling/lib/types";
 
