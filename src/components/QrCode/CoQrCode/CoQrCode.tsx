@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 
+import useErrors from "@/hooks/errors/useErrors";
 import QRCodeStyling, { Options } from "qr-code-styling";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
@@ -12,6 +13,7 @@ interface CoQrCodeProps {
 const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [qrCode] = useState<QRCodeStyling>(new QRCodeStyling(options));
+  const { handleError } = useErrors();
 
   useEffect(() => {
     if (ref.current) {
@@ -28,10 +30,12 @@ const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
     try {
       await qrCode.download({ name: fileName, extension: "png" });
     } catch (e) {
-      console.log(e);
+      handleError(e, {
+        withSnackbar: true,
+      });
     }
   };
-  console.log(options.data);
+
   return (
     <div className={"flex flex-col gap-4 items-center px-4"}>
       <div ref={ref} />
