@@ -1,9 +1,9 @@
-import * as Yup from "yup";
+import * as z from "zod";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 
-const validationSchema = Yup.object().shape({
-  [FORM_FIELD.URL]: Yup.string().email().required("Required"),
+const validationSchema = z.object({
+  [FORM_FIELD.URL]: z.string().url().min(1, { message: "Required" }),
 });
 
 export default validationSchema;

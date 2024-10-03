@@ -27,9 +27,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
   const {
     handleSubmit,
     setValue,
-
     getValues,
-
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: initialValues,
