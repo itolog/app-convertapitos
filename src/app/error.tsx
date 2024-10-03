@@ -7,17 +7,17 @@ import useErrors from "@/hooks/errors/useErrors";
 import PageError from "@/components/Errors/PageError/PageError";
 
 export default function Error({
-	error,
-	reset,
+  error,
+  reset,
 }: {
-	error: Error & { digest?: string };
-	reset: () => void;
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
-	const { handleError } = useErrors();
+  const { handleError } = useErrors();
 
-	useEffect(() => {
-		handleError(error);
-	}, [error, handleError]);
+  useEffect(() => {
+    handleError(error);
+  }, [error, handleError]);
 
-	return <PageError reset={reset} />;
+  return <PageError reset={reset} />;
 }

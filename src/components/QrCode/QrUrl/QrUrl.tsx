@@ -15,50 +15,50 @@ import validationSchema from "@/components/QrCode/QrUrl/validationSchema";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), {
-	ssr: false,
-	loading: () => <Skeleton className={"w-[300px] rounded-none h-[300px]"} />,
+  ssr: false,
+  loading: () => <Skeleton className={"w-[300px] rounded-none h-[300px]"} />,
 });
 
 const initialValues = { [FORM_FIELD.URL]: "" };
 
 const QrUrl = () => {
-	const [options, setOptions] = useState<Options>(qrcodeDefaultOptions);
+  const [options, setOptions] = useState<Options>(qrcodeDefaultOptions);
 
-	return (
-		<CoCard>
-			<Formik
-				initialValues={initialValues}
-				validationSchema={validationSchema}
-				onSubmit={(values, actions) => {
-					alert(JSON.stringify(values, null, 2));
-					actions.setSubmitting(false);
-				}}>
-				{({ errors }) => {
-					return (
-						<Form className={"flex flex-col justify-center items-center gap-6 p-4"}>
-							<CoFormInput
-								className={"w-full md:w-96"}
-								onChange={(e) => {
-									setOptions((prevState) => {
-										return {
-											...prevState,
-											data: e.target.value,
-										};
-									});
-								}}
-								id={FORM_FIELD.URL}
-								error={errors?.[FORM_FIELD.URL]}
-								placeholder="Email"
-							/>
-							<CoQrCode options={options} />
+  return (
+    <CoCard>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, actions) => {
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
+        }}>
+        {({ errors }) => {
+          return (
+            <Form className={"flex flex-col justify-center items-center gap-6 p-4"}>
+              <CoFormInput
+                className={"w-full md:w-96"}
+                onChange={(e) => {
+                  setOptions((prevState) => {
+                    return {
+                      ...prevState,
+                      data: e.target.value,
+                    };
+                  });
+                }}
+                id={FORM_FIELD.URL}
+                error={errors?.[FORM_FIELD.URL]}
+                placeholder="Email"
+              />
+              <CoQrCode options={options} />
 
-							<CoButton type="submit">Submit</CoButton>
-						</Form>
-					);
-				}}
-			</Formik>
-		</CoCard>
-	);
+              <CoButton type="submit">Submit</CoButton>
+            </Form>
+          );
+        }}
+      </Formik>
+    </CoCard>
+  );
 };
 
 export default QrUrl;
