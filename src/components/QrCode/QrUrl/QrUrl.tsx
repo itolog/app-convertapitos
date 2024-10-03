@@ -20,11 +20,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), {
   ssr: false,
   loading: () => (
-    <div className={"flex flex-col gap-4 items-center px-4"}>
-      <Skeleton className={"rounded-none w-[300px] h-[300px]"} />
+    <div className={"qrcode-container"}>
+      <Skeleton className={"rounded-none w-[256px] h-[256px]"} />
       <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
         <Skeleton className={"rounded-md w-36 h-[36px]"} />
-        <Skeleton className={"rounded-md w-36 h-[36px]"} />
+        <Skeleton className={"rounded-md w-24 h-[36px]"} />
       </div>
     </div>
   ),
@@ -55,13 +55,18 @@ const QrUrl = () => {
   };
 
   return (
-    <div className={"flex gap-10 justify-center items-center flex-wrap"}>
-      <CoCard
-        classes={{
-          root: "h-fit",
-        }}>
+    <CoCard
+      classes={{
+        root: "w-full md:w-fit h-fit",
+      }}>
+      <div
+        className={
+          "flex w-full md:w-fit gap-4 md:gap-10 justify-center items-center p-3 md:p-6 flex-wrap"
+        }>
         <form
-          className={"flex flex-col justify-center items-center gap-6 p-4"}
+          className={
+            "flex w-full flex-col md:w-fit justify-center items-center gap-6 p-6 border-solid border-2 border-black rounded-md dark:border-white"
+          }
           onSubmit={handleSubmit(onSubmit)}>
           <CoFormInput
             control={control}
@@ -73,10 +78,10 @@ const QrUrl = () => {
 
           <CoButton type="submit" text={"Generate"} />
         </form>
-      </CoCard>
 
-      <CoQrCode options={options} />
-    </div>
+        <CoQrCode options={options} />
+      </div>
+    </CoCard>
   );
 };
 

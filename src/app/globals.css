@@ -97,6 +97,10 @@
   .wrapper {
     @apply xl:container mx-auto px-4;
   }
+
+  .qrcode-container {
+    @apply flex flex-col gap-4 items-center rounded-md shadow-2xl dark:shadow-indigo-500/50 p-6
+  }
 }
 
 .select-border {

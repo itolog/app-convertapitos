@@ -17,13 +17,14 @@ const CoSelect: FC<CoSelectProps> = ({
   options,
   onChange,
   placeholder = "Select",
+  defaultValue,
   classes,
   label,
 }) => {
   const triggerClass = cl("w-auto", classes?.trigger);
 
   return (
-    <Select onValueChange={onChange}>
+    <Select defaultValue={defaultValue} onValueChange={onChange}>
       <SelectTrigger className={triggerClass}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

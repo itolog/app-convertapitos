@@ -10,8 +10,8 @@ import {
 } from "qr-code-styling";
 
 export const qrcodeDefaultOptions: Options = {
-  width: 300,
-  height: 300,
+  width: 256,
+  height: 256,
   type: "canvas" as DrawType,
   margin: 10,
   qrOptions: {

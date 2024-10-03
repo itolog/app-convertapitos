@@ -13,4 +13,5 @@ export interface CoSelectProps {
   label?: string;
   placeholder?: string;
   classes?: Classes;
+  defaultValue?: string;
 }

@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
+import { useTranslations } from "next-intl";
 import QRCodeStyling, { Options } from "qr-code-styling";
 import { FileExtension } from "qr-code-styling/lib/types";
 
@@ -51,7 +52,7 @@ const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
   };
 
   return (
-    <div className={"flex flex-col gap-4 items-center px-4"}>
+    <div className={"qrcode-container"}>
       <div ref={ref} />
       <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
         <CoButton
@@ -65,8 +66,9 @@ const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
 
         <CoSelect
           classes={{
-            trigger: "w-36",
+            trigger: "w-24",
           }}
+          defaultValue={"png"}
           onChange={handleSelect}
           options={extOptions}
         />
