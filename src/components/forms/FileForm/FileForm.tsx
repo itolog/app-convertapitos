@@ -16,97 +16,97 @@ import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
-	ssr: false,
-	loading: () => <Skeleton className={"w-full h-[288px]"} />,
+  ssr: false,
+  loading: () => <Skeleton className={"w-full h-[288px]"} />,
 });
 
 const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
-	const [disabledOption, setDisabledOption] = useState("");
+  const [disabledOption, setDisabledOption] = useState("");
 
-	const { handleSubmit, setFieldValue, errors, touched, values } = useFormik<FormValues>({
-		initialValues,
-		onSubmit,
-		validationSchema,
-		enableReinitialize: true,
-	});
+  const { handleSubmit, setFieldValue, errors, touched, values } = useFormik<FormValues>({
+    initialValues,
+    onSubmit,
+    validationSchema,
+    enableReinitialize: true,
+  });
 
-	const handleChangeFile = useCallback<OnUpdateFilesType>(
-		(files) => {
-			const file = files?.[0]?.file;
-			setDisabledOption(file?.type.split("/")[1]);
+  const handleChangeFile = useCallback<OnUpdateFilesType>(
+    (files) => {
+      const file = files?.[0]?.file;
+      setDisabledOption(file?.type.split("/")[1]);
 
-			setFieldValue(FORM_FIELD.IMAGE_FILE, file);
-		},
-		[setFieldValue],
-	);
+      setFieldValue(FORM_FIELD.IMAGE_FILE, file);
+    },
+    [setFieldValue],
+  );
 
-	const handleChangeFileType = useCallback(
-		(value: string) => {
-			setFieldValue(FORM_FIELD.CONVERT_TO, value.toLowerCase() ?? "");
-		},
-		[setFieldValue],
-	);
+  const handleChangeFileType = useCallback(
+    (value: string) => {
+      setFieldValue(FORM_FIELD.CONVERT_TO, value.toLowerCase() ?? "");
+    },
+    [setFieldValue],
+  );
 
-	const fileUploadError = useMemo(() => {
-		return (
-			(touched[FORM_FIELD.IMAGE_FILE] &&
-				errors[FORM_FIELD.IMAGE_FILE] &&
-				errors[FORM_FIELD.IMAGE_FILE]) ||
-			""
-		);
-	}, [errors, touched]);
+  const fileUploadError = useMemo(() => {
+    return (
+      (touched[FORM_FIELD.IMAGE_FILE] &&
+        errors[FORM_FIELD.IMAGE_FILE] &&
+        errors[FORM_FIELD.IMAGE_FILE]) ||
+      ""
+    );
+  }, [errors, touched]);
 
-	const handleRemoveFile = useCallback(
-		(error: FilePondErrorDescription | null, file: FilePondFile) => {
-			setDisabledOption("");
-			setFieldValue(FORM_FIELD.CONVERT_TO, "");
+  const handleRemoveFile = useCallback(
+    (error: FilePondErrorDescription | null, file: FilePondFile) => {
+      setDisabledOption("");
+      setFieldValue(FORM_FIELD.CONVERT_TO, "");
 
-			if (onRemoveFile) {
-				onRemoveFile(error, file);
-			}
-		},
-		[onRemoveFile, setFieldValue],
-	);
+      if (onRemoveFile) {
+        onRemoveFile(error, file);
+      }
+    },
+    [onRemoveFile, setFieldValue],
+  );
 
-	return (
-		<CoCard
-			classes={{
-				root: "w-full md:w-fit",
-			}}>
-			<form className={"flex flex-col gap-6 m-5"} onSubmit={handleSubmit} autoComplete={"off"}>
-				<div className={"flex justify-end gap-4"}>
-					<div className={"flex relative w-3/6 md:w-48"}>
-						<CoAutocomplete
-							options={fileTypeOptions}
-							disabled={loading || !values[FORM_FIELD.IMAGE_FILE]}
-							disabledOption={disabledOption}
-							value={values[FORM_FIELD.CONVERT_TO]}
-							error={
-								(touched[FORM_FIELD.CONVERT_TO] &&
-									errors[FORM_FIELD.CONVERT_TO] &&
-									errors[FORM_FIELD.CONVERT_TO]) as string
-							}
-							onSelect={handleChangeFileType}
-						/>
-					</div>
+  return (
+    <CoCard
+      classes={{
+        root: "w-full md:w-fit",
+      }}>
+      <form className={"flex flex-col gap-6 m-5"} onSubmit={handleSubmit} autoComplete={"off"}>
+        <div className={"flex justify-end gap-4"}>
+          <div className={"flex relative w-3/6 md:w-48"}>
+            <CoAutocomplete
+              options={fileTypeOptions}
+              disabled={loading || !values[FORM_FIELD.IMAGE_FILE]}
+              disabledOption={disabledOption}
+              value={values[FORM_FIELD.CONVERT_TO]}
+              error={
+                (touched[FORM_FIELD.CONVERT_TO] &&
+                  errors[FORM_FIELD.CONVERT_TO] &&
+                  errors[FORM_FIELD.CONVERT_TO]) as string
+              }
+              onSelect={handleChangeFileType}
+            />
+          </div>
 
-					<CoButton
-						loading={loading}
-						type={"submit"}
-						className={"w-3/6 md:w-48"}
-						text={"Convert"}
-					/>
-				</div>
+          <CoButton
+            loading={loading}
+            type={"submit"}
+            className={"w-3/6 md:w-48"}
+            text={"Convert"}
+          />
+        </div>
 
-				<FileUpload
-					onremovefile={handleRemoveFile}
-					onupdatefiles={handleChangeFile}
-					error={fileUploadError}
-				/>
-				<div />
-			</form>
-		</CoCard>
-	);
+        <FileUpload
+          onremovefile={handleRemoveFile}
+          onupdatefiles={handleChangeFile}
+          error={fileUploadError}
+        />
+        <div />
+      </form>
+    </CoCard>
+  );
 };
 
 export default FileForm;

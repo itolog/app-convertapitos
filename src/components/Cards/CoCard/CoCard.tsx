@@ -5,21 +5,21 @@ import cl from "clsx";
 import styles from "./co-card.module.css";
 
 interface Classes {
-	root?: string;
+  root?: string;
 }
 
 interface CoCardProps {
-	classes?: Classes;
+  classes?: Classes;
 }
 
 const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes }) => {
-	const rootClass = cl("relative z-1 p-[3px] border-r-[px]", classes?.root);
+  const rootClass = cl("relative z-1 p-[3px] border-r-[px]", classes?.root);
 
-	return (
-		<div className={rootClass}>
-			<div className={styles.inner}>{children}</div>
-		</div>
-	);
+  return (
+    <div className={rootClass}>
+      <div className={styles.inner}>{children}</div>
+    </div>
+  );
 };
 
 export default CoCard;

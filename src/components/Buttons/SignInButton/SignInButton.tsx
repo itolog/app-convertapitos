@@ -7,28 +7,28 @@ import { useRouter } from "next/navigation";
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 
 interface SignInButtonProps {
-	onClick?: () => void;
+  onClick?: () => void;
 }
 
 const SignInButton: FC<SignInButtonProps> = ({ onClick }) => {
-	const router = useRouter();
+  const router = useRouter();
 
-	const handleSignIn = useCallback(async () => {
-		router.push("signin");
+  const handleSignIn = useCallback(async () => {
+    router.push("signin");
 
-		if (onClick) {
-			onClick();
-		}
-	}, [onClick, router]);
+    if (onClick) {
+      onClick();
+    }
+  }, [onClick, router]);
 
-	return (
-		<CoButton
-			onClick={handleSignIn}
-			type={"button"}
-			text={"Sign In"}
-			textProps={{ target: "Auth" }}
-		/>
-	);
+  return (
+    <CoButton
+      onClick={handleSignIn}
+      type={"button"}
+      text={"Sign In"}
+      textProps={{ target: "Auth" }}
+    />
+  );
 };
 
 export default SignInButton;

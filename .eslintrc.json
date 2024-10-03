@@ -40,10 +40,7 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "semi": [
-      "warn",
-      "always"
-    ],
+    "semi": ["warn", "always"],
     "no-console": "warn",
     "quotes": [
       "warn",

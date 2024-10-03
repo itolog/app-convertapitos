@@ -10,25 +10,25 @@ import { setUser } from "@/store/user/userSlice";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
-	const session = useSession();
-	const dispatch = useAppDispatch();
+  const session = useSession();
+  const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		const user: Me | undefined = session?.data?.user;
+  useEffect(() => {
+    const user: Me | undefined = session?.data?.user;
 
-		dispatch(
-			setUser({
-				user,
-				status: session.status,
-			}),
-		);
-	}, [dispatch, session]);
+    dispatch(
+      setUser({
+        user,
+        status: session.status,
+      }),
+    );
+  }, [dispatch, session]);
 
-	return (
-		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-			{children}
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default BootstrapAppProvider;

@@ -32,7 +32,7 @@
       "@/providers/*": ["./src/providers/*"],
       "@/services/*": ["./src/services/*"],
       "@/navigation/*": ["./src/navigation.ts"],
-      "@/auth": ["./auth"],
+      "@/auth": ["./auth"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -7,70 +7,70 @@ import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import Link from "next/link";
 
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuPortal,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-	DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 interface CoDrawerProps {}
 
 const CoDrawer: FC<CoDrawerProps> = () => {
-	const { navigations } = useNavigationItems();
+  const { navigations } = useNavigationItems();
 
-	const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-	const handleClose = () => {
-		setOpen(false);
-	};
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-	return (
-		<div className={"flex md:hidden items-center"}>
-			<DropdownMenu open={open} onOpenChange={setOpen}>
-				<DropdownMenuTrigger className={"cursor-pointer"} asChild>
-					<HamburgerMenuIcon width={30} height={30} />
-				</DropdownMenuTrigger>
-				<DropdownMenuContent className="w-56 p-2">
-					<DropdownMenuGroup>
-						{navigations.map((item) => {
-							if (!item.content) {
-								return <DropdownMenuItem key={item.label}>{item.label}</DropdownMenuItem>;
-							} else {
-								return (
-									<DropdownMenuSub key={item.label}>
-										<DropdownMenuSubTrigger>{item.label}</DropdownMenuSubTrigger>
-										<DropdownMenuPortal>
-											<DropdownMenuSubContent>
-												{item.content.map((content) => {
-													return (
-														<DropdownMenuItem key={content.label}>
-															<Link
-																onClick={handleClose}
-																key={content.label}
-																href={content.href}
-																className="text-sm font-medium  underline-offset-4"
-																prefetch={false}>
-																{content.label}
-															</Link>
-														</DropdownMenuItem>
-													);
-												})}
-											</DropdownMenuSubContent>
-										</DropdownMenuPortal>
-									</DropdownMenuSub>
-								);
-							}
-						})}
-					</DropdownMenuGroup>
-				</DropdownMenuContent>
-			</DropdownMenu>
-		</div>
-	);
+  return (
+    <div className={"flex md:hidden items-center"}>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger className={"cursor-pointer"} asChild>
+          <HamburgerMenuIcon width={30} height={30} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56 p-2">
+          <DropdownMenuGroup>
+            {navigations.map((item) => {
+              if (!item.content) {
+                return <DropdownMenuItem key={item.label}>{item.label}</DropdownMenuItem>;
+              } else {
+                return (
+                  <DropdownMenuSub key={item.label}>
+                    <DropdownMenuSubTrigger>{item.label}</DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        {item.content.map((content) => {
+                          return (
+                            <DropdownMenuItem key={content.label}>
+                              <Link
+                                onClick={handleClose}
+                                key={content.label}
+                                href={content.href}
+                                className="text-sm font-medium  underline-offset-4"
+                                prefetch={false}>
+                                {content.label}
+                              </Link>
+                            </DropdownMenuItem>
+                          );
+                        })}
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                );
+              }
+            })}
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  );
 };
 
 export default CoDrawer;

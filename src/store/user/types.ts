@@ -4,7 +4,6 @@ export interface Me extends User {
   emailVerified?: string;
 }
 
-// export type User = Me | null | undefined;
 export type UserStatus = "loading" | "authenticated" | "unauthenticated";
 
 export interface UserPayload {

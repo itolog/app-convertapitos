@@ -11,41 +11,41 @@ import { FormValues } from "@/components/forms/FileForm/types";
 import { useConvertImageMutation } from "@/store/services/Image";
 
 export default function Home() {
-	const { handleError } = useErrors();
-	const [downloadUrl, setDownloadUrl] = useState("");
+  const { handleError } = useErrors();
+  const [downloadUrl, setDownloadUrl] = useState("");
 
-	const [convertImage, { data, isLoading }] = useConvertImageMutation();
+  const [convertImage, { data, isLoading }] = useConvertImageMutation();
 
-	const handleSubmit = useCallback(
-		async (values: FormValues) => {
-			try {
-				const { data } = await convertImage(values).unwrap();
+  const handleSubmit = useCallback(
+    async (values: FormValues) => {
+      try {
+        const { data } = await convertImage(values).unwrap();
 
-				if (data) {
-					setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
-				}
-			} catch (e) {
-				handleError(e, {
-					withSnackbar: true,
-				});
-			}
-		},
-		[convertImage, handleError],
-	);
+        if (data) {
+          setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
+        }
+      } catch (e) {
+        handleError(e, {
+          withSnackbar: true,
+        });
+      }
+    },
+    [convertImage, handleError],
+  );
 
-	const handleRemoveFileLink = useCallback(() => {
-		setDownloadUrl("");
-	}, []);
+  const handleRemoveFileLink = useCallback(() => {
+    setDownloadUrl("");
+  }, []);
 
-	return (
-		<div className={"relative flex items-center gap-6 flex-col  justify-center"}>
-			<FileForm loading={isLoading} onRemoveFile={handleRemoveFileLink} onSubmit={handleSubmit} />
-			<DownloadLink
-				className={"w-full md:w-[440px]"}
-				disabled={!Boolean(downloadUrl) || isLoading}
-				url={downloadUrl}
-				fileName={data?.data?.file_name}
-			/>
-		</div>
-	);
+  return (
+    <div className={"relative flex items-center gap-6 flex-col  justify-center"}>
+      <FileForm loading={isLoading} onRemoveFile={handleRemoveFileLink} onSubmit={handleSubmit} />
+      <DownloadLink
+        className={"w-full md:w-[440px]"}
+        disabled={!Boolean(downloadUrl) || isLoading}
+        url={downloadUrl}
+        fileName={data?.data?.file_name}
+      />
+    </div>
+  );
 }

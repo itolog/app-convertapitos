@@ -1,4 +1,4 @@
 export const AppLang = {
-	EN: "en",
-	UA: "ua",
+  EN: "en",
+  UA: "ua",
 };

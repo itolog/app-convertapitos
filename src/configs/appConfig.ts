@@ -1,3 +1,3 @@
 export const appConfig = {
-	availableNavRoutes: ["Home", "Api", "Profile"],
+  availableNavRoutes: ["Home", "Api", "Profile"],
 };

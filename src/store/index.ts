@@ -5,16 +5,16 @@ import { imageApi } from "./services/Image";
 import userSlice from "./user/userSlice";
 
 const rootReducer = combineReducers({
-	[imageApi.reducerPath]: imageApi.reducer,
-	user: userSlice,
+  [imageApi.reducerPath]: imageApi.reducer,
+  user: userSlice,
 });
 
 export const makeStore = () => {
-	return configureStore({
-		reducer: rootReducer,
-		devTools: !IS_PROD,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imageApi.middleware),
-	});
+  return configureStore({
+    reducer: rootReducer,
+    devTools: !IS_PROD,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imageApi.middleware),
+  });
 };
 
 export const store = makeStore();

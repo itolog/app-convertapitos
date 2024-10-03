@@ -1,13 +1,13 @@
 interface Error {
-	message: string;
-	status: number;
+  message: string;
+  status: number;
 }
 
 export interface ResponseError {
-	data: Error;
+  data: Error;
 }
 
 export interface ApiResponse<T> {
-	data?: T | null;
-	error?: Error | null;
+  data?: T | null;
+  error?: Error | null;
 }

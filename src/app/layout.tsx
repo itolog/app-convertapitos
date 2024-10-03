@@ -16,45 +16,45 @@ import StoreProvider from "@/providers/store-provider";
 import "./globals.css";
 
 const vollkorn = Vollkorn({
-	weight: ["400", "500", "700"],
-	subsets: ["latin"],
-	display: "swap",
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-	title: "ConvertApiTos",
-	description: "File generation and conversion",
-	keywords: ["File", "generation", "conversion image", "text-to-speech", "qrcode generation"],
+  title: "ConvertApiTos",
+  description: "File generation and conversion",
+  keywords: ["File", "generation", "conversion image", "text-to-speech", "qrcode generation"],
 };
 
 export default async function LocaleLayout({
-	children,
+  children,
 }: {
-	children: ReactNode;
-	params: { locale: string };
+  children: ReactNode;
+  params: { locale: string };
 }) {
-	const locale = await getLocale();
-	const messages = await getMessages();
+  const locale = await getLocale();
+  const messages = await getMessages();
 
-	const bodyClass = cl(vollkorn.className, "h-full");
+  const bodyClass = cl(vollkorn.className, "h-full");
 
-	return (
-		<html lang={locale} className={"h-full"} suppressHydrationWarning>
-			<StoreProvider>
-				<NextIntlClientProvider messages={messages}>
-					<SessionProvider>
-						<body className={bodyClass}>
-							<BootstrapAppProvider>
-								<div className={"antialiased app-font h-full relative"}>
-									<CoAppBar />
-									<main className={"wrapper h-full pt-28"}>{children}</main>
-									<Toaster richColors position="top-center" />
-								</div>
-							</BootstrapAppProvider>
-						</body>
-					</SessionProvider>
-				</NextIntlClientProvider>
-			</StoreProvider>
-		</html>
-	);
+  return (
+    <html lang={locale} className={"h-full"} suppressHydrationWarning>
+      <StoreProvider>
+        <NextIntlClientProvider messages={messages}>
+          <SessionProvider>
+            <body className={bodyClass}>
+              <BootstrapAppProvider>
+                <div className={"antialiased app-font h-full relative"}>
+                  <CoAppBar />
+                  <main className={"wrapper h-full pt-28"}>{children}</main>
+                  <Toaster richColors position="top-center" />
+                </div>
+              </BootstrapAppProvider>
+            </body>
+          </SessionProvider>
+        </NextIntlClientProvider>
+      </StoreProvider>
+    </html>
+  );
 }

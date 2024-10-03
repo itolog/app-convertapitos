@@ -6,7 +6,9 @@
   background: transparent;
 }
 
-.pageloader circle, .pageloader rect, .pageloader line {
+.pageloader circle,
+.pageloader rect,
+.pageloader line {
   stroke-width: 10px;
   stroke-linecap: round;
   fill: transparent;

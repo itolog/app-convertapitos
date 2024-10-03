@@ -26,12 +26,11 @@
     "^@/store/(.*)$",
     "^@/providers/(.*)$",
     "^[./]",
-    "^(?!.*[.]css$)[./].*$", ".css$"
+    "^(?!.*[.]css$)[./].*$",
+    ".css$"
   ],
   "importOrderSeparation": true,
   "importOrderCaseInsensitive": true,
   "importOrderSortSpecifiers": true,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ]
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

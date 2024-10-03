@@ -1,6 +1,0 @@
-body {
-  .Card {
-    background-color: var(--co-card-bg);
-    min-width: 320px;
-  }
-}
