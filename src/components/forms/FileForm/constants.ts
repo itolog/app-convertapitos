@@ -10,7 +10,7 @@ export const FORM_FIELD = {
 
 export const initialValues: FormValues = {
   [FORM_FIELD.CONVERT_TO]: "",
-  [FORM_FIELD.IMAGE_FILE]: null,
+  [FORM_FIELD.IMAGE_FILE]: undefined,
 };
 
 export const fileTypeOptions: Option[] = SUPPORTED_IMAGE_FORMATS.map((item): Option => {

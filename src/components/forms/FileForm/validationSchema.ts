@@ -1,18 +1,20 @@
-import * as Yup from "yup";
+import * as z from "zod";
 
 import { SUPPORTED_IMAGE_FORMATS } from "@/constants/fileUploadConstants";
 
+import { File } from "@/components/FileUpload/FileUpload";
 import { FORM_FIELD } from "@/components/forms/FileForm/constants";
 
-const validationSchema = Yup.object().shape({
-  [FORM_FIELD.IMAGE_FILE]: Yup.mixed().required("Required"),
-  [FORM_FIELD.CONVERT_TO]: Yup.string().when(FORM_FIELD.IMAGE_FILE, ([file]) => {
-    if (file) {
-      return Yup.mixed().required("Required").oneOf(SUPPORTED_IMAGE_FORMATS);
-    }
-
-    return Yup.string();
-  }),
+const validationSchema = z.object({
+  [FORM_FIELD.CONVERT_TO]: z.string().min(1, { message: "Required" }),
+  [FORM_FIELD.IMAGE_FILE]: z
+    .any()
+    .refine((file: File) => {
+      return file;
+    }, "File is required")
+    .refine((file) => {
+      return !SUPPORTED_IMAGE_FORMATS.includes(file?.type);
+    }, `${SUPPORTED_IMAGE_FORMATS} formats are supported.`),
 });
 
 export default validationSchema;

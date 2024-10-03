@@ -4,8 +4,8 @@ import { File } from "@/components/FileUpload/FileUpload";
 import { FORM_FIELD } from "@/components/forms/FileForm/constants";
 
 export interface FormValues {
-  [FORM_FIELD.CONVERT_TO]?: string;
-  [FORM_FIELD.IMAGE_FILE]?: File | null;
+  [FORM_FIELD.CONVERT_TO]: string;
+  [FORM_FIELD.IMAGE_FILE]?: File;
 }
 
 export interface FileFormProps {
