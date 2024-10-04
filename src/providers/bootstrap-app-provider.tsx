@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { Me } from "@/store/user/types";
 import { setUser } from "@/store/user/userSlice";
 
+import ProgressBarProvider from "@/providers/progressbar-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
@@ -26,7 +27,7 @@ const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      {children}
+      <ProgressBarProvider>{children}</ProgressBarProvider>
     </ThemeProvider>
   );
 };
