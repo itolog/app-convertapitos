@@ -4,8 +4,7 @@ import {
   BackgroundOptions,
   CornersDotOptions,
   CornersSquareOptions,
-  DotsOptions,
-  ImageOptions,
+  DotsOptions, // ImageOptions,
 } from "@/components/QrCode/QrcodeSettings/types";
 
 const backgroundOptions: BackgroundOptions = {
@@ -28,14 +27,14 @@ const cornersDotOptions: CornersDotOptions = {
   settings: qrcodeDefaultOptions.cornersDotOptions,
 };
 
-const imageOptions: ImageOptions = {
-  label: "imageOptions",
-
-  settings: {
-    ...qrcodeDefaultOptions.imageOptions,
-    image: qrcodeDefaultOptions.image,
-  },
-};
+// const imageOptions: ImageOptions = {
+//   label: "imageOptions",
+//
+//   settings: {
+//     ...qrcodeDefaultOptions.imageOptions,
+//     image: qrcodeDefaultOptions.image,
+//   },
+// };
 
 export const settings = [
   dotsOptions,
