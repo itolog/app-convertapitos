@@ -25,7 +25,9 @@ const SettingItem: FC<SettingItemProps> = ({ item, options, setOptions }) => {
         return {
           ...prevState,
           [item.label]: {
-            ...item.settings,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            ...prevState[item.label],
             color,
           },
         };
