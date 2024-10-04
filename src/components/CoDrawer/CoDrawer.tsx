@@ -53,7 +53,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                                 onClick={handleClose}
                                 key={content.label}
                                 href={content.href}
-                                className="text-sm font-medium  underline-offset-4"
+                                className="text-sm font-semibold w-full capitalize p-2 flex underline-offset-4"
                                 prefetch={false}>
                                 {content.label}
                               </Link>
