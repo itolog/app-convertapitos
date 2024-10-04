@@ -1,43 +1,45 @@
-import {
-  CornerDotType,
-  CornerSquareType,
-  DotType,
-  DrawType,
-  ErrorCorrectionLevel,
-  Mode,
-  Options,
-  TypeNumber,
-} from "qr-code-styling";
+import { Options } from "qr-code-styling";
+
+export const OPTION_KEYS = {
+  COLOR: "color",
+  TYPE: "type",
+  ROUND: "round",
+  HIDE_BG_DOTS: "hideBackgroundDots",
+  IMAGE_SIZE: "imageSize",
+  MARGIN: "margin",
+  IMAGE: "image",
+};
 
 export const qrcodeDefaultOptions: Options = {
   width: 256,
   height: 256,
-  type: "canvas" as DrawType,
+  type: "canvas",
   margin: 10,
+  image: "",
   qrOptions: {
-    typeNumber: 0 as TypeNumber,
-    mode: "Byte" as Mode,
-    errorCorrectionLevel: "Q" as ErrorCorrectionLevel,
+    typeNumber: 0,
+    mode: "Byte",
+    errorCorrectionLevel: "Q",
   },
-  imageOptions: {
-    hideBackgroundDots: true,
-    imageSize: 0.4,
-    margin: 20,
-    crossOrigin: "anonymous",
-  },
+  // imageOptions: {
+  //   [OPTION_KEYS.HIDE_BG_DOTS]: true,
+  //   [OPTION_KEYS.IMAGE_SIZE]: 0.4,
+  //   [OPTION_KEYS.MARGIN]: 20,
+  //   crossOrigin: "anonymous",
+  // },
   dotsOptions: {
-    color: "#222222",
-    type: "rounded" as DotType,
+    [OPTION_KEYS.COLOR]: "#222222",
+    [OPTION_KEYS.TYPE]: "rounded",
   },
   backgroundOptions: {
-    color: "#5FD4F3",
+    [OPTION_KEYS.COLOR]: "#5FD4F3",
   },
   cornersSquareOptions: {
-    color: "#222222",
-    type: "extra-rounded" as CornerSquareType,
+    [OPTION_KEYS.COLOR]: "#222222",
+    [OPTION_KEYS.TYPE]: "extra-rounded",
   },
   cornersDotOptions: {
-    color: "#222222",
-    type: "dot" as CornerDotType,
+    [OPTION_KEYS.COLOR]: "#222222",
+    [OPTION_KEYS.TYPE]: "dot",
   },
 };

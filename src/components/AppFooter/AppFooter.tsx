@@ -17,7 +17,7 @@ const components: { title: Icons; href: string }[] = [
   },
 ];
 
-const AppHeader = () => {
+const AppFooter = () => {
   return (
     <div className={"relative py-2.5 mt-3 shadow-inner footer-shadow"}>
       <div className={"wrapper flex justify-end"}>
@@ -25,12 +25,12 @@ const AppHeader = () => {
           {components.map((item) => {
             return (
               <li
-                className={"flex text-xl  rounded-md hover:shadow shadow-cyan-100 cursor-pointer"}
+                className={"flex text-xl rounded-md hover:shadow shadow-cyan-100 cursor-pointer"}
                 key={item.title}>
                 <Link
                   target={"_blank"}
                   className={cn(
-                    "block select-none no-underline rounded-md transition-colors p-1 bg-primary hover:bg-accent hover:text-accent-foreground focus:bg-accent",
+                    "block select-none no-underline rounded-md transition-colors p-1 hover:bg-accent dark:hover:bg-white hover:text-accent-foreground focus:bg-accent",
                   )}
                   href={item.href}>
                   <SvgIcons name={item.title} size={"24px"} color={"black"} />
@@ -44,4 +44,4 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+export default AppFooter;

@@ -14,6 +14,11 @@
   "No Options": "No Options",
   "Generate": "Generate",
   "In development": "In development",
+  "Styling": "Styling",
+  "dotsOptions": "Dots",
+  "cornersSquareOptions": "Corners Square",
+  "cornersDotOptions": "Corners Dot",
+  "backgroundOptions": "Background",
   "Navigation": {
     "Convert": "Convert",
     "Image": "Image",

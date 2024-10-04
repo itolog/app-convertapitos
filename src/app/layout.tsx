@@ -7,7 +7,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Vollkorn } from "next/font/google";
 
-import AppHeader from "@/components/AppHeader/AppHeader";
+import AppFooter from "@/components/AppFooter/AppFooter";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -49,7 +49,7 @@ export default async function LocaleLayout({
                 <div className={"antialiased grid grid-rows-main app-font min-h-screen relative"}>
                   <CoAppBar />
                   <main className={"wrapper pt-28"}>{children}</main>
-                  <AppHeader />
+                  <AppFooter />
                   <Toaster richColors position="top-center" />
                 </div>
               </BootstrapAppProvider>

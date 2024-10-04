@@ -14,6 +14,11 @@
   "No Options": "Без варіантів",
   "Generate": "Згенерувати",
   "In development": "У процесі розробки",
+  "Styling": "Стилізація",
+  "dotsOptions": "Dots",
+  "cornersSquareOptions": "Corners Square",
+  "cornersDotOptions": "Corners Dot",
+  "backgroundOptions": "Background",
   "Navigation": {
     "Convert": "Конвертація",
     "Image": "Зображення",

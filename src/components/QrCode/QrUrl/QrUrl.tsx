@@ -12,6 +12,7 @@ import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
 import CoFormInput from "@/components/Inputs/CoFormInput/CoFormInput";
 import { FORM_FIELD } from "@/components/QrCode/constants";
+import QrcodeSettings from "@/components/QrCode/QrcodeSettings/QrcodeSettings";
 import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
 import { FormValues } from "@/components/QrCode/QrUrl/types";
 import validationSchema from "@/components/QrCode/QrUrl/validationSchema";
@@ -61,11 +62,11 @@ const QrUrl = () => {
       }}>
       <div
         className={
-          "flex w-full md:w-fit gap-4 md:gap-10 justify-center items-center p-3 md:p-6 flex-wrap"
+          "flex w-full md:w-fit gap-4 md:gap-10 justify-center items-start p-3 md:p-6 flex-wrap"
         }>
         <form
           className={
-            "flex w-full flex-col md:w-fit justify-center items-center gap-6 p-6 border-solid border-2 border-black rounded-md dark:border-white"
+            "flex w-full flex-col md:w-fit max-w-[436px] justify-center items-center gap-6 p-6 border-solid border-2 border-black rounded-md dark:border-cyan-900"
           }
           onSubmit={handleSubmit(onSubmit)}>
           <CoFormInput
@@ -75,7 +76,7 @@ const QrUrl = () => {
             error={errors?.[FORM_FIELD.URL]?.message}
             placeholder={t("url")}
           />
-
+          <QrcodeSettings options={options} setOptions={setOptions} />
           <CoButton type="submit" text={"Generate"} />
         </form>
 
