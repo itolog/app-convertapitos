@@ -15,6 +15,9 @@ module.exports = {
         header: "40px 1fr 170px",
         headerMobile: "80px 1fr",
       },
+      gridTemplateRows: {
+        main: "auto 1fr auto",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

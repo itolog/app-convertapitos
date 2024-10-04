@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Vollkorn } from "next/font/google";
 
+import AppHeader from "@/components/AppHeader/AppHeader";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -36,18 +37,19 @@ export default async function LocaleLayout({
   const locale = await getLocale();
   const messages = await getMessages();
 
-  const bodyClass = cl(vollkorn.className, "h-full");
+  const bodyClass = cl(vollkorn.className, "h-full min-h-screen");
 
   return (
-    <html lang={locale} className={"h-full"} suppressHydrationWarning>
+    <html lang={locale} className={"min-h-screen"} suppressHydrationWarning>
       <StoreProvider>
         <NextIntlClientProvider messages={messages}>
           <SessionProvider>
             <body className={bodyClass}>
               <BootstrapAppProvider>
-                <div className={"antialiased app-font h-full relative"}>
+                <div className={"antialiased grid grid-rows-main app-font min-h-screen relative"}>
                   <CoAppBar />
-                  <main className={"wrapper h-full pt-28"}>{children}</main>
+                  <main className={"wrapper pt-28"}>{children}</main>
+                  <AppHeader />
                   <Toaster richColors position="top-center" />
                 </div>
               </BootstrapAppProvider>
