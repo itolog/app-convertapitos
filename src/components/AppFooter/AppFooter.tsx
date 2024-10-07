@@ -9,11 +9,11 @@ import { Icons } from "@/components/ui/SvgIcon/types";
 const components: { title: Icons; href: string }[] = [
   {
     title: "git",
-    href: "https://github.com/itolog",
+    href: process.env.NEXT_PUBLIC_SOCIAL_GIT ?? "",
   },
   {
     title: "linkedin",
-    href: "https://www.linkedin.com/in/serhii-romanichenko-92788a148/",
+    href: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN ?? "",
   },
 ];
 
