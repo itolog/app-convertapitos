@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
 import QRCodeStyling, { Options } from "qr-code-styling";
@@ -10,6 +10,12 @@ import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 interface CoQrCodeProps {
   options: Options;
   fileName?: string;
+}
+
+declare global {
+  interface Navigator {
+    msSaveOrOpenBlob: (blobOrBase64: Blob | string, filename: string) => void;
+  }
 }
 
 const extOptions = [
@@ -40,15 +46,32 @@ const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
     setExt(value as FileExtension);
   };
 
-  const handleDownload = async () => {
+  const handleDownload = useCallback(async () => {
     try {
-      await qrCode.download({ name: fileName, extension: ext });
+      const blob = await qrCode.getRawData(ext);
+      if (!blob) return;
+
+      if (window.navigator?.msSaveOrOpenBlob) {
+        window.navigator?.msSaveOrOpenBlob(blob, fileName);
+      } else {
+        const a = document.createElement("a");
+        document.body.appendChild(a);
+        const url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+
+        setTimeout(() => {
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        }, 0);
+      }
     } catch (e) {
       handleError(e, {
         withSnackbar: true,
       });
     }
-  };
+  }, [ext, fileName, handleError, qrCode]);
 
   return (
     <div className={"qrcode-container"}>
