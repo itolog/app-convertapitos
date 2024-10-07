@@ -1,6 +1,5 @@
-import { Options } from "qr-code-styling";
-
 import { qrcodeDefaultOptions } from "@/components/QrCode/data/qrcode";
+import { Options } from "@/components/QrCode/types";
 
 export const qrcodeOptions: Options = {
   ...qrcodeDefaultOptions,

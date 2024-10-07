@@ -1,14 +1,16 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
-import QRCodeStyling, { Options } from "qr-code-styling";
+import QRCodeStyling from "qr-code-styling";
 import { FileExtension } from "qr-code-styling/lib/types";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 
+import { useAppSelector } from "@/store/hooks";
+import { getOptions } from "@/store/qrcode/selectors";
+
 interface CoQrCodeProps {
-  options: Options;
   fileName?: string;
 }
 
@@ -25,8 +27,9 @@ const extOptions = [
   { label: "svg", value: "svg" },
 ];
 
-const CoQrCode: FC<CoQrCodeProps> = ({ options, fileName = "qrcode" }) => {
+const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const options = useAppSelector(getOptions);
   const [qrCode] = useState<QRCodeStyling>(new QRCodeStyling(options));
   const [ext, setExt] = useState<FileExtension>("png");
   const { handleError } = useErrors();

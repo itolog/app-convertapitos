@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { Options } from "qr-code-styling";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
@@ -17,6 +16,9 @@ import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
 import { FormValues } from "@/components/QrCode/QrUrl/types";
 import validationSchema from "@/components/QrCode/QrUrl/validationSchema";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import { useAppDispatch } from "@/store/hooks";
+import { resetOptions, setOptions } from "@/store/qrcode/qrcodeSlice";
 
 const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), {
   ssr: false,
@@ -34,7 +36,7 @@ const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), 
 const initialValues = { [FORM_FIELD.URL]: qrcodeOptions.data };
 
 const QrUrl = () => {
-  const [options, setOptions] = useState<Options>(qrcodeOptions);
+  const dispatch = useAppDispatch();
   const t = useTranslations("Navigation");
 
   const {
@@ -47,13 +49,16 @@ const QrUrl = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setOptions((prevState) => {
-      return {
-        ...prevState,
-        data: data[FORM_FIELD.URL],
-      };
-    });
+    dispatch(setOptions({ data: data[FORM_FIELD.URL] }));
   };
+
+  useEffect(() => {
+    dispatch(setOptions({ data: qrcodeOptions.data }));
+
+    return () => {
+      dispatch(resetOptions());
+    };
+  }, [dispatch]);
 
   return (
     <CoCard
@@ -71,16 +76,17 @@ const QrUrl = () => {
           onSubmit={handleSubmit(onSubmit)}>
           <CoFormInput
             control={control}
+            label={t("url")}
             className={"w-full md:w-96"}
             name={FORM_FIELD.URL}
             error={errors?.[FORM_FIELD.URL]?.message}
-            placeholder={t("url")}
+            placeholder={"https://www.google.com/"}
           />
-          <QrcodeSettings options={options} setOptions={setOptions} />
+          <QrcodeSettings />
           <CoButton type="submit" text={"Generate"} />
         </form>
 
-        <CoQrCode options={options} />
+        <CoQrCode />
       </div>
     </CoCard>
   );

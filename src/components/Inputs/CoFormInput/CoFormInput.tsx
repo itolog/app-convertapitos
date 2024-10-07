@@ -10,6 +10,7 @@ import cl from "clsx";
 
 import FormError from "@/components/Errors/FormError/FormError";
 import { Input, InputProps } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface CoFormInputProps extends InputProps {
   label?: string;
@@ -18,7 +19,14 @@ interface CoFormInputProps extends InputProps {
   name: string;
 }
 
-const CoFormInput: FC<CoFormInputProps> = ({ error, className, name, control, ...props }) => {
+const CoFormInput: FC<CoFormInputProps> = ({
+  error,
+  className,
+  name = "input",
+  label,
+  control,
+  ...props
+}) => {
   const inputClass = cl({
     "border-slate-950 dark:border-cyan-500": !error,
     "border-red-500 focus-visible:ring-red-500": error,
@@ -26,11 +34,15 @@ const CoFormInput: FC<CoFormInputProps> = ({ error, className, name, control, ..
   });
 
   return (
-    <div className={"relative"}>
+    <div className={"relative flex flex-col gap-1"}>
+      <Label className={"font-semibold capitalize text-left"} htmlFor={name}>
+        {label}
+      </Label>
+
       <Controller
         name={name}
         control={control}
-        render={({ field }) => <Input className={inputClass} {...field} {...props} />}
+        render={({ field }) => <Input id={name} className={inputClass} {...field} {...props} />}
       />
 
       <FormError error={error} />

@@ -106,7 +106,7 @@
 }
 
 .select-border {
-    @apply border-indigo-800 dark:border-cyan-500;
+    @apply border-slate-950 dark:border-cyan-500;
 }
 
 .footer-shadow {

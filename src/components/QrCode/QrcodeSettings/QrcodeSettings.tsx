@@ -1,7 +1,6 @@
-import React, { FC, SetStateAction } from "react";
+import React from "react";
 
 import { useTranslations } from "next-intl";
-import { Options } from "qr-code-styling";
 
 import SettingItem from "@/components/QrCode/QrcodeSettings/components/SettingItem/SettingItem";
 import { settings } from "@/components/QrCode/QrcodeSettings/data/settings";
@@ -12,12 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-interface QrcodeSettingsProps {
-  setOptions: (value: SetStateAction<Options>) => void;
-  options: Options;
-}
-
-const QrcodeSettings: FC<QrcodeSettingsProps> = ({ setOptions, options }) => {
+const QrcodeSettings = () => {
   const t = useTranslations();
 
   return (
@@ -27,14 +21,7 @@ const QrcodeSettings: FC<QrcodeSettingsProps> = ({ setOptions, options }) => {
         <AccordionContent>
           <div className={"grid grid-cols-1 md:grid-cols-2 gap-5"}>
             {settings.map((item) => {
-              return (
-                <SettingItem
-                  key={item.label}
-                  options={options}
-                  item={item}
-                  setOptions={setOptions}
-                />
-              );
+              return <SettingItem key={item.id} item={item} />;
             })}
           </div>
         </AccordionContent>

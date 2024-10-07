@@ -1,63 +1,57 @@
-import React, { FC, SetStateAction, useCallback } from "react";
+import React, { FC, useCallback } from "react";
 
 import cl from "clsx";
 import { useTranslations } from "next-intl";
-import { Options } from "qr-code-styling";
+import { DotType } from "qr-code-styling/lib/types";
 
 import CoColorPicker from "@/components/Inputs/CoColorPicker/CoColorPicker";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { OPTION_KEYS } from "@/components/QrCode/data/qrcode";
 import { coSelectOptions } from "@/components/QrCode/QrcodeSettings/data/settings";
-import { SettingsOption } from "@/components/QrCode/QrcodeSettings/types";
+import { SettingsOption } from "@/components/QrCode/types";
+
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { updateColor, updateType } from "@/store/qrcode/qrcodeSlice";
+import { getOptions } from "@/store/qrcode/selectors";
 
 interface SettingItemProps {
   item: SettingsOption;
-  setOptions: (value: SetStateAction<Options>) => void;
-  options: Options;
 }
 
-const SettingItem: FC<SettingItemProps> = ({ item, options, setOptions }) => {
+const SettingItem: FC<SettingItemProps> = ({ item }) => {
   const t = useTranslations();
+  const dispatch = useAppDispatch();
+  const options = useAppSelector(getOptions);
 
   const handleChangeColor = useCallback(
     (color: string) => {
-      setOptions((prevState) => {
-        return {
-          ...prevState,
-          [item.label]: {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            ...prevState[item.label],
-            color,
-          },
-        };
-      });
+      dispatch(
+        updateColor({
+          id: item.id,
+          color: color,
+        }),
+      );
     },
-    [item, setOptions],
+    [dispatch, item.id],
   );
 
   const handleChangeType = useCallback(
     (type: string) => {
-      setOptions((prevState) => {
-        return {
-          ...prevState,
-          [item.label]: {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            ...prevState[item.label],
-            type,
-          },
-        };
-      });
+      dispatch(
+        updateType({
+          id: item.id,
+          type: type as DotType,
+        }),
+      );
     },
-    [item, setOptions],
+    [dispatch, item.id],
   );
 
   return (
-    <section key={item.label}>
-      <h2 className={"font-semibold capitalize"}>{t(item.label)}</h2>
+    <section key={item.id}>
+      <h2 className={"font-semibold capitalize"}>{t(item.id)}</h2>
       <ul className={"flex gap-5 items-center p-2"}>
-        {Object.keys(item?.settings ?? {}).map((option) => {
+        {Object.keys(item ?? {}).map((option) => {
           return (
             <li
               key={option}
@@ -66,9 +60,7 @@ const SettingItem: FC<SettingItemProps> = ({ item, options, setOptions }) => {
               })}>
               {option === OPTION_KEYS.COLOR && (
                 <CoColorPicker
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-expect-error
-                  color={options[item.label].color}
+                  color={options[item.id].color}
                   handleChangeColor={handleChangeColor}
                 />
               )}
