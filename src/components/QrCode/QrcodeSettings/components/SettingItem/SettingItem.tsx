@@ -18,7 +18,7 @@ interface SettingItemProps {
   item: SettingsOption;
 }
 
-const SettingItem: FC<SettingItemProps> = ({ item }) => {
+const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
   const t = useTranslations();
   const dispatch = useAppDispatch();
   const options = useAppSelector(getOptions);
@@ -27,31 +27,31 @@ const SettingItem: FC<SettingItemProps> = ({ item }) => {
     (color: string) => {
       dispatch(
         updateColor({
-          id: item.id,
+          id,
           color: color,
         }),
       );
     },
-    [dispatch, item.id],
+    [dispatch, id],
   );
 
   const handleChangeType = useCallback(
     (type: string) => {
       dispatch(
         updateType({
-          id: item.id,
+          id,
           type: type as DotType,
         }),
       );
     },
-    [dispatch, item.id],
+    [dispatch, id],
   );
 
   return (
-    <section key={item.id}>
-      <h2 className={"font-semibold capitalize"}>{t(item.id)}</h2>
+    <section key={id}>
+      <h2 className={"font-semibold capitalize"}>{t(id)}</h2>
       <ul className={"flex gap-5 items-center p-2"}>
-        {Object.keys(item ?? {}).map((option) => {
+        {Object.keys(items ?? {}).map((option) => {
           return (
             <li
               key={option}
@@ -59,15 +59,12 @@ const SettingItem: FC<SettingItemProps> = ({ item }) => {
                 "flex-1": option === OPTION_KEYS.TYPE,
               })}>
               {option === OPTION_KEYS.COLOR && (
-                <CoColorPicker
-                  color={options[item.id].color}
-                  handleChangeColor={handleChangeColor}
-                />
+                <CoColorPicker color={options[id].color} handleChangeColor={handleChangeColor} />
               )}
               {option === OPTION_KEYS.TYPE && (
                 <CoSelect
                   classes={{
-                    trigger: "w-full overflow-hidden",
+                    root: "w-full overflow-hidden",
                   }}
                   placeholder={"Type"}
                   options={coSelectOptions}

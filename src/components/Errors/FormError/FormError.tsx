@@ -2,6 +2,8 @@ import { FC } from "react";
 
 import cl from "clsx";
 
+import { InputError } from "@/types/inputs";
+
 import CoTextWithTooltip from "@/components/ui/CoTextWithTooltip/CoTextWithTooltip";
 
 interface Classes {
@@ -10,7 +12,7 @@ interface Classes {
 }
 
 interface FormErrorProps {
-  error?: string;
+  error?: InputError;
   classes?: Classes;
 }
 

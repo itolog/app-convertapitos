@@ -8,13 +8,15 @@ import { Control, TContext, TFieldValues } from "react-hook-form/dist/types/form
 
 import cl from "clsx";
 
+import { InputError } from "@/types/inputs";
+
 import FormError from "@/components/Errors/FormError/FormError";
 import { Input, InputProps } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 interface CoFormInputProps extends InputProps {
   label?: string;
-  error?: string;
+  error?: InputError;
   control: Control<TFieldValues, TContext>;
   name: string;
 }

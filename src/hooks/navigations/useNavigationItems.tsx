@@ -19,7 +19,7 @@ interface ReturnType {
 }
 
 const useNavigationItems = (): ReturnType => {
-  const t = useTranslations("Navigation");
+  const t = useTranslations();
 
   const navigations = useMemo(() => {
     return [
@@ -58,6 +58,10 @@ const useNavigationItems = (): ReturnType => {
           {
             label: t("phone"),
             href: "/qrcode/phone",
+          },
+          {
+            label: t("wifi"),
+            href: "/qrcode/wifi",
           },
         ],
       },

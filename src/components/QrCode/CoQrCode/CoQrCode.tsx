@@ -30,7 +30,7 @@ const extOptions = [
 const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   const ref = useRef<HTMLDivElement>(null);
   const options = useAppSelector(getOptions);
-  const [qrCode] = useState<QRCodeStyling>(new QRCodeStyling(options));
+  const [qrCode] = useState<QRCodeStyling>(new QRCodeStyling());
   const [ext, setExt] = useState<FileExtension>("png");
   const { handleError } = useErrors();
 
@@ -41,7 +41,7 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   }, [qrCode, ref]);
 
   useEffect(() => {
-    if (!qrCode) return;
+    // if (!qrCode) return;
     qrCode.update(options);
   }, [qrCode, options]);
 

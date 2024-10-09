@@ -24,10 +24,10 @@ export const qrcodeDefaultOptions: Options = {
     errorCorrectionLevel: "Q",
   },
   // imageOptions: {
+  //   id: "imageOptions",
   //   [OPTION_KEYS.HIDE_BG_DOTS]: true,
   //   [OPTION_KEYS.IMAGE_SIZE]: 0.4,
   //   [OPTION_KEYS.MARGIN]: 20,
-  //   crossOrigin: "anonymous",
   // },
   dotsOptions: {
     id: "dotsOptions",
