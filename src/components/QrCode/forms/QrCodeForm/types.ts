@@ -1,7 +1,9 @@
 import { HTMLInputTypeAttribute } from "react";
 import { DefaultValues } from "react-hook-form";
 
-import { ZodObject } from "zod";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { ZodRawShape } from "zod/lib/types";
 
 import { Option } from "@/components/Inputs/CoSelect/types";
 
@@ -23,7 +25,7 @@ interface Classes {
 
 export interface QrCodeFormProps<FormValues> {
   initialValues: DefaultValues<FormValues> | AsyncDefaultValues<FormValues>;
-  validationSchema: ZodObject<any>;
+  validationSchema: ZodRawShape;
   onSubmit: (data: FormValues) => void;
   formFields: FormItem[];
   classes?: Classes;
