@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
 import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
-import { ThemeSwitch } from "@/components/ThemeSwitch/ThemeSwitch";
+import { ThemeSwitch } from "@/components/Inputs/ThemeSwitch/ThemeSwitch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,

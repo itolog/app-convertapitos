@@ -1,7 +1,9 @@
 import React from "react";
 
+import QrEmail from "@/components/QrCode/QrEmail/QrEmail";
+
 const Page = () => {
-  return <div>email</div>;
+  return <QrEmail />;
 };
 
 export default Page;

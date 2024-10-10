@@ -1,7 +1,9 @@
 import React from "react";
 
+import QrText from "@/components/QrCode/QrText/QrText";
+
 const Page = () => {
-  return <div>text</div>;
+  return <QrText />;
 };
 
 export default Page;

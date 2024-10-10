@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
+import FormError from "@/components/Errors/FormError/FormError";
 import CoFormInput from "@/components/Inputs/CoFormInput/CoFormInput";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { QrCodeFormProps } from "@/components/QrCode/forms/QrCodeForm/types";
@@ -18,11 +19,12 @@ import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Textarea } from "@/components/ui/textarea";
 
 import { useAppDispatch } from "@/store/hooks";
 import { resetOptions, setOptions } from "@/store/qrcode/qrcodeSlice";
 
-const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), {
+const CoQrCode = dynamic(() => import("@/components/QrCode/components/CoQrCode/CoQrCode"), {
   ssr: false,
   loading: () => (
     <div className={"qrcode-container"}>
@@ -63,7 +65,7 @@ function QrCodeForm<FormValues extends FieldValues>({
     classes?.form,
   );
 
-  const fieldsContainerClasses = cl("grid", classes?.fieldsContainer);
+  const fieldsContainerClasses = cl("grid w-full", classes?.fieldsContainer);
 
   return (
     <CoCard
@@ -78,6 +80,26 @@ function QrCodeForm<FormValues extends FieldValues>({
           <form className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
             <div className={fieldsContainerClasses}>
               {formFields.map((item) => {
+                if (item.type === "textarea") {
+                  return (
+                    <FormField
+                      key={item.name}
+                      control={form.control}
+                      name={item.name as Path<FormValues>}
+                      render={({ field, formState }) => (
+                        <FormItem className={"relative"}>
+                          <Textarea
+                            className={"select-border"}
+                            value={field.value}
+                            placeholder={item.placeholder}
+                            onChange={field.onChange}
+                          />
+                          <FormError error={formState.errors?.[item.name]?.message} />
+                        </FormItem>
+                      )}
+                    />
+                  );
+                }
                 if (item.type === "checkbox") {
                   return (
                     <FormField
@@ -85,7 +107,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       control={form.control}
                       name={item.name as Path<FormValues>}
                       render={({ field }) => (
-                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow">
+                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow dark:shadow-cyan-500">
                           <FormControl>
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>
@@ -121,7 +143,9 @@ function QrCodeForm<FormValues extends FieldValues>({
                     key={item.name}
                     control={form.control}
                     label={t(item.label)}
-                    className={item.className}
+                    classes={{
+                      input: item.className,
+                    }}
                     name={item.name}
                     type={item.type}
                     error={form.formState.errors?.[item.name]?.message}
