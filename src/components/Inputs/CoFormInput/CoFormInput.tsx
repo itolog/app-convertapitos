@@ -26,6 +26,7 @@ const CoFormInput: FC<CoFormInputProps> = ({
   className,
   name = "input",
   label,
+  type = "text",
   control,
   ...props
 }) => {
@@ -44,7 +45,9 @@ const CoFormInput: FC<CoFormInputProps> = ({
       <Controller
         name={name}
         control={control}
-        render={({ field }) => <Input id={name} className={inputClass} {...field} {...props} />}
+        render={({ field }) => (
+          <Input id={name} className={inputClass} type={type} {...field} {...props} />
+        )}
       />
 
       <FormError error={error} />

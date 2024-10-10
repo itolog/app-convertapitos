@@ -123,6 +123,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                     label={t(item.label)}
                     className={item.className}
                     name={item.name}
+                    type={item.type}
                     error={form.formState.errors?.[item.name]?.message}
                     placeholder={item.placeholder}
                   />
@@ -140,5 +141,7 @@ function QrCodeForm<FormValues extends FieldValues>({
     </CoCard>
   );
 }
+
+QrCodeForm.displayName = "QrCodeForm";
 
 export default QrCodeForm;
