@@ -5,4 +5,5 @@ export const FORM_FIELD = {
   PASSWORD: "password",
   ENCRYPTION: "encryption",
   WIFI_HIDDEN: "wifi_hidden",
+  EMAIL: "email",
 } as const;

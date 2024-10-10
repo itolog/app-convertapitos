@@ -63,7 +63,7 @@ function QrCodeForm<FormValues extends FieldValues>({
     classes?.form,
   );
 
-  const fieldsContainerClasses = cl("grid", classes?.fieldsContainer);
+  const fieldsContainerClasses = cl("grid w-full", classes?.fieldsContainer);
 
   return (
     <CoCard
@@ -85,7 +85,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       control={form.control}
                       name={item.name as Path<FormValues>}
                       render={({ field }) => (
-                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow">
+                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow dark:shadow-cyan-500">
                           <FormControl>
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>
@@ -121,7 +121,9 @@ function QrCodeForm<FormValues extends FieldValues>({
                     key={item.name}
                     control={form.control}
                     label={t(item.label)}
-                    className={item.className}
+                    classes={{
+                      input: item.className,
+                    }}
                     name={item.name}
                     error={form.formState.errors?.[item.name]?.message}
                     placeholder={item.placeholder}
