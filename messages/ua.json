@@ -37,5 +37,10 @@
     "Sign In": "Увійти",
     "Sign Out": "Вийти",
     "Continue with": "Продовжити з {provider}"
+  },
+  "Theme": {
+    "Light": "Світла",
+    "Dark": "Темна",
+    "System": "Система"
   }
 }

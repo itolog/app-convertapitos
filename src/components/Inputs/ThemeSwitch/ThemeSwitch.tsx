@@ -3,18 +3,22 @@
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
+import { items } from "@/components/Inputs/ThemeSwitch/data/items";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeSwitch() {
   const { setTheme } = useTheme();
+  const t = useTranslations("Theme");
 
   return (
     <DropdownMenu>
@@ -26,9 +30,16 @@ export function ThemeSwitch() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className={"select-border"} align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+        {items.map((item) => {
+          return (
+            <div key={item.label}>
+              <DropdownMenuItem className={item.className} onClick={() => setTheme(item.value)}>
+                {t(item.label)}
+              </DropdownMenuItem>
+              {item.divider && <DropdownMenuSeparator />}
+            </div>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );

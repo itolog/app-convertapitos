@@ -14,7 +14,7 @@ const SignInButton: FC<SignInButtonProps> = ({ onClick }) => {
   const router = useRouter();
 
   const handleSignIn = useCallback(async () => {
-    router.push("signin");
+    router.push("/signin");
 
     if (onClick) {
       onClick();
