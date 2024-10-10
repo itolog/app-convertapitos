@@ -17,14 +17,7 @@ import { QrCodeFormProps } from "@/components/QrCode/forms/QrCodeForm/types";
 import QrcodeSettings from "@/components/QrCode/QrcodeSettings/QrcodeSettings";
 import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 
