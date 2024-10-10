@@ -10,19 +10,28 @@ import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
+import FormError from "@/components/Errors/FormError/FormError";
 import CoFormInput from "@/components/Inputs/CoFormInput/CoFormInput";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { QrCodeFormProps } from "@/components/QrCode/forms/QrCodeForm/types";
 import QrcodeSettings from "@/components/QrCode/QrcodeSettings/QrcodeSettings";
 import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Textarea } from "@/components/ui/textarea";
 
 import { useAppDispatch } from "@/store/hooks";
 import { resetOptions, setOptions } from "@/store/qrcode/qrcodeSlice";
 
-const CoQrCode = dynamic(() => import("@/components/QrCode/CoQrCode/CoQrCode"), {
+const CoQrCode = dynamic(() => import("@/components/QrCode/components/CoQrCode/CoQrCode"), {
   ssr: false,
   loading: () => (
     <div className={"qrcode-container"}>
@@ -78,6 +87,26 @@ function QrCodeForm<FormValues extends FieldValues>({
           <form className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
             <div className={fieldsContainerClasses}>
               {formFields.map((item) => {
+                if (item.type === "textarea") {
+                  return (
+                    <FormField
+                      key={item.name}
+                      control={form.control}
+                      name={item.name as Path<FormValues>}
+                      render={({ field, formState }) => (
+                        <FormItem className={"relative"}>
+                          <Textarea
+                            className={"select-border"}
+                            value={field.value}
+                            placeholder={item.placeholder}
+                            onChange={field.onChange}
+                          />
+                          <FormError error={formState.errors?.[item.name]?.message} />
+                        </FormItem>
+                      )}
+                    />
+                  );
+                }
                 if (item.type === "checkbox") {
                   return (
                     <FormField
