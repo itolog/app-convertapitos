@@ -7,6 +7,6 @@ export const formFields: FormItem[] = [
     placeholder: "text",
     label: "text",
     type: "textarea",
-    className: "w-full md:w-96",
+    className: "w-full md:w-96 select-border",
   },
 ];

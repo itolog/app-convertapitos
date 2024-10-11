@@ -47,7 +47,7 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
     classes?.text,
   );
 
-  const tooltipClass = cl(classes?.tooltip);
+  const tooltipClass = cl("break-words", classes?.tooltip);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(([entry]) => {

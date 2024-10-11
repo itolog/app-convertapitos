@@ -89,7 +89,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       render={({ field, formState }) => (
                         <FormItem className={"relative"}>
                           <Textarea
-                            className={"select-border"}
+                            className={item.className}
                             value={field.value}
                             placeholder={item.placeholder}
                             onChange={field.onChange}
