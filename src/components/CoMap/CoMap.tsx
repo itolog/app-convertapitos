@@ -1,7 +1,7 @@
 "use client";
 
-import React, { FC, useEffect } from "react";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import React, { FC } from "react";
+import { MapContainer } from "react-leaflet";
 
 import "leaflet-defaulticon-compatibility";
 

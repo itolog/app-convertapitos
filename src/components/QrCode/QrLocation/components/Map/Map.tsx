@@ -45,7 +45,7 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
   }, [latitude, longitude, setValue]);
 
   return (
-    <div className={"flex flex-col gap-2 h-52"}>
+    <div className={"relative flex flex-col z-0 gap-2 h-52"}>
       <div className={"flex w-full justify-end"}>
         <CoButton variant={"secondary"} text={"set my position"} onClick={handleSetMyPos} />
       </div>
