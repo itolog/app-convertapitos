@@ -103,10 +103,16 @@
     .qrcode-container {
         @apply flex flex-col gap-4 items-center rounded-md shadow-2xl dark:shadow-indigo-500/50 p-6
     }
+
+
 }
 
 .select-border {
     @apply border-slate-950 dark:border-cyan-500;
+}
+
+.leaflet-bottom.leaflet-right {
+    display: none;
 }
 
 .footer-shadow {

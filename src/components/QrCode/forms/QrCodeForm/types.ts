@@ -1,5 +1,5 @@
-import { HTMLInputTypeAttribute } from "react";
-import { DefaultValues } from "react-hook-form";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
+import { DefaultValues, FieldValues, UseFormReturn } from "react-hook-form";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -24,10 +24,11 @@ interface Classes {
   fieldsContainer?: string;
 }
 
-export interface QrCodeFormProps<FormValues> {
+export interface QrCodeFormProps<FormValues extends FieldValues> {
   initialValues: DefaultValues<FormValues> | AsyncDefaultValues<FormValues>;
   validationSchema: ZodRawShape;
   onSubmit: (data: FormValues) => void;
   formFields: FormItem[];
   classes?: Classes;
+  renderChildren?: (props: UseFormReturn<FormValues>) => ReactNode;
 }

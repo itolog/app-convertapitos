@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 import { FieldValues, Path, PathValue, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,7 +44,8 @@ function QrCodeForm<FormValues extends FieldValues>({
   onSubmit,
   formFields,
   classes,
-}: QrCodeFormProps<FormValues>) {
+  renderChildren,
+}: PropsWithChildren<QrCodeFormProps<FormValues>>) {
   const dispatch = useAppDispatch();
   const t = useTranslations();
 
@@ -90,7 +91,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       render={({ field, formState }) => (
                         <FormItem className={"relative"}>
                           <CoPhoneInput value={field.value} onChange={field.onChange} />
-                          <FormError error={formState.errors?.[item.name]?.message} />
+                          <FormError error={formState.errors?.[item.name]?.message?.toString()} />
                         </FormItem>
                       )}
                     />
@@ -111,7 +112,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                             placeholder={item.placeholder}
                             onChange={field.onChange}
                           />
-                          <FormError error={formState.errors?.[item.name]?.message} />
+                          <FormError error={formState.errors?.[item.name]?.message?.toString()} />
                         </FormItem>
                       )}
                     />
@@ -167,12 +168,12 @@ function QrCodeForm<FormValues extends FieldValues>({
                     name={item.name}
                     type={item.type}
                     error={form.formState.errors?.[item.name]?.message}
-                    placeholder={item.rawPlaceholder ? item.placeholder : t(item.placeholder)}
+                    placeholder={item.rawPlaceholder ? item.placeholder : t(item?.placeholder)}
                   />
                 );
               })}
             </div>
-
+            {renderChildren && <div className={"w-full"}>{renderChildren(form)}</div>}
             <QrcodeSettings />
             <CoButton type="submit" text={"Generate"} />
           </form>

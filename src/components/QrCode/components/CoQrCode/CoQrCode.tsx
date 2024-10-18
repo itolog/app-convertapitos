@@ -16,7 +16,7 @@ interface CoQrCodeProps {
 
 declare global {
   interface Navigator {
-    msSaveOrOpenBlob: (blobOrBase64: Blob | string, filename: string) => void;
+    msSaveOrOpenBlob: (blobOrBase64: Blob | Buffer, filename: string) => void;
   }
 }
 
@@ -51,7 +51,7 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
 
   const handleDownload = useCallback(async () => {
     try {
-      const blob = await qrCode.getRawData(ext);
+      const blob = (await qrCode.getRawData(ext)) as Blob;
       if (!blob) return;
 
       if (window.navigator?.msSaveOrOpenBlob) {

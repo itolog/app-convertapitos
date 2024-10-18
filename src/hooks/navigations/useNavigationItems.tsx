@@ -63,6 +63,10 @@ const useNavigationItems = (): ReturnType => {
             label: t("wifi"),
             href: "/qrcode/wifi",
           },
+          {
+            label: t("location"),
+            href: "/qrcode/location",
+          },
         ],
       },
     ];
