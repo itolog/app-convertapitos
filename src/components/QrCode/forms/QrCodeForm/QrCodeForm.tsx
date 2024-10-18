@@ -12,6 +12,7 @@ import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
 import FormError from "@/components/Errors/FormError/FormError";
 import CoFormInput from "@/components/Inputs/CoFormInput/CoFormInput";
+import CoPhoneInput from "@/components/Inputs/CoPhoneInput/CoPhoneInput";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { QrCodeFormProps } from "@/components/QrCode/forms/QrCodeForm/types";
 import QrcodeSettings from "@/components/QrCode/QrcodeSettings/QrcodeSettings";
@@ -80,6 +81,22 @@ function QrCodeForm<FormValues extends FieldValues>({
           <form className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
             <div className={fieldsContainerClasses}>
               {formFields.map((item) => {
+                if (item.type === "tel") {
+                  return (
+                    <FormField
+                      key={item.name}
+                      control={form.control}
+                      name={item.name as Path<FormValues>}
+                      render={({ field, formState }) => (
+                        <FormItem className={"relative"}>
+                          <CoPhoneInput value={field.value} onChange={field.onChange} />
+                          <FormError error={formState.errors?.[item.name]?.message} />
+                        </FormItem>
+                      )}
+                    />
+                  );
+                }
+
                 if (item.type === "textarea") {
                   return (
                     <FormField
@@ -138,6 +155,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                     />
                   );
                 }
+
                 return (
                   <CoFormInput
                     key={item.name}
@@ -149,7 +167,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                     name={item.name}
                     type={item.type}
                     error={form.formState.errors?.[item.name]?.message}
-                    placeholder={item.placeholder}
+                    placeholder={item.rawPlaceholder ? item.placeholder : t(item.placeholder)}
                   />
                 );
               })}

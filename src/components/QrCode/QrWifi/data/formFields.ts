@@ -4,7 +4,7 @@ import { FormItem } from "@/components/QrCode/forms/QrCodeForm/types";
 export const formFields: FormItem[] = [
   {
     name: FORM_FIELD.SSID,
-    placeholder: "SSID",
+    placeholder: "ssid",
     label: "ssid",
   },
   {

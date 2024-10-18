@@ -3,10 +3,10 @@ import { FormItem } from "@/components/QrCode/forms/QrCodeForm/types";
 
 export const formFields: FormItem[] = [
   {
-    name: FORM_FIELD.URL,
-    placeholder: "https://www.google.com/",
-    label: "url",
-    className: "w-full md:w-96",
-    rawPlaceholder: true,
+    name: FORM_FIELD.PHONE,
+    placeholder: "Enter phone number",
+    label: "phone",
+    type: "tel",
+    className: "w-full md:w-96 select-border",
   },
 ];

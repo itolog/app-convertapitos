@@ -16,6 +16,7 @@ export interface FormItem {
   type?: HTMLInputTypeAttribute | "co-select" | undefined;
   className?: string;
   options?: Option[];
+  rawPlaceholder?: boolean;
 }
 
 interface Classes {

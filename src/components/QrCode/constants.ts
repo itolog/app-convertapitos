@@ -6,4 +6,5 @@ export const FORM_FIELD = {
   ENCRYPTION: "encryption",
   WIFI_HIDDEN: "wifi_hidden",
   EMAIL: "email",
+  PHONE: "phone",
 } as const;

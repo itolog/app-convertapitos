@@ -1,7 +1,9 @@
 import React from "react";
 
+import QrPhone from "@/components/QrCode/QrPhone/QrPhone";
+
 const Page = () => {
-  return <div>phone</div>;
+  return <QrPhone />;
 };
 
 export default Page;
