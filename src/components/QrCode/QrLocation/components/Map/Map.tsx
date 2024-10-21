@@ -15,7 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const CoMap = dynamic(() => import("@/components/CoMap/CoMap"), {
   ssr: false,
-  loading: () => <Skeleton className={"rounded-none w-full h-92"} />,
+  loading: () => <Skeleton className={"rounded-none w-full h-80"} />,
 });
 
 interface MapProps<FormValues extends FieldValues> {
@@ -77,13 +77,15 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
   );
 
   return (
-    <div className={"relative flex flex-col z-0 gap-2 h-96"}>
+    <div className={"relative flex flex-col z-0 gap-4"}>
       <CoPlaces width={"w-72 md:w-96"} onChange={handleChangeSearch} />
       <div className={"flex w-full justify-end"}>
         <CoButton variant={"secondary"} text={"set my position"} onClick={handleSetMyPos} />
       </div>
 
-      <CoMap onChange={handleChange} position={position} />
+      <div className={"h-80"}>
+        <CoMap onChange={handleChange} position={position} />
+      </div>
     </div>
   );
 }

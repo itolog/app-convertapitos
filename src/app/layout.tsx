@@ -48,7 +48,7 @@ export default async function LocaleLayout({
               <BootstrapAppProvider>
                 <div className={"antialiased grid grid-rows-main app-font min-h-screen relative"}>
                   <CoAppBar />
-                  <main className={"w-full wrapper pt-28"}>{children}</main>
+                  <main className={"w-full wrapper pt-14 md:pt-20"}>{children}</main>
                   <AppFooter />
                   <Toaster richColors position="top-center" />
                 </div>
