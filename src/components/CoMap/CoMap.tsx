@@ -11,14 +11,14 @@ import { CoMapProps } from "@/components/CoMap/types";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet/dist/leaflet.css";
 
-const CoMap: FC<CoMapProps> = ({ position, zoom = 13 }) => {
+const CoMap: FC<CoMapProps> = ({ position, zoom = 13, onChange }) => {
   return (
     <MapContainer
       style={{ height: "100%", width: "100%" }}
       center={position}
       zoom={zoom}
       scrollWheelZoom={false}>
-      <CoMapComponent position={position} />
+      <CoMapComponent onChange={onChange} position={position} />
     </MapContainer>
   );
 };
