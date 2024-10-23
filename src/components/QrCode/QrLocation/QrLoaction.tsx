@@ -23,8 +23,8 @@ const QrLocation = () => {
   const dispatch = useAppDispatch();
 
   const handleSubmit = useCallback(
-    ({ latitude, longitude }: FormValues) => {
-      dispatch(setOptions({ data: `geo:${latitude},${longitude}` }));
+    ({ lat, lng }: FormValues) => {
+      dispatch(setOptions({ data: `geo:${lat},${lng}` }));
     },
     [dispatch],
   );
@@ -40,8 +40,8 @@ const QrLocation = () => {
           fieldsContainer: "gap-x-8 gap-y-4 grid-cols-1 w-full md:grid-cols-2 items-end",
         }}
         renderChildren={({ watch, setValue }) => {
-          const lat = watch("latitude");
-          const long = watch("longitude");
+          const lat = watch("lat");
+          const long = watch("lng");
 
           return <Map<FormValues> lat={lat} long={long} setValue={setValue} />;
         }}

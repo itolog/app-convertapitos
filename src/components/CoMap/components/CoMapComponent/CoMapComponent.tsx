@@ -15,7 +15,7 @@ const CoMapComponent: FC<Omit<CoMapProps, "zoom">> = ({ position, onChange }) =>
       if (e?.target?._animateToCenter && onChange) {
         onChange({
           lat: e.target._animateToCenter.lat,
-          long: e.target._animateToCenter.lng,
+          lng: e.target._animateToCenter.lng,
         });
       }
     },

@@ -23,9 +23,12 @@ interface MapProps<FormValues extends FieldValues> {
   long: LatLngExpression;
   setValue: UseFormSetValue<FormValues>;
 }
-// TODO: fix typing
+
 function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<FormValues>) {
-  const [position, setPosition] = useState<LatLong>([mapConfig.INIT_LAT, mapConfig.INIT_LONG]);
+  const [position, setPosition] = useState<LatLngExpression>([
+    mapConfig.INIT_LAT,
+    mapConfig.INIT_LONG,
+  ]);
   const { longitude, latitude } = useGeolocation();
 
   useEffect(() => {
@@ -34,20 +37,8 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
     }
   }, [lat, long]);
 
-  const handleSetMyPos = useCallback(() => {
-    setValue(
-      FORM_FIELD.LATITUDE as Path<FormValues>,
-      latitude as PathValue<FormValues, Path<FormValues>>,
-    );
-
-    setValue(
-      FORM_FIELD.LONGITUDE as Path<FormValues>,
-      longitude as PathValue<FormValues, Path<FormValues>>,
-    );
-  }, [latitude, longitude, setValue]);
-
-  const handleChange = useCallback(
-    ({ lat, long }: { lat: LatLngExpression; long: LatLngExpression }) => {
+  const setPositionValues = useCallback(
+    ({ lat, lng }: LatLong) => {
       setValue(
         FORM_FIELD.LATITUDE as Path<FormValues>,
         lat as PathValue<FormValues, Path<FormValues>>,
@@ -55,25 +46,39 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
 
       setValue(
         FORM_FIELD.LONGITUDE as Path<FormValues>,
-        long as PathValue<FormValues, Path<FormValues>>,
+        lng as PathValue<FormValues, Path<FormValues>>,
       );
     },
     [setValue],
   );
 
+  const handleSetMyPos = useCallback(() => {
+    if (latitude && longitude) {
+      setPositionValues({
+        lat: latitude,
+        lng: longitude,
+      });
+    }
+  }, [latitude, longitude, setPositionValues]);
+
+  const handleChange = useCallback(
+    ({ lat, lng }: LatLong) => {
+      setPositionValues({
+        lat,
+        lng,
+      });
+    },
+    [setPositionValues],
+  );
+
   const handleChangeSearch = useCallback(
     (data: Item) => {
-      setValue(
-        FORM_FIELD.LATITUDE as Path<FormValues>,
-        data.y as PathValue<FormValues, Path<FormValues>>,
-      );
-
-      setValue(
-        FORM_FIELD.LONGITUDE as Path<FormValues>,
-        data.x as PathValue<FormValues, Path<FormValues>>,
-      );
+      setPositionValues({
+        lat: data.y,
+        lng: data.x,
+      });
     },
-    [setValue],
+    [setPositionValues],
   );
 
   return (

@@ -7,6 +7,6 @@ export const FORM_FIELD = {
   WIFI_HIDDEN: "wifi_hidden",
   EMAIL: "email",
   PHONE: "phone",
-  LATITUDE: "latitude",
-  LONGITUDE: "longitude",
+  LATITUDE: "lat",
+  LONGITUDE: "lng",
 } as const;
