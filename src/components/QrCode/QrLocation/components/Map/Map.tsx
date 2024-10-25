@@ -61,16 +61,6 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
     }
   }, [latitude, longitude, setPositionValues]);
 
-  const handleChange = useCallback(
-    ({ lat, lng }: LatLong) => {
-      setPositionValues({
-        lat,
-        lng,
-      });
-    },
-    [setPositionValues],
-  );
-
   const handleChangeSearch = useCallback(
     (data: Item) => {
       setPositionValues({
@@ -89,7 +79,7 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
       </div>
 
       <div className={"h-80"}>
-        <CoMap onChange={handleChange} position={position} />
+        <CoMap position={position} />
       </div>
     </div>
   );
