@@ -28,12 +28,7 @@ export const metadata: Metadata = {
   keywords: ["File", "generation", "conversion image", "text-to-speech", "qrcode generation"],
 };
 
-export default async function LocaleLayout({
-  children,
-}: {
-  children: ReactNode;
-  params: { locale: string };
-}) {
+export default async function LocaleLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
 
