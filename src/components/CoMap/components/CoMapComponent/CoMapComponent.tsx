@@ -1,25 +1,14 @@
 import React, { FC, useEffect } from "react";
-import { Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import { Marker, Popup, TileLayer, useMap } from "react-leaflet";
 
 import { CoMapProps } from "@/components/CoMap/types";
 
-const CoMapComponent: FC<Omit<CoMapProps, "zoom">> = ({ position, onChange }) => {
+const CoMapComponent: FC<Omit<CoMapProps, "zoom">> = ({ position }) => {
   const map = useMap();
 
   useEffect(() => {
     map.setView(position);
   }, [position, map]);
-
-  useMapEvents({
-    move: (e) => {
-      if (e?.target?._animateToCenter && onChange) {
-        onChange({
-          lat: e.target._animateToCenter.lat,
-          lng: e.target._animateToCenter.lng,
-        });
-      }
-    },
-  });
 
   return (
     <>
