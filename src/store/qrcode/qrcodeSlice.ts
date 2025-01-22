@@ -13,7 +13,7 @@ export const qrcodeSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setOptions: (state, action: PayloadAction<Options>) => {
+    setOptions: (state, action: PayloadAction<Partial<Options>>) => {
       state.options = {
         ...state.options,
         ...action.payload,

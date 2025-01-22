@@ -57,10 +57,10 @@ export type Options = {
   image?: string;
   qrOptions?: QrOptions;
   imageOptions?: ImageOptions;
-  dotsOptions?: DotsOptions;
-  cornersSquareOptions?: CornersSquareOptions;
-  cornersDotOptions?: CornersDotOptions;
-  backgroundOptions?: BackgroundOptions;
+  dotsOptions: DotsOptions;
+  cornersSquareOptions: CornersSquareOptions;
+  cornersDotOptions: CornersDotOptions;
+  backgroundOptions: BackgroundOptions;
 };
 
 export type SettingsOption =

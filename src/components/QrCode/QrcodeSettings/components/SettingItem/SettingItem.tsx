@@ -39,7 +39,7 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
       key={id}>
       <h2 className={"font-semibold capitalize"}>{t(id)}</h2>
       <ul className={"flex flex-col gap-5 p-2"}>
-        {Object.keys(items ?? {}).map((option) => {
+        {Object.keys(items).map((option) => {
           return (
             <li
               key={option}
