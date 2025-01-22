@@ -41,6 +41,7 @@
   "password": "password",
   "encryption": "encryption",
   "Is Hidden?": "Is Hidden?",
+  "Style": "Style",
   "Auth": {
     "Sign In": "Sign In",
     "Sign Out": "Sign Out",

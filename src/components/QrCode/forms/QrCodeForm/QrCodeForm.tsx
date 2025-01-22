@@ -63,7 +63,7 @@ function QrCodeForm<FormValues extends FieldValues>({
   }, [dispatch]);
 
   const fromClass = cl(
-    "flex w-full flex-col md:w-fit max-w-[436px] justify-center items-center gap-6 p-6 border-solid border-2 border-black rounded-md dark:border-cyan-900",
+    "flex w-full flex-col md:w-fit max-w-[436px] justify-center items-center gap-6 p-4 border-solid border-2 border-black rounded-md dark:border-cyan-900",
     classes?.form,
   );
 

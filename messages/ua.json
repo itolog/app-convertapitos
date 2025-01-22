@@ -41,6 +41,7 @@
   "password": "пароль",
   "encryption": "шифрування",
   "Is Hidden?": "Прихований?",
+  "Style": "Стиль",
   "Auth": {
     "Sign In": "Увійти",
     "Sign Out": "Вийти",

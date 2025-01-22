@@ -4,15 +4,14 @@ import cl from "clsx";
 import { useTranslations } from "next-intl";
 import { type DotType } from "qr-code-styling";
 
-import CoColorPicker from "@/components/Inputs/CoColorPicker/CoColorPicker";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { OPTION_KEYS } from "@/components/QrCode/data/qrcode";
+import ColorSetting from "@/components/QrCode/QrcodeSettings/components/SettingItem/components/ColorSetting/ColorSetting";
 import { coSelectOptions } from "@/components/QrCode/QrcodeSettings/data/settings";
 import { SettingsOption } from "@/components/QrCode/types";
 
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateColor, updateType } from "@/store/qrcode/qrcodeSlice";
-import { getOptions } from "@/store/qrcode/selectors";
+import { useAppDispatch } from "@/store/hooks";
+import { updateType } from "@/store/qrcode/qrcodeSlice";
 
 interface SettingItemProps {
   item: SettingsOption;
@@ -21,19 +20,6 @@ interface SettingItemProps {
 const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
   const t = useTranslations();
   const dispatch = useAppDispatch();
-  const options = useAppSelector(getOptions);
-
-  const handleChangeColor = useCallback(
-    (color: string) => {
-      dispatch(
-        updateColor({
-          id,
-          color: color,
-        }),
-      );
-    },
-    [dispatch, id],
-  );
 
   const handleChangeType = useCallback(
     (type: string) => {
@@ -48,9 +34,11 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
   );
 
   return (
-    <section key={id}>
+    <section
+      className={"border-solid border-2  dark:border-cyan-900 border-black rounded-md py-4 px-1"}
+      key={id}>
       <h2 className={"font-semibold capitalize"}>{t(id)}</h2>
-      <ul className={"flex gap-5 items-center p-2"}>
+      <ul className={"flex flex-col gap-5 p-2"}>
         {Object.keys(items ?? {}).map((option) => {
           return (
             <li
@@ -58,9 +46,7 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
               className={cl("flex overflow-hidden", {
                 "flex-1": option === OPTION_KEYS.TYPE,
               })}>
-              {option === OPTION_KEYS.COLOR && (
-                <CoColorPicker color={options[id].color} handleChangeColor={handleChangeColor} />
-              )}
+              {option === OPTION_KEYS.COLOR && <ColorSetting id={id} />}
               {option === OPTION_KEYS.TYPE && (
                 <CoSelect
                   classes={{

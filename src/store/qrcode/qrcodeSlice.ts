@@ -20,7 +20,10 @@ export const qrcodeSlice = createSlice({
       };
     },
     updateColor: (state, action: PayloadAction<ColorPayload>) => {
-      state.options[action.payload.id].color = action.payload.color;
+      state.options[action.payload.id] = {
+        ...state.options[action.payload.id],
+        ...action.payload,
+      };
     },
     updateType: (state, action: PayloadAction<TypePayload>) => {
       state.options[action.payload.id].type = action.payload.type;

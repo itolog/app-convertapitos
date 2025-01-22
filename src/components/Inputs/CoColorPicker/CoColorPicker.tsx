@@ -15,10 +15,10 @@ const options = {
   hideColorGuide: true,
   hideInputType: true,
   hideGradientType: true,
-  // hideGradientAngle: true,
+  hideGradientAngle: true,
   hideGradientStop: true,
-  // hideGradientControls: true,
-  // hideControls: true,
+  hideGradientControls: true,
+  hideControls: true,
   hideOpacity: true,
 };
 
