@@ -1,5 +1,7 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import CoColorPicker from "@/components/Inputs/CoColorPicker/CoColorPicker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +16,7 @@ interface ColorSettingProps {
 }
 
 const ColorSetting: FC<ColorSettingProps> = ({ id }) => {
+  const t = useTranslations();
   const options = useAppSelector(getOptions);
   const dispatch = useAppDispatch();
   const [isGradient, setIsGradient] = useState(false);
@@ -69,11 +72,11 @@ const ColorSetting: FC<ColorSettingProps> = ({ id }) => {
       <RadioGroup defaultValue="color" className={"flex"} onValueChange={handleChangeType}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="color" id="ocolor" />
-          <Label htmlFor="color">Color</Label>
+          <Label htmlFor="color">{t("Color")}</Label>
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="gradient" id="gradient" />
-          <Label htmlFor="gradient">Gradient</Label>
+          <Label htmlFor="gradient">{t("Gradient")}</Label>
         </div>
       </RadioGroup>
 

@@ -42,6 +42,8 @@
   "encryption": "encryption",
   "Is Hidden?": "Is Hidden?",
   "Style": "Style",
+  "Color": "Color",
+  "Gradient": "Gradient",
   "Auth": {
     "Sign In": "Sign In",
     "Sign Out": "Sign Out",

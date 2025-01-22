@@ -13,7 +13,7 @@ interface CoCardProps {
 }
 
 const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes }) => {
-  const rootClass = cl("relative z-1 p-[3px] border-r-[px]", classes?.root);
+  const rootClass = cl("relative flex z-1 p-[3px]", classes?.root);
 
   return (
     <div className={rootClass}>
