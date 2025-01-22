@@ -8,34 +8,28 @@ import {
   Mode,
   ShapeType,
   TypeNumber,
-} from "qr-code-styling/lib/types";
+} from "qr-code-styling";
 
-export interface DotsOptions {
+export interface ItemOptions {
   id: string;
+  color?: string;
+  gradient?: Gradient;
+}
+
+export interface DotsOptions extends ItemOptions {
   type?: DotType;
-  color?: string;
-  gradient?: Gradient;
 }
 
-export interface CornersSquareOptions {
-  id: string;
+export interface CornersSquareOptions extends ItemOptions {
   type?: CornerSquareType;
-  color?: string;
-  gradient?: Gradient;
 }
 
-export interface CornersDotOptions {
-  id: string;
+export interface CornersDotOptions extends ItemOptions {
   type?: CornerDotType;
-  color?: string;
-  gradient?: Gradient;
 }
 
-export interface BackgroundOptions {
-  id: string;
+export interface BackgroundOptions extends ItemOptions {
   round?: number;
-  color?: string;
-  gradient?: Gradient;
 }
 
 export interface ImageOptions {
@@ -53,7 +47,7 @@ export interface QrOptions {
   errorCorrectionLevel?: ErrorCorrectionLevel;
 }
 
-export declare type Options = {
+export type Options = {
   type?: DrawType;
   shape?: ShapeType;
   width?: number;

@@ -2,7 +2,7 @@ import React, { FC, useCallback } from "react";
 
 import cl from "clsx";
 import { useTranslations } from "next-intl";
-import { DotType } from "qr-code-styling/lib/types";
+import { type DotType } from "qr-code-styling";
 
 import CoColorPicker from "@/components/Inputs/CoColorPicker/CoColorPicker";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";

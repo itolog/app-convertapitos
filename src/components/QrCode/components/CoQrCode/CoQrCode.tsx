@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
 import QRCodeStyling from "qr-code-styling";
-import { FileExtension } from "qr-code-styling/lib/types";
+import { type FileExtension } from "qr-code-styling";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
@@ -41,7 +41,8 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   }, [qrCode, ref]);
 
   useEffect(() => {
-    // if (!qrCode) return;
+    if (!qrCode) return;
+
     qrCode.update(options);
   }, [qrCode, options]);
 

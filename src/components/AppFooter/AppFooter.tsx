@@ -19,7 +19,7 @@ const components: { title: Icons; href: string }[] = [
 
 const AppFooter = () => {
   return (
-    <div className={"relative py-2.5 mt-3 shadow-inner footer-shadow"}>
+    <div className={"relative py-2.5 shadow-inner footer-shadow"}>
       <div className={"wrapper flex justify-end"}>
         <ul className={"flex gap-2"}>
           {components.map((item) => {

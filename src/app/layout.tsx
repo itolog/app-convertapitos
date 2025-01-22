@@ -43,7 +43,9 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
               <BootstrapAppProvider>
                 <div className={"antialiased grid grid-rows-main app-font min-h-screen relative"}>
                   <CoAppBar />
-                  <main className={"w-full wrapper pt-14 md:pt-20"}>{children}</main>
+                  <main className={"flex w-full h-full items-center justify-center wrapper p-10"}>
+                    {children}
+                  </main>
                   <AppFooter />
                   <Toaster richColors position="top-center" />
                 </div>

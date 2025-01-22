@@ -15,7 +15,7 @@ const QrcodeSettings = () => {
   const t = useTranslations();
 
   return (
-    <Accordion type="single" className={"w-full"} collapsible>
+    <Accordion type="single" className={"w-full md:min-w-[335px]"} collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>{t("Styling")}</AccordionTrigger>
         <AccordionContent>

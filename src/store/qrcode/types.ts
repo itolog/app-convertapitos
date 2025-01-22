@@ -1,13 +1,12 @@
-import { Options } from "@/components/QrCode/types";
+import { type Options } from "qr-code-styling";
+
+import { ItemOptions } from "@/components/QrCode/types";
 
 export interface QrcodeState {
   options: Options;
 }
 
-export interface ColorPayload extends Record<string, string> {
-  id: string;
-  color: string;
-}
+export type ColorPayload = ItemOptions;
 
 export interface TypePayload {
   id: string;
