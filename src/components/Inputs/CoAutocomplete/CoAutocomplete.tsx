@@ -51,7 +51,7 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
   );
 
   const contentClass = cl("w-[200px] p-0", classes?.content);
-  const triggerClass = cl("justify-between w-full ", classes?.trigger);
+  const triggerClass = cl("justify-between w-full", classes?.trigger);
 
   return (
     <div className={"relative flex w-full"}>

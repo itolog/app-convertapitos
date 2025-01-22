@@ -26,6 +26,9 @@ const LangSwitcher = () => {
       value={value}
       placeholder={"Choose a language"}
       onlyIcon
+      classes={{
+        trigger: "px-2",
+      }}
       icon={
         <div className={"w-[20px] h-[15px] relative"}>
           <Image
