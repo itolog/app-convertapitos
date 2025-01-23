@@ -14,6 +14,7 @@ import { SettingsOption } from "@/components/QrCode/types";
 import SimpleImageUpload from "@/components/SimpleImageUpload/SimpleImageUpload";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 import { useAppDispatch } from "@/store/hooks";
 import { setOptions, updateImageOptions, updateType } from "@/store/qrcode/qrcodeSlice";
@@ -21,6 +22,8 @@ import { setOptions, updateImageOptions, updateType } from "@/store/qrcode/qrcod
 interface SettingItemProps {
   item: SettingsOption;
 }
+
+const imageWrapperClass = "flex flex-col gap-2";
 
 const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
   const t = useTranslations();
@@ -76,7 +79,7 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
       className={cl(
         "border-solid border-2  dark:border-cyan-900 border-black rounded-md py-4 px-1",
         {
-          "col-span-2": id === "imageOptions",
+          "grid-cols-1  md:col-span-2": id === "imageOptions",
         },
       )}
       key={id}>
@@ -95,32 +98,44 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
               {option === OPTION_KEYS.COLOR && <ColorSetting id={id} />}
               {option === OPTION_KEYS.IMAGE && <SimpleImageUpload onChange={handleUploadImage} />}
               {option === OPTION_KEYS.HIDE_BG_DOTS && (
-                <Checkbox
-                  name={OPTION_KEYS.HIDE_BG_DOTS}
-                  defaultChecked={qrcodeDefaultOptions.imageOptions?.hideBackgroundDots}
-                  onCheckedChange={handleChangeBgDots}
-                />
+                <div className={imageWrapperClass}>
+                  <Label htmlFor={OPTION_KEYS.HIDE_BG_DOTS}>{t("Hide Background Dots")}</Label>
+                  <Checkbox
+                    id={OPTION_KEYS.HIDE_BG_DOTS}
+                    name={OPTION_KEYS.HIDE_BG_DOTS}
+                    defaultChecked={qrcodeDefaultOptions.imageOptions?.hideBackgroundDots}
+                    onCheckedChange={handleChangeBgDots}
+                  />
+                </div>
               )}
               {option === OPTION_KEYS.IMAGE_SIZE && (
-                <Input
-                  type="number"
-                  name={OPTION_KEYS.IMAGE_SIZE}
-                  step={0.1}
-                  max={1}
-                  min={0}
-                  defaultValue={qrcodeDefaultOptions.imageOptions?.imageSize}
-                  onChange={handleChangeImage}
-                />
+                <div className={imageWrapperClass}>
+                  <Label htmlFor={OPTION_KEYS.IMAGE_SIZE}>{t("Image Size")}</Label>
+                  <Input
+                    id={OPTION_KEYS.IMAGE_SIZE}
+                    type="number"
+                    name={OPTION_KEYS.IMAGE_SIZE}
+                    step={0.1}
+                    max={1}
+                    min={0}
+                    defaultValue={qrcodeDefaultOptions.imageOptions?.imageSize}
+                    onChange={handleChangeImage}
+                  />
+                </div>
               )}
               {option === OPTION_KEYS.MARGIN && (
-                <Input
-                  type="number"
-                  name={OPTION_KEYS.MARGIN}
-                  max={15}
-                  min={0}
-                  defaultValue={qrcodeDefaultOptions.imageOptions?.margin}
-                  onChange={handleChangeImage}
-                />
+                <div className={imageWrapperClass}>
+                  <Label htmlFor={OPTION_KEYS.MARGIN}>{t("Image Size")}</Label>
+                  <Input
+                    id={OPTION_KEYS.MARGIN}
+                    type="number"
+                    name={OPTION_KEYS.MARGIN}
+                    max={15}
+                    min={0}
+                    defaultValue={qrcodeDefaultOptions.imageOptions?.margin}
+                    onChange={handleChangeImage}
+                  />
+                </div>
               )}
 
               {option === OPTION_KEYS.TYPE && (

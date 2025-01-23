@@ -25,9 +25,9 @@ export const qrcodeDefaultOptions: Options = {
   },
   imageOptions: {
     id: "imageOptions",
-    [OPTION_KEYS.HIDE_BG_DOTS]: true,
     [OPTION_KEYS.IMAGE_SIZE]: 0.4,
     [OPTION_KEYS.MARGIN]: 1,
+    [OPTION_KEYS.HIDE_BG_DOTS]: true,
   },
   dotsOptions: {
     id: "dotsOptions",

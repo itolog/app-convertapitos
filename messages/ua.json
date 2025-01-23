@@ -45,6 +45,9 @@
   "Style": "Стиль",
   "Color": "Колір",
   "Gradient": "Градієнт",
+  "margin": "Відступ",
+  "Image Size": "Розмір зображення",
+  "Hide Background Dots": "Приховати фонові точки",
   "Auth": {
     "Sign In": "Увійти",
     "Sign Out": "Вийти",
