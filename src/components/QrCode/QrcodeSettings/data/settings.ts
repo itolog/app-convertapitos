@@ -1,5 +1,6 @@
 import { Option } from "@/components/Inputs/CoSelect/types";
 import { qrcodeDefaultOptions } from "@/components/QrCode/data/qrcode";
+import { ImageOptions } from "@/components/QrCode/types";
 
 const backgroundOptions = qrcodeDefaultOptions.backgroundOptions;
 
@@ -9,21 +10,18 @@ const cornersSquareOptions = qrcodeDefaultOptions.cornersSquareOptions;
 
 const cornersDotOptions = qrcodeDefaultOptions.cornersDotOptions;
 
-// const imageOptions: ImageOptions = {
-//   label: "imageOptions",
-//
-//   settings: {
-//     ...qrcodeDefaultOptions.imageOptions,
-//     image: qrcodeDefaultOptions.image,
-//   },
-// };
+const imageOptions: ImageOptions = {
+  id: "imageOptions",
+  image: qrcodeDefaultOptions.image,
+  ...qrcodeDefaultOptions.imageOptions,
+};
 
 export const settings = [
   dotsOptions,
   cornersSquareOptions,
   cornersDotOptions,
   backgroundOptions,
-  // imageOptions,
+  imageOptions,
 ];
 
 export const coSelectOptions: Option[] = [

@@ -36,7 +36,7 @@ export type Files = FilePondFile[];
 export type File = FilePondFile | ActualFileObject;
 export type OnUpdateFilesType = (files: Files) => void;
 
-const FileUpload: FC<FileUploadProps> = ({ classes = { root: "" }, error, ...props }) => {
+const FileUpload: FC<FileUploadProps> = ({ classes = { container: "" }, error, ...props }) => {
   const config: FilePondProps = {
     allowMultiple: false,
     labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',

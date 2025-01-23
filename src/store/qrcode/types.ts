@@ -1,6 +1,6 @@
 import { type Options } from "qr-code-styling";
 
-import { ItemOptions } from "@/components/QrCode/types";
+import { ImageOptions, ItemOptions } from "@/components/QrCode/types";
 
 export interface QrcodeState {
   options: Options;
@@ -12,3 +12,5 @@ export interface TypePayload {
   id: string;
   type: string;
 }
+
+export type ImagePayload = ImageOptions;

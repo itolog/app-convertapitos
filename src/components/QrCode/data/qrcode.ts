@@ -23,12 +23,12 @@ export const qrcodeDefaultOptions: Options = {
     mode: "Byte",
     errorCorrectionLevel: "Q",
   },
-  // imageOptions: {
-  //   id: "imageOptions",
-  //   [OPTION_KEYS.HIDE_BG_DOTS]: true,
-  //   [OPTION_KEYS.IMAGE_SIZE]: 0.4,
-  //   [OPTION_KEYS.MARGIN]: 20,
-  // },
+  imageOptions: {
+    id: "imageOptions",
+    [OPTION_KEYS.HIDE_BG_DOTS]: true,
+    [OPTION_KEYS.IMAGE_SIZE]: 0.4,
+    [OPTION_KEYS.MARGIN]: 1,
+  },
   dotsOptions: {
     id: "dotsOptions",
     [OPTION_KEYS.COLOR]: "#222222",
