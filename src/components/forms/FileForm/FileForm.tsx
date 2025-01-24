@@ -72,7 +72,7 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
         className={"flex flex-col gap-6 m-5"}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete={"off"}>
-        <div className={"flex justify-end gap-4"}>
+        <div className={"flex justify-end gap-2 md:gap-4"}>
           <div className={"flex relative w-3/6 md:w-48"}>
             <CoAutocomplete
               options={fileTypeOptions}

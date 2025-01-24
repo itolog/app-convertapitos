@@ -1,7 +1,6 @@
 {
   "extends": [
     "stylelint-config-css-modules",
-    "stylelint-config-tailwindcss",
-    "stylelint-config-two-dash-bem"
+    "stylelint-config-tailwindcss"
   ]
 }
