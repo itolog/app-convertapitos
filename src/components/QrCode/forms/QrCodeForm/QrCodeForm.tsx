@@ -125,7 +125,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       control={form.control}
                       name={item.name as Path<FormValues>}
                       render={({ field }) => (
-                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow dark:shadow-cyan-500">
+                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow-sm dark:shadow-cyan-500">
                           <FormControl>
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>

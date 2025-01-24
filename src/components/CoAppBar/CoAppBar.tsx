@@ -9,7 +9,7 @@ import CoLogo from "@/components/ui/CoLogo/CoLogo";
 
 function CoAppBar() {
   return (
-    <header className="relative flex items-center justify-center h-16 shadow dark:shadow-cyan-400">
+    <header className="relative flex items-center justify-center h-16 shadow-sm dark:shadow-cyan-400">
       <div
         className={
           "wrapper grid grid-cols-headerMobile md:grid-cols-header w-full items-center justify-between"

@@ -25,7 +25,7 @@ const AppFooter = () => {
           {components.map((item) => {
             return (
               <li
-                className={"flex text-xl rounded-md hover:shadow shadow-cyan-100 cursor-pointer"}
+                className={"flex text-xl rounded-md hover:shadow-sm shadow-cyan-100 cursor-pointer"}
                 key={item.title}>
                 <Link
                   target={"_blank"}

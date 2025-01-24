@@ -43,7 +43,7 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
 
   const textClass = cl(
-    "w-full block overflow-hidden overflow-ellipsis whitespace-nowrap",
+    "w-full block overflow-hidden text-ellipsis whitespace-nowrap",
     classes?.text,
   );
 
