@@ -19,6 +19,7 @@ const config: FilePondProps = {
   labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
   allowFileTypeValidation: true,
   acceptedFileTypes: ACCEPTED_IMAGE_TYPES,
+  allowImagePreview: false,
 };
 
 const SimpleImageUpload: FC<SimpleImageUploadProps> = ({ onChange }) => {
