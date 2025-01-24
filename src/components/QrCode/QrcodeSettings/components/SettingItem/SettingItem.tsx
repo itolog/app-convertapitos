@@ -125,7 +125,7 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
               )}
               {option === OPTION_KEYS.MARGIN && (
                 <div className={imageWrapperClass}>
-                  <Label htmlFor={OPTION_KEYS.MARGIN}>{t("Image Size")}</Label>
+                  <Label htmlFor={OPTION_KEYS.MARGIN}>{t("margin")}</Label>
                   <Input
                     id={OPTION_KEYS.MARGIN}
                     type="number"
