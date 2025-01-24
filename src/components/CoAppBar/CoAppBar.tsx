@@ -12,7 +12,7 @@ function CoAppBar() {
     <header className="relative flex items-center justify-center h-16 shadow-sm dark:shadow-cyan-400">
       <div
         className={
-          "wrapper grid grid-cols-headerMobile md:grid-cols-header w-full items-center justify-between"
+          "wrapper grid grid-cols-[80px_1fr] md:grid-cols-[40px_1fr_170px] w-full items-center justify-between"
         }>
         <div className={"flex gap-2"}>
           <CoDrawer />

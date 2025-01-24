@@ -41,7 +41,10 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
           <SessionProvider>
             <body className={bodyClass}>
               <BootstrapAppProvider>
-                <div className={"antialiased grid grid-rows-main app-font min-h-screen relative"}>
+                <div
+                  className={
+                    "antialiased grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative"
+                  }>
                   <CoAppBar />
                   <main
                     className={

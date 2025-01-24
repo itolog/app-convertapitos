@@ -18,7 +18,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
   ssr: false,
-  loading: () => <Skeleton className={"w-full h-[288px]"} />,
+  loading: () => <Skeleton className={"w-full h-[288px] mb-4"} />,
 });
 
 const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
