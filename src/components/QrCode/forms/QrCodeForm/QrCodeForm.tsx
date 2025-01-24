@@ -29,7 +29,7 @@ const CoQrCode = dynamic(() => import("@/components/QrCode/components/CoQrCode/C
   ssr: false,
   loading: () => (
     <div className={"qrcode-container"}>
-      <Skeleton className={"rounded-none w-[256px] h-[256px]"} />
+      <Skeleton className={"rounded-none w-[240px] h-[240px] md:w-[256px] md:h-[256px]"} />
       <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
         <Skeleton className={"rounded-md w-36 h-[36px]"} />
         <Skeleton className={"rounded-md w-24 h-[36px]"} />

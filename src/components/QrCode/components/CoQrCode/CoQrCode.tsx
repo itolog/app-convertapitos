@@ -1,4 +1,6 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+"use client";
+
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
 import QRCodeStyling from "qr-code-styling";
@@ -42,8 +44,11 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
 
   useEffect(() => {
     if (!qrCode) return;
+    const isMobile = window.innerWidth <= 390;
+    const width = isMobile ? 240 : 256;
+    const height = isMobile ? 240 : 256;
 
-    qrCode.update(options);
+    qrCode.update({ ...options, width, height });
   }, [qrCode, options]);
 
   const handleSelect = (value: string) => {
@@ -84,7 +89,7 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
         <CoButton
           variant={"success"}
           type="button"
-          className={"w-36"}
+          className={"w-32"}
           disabled={!options.data}
           text={"Download"}
           onClick={handleDownload}
