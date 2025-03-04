@@ -6,11 +6,15 @@ import { FC, useCallback, useState } from "react";
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 
-import { Search } from "@/components/Inputs/CoPlaces/components/Search/Search";
 import { Item } from "@/components/Inputs/CoPlaces/types";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+
+const Search = dynamic(() => import("@/components/Inputs/CoPlaces/components/Search/Search"), {
+  ssr: false,
+});
 
 interface CoPlacesProps {
   onChange: (item: Item) => void;

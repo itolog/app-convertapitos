@@ -1,3 +1,5 @@
+"use client";
+
 import { Check } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";
@@ -17,7 +19,7 @@ interface SearchProps {
   onSelectResult: (item: Item) => void;
 }
 
-export function Search({ selectedResult, onSelectResult }: SearchProps) {
+const Search = ({ selectedResult, onSelectResult }: SearchProps) => {
   const t = useTranslations();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -40,7 +42,7 @@ export function Search({ selectedResult, onSelectResult }: SearchProps) {
       />
     </Command>
   );
-}
+};
 
 interface SearchResultsProps {
   query: string;
@@ -102,3 +104,5 @@ function SearchResults({ query, selectedResult, onSelectResult }: SearchResultsP
     </CommandList>
   );
 }
+
+export default Search;
