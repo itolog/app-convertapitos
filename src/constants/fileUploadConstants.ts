@@ -1,19 +1,36 @@
+// export const FILE_EXTENSION = {
+//   AVIF: "avif",
+//   BMP: "bmp",
+//   // DDS: "dds",
+//   GIF: "gif",
+//   // HDR: "hdr",
+//   ICO: "ico",
+//   JPEG: "jpeg",
+//   EXR: "exr",
+//   PNG: "png",
+//   PNM: "pnm",
+//   QOI: "qoi",
+//   TGA: "tga",
+//   TIFF: "tiff",
+//   WebP: "webp",
+// };
+
 export const FILE_EXTENSION = {
   AVIF: "avif",
-  BMP: "bmp",
-  // DDS: "dds",
+  DZ: "dz",
   GIF: "gif",
-  // HDR: "hdr",
-  ICO: "ico",
+  HEIF: "heif",
   JPEG: "jpeg",
-  EXR: "exr",
+  JP2: "jp2",
+  JXL: "jxl",
+  PDF: "pdf",
   PNG: "png",
-  PNM: "pnm",
-  QOI: "qoi",
-  TGA: "tga",
+  PPM: "ppm",
+  SVG: "svg",
   TIFF: "tiff",
-  WebP: "webp",
-};
+  TIF: "tif",
+  WEBP: "webp",
+} as const;
 
 export const SUPPORTED_IMAGE_FORMATS = Object.values(FILE_EXTENSION);
 

@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 
+import convertBase64FileToLink from "@/helpers/image/convertBase64FileToLink/convertBase64FileToLink";
 import useErrors from "@/hooks/errors/useErrors";
 
 import DownloadLink from "@/components/Buttons/DownloadLink/DownloadLink";
@@ -21,8 +22,9 @@ export default function Home() {
       try {
         const { data } = await convertImage(values).unwrap();
 
-        if (data) {
-          setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
+        if (data?.file && data?.mimeType) {
+          const link = convertBase64FileToLink({ base64: data.file, mimeType: data.mimeType });
+          setDownloadUrl(link);
         }
       } catch (e) {
         handleError(e, {
@@ -40,11 +42,12 @@ export default function Home() {
   return (
     <div className={"relative w-full flex items-center gap-6 flex-col  justify-center"}>
       <FileForm loading={isLoading} onRemoveFile={handleRemoveFileLink} onSubmit={handleSubmit} />
+
       <DownloadLink
         className={"w-full md:w-[440px]"}
-        disabled={!Boolean(downloadUrl) || isLoading}
+        disabled={!Boolean(data?.data?.file) || isLoading}
         url={downloadUrl}
-        fileName={data?.data?.file_name}
+        fileName={data?.data?.fileName}
       />
     </div>
   );

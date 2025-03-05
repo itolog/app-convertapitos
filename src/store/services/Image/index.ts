@@ -3,19 +3,20 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import payloadToFormData from "@/helpers/forms/payloadToFormData";
 import { ApiResponse } from "@/types";
 
-import { DataResponse } from "@/store/services/Image/types";
+import { ImageResponse } from "@/types/image";
 
-const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${process.env.NEXT_PUBLIC_API_VERSION}`;
+import { FormValues } from "@/components/forms/FileForm/types";
 
 export const imageApi = createApi({
   reducerPath: "image",
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "api",
+  }),
   endpoints: (build) => ({
-    // TODO: Partial<object> typing
-    convertImage: build.mutation<ApiResponse<DataResponse>, Partial<object>>({
+    convertImage: build.mutation<ApiResponse<ImageResponse>, FormValues>({
       query(body) {
         return {
-          url: "/image/convert",
+          url: "/image",
           method: "POST",
           body: payloadToFormData(body),
         };

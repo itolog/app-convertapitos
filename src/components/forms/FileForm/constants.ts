@@ -4,8 +4,8 @@ import { FormValues } from "@/components/forms/FileForm/types";
 import { Option } from "@/components/Inputs/CoAutocomplete/types";
 
 export const FORM_FIELD = {
-  CONVERT_TO: "convert_to",
-  IMAGE_FILE: "image_file",
+  CONVERT_TO: "format",
+  IMAGE_FILE: "file",
 } as const;
 
 export const initialValues: FormValues = {
