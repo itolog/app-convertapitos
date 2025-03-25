@@ -1,4 +1,3 @@
-export interface TextProps {
-  [key: string]: string | undefined | null;
+export type TextProps = Record<string, string | number | Date> & {
   target?: string;
-}
+};

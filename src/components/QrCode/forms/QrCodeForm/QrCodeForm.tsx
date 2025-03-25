@@ -168,7 +168,13 @@ function QrCodeForm<FormValues extends FieldValues>({
                     name={item.name}
                     type={item.type}
                     error={form.formState.errors?.[item.name]?.message}
-                    placeholder={item.rawPlaceholder ? item.placeholder : t(item?.placeholder)}
+                    placeholder={
+                      item.rawPlaceholder
+                        ? item.placeholder
+                        : item.placeholder
+                          ? t(item.placeholder)
+                          : undefined
+                    }
                   />
                 );
               })}

@@ -11,7 +11,7 @@ type AsyncDefaultValues<TFieldValues> = (payload?: unknown) => Promise<TFieldVal
 
 export interface FormItem {
   name: string;
-  label?: string;
+  label: string;
   placeholder?: string;
   type?: HTMLInputTypeAttribute | "co-select" | undefined;
   className?: string;
