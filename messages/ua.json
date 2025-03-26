@@ -57,5 +57,6 @@
     "Light": "Світла",
     "Dark": "Темна",
     "System": "Система"
-  }
+  },
+  "Invalid email": "Неправильний email"
 }

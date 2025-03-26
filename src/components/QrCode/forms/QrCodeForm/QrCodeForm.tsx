@@ -1,6 +1,6 @@
 "use client";
 
-import React, { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren, useCallback, useEffect } from "react";
 import { FieldValues, Path, PathValue, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -69,6 +69,17 @@ function QrCodeForm<FormValues extends FieldValues>({
 
   const fieldsContainerClasses = cl("grid w-full", classes?.fieldsContainer);
 
+  const getErrorMessage = useCallback(
+    (item: string) => {
+      if (form.formState.errors?.[item]?.message) {
+        return t(form.formState.errors[item].message.toString());
+      }
+
+      return null;
+    },
+    [form.formState.errors, t],
+  );
+
   return (
     <CoCard
       classes={{
@@ -88,10 +99,10 @@ function QrCodeForm<FormValues extends FieldValues>({
                       key={item.name}
                       control={form.control}
                       name={item.name as Path<FormValues>}
-                      render={({ field, formState }) => (
+                      render={({ field }) => (
                         <FormItem className={"relative"}>
                           <CoPhoneInput value={field.value} onChange={field.onChange} />
-                          <FormError error={formState.errors?.[item.name]?.message?.toString()} />
+                          <FormError error={getErrorMessage(item.name)} />
                         </FormItem>
                       )}
                     />
@@ -104,7 +115,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       key={item.name}
                       control={form.control}
                       name={item.name as Path<FormValues>}
-                      render={({ field, formState }) => (
+                      render={({ field }) => (
                         <FormItem className={"relative"}>
                           <Textarea
                             className={item.className}
@@ -112,7 +123,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                             placeholder={item.placeholder}
                             onChange={field.onChange}
                           />
-                          <FormError error={formState.errors?.[item.name]?.message?.toString()} />
+                          <FormError error={getErrorMessage(item.name)} />
                         </FormItem>
                       )}
                     />
@@ -143,7 +154,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       key={item.name}
                       placeholder={item.placeholder}
                       label={t(item.label)}
-                      error={form.formState.errors?.[item.name]?.message}
+                      error={getErrorMessage(item.name)}
                       withContentLabel={false}
                       defaultValue={form.formState?.defaultValues?.[item.name]}
                       onChange={(value) => {
@@ -167,7 +178,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                     }}
                     name={item.name}
                     type={item.type}
-                    error={form.formState.errors?.[item.name]?.message}
+                    error={getErrorMessage(item.name)}
                     placeholder={
                       item.rawPlaceholder
                         ? item.placeholder
