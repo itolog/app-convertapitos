@@ -5,5 +5,5 @@ import { TextProps } from "@/types";
 export interface CoTextProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
   textProps?: TextProps;
-  text?: string | null | undefined;
+  text?: string | null;
 }

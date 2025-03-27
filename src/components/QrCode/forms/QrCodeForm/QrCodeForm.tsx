@@ -90,7 +90,7 @@ function QrCodeForm<FormValues extends FieldValues>({
           "flex w-full md:w-fit gap-4 md:gap-10 justify-center items-start p-3 md:p-6 flex-wrap"
         }>
         <Form {...form}>
-          <form className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
+          <form noValidate className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
             <div className={fieldsContainerClasses}>
               {formFields.map((item) => {
                 if (item.type === "tel") {
@@ -169,7 +169,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                 }
 
                 return (
-                  <CoFormInput
+                  <CoFormInput<FieldValues>
                     key={item.name}
                     control={form.control}
                     label={t(item.label)}

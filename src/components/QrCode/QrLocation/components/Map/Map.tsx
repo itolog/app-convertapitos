@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import type { FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
 
-import { mapConfig } from "@/configs";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { LatLngExpression } from "leaflet";
 import dynamic from "next/dynamic";
@@ -25,10 +24,7 @@ interface MapProps<FormValues extends FieldValues> {
 }
 
 function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<FormValues>) {
-  const [position, setPosition] = useState<LatLngExpression>([
-    mapConfig.INIT_LAT,
-    mapConfig.INIT_LONG,
-  ]);
+  const [position, setPosition] = useState<LatLngExpression>([Number(lat), Number(long)]);
   const { longitude, latitude } = useGeolocation();
 
   useEffect(() => {

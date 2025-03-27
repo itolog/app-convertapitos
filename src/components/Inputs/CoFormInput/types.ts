@@ -1,10 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import { Control, TContext, TFieldValues } from "react-hook-form/dist/types/form";
+import * as React from "react";
+import { Control, FieldValue, FieldValues, Path } from "react-hook-form";
 
 import { InputError } from "@/types/inputs";
-
-import { InputProps } from "@/components/ui/input";
 
 interface Classes {
   root?: string;
@@ -12,10 +9,11 @@ interface Classes {
   input?: string;
 }
 
-export interface CoFormInputProps extends InputProps {
+export interface CoFormInputProps<T extends FieldValues>
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: InputError;
-  control: Control<TFieldValues, TContext>;
-  name: string;
+  control: Control<FieldValue<T>, unknown>;
+  name: Path<FieldValue<T>>;
   classes?: Classes;
 }
