@@ -70,11 +70,9 @@
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+        @apply border-border outline-ring/50;
     }
-}
 
-@layer base {
     :root {
         --base-unit: calc(1vw + 1vh);
         --background: 0 0% 100%;
@@ -106,6 +104,29 @@
         --footer-shadow-color: rgb(13 54 83 / 45%);
     }
 
+    html {
+        .filepond--credits {
+            display: none;
+        }
+
+        .filepond--root {
+            margin-bottom: 0;
+            height: 288px;
+        }
+
+        .filepond--panel-root {
+            background-color: var(--upload-bg);
+        }
+
+        .filepond--drop-label {
+            color: var(--primary);
+        }
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
     .dark {
         --background: 222.2 84% 4.9%;
         --foreground: 210 40% 98%;
@@ -131,51 +152,20 @@
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
-        --upload-bg: #475569;
-        --footer-shadow-color: #22d3ee;
+
     }
 }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
+.app-font {
+    font-size: calc(var(--base-unit) * 1.1);
+}
 
-    html {
-        .filepond--credits {
-            display: none;
-        }
+.wrapper {
+    @apply xl:container mx-auto px-4;
+}
 
-        .filepond--root {
-            margin-bottom: 0;
-            height: 288px;
-        }
-
-        .filepond--panel-root {
-            background-color: var(--upload-bg);
-        }
-
-        .filepond--drop-label {
-            color: var(--primary);
-        }
-    }
-
-    body {
-        @apply bg-background text-foreground;
-    }
-
-    .app-font {
-        font-size: calc(var(--base-unit) * 1.1);
-    }
-
-    .wrapper {
-        @apply xl:container mx-auto px-4;
-    }
-
-    .qrcode-container {
-        @apply flex flex-col gap-4 items-center rounded-md shadow-2xl dark:shadow-indigo-500/50 p-6
-    }
-
+.qrcode-container {
+    @apply flex flex-col gap-4 items-center rounded-md shadow-2xl dark:shadow-indigo-500/50 p-6
 }
 
 .select-border {
@@ -195,9 +185,6 @@
     background: transparent !important;
 }
 
-/*
-  ---break---
-*/
 
 :root {
     --radius: 0.625rem;
@@ -234,10 +221,6 @@
     --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-/*
-  ---break---
-*/
-
 .dark {
     --background: oklch(0.129 0.042 264.695);
     --foreground: oklch(0.984 0.003 247.858);
@@ -270,11 +253,10 @@
     --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.551 0.027 264.364);
+    --upload-bg: #475569;
+    --footer-shadow-color: #22d3ee;
 }
 
-/*
-  ---break---
-*/
 
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
@@ -312,17 +294,4 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
-}
-
-/*
-  ---break---
-*/
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
 }
