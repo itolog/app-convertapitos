@@ -1,8 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
-import type { FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
+import React, { useCallback } from "react";
 
 import { useGeolocation } from "@uidotdev/usehooks";
-import { LatLngExpression } from "leaflet";
 import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
@@ -17,33 +15,17 @@ const CoMap = dynamic(() => import("@/components/CoMap/CoMap"), {
   loading: () => <Skeleton className={"rounded-none w-full h-80"} />,
 });
 
-interface MapProps<FormValues extends FieldValues> {
-  lat: LatLngExpression;
-  long: LatLngExpression;
-  setValue: UseFormSetValue<FormValues>;
-}
+function Map({ setValue, watch }) {
+  const lat = watch("lat");
+  const long = watch("lng");
 
-function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<FormValues>) {
-  const [position, setPosition] = useState<LatLngExpression>([Number(lat), Number(long)]);
   const { longitude, latitude } = useGeolocation();
-
-  useEffect(() => {
-    if (lat && long) {
-      setPosition([Number(lat), Number(long)]);
-    }
-  }, [lat, long]);
 
   const setPositionValues = useCallback(
     ({ lat, lng }: LatLong) => {
-      setValue(
-        FORM_FIELD.LATITUDE as Path<FormValues>,
-        lat as PathValue<FormValues, Path<FormValues>>,
-      );
+      setValue(FORM_FIELD.LATITUDE, lat);
 
-      setValue(
-        FORM_FIELD.LONGITUDE as Path<FormValues>,
-        lng as PathValue<FormValues, Path<FormValues>>,
-      );
+      setValue(FORM_FIELD.LONGITUDE, lng);
     },
     [setValue],
   );
@@ -75,7 +57,7 @@ function Map<FormValues extends FieldValues>({ lat, long, setValue }: MapProps<F
       </div>
 
       <div className={"h-80"}>
-        <CoMap position={position} />
+        <CoMap position={{ lat: lat, lng: long }} />
       </div>
     </div>
   );

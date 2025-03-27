@@ -39,12 +39,7 @@ const QrLocation = () => {
         classes={{
           fieldsContainer: "gap-x-8 gap-y-4 grid-cols-1 w-full md:grid-cols-2 items-end",
         }}
-        renderChildren={({ watch, setValue }) => {
-          const lat = watch("lat");
-          const long = watch("lng");
-
-          return <Map<FormValues> lat={lat} long={long} setValue={setValue} />;
-        }}
+        renderChildren={Map}
       />
     </div>
   );
