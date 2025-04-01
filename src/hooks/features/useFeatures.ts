@@ -9,12 +9,14 @@ const useFeatures = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV === APP_ENV.DEV) {
       console.log("DEv");
       dispatch(disableFeature("qrcode:email"));
     } else {
       console.log("Prod");
       dispatch(toggleFeatureAvailability("convert:image"));
+      dispatch(disableFeature("qrcode:location"));
     }
   }, [dispatch]);
 
