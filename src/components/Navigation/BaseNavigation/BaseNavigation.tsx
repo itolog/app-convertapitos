@@ -23,6 +23,8 @@ const BaseNavigation = () => {
     <NavigationMenu orientation={"vertical"}>
       <NavigationMenuList>
         {navigations.map((item) => {
+          if (!item.enabled) return null;
+
           if (item.content) {
             return (
               <NavigationMenuItem key={item.label}>
@@ -31,24 +33,28 @@ const BaseNavigation = () => {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {item.content.map((component) => (
-                      <li key={component.label}>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className={cn(
-                              "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            )}
-                            href={component.href}>
-                            <div className="text-sm font-semibold leading-none capitalize">
-                              {component.label}
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {component.description}
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
+                    {item.content.map((component) => {
+                      if (!component.enabled) return null;
+
+                      return (
+                        <li key={component.label}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              )}
+                              href={component.href}>
+                              <div className="text-sm font-semibold leading-none capitalize">
+                                {component.label}
+                              </div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {component.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
