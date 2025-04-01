@@ -2,6 +2,9 @@ import { useMemo } from "react";
 
 import { useTranslations } from "next-intl";
 
+import { useAppSelector } from "@/store/hooks";
+import { getFeatures } from "@/store/settings/features/selectors";
+
 interface Content {
   label: string;
   href: string;
@@ -22,67 +25,68 @@ interface ReturnType {
 
 const useNavigationItems = (): ReturnType => {
   const t = useTranslations();
+  const featuresState = useAppSelector(getFeatures);
 
   const navigations: NavigationItem[] = useMemo(() => {
     return [
       {
         href: "/",
         label: t("Convert"),
-        enabled: true,
+        enabled: featuresState["convert"],
         content: [
           {
             label: t("Image"),
             href: "/",
             description: t("Image conversion"),
-            enabled: true,
+            enabled: featuresState["convert:image"],
           },
           {
             label: t("Text"),
             href: "/text",
             description: t("Text to speech"),
-            enabled: true,
+            enabled: featuresState["convert:text"],
           },
         ],
       },
       {
         href: "/qrcode",
         label: t("QR Code"),
-        enabled: true,
+        enabled: featuresState["qrcode"],
         content: [
           {
             label: t("url"),
             href: "/qrcode/url",
-            enabled: true,
+            enabled: featuresState["qrcode:url"],
           },
           {
             label: t("text"),
             href: "/qrcode/text",
-            enabled: true,
+            enabled: featuresState["qrcode:text"],
           },
           {
             label: t("email"),
             href: "/qrcode/email",
-            enabled: true,
+            enabled: featuresState["qrcode:email"],
           },
           {
             label: t("phone"),
             href: "/qrcode/phone",
-            enabled: true,
+            enabled: featuresState["qrcode:phone"],
           },
           {
             label: t("wifi"),
             href: "/qrcode/wifi",
-            enabled: true,
+            enabled: featuresState["qrcode:wifi"],
           },
           {
             label: t("location"),
             href: "/qrcode/location",
-            enabled: true,
+            enabled: featuresState["qrcode:location"],
           },
         ],
       },
     ];
-  }, [t]);
+  }, [featuresState, t]);
 
   return { navigations };
 };

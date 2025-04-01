@@ -1,4 +1,4 @@
-// import { IS_PROD } from "@/constants";
+import { IS_PROD } from "@/constants";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import settingsReducer from "@/store/settings";
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 export const makeStore = () => {
   return configureStore({
     reducer: rootReducer,
-    devTools: true, // !IS_PROD,
+    devTools: !IS_PROD,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imageApi.middleware),
   });
 };

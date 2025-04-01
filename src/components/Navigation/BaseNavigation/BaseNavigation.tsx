@@ -15,15 +15,24 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Skeleton } from "@/components/ui/skeleton";
+
+import { useAppSelector } from "@/store/hooks";
+import { getLoading } from "@/store/settings/features/selectors";
 
 const BaseNavigation = () => {
   const { navigations } = useNavigationItems();
+  const loading = useAppSelector(getLoading);
+
+  if (loading) {
+    return <Skeleton className="w-[40%] h-[36px] rounded-sm" />;
+  }
 
   return (
     <NavigationMenu orientation={"vertical"}>
       <NavigationMenuList>
         {navigations.map((item) => {
-          if (!item.enabled) return null;
+          if (item.content?.every((i) => !i.enabled) || !item.enabled) return null;
 
           if (item.content) {
             return (

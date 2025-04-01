@@ -14,12 +14,27 @@ export const featuresSlice = createSlice({
     disableFeature: (state, action: PayloadAction<FeatureKey>) => {
       state.items[action.payload] = false;
     },
+    setFeatureMultiple: (state, action: PayloadAction<Partial<Record<FeatureKey, boolean>>>) => {
+      state.items = {
+        ...state.items,
+        ...action.payload,
+      };
+    },
     enableFeature: (state, action: PayloadAction<FeatureKey>) => {
       state.items[action.payload] = true;
+    },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
     },
   },
 });
 
-export const { toggleFeatureAvailability, disableFeature, enableFeature } = featuresSlice.actions;
+export const {
+  toggleFeatureAvailability,
+  disableFeature,
+  setFeatureMultiple,
+  enableFeature,
+  setLoading,
+} = featuresSlice.actions;
 
 export default featuresSlice.reducer;
