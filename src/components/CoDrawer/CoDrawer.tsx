@@ -42,6 +42,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 p-2">
           <CoDrawerSkeleton visible={loading} />
+
           {!loading && (
             <DropdownMenuGroup>
               {navigations.map((item) => {

@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import React, { ReactNode, useEffect } from "react";
 
-import useFeatures from "@/hooks/features/useFeatures";
+import useSettings from "@/hooks/useSettings/useSettings";
 
 import { useAppDispatch } from "@/store/hooks";
 import { Me } from "@/store/user/types";
@@ -15,7 +15,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
   const session = useSession();
   const dispatch = useAppDispatch();
-  useFeatures();
+  useSettings();
 
   useEffect(() => {
     const user: Me | undefined = session?.data?.user;

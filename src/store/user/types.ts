@@ -7,11 +7,11 @@ export interface Me extends User {
 export type UserStatus = "loading" | "authenticated" | "unauthenticated";
 
 export interface UserPayload {
-  user: Me | undefined | null;
+  user?: Me | null;
   status: UserStatus;
 }
 
 export interface UserState {
-  me: Me | undefined | null;
+  me?: Me | null;
   status: UserStatus;
 }

@@ -14,6 +14,19 @@ export const featuresSlice = createSlice({
     disableFeature: (state, action: PayloadAction<FeatureKey>) => {
       state.items[action.payload] = false;
     },
+    disableFeatureMultiple: (state, action: PayloadAction<FeatureKey[]>) => {
+      const payload = action.payload.reduce((acc, item) => {
+        return {
+          ...acc,
+          [item]: false,
+        };
+      }, {});
+
+      state.items = {
+        ...state.items,
+        ...payload,
+      };
+    },
     setFeatureMultiple: (state, action: PayloadAction<Partial<Record<FeatureKey, boolean>>>) => {
       state.items = {
         ...state.items,
@@ -34,6 +47,7 @@ export const {
   disableFeature,
   setFeatureMultiple,
   enableFeature,
+  disableFeatureMultiple,
   setLoading,
 } = featuresSlice.actions;
 
