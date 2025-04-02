@@ -10,13 +10,17 @@ const useFeatures = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setLoading(true));
+    // TODO: refactor when connecting the backend API
+    const setFeatureState = async () => {
+      dispatch(setLoading(true));
+      if (process.env.NODE_ENV === APP_ENV.PROD) {
+        dispatch(disableFeatureMultiple(disabledFeatures));
+      }
+    };
 
-    if (process.env.NODE_ENV === APP_ENV.PROD) {
-      dispatch(disableFeatureMultiple(disabledFeatures));
-    }
-
-    dispatch(setLoading(false));
+    setFeatureState().then(() => {
+      dispatch(setLoading(false));
+    });
   }, [dispatch]);
 };
 

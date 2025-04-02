@@ -4,6 +4,7 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import React, { FC, useState } from "react";
 
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
+import checkIsLoading from "@/lib/checkIsLoading";
 import Link from "next/link";
 
 import CoDrawerSkeleton from "@/components/CoDrawer/components/CoDrawerSkeleton/CoDrawerSkeleton";
@@ -41,9 +42,9 @@ const CoDrawer: FC<CoDrawerProps> = () => {
           <HamburgerMenuIcon width={30} height={30} />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 p-2">
-          <CoDrawerSkeleton visible={loading} />
+          <CoDrawerSkeleton visible={checkIsLoading(loading)} />
 
-          {!loading && (
+          {!checkIsLoading(loading) && (
             <DropdownMenuGroup>
               {navigations.map((item) => {
                 if (!item.content) {

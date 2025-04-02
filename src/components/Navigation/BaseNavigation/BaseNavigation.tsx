@@ -23,8 +23,7 @@ import { getLoading } from "@/store/settings/features/selectors";
 const BaseNavigation = () => {
   const { navigations } = useNavigationItems();
   const loading = useAppSelector(getLoading);
-
-  if (loading) {
+  if (loading || loading === undefined) {
     return <Skeleton className="w-[40%] h-[36px] rounded-sm" />;
   }
 

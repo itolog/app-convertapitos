@@ -5,5 +5,5 @@ export type FeatureKey = (typeof FEATURES)[number];
 export interface FeaturesState {
   items: Record<FeatureKey, boolean>;
   availableFeatures?: FeatureKey[];
-  loading: boolean;
+  loading?: boolean;
 }
