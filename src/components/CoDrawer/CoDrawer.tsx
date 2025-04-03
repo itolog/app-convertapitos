@@ -41,7 +41,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
         <DropdownMenuTrigger className={"cursor-pointer"} asChild>
           <HamburgerMenuIcon width={30} height={30} />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 p-2">
+        <DropdownMenuContent className="max-w-[50vw]">
           <CoDrawerSkeleton visible={checkIsLoading(loading)} />
 
           {!checkIsLoading(loading) && (
@@ -52,11 +52,11 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                 } else {
                   return (
                     <DropdownMenuSub key={item.label}>
-                      <DropdownMenuSubTrigger className={"text-base"}>
+                      <DropdownMenuSubTrigger className={"text-base font-semibold break-all"}>
                         {item.label}
                       </DropdownMenuSubTrigger>
                       <DropdownMenuPortal>
-                        <DropdownMenuSubContent className={"overflow-hidden"}>
+                        <DropdownMenuSubContent className={"max-w-[50vw]"}>
                           {item.content.map((content) => {
                             return (
                               <DropdownMenuItem key={content.label}>
@@ -64,7 +64,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                                   onClick={handleClose}
                                   key={content.label}
                                   href={content.href}
-                                  className="text-base font-semibold capitalize p-2 flex underline-offset-4"
+                                  className="text-base font-semibold break-all capitalize"
                                   prefetch={false}>
                                   {content.label}
                                 </Link>
