@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import { FEATURE } from "@/constants";
+import genFeatureRoute from "@/helpers/genFeatureRoute";
 import { useTranslations } from "next-intl";
 
 import { useAppSelector } from "@/store/hooks";
@@ -30,58 +32,58 @@ const useNavigationItems = (): ReturnType => {
   const navigations: NavigationItem[] = useMemo(() => {
     return [
       {
-        href: "/",
         label: t("Convert"),
-        enabled: featuresState["convert"],
+        href: genFeatureRoute(FEATURE.CONVERT),
+        enabled: featuresState[FEATURE.CONVERT],
         content: [
           {
             label: t("Image"),
-            href: "/",
+            href: genFeatureRoute(FEATURE.CONVERT_IMAGE),
             description: t("Image conversion"),
-            enabled: featuresState["convert:image"],
+            enabled: featuresState[FEATURE.CONVERT_IMAGE],
           },
           {
             label: t("Text"),
-            href: "/text",
+            href: genFeatureRoute(FEATURE.CONVERT_TEXT),
             description: t("Text to speech"),
-            enabled: featuresState["convert:text"],
+            enabled: featuresState[FEATURE.CONVERT_TEXT],
           },
         ],
       },
       {
-        href: "/qrcode",
         label: t("QR Code"),
-        enabled: featuresState["qrcode"],
+        href: genFeatureRoute(FEATURE.QRCODE),
+        enabled: featuresState[FEATURE.QRCODE],
         content: [
           {
             label: t("url"),
-            href: "/qrcode/url",
-            enabled: featuresState["qrcode:url"],
+            href: genFeatureRoute(FEATURE.QRCODE_URL),
+            enabled: featuresState[FEATURE.QRCODE_URL],
           },
           {
             label: t("text"),
-            href: "/qrcode/text",
-            enabled: featuresState["qrcode:text"],
+            href: genFeatureRoute(FEATURE.QRCODE_TEXT),
+            enabled: featuresState[FEATURE.QRCODE_TEXT],
           },
           {
             label: t("email"),
-            href: "/qrcode/email",
-            enabled: featuresState["qrcode:email"],
+            href: genFeatureRoute(FEATURE.QRCODE_EMAIL),
+            enabled: featuresState[FEATURE.QRCODE_EMAIL],
           },
           {
             label: t("phone"),
-            href: "/qrcode/phone",
-            enabled: featuresState["qrcode:phone"],
+            href: genFeatureRoute(FEATURE.QRCODE_PHONE),
+            enabled: featuresState[FEATURE.QRCODE_PHONE],
           },
           {
             label: t("wifi"),
-            href: "/qrcode/wifi",
-            enabled: featuresState["qrcode:wifi"],
+            href: genFeatureRoute(FEATURE.QRCODE_WIFI),
+            enabled: featuresState[FEATURE.QRCODE_WIFI],
           },
           {
             label: t("location"),
-            href: "/qrcode/location",
-            enabled: featuresState["qrcode:location"],
+            href: genFeatureRoute(FEATURE.QRCODE_LOCATION),
+            enabled: featuresState[FEATURE.QRCODE_LOCATION],
           },
         ],
       },

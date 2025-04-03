@@ -1,6 +1,4 @@
-import { FEATURES } from "@/store/settings/features/constants";
-
-export type FeatureKey = (typeof FEATURES)[number];
+import { FeatureKey } from "@/types/features";
 
 export interface FeaturesState {
   items: Record<FeatureKey, boolean>;

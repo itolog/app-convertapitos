@@ -3,8 +3,8 @@
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import React, { FC, useState } from "react";
 
+import checkIsLoading from "@/helpers/checkIsLoading";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
-import checkIsLoading from "@/lib/checkIsLoading";
 import Link from "next/link";
 
 import CoDrawerSkeleton from "@/components/CoDrawer/components/CoDrawerSkeleton/CoDrawerSkeleton";

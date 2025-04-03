@@ -25,7 +25,7 @@ const vollkorn = Vollkorn({
 export const metadata: Metadata = {
   title: "ConvertApiTos",
   description: "File generation and conversion",
-  keywords: ["File", "generation", "conversion image", "text-to-speech", "qrcode generation"],
+  keywords: ["File", "generation", "conversion convert", "text-to-speech", "qrcode generation"],
 };
 
 export default async function LocaleLayout({ children }: { children: ReactNode }) {

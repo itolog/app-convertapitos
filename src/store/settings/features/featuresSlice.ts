@@ -1,6 +1,5 @@
+import { FeatureKey } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-import { FeatureKey } from "@/store/settings/features/types";
 
 import { initialState } from "./data";
 
@@ -27,7 +26,7 @@ export const featuresSlice = createSlice({
         ...payload,
       };
     },
-    setFeatureMultiple: (state, action: PayloadAction<Partial<Record<FeatureKey, boolean>>>) => {
+    setFeatureMultiple: (state, action: PayloadAction<Record<FeatureKey, boolean>>) => {
       state.items = {
         ...state.items,
         ...action.payload,

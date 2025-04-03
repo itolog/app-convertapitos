@@ -1,3 +1,3 @@
-import { FeatureKey } from "@/store/settings/features/types";
+import { FeatureKey } from "@/types";
 
 export const disabledFeatures: FeatureKey[] = ["convert"];
