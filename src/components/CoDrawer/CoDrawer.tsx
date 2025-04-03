@@ -52,9 +52,11 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                 } else {
                   return (
                     <DropdownMenuSub key={item.label}>
-                      <DropdownMenuSubTrigger>{item.label}</DropdownMenuSubTrigger>
+                      <DropdownMenuSubTrigger className={"text-base"}>
+                        {item.label}
+                      </DropdownMenuSubTrigger>
                       <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
+                        <DropdownMenuSubContent className={"overflow-hidden"}>
                           {item.content.map((content) => {
                             return (
                               <DropdownMenuItem key={content.label}>
@@ -62,7 +64,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                                   onClick={handleClose}
                                   key={content.label}
                                   href={content.href}
-                                  className="text-sm font-semibold w-full capitalize p-2 flex underline-offset-4"
+                                  className="text-base font-semibold capitalize p-2 flex underline-offset-4"
                                   prefetch={false}>
                                   {content.label}
                                 </Link>

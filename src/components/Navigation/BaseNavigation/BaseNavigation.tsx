@@ -36,7 +36,8 @@ const BaseNavigation = () => {
           if (item.content) {
             return (
               <NavigationMenuItem key={item.label}>
-                <NavigationMenuTrigger className={"font-semibold leading-normal items-baseline"}>
+                <NavigationMenuTrigger
+                  className={"text-base font-semibold leading-normal items-baseline"}>
                   {item.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -52,7 +53,7 @@ const BaseNavigation = () => {
                                 "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                               )}
                               href={component.href}>
-                              <div className="text-sm font-semibold leading-none capitalize">
+                              <div className="text-base font-semibold leading-none capitalize">
                                 {component.label}
                               </div>
                               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
