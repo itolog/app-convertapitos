@@ -38,11 +38,11 @@ export default function Template({ children }: { children: ReactNode }) {
   }
   return (
     <div
-      className={cl({
+      className={cl("flex w-full h-full", {
         "gradient-bg-3": resolvedTheme === "dark",
         "gradient-bg-2": resolvedTheme === "light",
       })}>
-      <div className={"wrapper flex w-full h-full items-center justify-center p-4 md:p-10"}>
+      <div className={"wrapper flex items-center justify-center p-4 md:p-10"}>
         {featureDisabled ? <UnavailableFeature /> : children}
       </div>
     </div>
