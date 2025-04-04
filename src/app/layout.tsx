@@ -8,6 +8,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Vollkorn } from "next/font/google";
 
 import AppFooter from "@/components/AppFooter/AppFooter";
+import AppMain from "@/components/AppMain/AppMain";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import { Toaster } from "@/components/common/ui/sonner";
 
@@ -47,11 +48,14 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
                     "antialiased grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative"
                   }>
                   <CoAppBar />
-                  <main className={"flex w-full h-full items-center justify-center p-4 md:p-10"}>
-                    <div className={"wrapper"}>
+                  <AppMain>
+                    <div
+                      className={
+                        "wrapper flex w-full h-full items-center justify-center p-4 md:p-10"
+                      }>
                       <FeatureProvider>{children}</FeatureProvider>
                     </div>
-                  </main>
+                  </AppMain>
                   <AppFooter />
                   <Toaster richColors position="top-center" />
                 </div>

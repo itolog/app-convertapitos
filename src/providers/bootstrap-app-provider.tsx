@@ -5,12 +5,12 @@ import React, { ReactNode, useEffect } from "react";
 import useErrors from "@/hooks/errors/useErrors";
 import useFeatures from "@/hooks/features/useFeatures";
 import useUser from "@/hooks/users/useUser";
+import { ThemeProvider } from "next-themes";
 
 import { setAppLoading } from "@/store/app/appSlice";
 import { useAppDispatch } from "@/store/hooks";
 
 import ProgressBarProvider from "@/providers/progressbar-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();

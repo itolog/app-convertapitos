@@ -35,6 +35,7 @@ const LangSwitcher = () => {
             src={`https://flagcdn.com/h20/${optionsNormalized[value].code}.png`}
             alt={value}
             fill
+            priority
             sizes="(min-width: 808px) 50vw, 100vw"
           />
         </div>
