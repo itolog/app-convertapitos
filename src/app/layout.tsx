@@ -47,11 +47,10 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
                     "antialiased grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative"
                   }>
                   <CoAppBar />
-                  <main
-                    className={
-                      "flex w-full h-full items-center justify-center wrapper p-4 md:p-10"
-                    }>
-                    <FeatureProvider>{children}</FeatureProvider>
+                  <main className={"flex w-full h-full items-center justify-center p-4 md:p-10"}>
+                    <div className={"wrapper"}>
+                      <FeatureProvider>{children}</FeatureProvider>
+                    </div>
                   </main>
                   <AppFooter />
                   <Toaster richColors position="top-center" />
