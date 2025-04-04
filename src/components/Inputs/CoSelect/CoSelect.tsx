@@ -2,9 +2,7 @@ import React, { FC } from "react";
 
 import cl from "clsx";
 
-import FormError from "@/components/Errors/FormError/FormError";
-import { CoSelectProps } from "@/components/Inputs/CoSelect/types";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/common/ui/label";
 import {
   Select,
   SelectContent,
@@ -13,7 +11,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/common/ui/select";
+import FormError from "@/components/Errors/FormError/FormError";
+import { CoSelectProps } from "@/components/Inputs/CoSelect/types";
 
 const CoSelect: FC<CoSelectProps> = ({
   options,

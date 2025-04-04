@@ -1,4 +1,4 @@
-import ProfileCard from "@/components/Cards/ProfileCard/ProfileCard";
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
 
 const Page = async () => {
   return (

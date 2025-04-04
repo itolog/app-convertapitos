@@ -8,13 +8,13 @@ import { FilePondErrorDescription, FilePondFile } from "filepond";
 import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
-import CoCard from "@/components/Cards/CoCard/CoCard";
+import CoCard from "@/components/common/Cards/CoCard/CoCard";
+import { Skeleton } from "@/components/common/ui/skeleton";
 import { OnUpdateFilesType } from "@/components/FileUpload/FileUpload";
 import { fileTypeOptions, FORM_FIELD, initialValues } from "@/components/forms/FileForm/constants";
 import { FileFormProps, FormValues } from "@/components/forms/FileForm/types";
 import validationSchema from "@/components/forms/FileForm/validationSchema";
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
   ssr: false,

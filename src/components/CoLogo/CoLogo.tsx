@@ -1,4 +1,4 @@
-import SvgIcons from "@/components/SvgIcon/SvgIcons";
+import SvgIcons from "@/components/common/SvgIcon/SvgIcons";
 
 const CoLogo = () => {
   return (

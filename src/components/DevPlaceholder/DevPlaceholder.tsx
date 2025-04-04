@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTranslations } from "next-intl";
 
-import CoCard from "@/components/Cards/CoCard/CoCard";
+import CoCard from "@/components/common/Cards/CoCard/CoCard";
 
 const DevPlaceholder = () => {
   const t = useTranslations();

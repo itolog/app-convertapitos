@@ -4,8 +4,8 @@ import { signIn } from "@/auth";
 import { providerData } from "@/data/auth/providers";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
-import CoCard from "@/components/Cards/CoCard/CoCard";
-import CoText from "@/components/CoText/CoText";
+import CoCard from "@/components/common/Cards/CoCard/CoCard";
+import CoText from "@/components/common/CoText/CoText";
 
 const Page = () => {
   return (

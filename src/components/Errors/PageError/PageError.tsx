@@ -6,7 +6,7 @@ import React, { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/common/ui/alert";
 
 interface PageErrorProps {
   reset: () => void;

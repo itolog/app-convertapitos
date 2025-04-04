@@ -8,9 +8,7 @@ import { cn } from "@/lib/utils";
 import cl from "clsx";
 import { useTranslations } from "next-intl";
 
-import FormError from "@/components/Errors/FormError/FormError";
-import { CoAutocompleteProps } from "@/components/Inputs/CoAutocomplete/types";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/common/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -18,8 +16,10 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+} from "@/components/common/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/common/ui/popover";
+import FormError from "@/components/Errors/FormError/FormError";
+import { CoAutocompleteProps } from "@/components/Inputs/CoAutocomplete/types";
 
 const CoAutocomplete: FC<CoAutocompleteProps> = ({
   options,

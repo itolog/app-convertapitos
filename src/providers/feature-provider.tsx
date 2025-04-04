@@ -6,7 +6,7 @@ import checkIsLoading from "@/helpers/checkIsLoading";
 import { checkFeatureUnavailableRoute } from "@/helpers/features";
 import { usePathname } from "next/navigation";
 
-import { Skeleton } from "@/components/ui/skeleton";
+import AppSpinner from "@/components/common/Loaders/AppSpinner/AppSpinner";
 import UnavailableFeature from "@/components/UnavailableFeature/UnavailableFeature";
 
 import { getAppLoading } from "@/store/app/selectors";
@@ -31,7 +31,7 @@ const FeatureProvider = ({ children }: { children: ReactNode }) => {
   }, [disabledFeatures, pathName]);
 
   if (checkIsLoading(loading)) {
-    return <Skeleton className="w-[80%] h-[70%] rounded-sm" />;
+    return <AppSpinner />;
   }
 
   return <>{featureDisabled ? <UnavailableFeature /> : children}</>;

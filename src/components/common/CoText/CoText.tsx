@@ -2,7 +2,7 @@ import { forwardRef, ReactNode } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { CoTextProps } from "@/components/CoText/types";
+import { CoTextProps } from "@/components/common/CoText/types";
 
 const CoText = forwardRef<HTMLSpanElement, CoTextProps & { children?: ReactNode }>(
   ({ children, text, textProps = { target: undefined }, ...props }, ref) => {

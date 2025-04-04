@@ -3,9 +3,9 @@
 import Link from "next/link";
 
 import AppSettings from "@/components/AppSettings/AppSettings";
-import CoDrawer from "@/components/CoDrawer/CoDrawer";
 import CoLogo from "@/components/CoLogo/CoLogo";
 import BaseNavigation from "@/components/Navigation/BaseNavigation/BaseNavigation";
+import CoDrawer from "@/components/Navigation/CoDrawer/CoDrawer";
 
 function CoAppBar() {
   return (

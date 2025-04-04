@@ -2,14 +2,14 @@ import React from "react";
 
 import { useTranslations } from "next-intl";
 
-import SettingItem from "@/components/QrCode/QrcodeSettings/components/SettingItem/SettingItem";
-import { settings } from "@/components/QrCode/QrcodeSettings/data/settings";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/common/ui/accordion";
+import SettingItem from "@/components/QrCode/QrcodeSettings/components/SettingItem/SettingItem";
+import { settings } from "@/components/QrCode/QrcodeSettings/data/settings";
 
 const QrcodeSettings = () => {
   const t = useTranslations();

@@ -9,7 +9,7 @@ import { Vollkorn } from "next/font/google";
 
 import AppFooter from "@/components/AppFooter/AppFooter";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/common/ui/sonner";
 
 import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
 import FeatureProvider from "@/providers/feature-provider";

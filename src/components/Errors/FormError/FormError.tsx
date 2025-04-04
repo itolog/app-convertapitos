@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 
 import cl from "clsx";
 
-import CoTextWithTooltip from "@/components/CoTextWithTooltip/CoTextWithTooltip";
+import CoTextWithTooltip from "@/components/common/CoTextWithTooltip/CoTextWithTooltip";
 
 interface Classes {
   root?: string;
