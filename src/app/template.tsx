@@ -1,9 +1,11 @@
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import checkIsLoading from "@/helpers/checkIsLoading";
 import { checkFeatureUnavailableRoute } from "@/helpers/features";
+import cl from "clsx";
+import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 
 import AppSpinner from "@/components/common/Loaders/AppSpinner/AppSpinner";
@@ -13,7 +15,8 @@ import { getAppLoading } from "@/store/app/selectors";
 import { getDisabledFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
 
-const FeatureProvider = ({ children }: { children: ReactNode }) => {
+export default function Template({ children }: { children: ReactNode }) {
+  const { resolvedTheme } = useTheme();
   const disabledFeatures = useAppSelector(getDisabledFeatures);
   const loading = useAppSelector(getAppLoading);
   const pathName = usePathname();
@@ -33,8 +36,15 @@ const FeatureProvider = ({ children }: { children: ReactNode }) => {
   if (checkIsLoading(loading)) {
     return <AppSpinner />;
   }
-
-  return <>{featureDisabled ? <UnavailableFeature /> : children}</>;
-};
-
-export default FeatureProvider;
+  return (
+    <div
+      className={cl({
+        "gradient-bg-3": resolvedTheme === "dark",
+        "gradient-bg-2": resolvedTheme === "light",
+      })}>
+      <div className={"wrapper flex w-full h-full items-center justify-center p-4 md:p-10"}>
+        {featureDisabled ? <UnavailableFeature /> : children}
+      </div>
+    </div>
+  );
+}
