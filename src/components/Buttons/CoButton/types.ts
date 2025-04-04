@@ -1,7 +1,7 @@
 import { TextProps } from "@/types/buttonsTypes";
 
+import { Icons } from "@/components/SvgIcon/types";
 import { ButtonProps } from "@/components/ui/button";
-import { Icons } from "@/components/ui/SvgIcon/types";
 
 export interface CoButtonProps extends ButtonProps {
   icon?: Icons;

@@ -12,6 +12,7 @@ import CoAppBar from "@/components/CoAppBar/CoAppBar";
 import { Toaster } from "@/components/ui/sonner";
 
 import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
+import FeatureProvider from "@/providers/feature-provider";
 import StoreProvider from "@/providers/store-provider";
 
 import "./globals.css";
@@ -50,7 +51,7 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
                     className={
                       "flex w-full h-full items-center justify-center wrapper p-4 md:p-10"
                     }>
-                    {children}
+                    <FeatureProvider>{children}</FeatureProvider>
                   </main>
                   <AppFooter />
                   <Toaster richColors position="top-center" />

@@ -1,6 +1,6 @@
 "use client";
 
-import NavigationCard from "@/components/Navigation/NavigationCard/NavigationCard";
+import NavigationCard from "@/components/Cards/NavigationCard/NavigationCard";
 
 export default function Home() {
   return (

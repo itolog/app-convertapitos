@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Metadata } from "next";
 
-import DevPlaceholder from "@/components/ui/DevPlaceholder/DevPlaceholder";
+import DevPlaceholder from "@/components/DevPlaceholder/DevPlaceholder";
 
 export const metadata: Metadata = {
   title: "Text to speech",

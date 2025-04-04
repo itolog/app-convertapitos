@@ -5,7 +5,7 @@ import { FC, PropsWithChildren, ReactElement, useEffect, useRef, useState } from
 import { TextProps } from "@/types";
 import cl from "clsx";
 
-import CoText from "@/components/ui/CoText/CoText";
+import CoText from "@/components/CoText/CoText";
 import {
   Tooltip,
   TooltipArrow,

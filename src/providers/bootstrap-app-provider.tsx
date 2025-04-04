@@ -1,32 +1,36 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import React, { ReactNode, useEffect } from "react";
 
-import useSettings from "@/hooks/useSettings/useSettings";
+import useErrors from "@/hooks/errors/useErrors";
+import useFeatures from "@/hooks/features/useFeatures";
+import useUser from "@/hooks/users/useUser";
 
+import { setAppLoading } from "@/store/app/appSlice";
 import { useAppDispatch } from "@/store/hooks";
-import { Me } from "@/store/user/types";
-import { setUser } from "@/store/user/userSlice";
 
 import ProgressBarProvider from "@/providers/progressbar-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
-  const session = useSession();
   const dispatch = useAppDispatch();
-  useSettings();
+  const { handleError } = useErrors();
+  const { setFeatureState } = useFeatures();
+  const { setUser } = useUser();
 
   useEffect(() => {
-    const user: Me | undefined = session?.data?.user;
-
-    dispatch(
-      setUser({
-        user,
-        status: session.status,
-      }),
-    );
-  }, [dispatch, session]);
+    (async () => {
+      dispatch(setAppLoading(true));
+      try {
+        await setUser();
+        await setFeatureState();
+      } catch (e) {
+        handleError(e);
+      } finally {
+        dispatch(setAppLoading(false));
+      }
+    })();
+  }, [dispatch, handleError, setFeatureState, setUser]);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

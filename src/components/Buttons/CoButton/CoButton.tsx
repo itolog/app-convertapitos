@@ -7,8 +7,8 @@ import cl from "clsx";
 import { useTranslations } from "next-intl";
 
 import { CoButtonProps } from "@/components/Buttons/CoButton/types";
+import SvgIcons from "@/components/SvgIcon/SvgIcons";
 import { Button } from "@/components/ui/button";
-import SvgIcons from "@/components/ui/SvgIcon/SvgIcons";
 
 const CoButton: FC<CoButtonProps> = ({
   children,

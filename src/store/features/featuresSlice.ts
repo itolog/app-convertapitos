@@ -35,9 +35,6 @@ export const featuresSlice = createSlice({
     enableFeature: (state, action: PayloadAction<FeatureKey>) => {
       state.items[action.payload] = true;
     },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
   },
 });
 
@@ -47,7 +44,6 @@ export const {
   setFeatureMultiple,
   enableFeature,
   disableFeatureMultiple,
-  setLoading,
 } = featuresSlice.actions;
 
 export default featuresSlice.reducer;

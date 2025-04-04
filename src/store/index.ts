@@ -1,7 +1,8 @@
 import { IS_PROD } from "@/constants";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import settingsReducer from "@/store/settings";
+import appReducer from "@/store/app/appSlice";
+import featuresReducer from "@/store/features/featuresSlice";
 
 import qrcodeSlice from "./qrcode/qrcodeSlice";
 import { imageApi } from "./services/Image";
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   [imageApi.reducerPath]: imageApi.reducer,
   user: userSlice,
   qrcode: qrcodeSlice,
-  settings: settingsReducer,
+  features: featuresReducer,
+  app: appReducer,
 });
 
 export const makeStore = () => {

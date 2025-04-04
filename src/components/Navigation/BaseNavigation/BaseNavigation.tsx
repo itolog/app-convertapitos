@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import checkIsLoading from "@/helpers/checkIsLoading";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -17,13 +18,14 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { getAppLoading } from "@/store/app/selectors";
 import { useAppSelector } from "@/store/hooks";
-import { getLoading } from "@/store/settings/features/selectors";
 
 const BaseNavigation = () => {
   const { navigations } = useNavigationItems();
-  const loading = useAppSelector(getLoading);
-  if (loading || loading === undefined) {
+  const loading = useAppSelector(getAppLoading);
+
+  if (checkIsLoading(loading)) {
     return <Skeleton className="w-[40%] h-[36px] rounded-sm" />;
   }
 

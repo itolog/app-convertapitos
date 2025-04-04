@@ -1,4 +1,4 @@
-import { Icons } from "@/components/ui/SvgIcon/types";
+import { Icons } from "@/components/SvgIcon/types";
 
 export interface ProviderLink {
   provider: string;

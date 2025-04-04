@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
 import { FEATURE } from "@/constants";
-import genFeatureRoute from "@/helpers/genFeatureRoute";
+import { genFeatureRoute } from "@/helpers/features";
 import { useTranslations } from "next-intl";
 
+import { getFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
-import { getFeatures } from "@/store/settings/features/selectors";
 
 interface Content {
   label: string;

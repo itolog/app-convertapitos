@@ -3,8 +3,8 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-import SvgIcons from "@/components/ui/SvgIcon/SvgIcons";
-import { Icons } from "@/components/ui/SvgIcon/types";
+import SvgIcons from "@/components/SvgIcon/SvgIcons";
+import { Icons } from "@/components/SvgIcon/types";
 
 const components: { title: Icons; href: string }[] = [
   {

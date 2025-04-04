@@ -1,4 +1,4 @@
-import { FeaturesState } from "@/store/settings/features/types";
+import { FeaturesState } from "@/store/features/types";
 
 export const initialState: FeaturesState = {
   items: {
@@ -13,5 +13,4 @@ export const initialState: FeaturesState = {
     "qrcode:wifi": true,
     "qrcode:location": true,
   },
-  loading: undefined,
 };

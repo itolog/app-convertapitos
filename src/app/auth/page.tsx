@@ -5,7 +5,7 @@ import { providerData } from "@/data/auth/providers";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/Cards/CoCard/CoCard";
-import CoText from "@/components/ui/CoText/CoText";
+import CoText from "@/components/CoText/CoText";
 
 const Page = () => {
   return (

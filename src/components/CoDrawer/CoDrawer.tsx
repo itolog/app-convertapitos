@@ -20,14 +20,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { getAppLoading } from "@/store/app/selectors";
 import { useAppSelector } from "@/store/hooks";
-import { getLoading } from "@/store/settings/features/selectors";
 
 interface CoDrawerProps {}
 
 const CoDrawer: FC<CoDrawerProps> = () => {
   const { navigations } = useNavigationItems();
-  const loading = useAppSelector(getLoading);
+  const loading = useAppSelector(getAppLoading);
 
   const [open, setOpen] = useState(false);
 
