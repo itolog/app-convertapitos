@@ -1,6 +1,4 @@
-import { FeatureKey } from "@/types";
-
-export const genFeatureRoute = (feature: FeatureKey): string => {
+export const genFeatureRoute = (feature: string): string => {
   const url = feature.replace(":", "/");
 
   return "/" + url;

@@ -1,6 +1,6 @@
-import { FeatureKey } from "@/types/features";
+import { FeatureItemsMap } from "@/types/features";
 
 export interface FeaturesState {
-  items: Record<FeatureKey, boolean>;
-  availableFeatures?: FeatureKey[];
+  items: FeatureItemsMap;
+  loading: boolean;
 }

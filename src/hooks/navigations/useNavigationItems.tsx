@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 
-import { FEATURE } from "@/constants";
 import { genFeatureRoute } from "@/helpers/features";
 import { useTranslations } from "next-intl";
+
+import { FEATURE } from "@/types/features";
 
 import { getFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
@@ -44,7 +45,7 @@ const useNavigationItems = (): ReturnType => {
           },
           {
             label: t("Text"),
-            href: genFeatureRoute(FEATURE.CONVERT_TEXT),
+            href: genFeatureRoute(FEATURE.CONVERT),
             description: t("Text to speech"),
             enabled: featuresState[FEATURE.CONVERT_TEXT],
           },

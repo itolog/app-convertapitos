@@ -1,5 +1,5 @@
 import { IS_PROD } from "@/constants";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
 import appReducer from "@/store/app/appSlice";
 import featuresReducer from "@/store/features/featuresSlice";
@@ -29,3 +29,4 @@ export const store = makeStore();
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type AppThunk = ThunkAction<void, RootState, unknown, Action>;

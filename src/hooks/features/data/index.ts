@@ -1,3 +1,5 @@
-import { FeatureKey } from "@/types";
+import { FeatureItemsMap } from "@/types/features";
 
-export const disabledFeatures: FeatureKey[] = ["convert"];
+export const disabledFeatures: Partial<FeatureItemsMap> = {
+  convert: false,
+};
