@@ -45,7 +45,7 @@ const useNavigationItems = (): ReturnType => {
           },
           {
             label: t("Text"),
-            href: genFeatureRoute(FEATURE.CONVERT),
+            href: genFeatureRoute(FEATURE.CONVERT_TEXT),
             description: t("Text to speech"),
             enabled: featuresState[FEATURE.CONVERT_TEXT],
           },

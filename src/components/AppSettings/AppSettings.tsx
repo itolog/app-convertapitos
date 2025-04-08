@@ -1,8 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
-import { Link } from "@/i18n/routing";
+import Link from "next/link";
 
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";

@@ -13,5 +13,4 @@ export const initialState: FeaturesState = {
     "qrcode:wifi": true,
     "qrcode:location": true,
   },
-  loading: false,
 };
