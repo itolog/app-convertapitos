@@ -10,10 +10,6 @@ import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 import CoCard from "@/components/common/Cards/CoCard/CoCard";
-import { Checkbox } from "@/components/common/ui/checkbox";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/common/ui/form";
-import { Skeleton } from "@/components/common/ui/skeleton";
-import { Textarea } from "@/components/common/ui/textarea";
 import FormError from "@/components/Errors/FormError/FormError";
 import CoFormInput from "@/components/Inputs/CoFormInput/CoFormInput";
 import CoPhoneInput from "@/components/Inputs/CoPhoneInput/CoPhoneInput";
@@ -21,6 +17,10 @@ import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { QrCodeFormProps } from "@/components/QrCode/forms/QrCodeForm/types";
 import QrcodeSettings from "@/components/QrCode/QrcodeSettings/QrcodeSettings";
 import { qrcodeOptions } from "@/components/QrCode/QrUrl/data/qrcodeOptions";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Textarea } from "@/components/ui/textarea";
 
 import { useAppDispatch } from "@/store/hooks";
 import { resetOptions, setOptions } from "@/store/qrcode/qrcodeSlice";

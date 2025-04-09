@@ -6,15 +6,15 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/components/common/ui/button";
+import { items } from "@/components/Inputs/ThemeSwitch/data/items";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/common/ui/dropdown-menu";
-import { items } from "@/components/Inputs/ThemeSwitch/data/items";
+} from "@/components/ui/dropdown-menu";
 
 export function ThemeSwitch() {
   const { setTheme } = useTheme();

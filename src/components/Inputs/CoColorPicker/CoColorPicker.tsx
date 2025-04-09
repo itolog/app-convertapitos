@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import ColorPicker from "react-best-gradient-color-picker";
 
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/common/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface CoColorPickerProps {
   color?: string;

@@ -1,5 +1,5 @@
 import { SessionProvider } from "next-auth/react";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 import cl from "clsx";
 import type { Metadata } from "next";
@@ -9,7 +9,7 @@ import { Vollkorn } from "next/font/google";
 
 import AppFooter from "@/components/AppFooter/AppFooter";
 import CoAppBar from "@/components/CoAppBar/CoAppBar";
-import { Toaster } from "@/components/common/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
 import StoreProvider from "@/providers/store-provider";
@@ -48,7 +48,7 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
                   <CoAppBar />
                   <main>{children}</main>
                   <AppFooter />
-                  <Toaster richColors position="top-center" />
+                  <Toaster closeButton richColors position="top-center" />
                 </div>
               </BootstrapAppProvider>
             </body>

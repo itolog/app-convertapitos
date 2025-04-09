@@ -4,10 +4,10 @@ import { Controller, FieldValues } from "react-hook-form";
 
 import cl from "clsx";
 
-import { Input } from "@/components/common/ui/input";
-import { Label } from "@/components/common/ui/label";
 import FormError from "@/components/Errors/FormError/FormError";
 import { CoFormInputProps } from "@/components/Inputs/CoFormInput/types";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 function CoFormInput<T extends FieldValues>({
   error,

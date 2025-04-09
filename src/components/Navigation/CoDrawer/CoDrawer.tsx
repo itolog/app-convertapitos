@@ -7,6 +7,7 @@ import checkIsLoading from "@/helpers/checkIsLoading";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import Link from "next/link";
 
+import CoDrawerSkeleton from "@/components/Navigation/CoDrawer/components/CoDrawerSkeleton/CoDrawerSkeleton";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,8 +18,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/common/ui/dropdown-menu";
-import CoDrawerSkeleton from "@/components/Navigation/CoDrawer/components/CoDrawerSkeleton/CoDrawerSkeleton";
+} from "@/components/ui/dropdown-menu";
 
 import { getAppLoading } from "@/store/app/selectors";
 import { useAppSelector } from "@/store/hooks";

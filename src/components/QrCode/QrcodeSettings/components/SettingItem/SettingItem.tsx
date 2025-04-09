@@ -6,15 +6,15 @@ import { FilePondFile } from "filepond";
 import { useTranslations } from "next-intl";
 import { type DotType } from "qr-code-styling";
 
-import { Checkbox } from "@/components/common/ui/checkbox";
-import { Input } from "@/components/common/ui/input";
-import { Label } from "@/components/common/ui/label";
 import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { OPTION_KEYS, qrcodeDefaultOptions } from "@/components/QrCode/data/qrcode";
 import ColorSetting from "@/components/QrCode/QrcodeSettings/components/SettingItem/components/ColorSetting/ColorSetting";
 import { coSelectOptions } from "@/components/QrCode/QrcodeSettings/data/settings";
 import { SettingsOption } from "@/components/QrCode/types";
 import SimpleImageUpload from "@/components/SimpleImageUpload/SimpleImageUpload";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 import { useAppDispatch } from "@/store/hooks";
 import { setOptions, updateImageOptions, updateType } from "@/store/qrcode/qrcodeSlice";

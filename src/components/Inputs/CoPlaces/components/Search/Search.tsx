@@ -9,8 +9,8 @@ import clsx from "clsx";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { useTranslations } from "next-intl";
 
-import { Command, CommandItem, CommandList } from "@/components/common/ui/command";
-import { Input } from "@/components/common/ui/input";
+import { Command, CommandItem, CommandList } from "@/components/ui/command";
+import { Input } from "@/components/ui/input";
 
 import { Item, SearchResponse } from "../../types";
 

@@ -2,10 +2,10 @@ import { ChangeEvent, FC, useEffect, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
-import { Input } from "@/components/common/ui/input";
-import { Label } from "@/components/common/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/common/ui/radio-group";
 import CoColorPicker from "@/components/Inputs/CoColorPicker/CoColorPicker";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateColor } from "@/store/qrcode/qrcodeSlice";

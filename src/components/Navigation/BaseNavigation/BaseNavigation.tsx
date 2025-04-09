@@ -15,8 +15,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/common/ui/navigation-menu";
-import { Skeleton } from "@/components/common/ui/skeleton";
+} from "@/components/ui/navigation-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { getAppLoading } from "@/store/app/selectors";
 import { useAppSelector } from "@/store/hooks";

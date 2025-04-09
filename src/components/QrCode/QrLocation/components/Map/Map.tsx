@@ -4,11 +4,11 @@ import { useGeolocation } from "@uidotdev/usehooks";
 import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
-import { Skeleton } from "@/components/common/ui/skeleton";
 import CoPlaces from "@/components/Inputs/CoPlaces/CoPlaces";
 import { Item } from "@/components/Inputs/CoPlaces/types";
 import { FORM_FIELD } from "@/components/QrCode/constants";
 import { LatLong } from "@/components/QrCode/QrLocation/types";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const CoMap = dynamic(() => import("@/components/CoMap/CoMap"), {
   ssr: false,

@@ -5,7 +5,7 @@ import React from "react";
 import Image from "next/image";
 
 import CoCard from "@/components/common/Cards/CoCard/CoCard";
-import { Skeleton } from "@/components/common/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { useAppSelector } from "@/store/hooks";
 import { getUser, getUserStatus } from "@/store/user/selectors";

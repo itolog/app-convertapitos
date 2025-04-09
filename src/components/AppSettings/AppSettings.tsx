@@ -6,16 +6,16 @@ import Link from "next/link";
 import SignInButton from "@/components/Buttons/SignInButton/SignInButton";
 import SignOut from "@/components/Buttons/SignOut/SignOut";
 import SvgIcons from "@/components/common/SvgIcon/SvgIcons";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/common/ui/avatar";
+import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
+import { ThemeSwitch } from "@/components/Inputs/ThemeSwitch/ThemeSwitch";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/common/ui/dropdown-menu";
-import LangSwitcher from "@/components/Inputs/LangSwitcher/LangSwitcher";
-import { ThemeSwitch } from "@/components/Inputs/ThemeSwitch/ThemeSwitch";
+} from "@/components/ui/dropdown-menu";
 
 import { useAppSelector } from "@/store/hooks";
 import { getUser } from "@/store/user/selectors";

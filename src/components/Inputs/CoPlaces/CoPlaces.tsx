@@ -8,9 +8,9 @@ import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 
-import { Button } from "@/components/common/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/common/ui/popover";
 import { Item } from "@/components/Inputs/CoPlaces/types";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const Search = dynamic(() => import("@/components/Inputs/CoPlaces/components/Search/Search"), {
   ssr: false,

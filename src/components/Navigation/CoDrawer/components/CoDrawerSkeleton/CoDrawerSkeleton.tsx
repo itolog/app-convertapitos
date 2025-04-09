@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Skeleton } from "@/components/common/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CoDrawerSkeletonProps {
   visible: boolean;

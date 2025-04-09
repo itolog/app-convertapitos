@@ -12,7 +12,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/common/ui/tooltip";
+} from "@/components/ui/tooltip";
 
 interface Classes {
   text?: string;
