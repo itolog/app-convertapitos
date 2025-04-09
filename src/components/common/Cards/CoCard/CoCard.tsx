@@ -6,6 +6,7 @@ import styles from "./co-card.module.css";
 
 interface Classes {
   root?: string;
+  inner?: string;
 }
 
 interface CoCardProps {
@@ -14,10 +15,11 @@ interface CoCardProps {
 
 const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes }) => {
   const rootClass = cl("relative flex z-1 p-[3px]", classes?.root);
+  const innerClass = cl(styles.inner, classes?.inner);
 
   return (
     <div className={rootClass}>
-      <div className={styles.inner}>{children}</div>
+      <div className={innerClass}>{children}</div>
     </div>
   );
 };
