@@ -5,14 +5,15 @@ import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
-interface AppError extends Error {
-  digest?: string;
-}
-
 interface ErrorConfig {
   withSnackbar?: boolean;
 }
 
+interface ErrorMessageOptions {
+  defaultMessage?: string;
+}
+
+// Maybe need to add a flag “whitTranslation” to enable/disable error translation on the client side
 const defaultConfig: ErrorConfig = {
   withSnackbar: false,
 };
@@ -20,21 +21,16 @@ const defaultConfig: ErrorConfig = {
 const useErrors = () => {
   const t = useTranslations();
 
-  const getErrorMessage = useCallback(
-    (e: unknown, errorText = "Something went wrong") => {
-      let msg = t(errorText);
+  const getErrorMessage = useCallback((error: unknown, options: ErrorMessageOptions = {}) => {
+    if (error instanceof Error) {
+      return error.message;
+    }
 
-      if (e instanceof Error) {
-        msg = e.message;
-      }
-
-      return msg;
-    },
-    [t],
-  );
+    return t(options.defaultMessage ?? "Something went wrong");
+  }, []);
 
   const handleError = useCallback(
-    (error: AppError | unknown, config: ErrorConfig = defaultConfig): AppError | unknown => {
+    (error: unknown, config: ErrorConfig = defaultConfig) => {
       if (config.withSnackbar) {
         const msg = getErrorMessage(error);
         toast.error(msg);
