@@ -1,4 +1,4 @@
-import { InputError } from "@/types/inputs";
+import { FormInputError } from "@/types/inputs";
 
 export interface Option {
   label: string;
@@ -17,6 +17,6 @@ export interface CoSelectProps {
   placeholder?: string;
   classes?: Classes;
   defaultValue?: string;
-  error?: InputError;
+  error?: FormInputError;
   withContentLabel?: boolean;
 }

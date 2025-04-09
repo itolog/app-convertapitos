@@ -70,12 +70,12 @@ function QrCodeForm<FormValues extends FieldValues>({
   const fieldsContainerClasses = cl("grid w-full", classes?.fieldsContainer);
 
   const getErrorMessage = useCallback(
-    (item: string) => {
+    (item: string): string => {
       if (form.formState.errors?.[item]?.message) {
         return t(form.formState.errors[item].message.toString());
       }
 
-      return null;
+      return "";
     },
     [form.formState.errors, t],
   );

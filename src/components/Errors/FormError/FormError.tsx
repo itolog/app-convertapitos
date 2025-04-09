@@ -1,6 +1,8 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 
 import cl from "clsx";
+
+import { FormInputError } from "@/types/inputs";
 
 import CoTextWithTooltip from "@/components/common/CoTextWithTooltip/CoTextWithTooltip";
 
@@ -10,7 +12,7 @@ interface Classes {
 }
 
 interface FormErrorProps {
-  error?: ReactNode;
+  error?: FormInputError;
   classes?: Classes;
 }
 

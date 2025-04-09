@@ -1,7 +1,7 @@
-import * as React from "react";
+import { InputHTMLAttributes } from "react";
 import { Control, FieldValue, FieldValues, Path } from "react-hook-form";
 
-import { InputError } from "@/types/inputs";
+import { FormInputError } from "@/types/inputs";
 
 interface Classes {
   root?: string;
@@ -10,9 +10,9 @@ interface Classes {
 }
 
 export interface CoFormInputProps<T extends FieldValues>
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  error?: InputError;
+  error?: FormInputError;
   control: Control<FieldValue<T>, unknown>;
   name: Path<FieldValue<T>>;
   classes?: Classes;
