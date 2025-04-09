@@ -36,7 +36,8 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
 
   const handleChangeFile = useCallback<OnUpdateFilesType>(
     (files) => {
-      const file = files?.[0]?.file;
+      const file = files?.[0]?.file as File;
+
       setDisabledOption(file?.type.split("/")[1]);
 
       setValue(FORM_FIELD.IMAGE_FILE, file, { shouldValidate: true });

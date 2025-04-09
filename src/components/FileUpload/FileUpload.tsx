@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FilePond, FilePondProps, registerPlugin } from "react-filepond";
 
 import cl from "clsx";
-import { ActualFileObject, FilePondFile } from "filepond";
+import { FilePondFile } from "filepond";
 import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
@@ -33,7 +33,7 @@ interface FileUploadProps extends Omit<FilePondProps, "acceptedFileTypes"> {
 }
 
 export type Files = FilePondFile[];
-export type File = FilePondFile | ActualFileObject;
+
 export type OnUpdateFilesType = (files: Files) => void;
 
 const FileUpload: FC<FileUploadProps> = ({ classes = { container: "" }, error, ...props }) => {

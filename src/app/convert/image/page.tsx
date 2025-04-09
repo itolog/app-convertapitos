@@ -17,12 +17,17 @@ export default function Images() {
   const [convertImage, { data, isLoading }] = useConvertImageMutation();
 
   const handleSubmit = useCallback(
-    async (values: FormValues) => {
+    async ({ convert_to, image_file }: FormValues) => {
       try {
-        const { data } = await convertImage(values).unwrap();
+        if (image_file) {
+          const { data } = await convertImage({
+            convert_to,
+            image_file,
+          }).unwrap();
 
-        if (data) {
-          setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
+          if (data) {
+            setDownloadUrl(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${data.image_link}`);
+          }
         }
       } catch (e) {
         handleError(e, {

@@ -2,7 +2,6 @@ import * as z from "zod";
 
 import { SUPPORTED_IMAGE_FORMATS } from "@/constants/fileUploadConstants";
 
-import { File } from "@/components/FileUpload/FileUpload";
 import { FORM_FIELD } from "@/components/forms/FileForm/constants";
 
 const validationSchema = z.object({
