@@ -12,7 +12,7 @@ const useFeatures = () => {
   const dispatch = useAppDispatch();
 
   const setFeatureState = useCallback(async () => {
-    if (process.env.NODE_ENV === APP_ENV.DEV) {
+    if (process.env.NODE_ENV === APP_ENV.PROD) {
       dispatch(setFeatureMultiple(disabledFeatures));
     }
   }, [dispatch]);

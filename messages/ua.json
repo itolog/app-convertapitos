@@ -58,5 +58,8 @@
     "Dark": "Темна",
     "System": "Система"
   },
-  "Invalid email": "Неправильний email"
+  "Invalid email": "Неправильний email",
+  "The feature is unavailable": "Функція недоступна",
+  "Go to Home": "Перейти на головну",
+  "Page not found": "Сторінку не знайдено"
 }
