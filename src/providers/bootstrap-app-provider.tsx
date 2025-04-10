@@ -2,40 +2,28 @@
 
 import React, { ReactNode, useEffect } from "react";
 
-import useErrors from "@/hooks/errors/useErrors";
 import useFeatures from "@/hooks/features/useFeatures";
 import useUser from "@/hooks/users/useUser";
-import { ThemeProvider } from "next-themes";
+import cl from "clsx";
 
 import { setAppLoading } from "@/store/app/appSlice";
 import { useAppDispatch } from "@/store/hooks";
 
-import ProgressBarProvider from "@/providers/progressbar-provider";
-
 const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
-  const { handleError } = useErrors();
-  const { setFeatureState } = useFeatures();
-  const { setUser } = useUser();
+
+  const { loading: featureLoading } = useFeatures();
+  const { loading: userLoading } = useUser();
 
   useEffect(() => {
-    (async () => {
-      dispatch(setAppLoading(true));
-      try {
-        await setUser();
-        await setFeatureState();
-      } catch (e) {
-        handleError(e);
-      } finally {
-        dispatch(setAppLoading(false));
-      }
-    })();
-  }, [dispatch, handleError, setFeatureState, setUser]);
+    dispatch(setAppLoading(featureLoading || userLoading));
+  }, [dispatch, featureLoading, userLoading]);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <ProgressBarProvider>{children}</ProgressBarProvider>
-    </ThemeProvider>
+    <div
+      className={cl("antialiased grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative")}>
+      {children}
+    </div>
   );
 };
 

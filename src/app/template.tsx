@@ -36,6 +36,7 @@ export default function Template({ children }: { children: ReactNode }) {
   if (checkIsLoading(loading)) {
     return <AppSpinner />;
   }
+
   return (
     <div
       className={cl("flex w-full h-full", {
