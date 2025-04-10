@@ -5,11 +5,11 @@ import appReducer from "@/store/app/appSlice";
 import featuresReducer from "@/store/features/featuresSlice";
 
 import qrcodeSlice from "./qrcode/qrcodeSlice";
-import { imageApi } from "./services/Image";
+import { apiSlice } from "./services/api";
 import userSlice from "./user/userSlice";
 
 const rootReducer = combineReducers({
-  [imageApi.reducerPath]: imageApi.reducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
   user: userSlice,
   qrcode: qrcodeSlice,
   features: featuresReducer,
@@ -20,7 +20,7 @@ export const makeStore = () => {
   return configureStore({
     reducer: rootReducer,
     devTools: !IS_PROD,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(imageApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
   });
 };
 
