@@ -5,7 +5,6 @@ import cl from "clsx";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import { ThemeProvider } from "next-themes";
 import { Vollkorn } from "next/font/google";
 
 import AppFooter from "@/components/AppFooter/AppFooter";
@@ -15,6 +14,7 @@ import { Toaster } from "@/components/ui/sonner";
 import BootstrapAppProvider from "@/providers/bootstrap-app-provider";
 import ProgressBarProvider from "@/providers/progressbar-provider";
 import StoreProvider from "@/providers/store-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 import "./globals.css";
 
@@ -34,23 +34,19 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
   const locale = await getLocale();
   const messages = await getMessages();
 
-  const bodyClass = cl(vollkorn.className, "h-full min-h-screen");
+  const htmlClass = cl(vollkorn.className, "min-h-screen antialiased");
 
   return (
-    <html lang={locale} className={"min-h-screen"} suppressHydrationWarning>
+    <html lang={locale} className={htmlClass} suppressHydrationWarning>
       <StoreProvider>
         <NextIntlClientProvider messages={messages}>
           <SessionProvider>
-            <body className={bodyClass}>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange>
+            <body className={"h-full min-h-screen"}>
+              <ThemeProvider>
                 <ProgressBarProvider>
                   <BootstrapAppProvider>
                     <CoAppBar />
-                    <main>{children}</main>
+                    <main className={"flex w-full h-full gradient-bg"}>{children}</main>
                     <AppFooter />
                     <Toaster closeButton richColors position="top-center" />
                   </BootstrapAppProvider>

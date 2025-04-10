@@ -20,8 +20,7 @@ const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
   }, [dispatch, featureLoading, userLoading]);
 
   return (
-    <div
-      className={cl("antialiased grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative")}>
+    <div className={cl("grid grid-rows-[auto_1fr_auto] app-font min-h-screen relative")}>
       {children}
     </div>
   );
