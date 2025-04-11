@@ -1,12 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 
 import styles from "./navigationCard.module.css";
 
-const NavigationCard = () => {
+interface NavigationCardProps {
+  title: string;
+  description?: string;
+}
+
+const NavigationCard: FC<NavigationCardProps> = ({ title, description }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.inner}>as</div>
-    </div>
+    <section className={styles["card"]}>
+      <div className={styles["content"]}>
+        <h3 className={styles["card-title"]}>{title}</h3>
+        {description && <p className={styles["card-des"]}>{description}</p>}
+      </div>
+    </section>
   );
 };
 

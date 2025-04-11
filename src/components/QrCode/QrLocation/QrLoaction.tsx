@@ -30,18 +30,16 @@ const QrLocation = () => {
   );
 
   return (
-    <div>
-      <QrCodeForm<FormValues>
-        formFields={formFields}
-        validationSchema={validationSchema}
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        classes={{
-          fieldsContainer: "gap-x-8 gap-y-4 grid-cols-1 w-full md:grid-cols-2 items-end",
-        }}
-        renderChildren={Map}
-      />
-    </div>
+    <QrCodeForm<FormValues>
+      formFields={formFields}
+      validationSchema={validationSchema}
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      classes={{
+        fieldsContainer: "gap-x-8 gap-y-4 grid-cols-1 w-full md:grid-cols-2 items-end",
+      }}
+      renderChildren={Map}
+    />
   );
 };
 

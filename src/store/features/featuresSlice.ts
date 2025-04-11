@@ -1,3 +1,4 @@
+import { AppDispatch } from "@/store";
 import { FeatureKey } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -25,6 +26,12 @@ export const featuresSlice = createSlice({
     },
   },
 });
+
+export function setFeatureMultipleAsync(payload: Partial<Record<FeatureKey, boolean>>) {
+  return async function (dispatch: AppDispatch) {
+    dispatch(setFeatureMultiple(payload));
+  };
+}
 
 export const { toggleFeatureAvailability, disableFeature, enableFeature, setFeatureMultiple } =
   featuresSlice.actions;
