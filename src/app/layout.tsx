@@ -1,7 +1,9 @@
+import { useGSAP } from "@gsap/react";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 import cl from "clsx";
+import gsap from "gsap";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
@@ -17,6 +19,8 @@ import StoreProvider from "@/providers/store-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 import "./globals.css";
+
+gsap.registerPlugin(useGSAP);
 
 const vollkorn = Vollkorn({
   weight: ["400", "500", "700"],
