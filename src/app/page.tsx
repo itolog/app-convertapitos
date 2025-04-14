@@ -15,20 +15,22 @@ export default function Home() {
 
   useGSAP(
     () => {
-      gsap.fromTo(
-        ".nav-card",
-        { scale: 0.1, y: 40 },
-        {
-          scale: 1,
-          y: 0,
+      const tl = gsap.timeline();
 
-          ease: "power1.inOut",
+      tl.from(".f-title", {
+        opacity: 0.2,
+        y: -40,
+      }).from(
+        ".nav-card",
+        {
+          scale: 0.5,
+          opacity: 0,
           stagger: {
             each: 0.1,
             from: "random",
-            ease: "power2.inOut",
           },
         },
+        "-=.4",
       );
     },
     { scope: container },
@@ -37,11 +39,15 @@ export default function Home() {
   return (
     <div ref={container} className={"relative w-full h-full flex items-center gap-12 flex-col"}>
       {navigations.map((navigation) => {
+        if (!navigation.enabled) return null;
+
         return (
           <div className={"flex flex-col w-full items-center gap-8"} key={navigation.label}>
-            <h2 className={"font-bold text-xl md:text-3xl"}>{navigation.label}</h2>
+            <h2 className={"font-bold text-xl md:text-3xl f-title"}>{navigation.label}</h2>
             <div className={"w-full flex justify-center flex-wrap gap-4"}>
               {navigation.content?.map((content) => {
+                if (!content.enabled) return null;
+
                 return (
                   <NavigationCard
                     key={content.label}
