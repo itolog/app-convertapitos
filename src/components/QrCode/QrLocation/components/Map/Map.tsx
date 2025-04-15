@@ -1,6 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 
+import useErrors from "@/hooks/errors/useErrors";
 import { useGeolocation } from "@uidotdev/usehooks";
+import cl from "clsx";
 import dynamic from "next/dynamic";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
@@ -19,7 +21,14 @@ function Map({ setValue, watch }) {
   const lat = watch("lat");
   const long = watch("lng");
 
-  const { longitude, latitude } = useGeolocation();
+  const { handleError } = useErrors();
+  const { longitude, latitude, error, loading } = useGeolocation();
+
+  useEffect(() => {
+    if (error) {
+      handleError(error, { withSnackbar: true });
+    }
+  }, [error, handleError]);
 
   const setPositionValues = useCallback(
     ({ lat, lng }: LatLong) => {
@@ -52,8 +61,17 @@ function Map({ setValue, watch }) {
   return (
     <div className={"relative flex flex-col z-0 gap-4"}>
       <CoPlaces width={"w-72 md:w-96"} onChange={handleChangeSearch} />
-      <div className={"flex w-full justify-end"}>
-        <CoButton variant={"secondary"} text={"set my position"} onClick={handleSetMyPos} />
+      <div
+        className={cl("flex w-full justify-end", {
+          "cursor-not-allowed": Boolean(error),
+        })}>
+        <CoButton
+          disabled={Boolean(error)}
+          loading={loading}
+          variant={"secondary"}
+          text={"set my position"}
+          onClick={handleSetMyPos}
+        />
       </div>
 
       <div className={"h-80"}>

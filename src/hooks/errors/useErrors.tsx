@@ -26,7 +26,12 @@ const useErrors = () => {
       return error.message;
     }
 
+    if (error instanceof GeolocationPositionError) {
+      return error.message;
+    }
+
     return t(options.defaultMessage ?? "Something went wrong");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleError = useCallback(
