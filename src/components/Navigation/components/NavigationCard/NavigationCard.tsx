@@ -2,10 +2,11 @@
 
 import { FC } from "react";
 
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { useTranslations } from "next-intl";
 
-import CoLink from "@/components/Buttons/CoLink/CoLink";
 import CoCard from "@/components/common/Cards/CoCard/CoCard";
+import CoLink from "@/components/Links/CoLink/CoLink";
 
 interface NavigationCardProps {
   title: string;
@@ -16,6 +17,13 @@ interface NavigationCardProps {
 
 const NavigationCard: FC<NavigationCardProps> = ({ title, description, href, className }) => {
   const t = useTranslations();
+  const { animatePageOut } = usePageAnimations();
+
+  const handleNavigation = (e) => {
+    e.preventDefault();
+    animatePageOut(href);
+  };
+
   return (
     <CoCard
       classes={{
@@ -27,7 +35,9 @@ const NavigationCard: FC<NavigationCardProps> = ({ title, description, href, cla
           <h3 className={"text-lg font-bold truncate"}>{title}</h3>
           {description && <p className={"line-clamp-3 break-words text-sm"}>{description}</p>}
         </div>
-        <CoLink href={href}>{t("Go to")}</CoLink>
+        <CoLink href={href} onNavigate={handleNavigation}>
+          {t("Go to")}
+        </CoLink>
       </div>
     </CoCard>
   );

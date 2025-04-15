@@ -1,18 +1,27 @@
 import React from "react";
 
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { useTranslations } from "next-intl";
 
-import CoLink from "@/components/Buttons/CoLink/CoLink";
 import CoCard from "@/components/common/Cards/CoCard/CoCard";
+import CoLink from "@/components/Links/CoLink/CoLink";
 
 const UnavailableFeature = () => {
   const t = useTranslations();
+  const { animatePageOut } = usePageAnimations();
 
   return (
     <CoCard>
       <div className={"flex h-full flex-col gap-6 items-center p-3 text-xl md:text-2xl"}>
         {t("The feature is unavailable")}
-        <CoLink href={"/"}>{t("Go to Home")}</CoLink>
+        <CoLink
+          href={"/"}
+          onNavigate={(e) => {
+            e.preventDefault();
+            animatePageOut("/");
+          }}>
+          {t("Go to Home")}
+        </CoLink>
       </div>
     </CoCard>
   );

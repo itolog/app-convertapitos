@@ -1,5 +1,6 @@
 "use client";
 
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import Link from "next/link";
 
 import AppSettings from "@/components/AppSettings/AppSettings";
@@ -8,6 +9,8 @@ import BaseNavigation from "@/components/Navigation/BaseNavigation/BaseNavigatio
 import CoDrawer from "@/components/Navigation/CoDrawer/CoDrawer";
 
 function CoAppBar() {
+  const { animatePageOut } = usePageAnimations();
+
   return (
     <header className="relative flex items-center justify-center h-16 shadow-sm dark:shadow-cyan-400">
       <div
@@ -17,7 +20,14 @@ function CoAppBar() {
         <div className={"flex gap-2"}>
           <CoDrawer />
 
-          <Link href="/" className="flex items-center gap-2" prefetch={false}>
+          <Link
+            href="/"
+            onNavigate={(e) => {
+              e.preventDefault();
+              animatePageOut("/");
+            }}
+            className="flex items-center gap-2"
+            prefetch={false}>
             <CoLogo />
           </Link>
         </div>

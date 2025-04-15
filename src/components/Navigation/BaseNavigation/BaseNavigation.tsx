@@ -2,10 +2,12 @@
 
 import * as React from "react";
 
-import checkIsLoading from "@/helpers/checkIsLoading";
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
+import checkIsLoading from "@/utils/checkIsLoading";
 
 import {
   NavigationMenu,
@@ -24,6 +26,7 @@ import { useAppSelector } from "@/store/hooks";
 const BaseNavigation = () => {
   const { navigations } = useNavigationItems();
   const loading = useAppSelector(getAppLoading);
+  const { animatePageOut } = usePageAnimations();
 
   if (checkIsLoading(loading)) {
     return <Skeleton className="w-[40%] h-[36px] rounded-sm" />;
@@ -54,7 +57,11 @@ const BaseNavigation = () => {
                               className={cn(
                                 "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                               )}
-                              href={component.href}>
+                              href={component.href}
+                              onNavigate={(e) => {
+                                e.preventDefault();
+                                animatePageOut(component.href);
+                              }}>
                               <div className="text-base font-semibold leading-none capitalize">
                                 {component.label}
                               </div>
@@ -73,7 +80,12 @@ const BaseNavigation = () => {
           } else {
             return (
               <NavigationMenuItem key={item.label}>
-                <Link href={item.href}>
+                <Link
+                  href={item.href}
+                  onNavigate={(e) => {
+                    e.preventDefault();
+                    animatePageOut(item.href);
+                  }}>
                   <NavigationMenuLink className={`font-semibold ${navigationMenuTriggerStyle()}`}>
                     {item.label}
                   </NavigationMenuLink>

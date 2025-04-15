@@ -1,26 +1,17 @@
 "use client";
 
 import { signOut } from "next-auth/react";
-import React, { FC } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 
-interface SignOutProps {
-  onClick?: () => void;
-}
-
-const SignOut: FC<SignOutProps> = ({ onClick }) => {
+const SignOut = () => {
   const { handleError } = useErrors();
 
   const handleLogOut = async () => {
     try {
-      await signOut();
-
-      if (onClick) {
-        onClick();
-      }
+      await signOut({ redirectTo: "/" });
     } catch (e) {
       handleError(e, {
         withSnackbar: true,

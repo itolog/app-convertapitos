@@ -45,6 +45,9 @@
       "@/router/*": [
         "./src/router/*"
       ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
       "@/styles/*": [
         "./src/styles/*"
       ],
@@ -62,9 +65,6 @@
       ],
       "@/services/*": [
         "./src/services/*"
-      ],
-      "@/navigation/*": [
-        "./src/navigation.ts"
       ],
       "@/auth": [
         "./auth"

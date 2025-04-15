@@ -3,9 +3,11 @@
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import React, { FC, useState } from "react";
 
-import checkIsLoading from "@/helpers/checkIsLoading";
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import Link from "next/link";
+
+import checkIsLoading from "@/utils/checkIsLoading";
 
 import CoDrawerSkeleton from "@/components/Navigation/CoDrawer/components/CoDrawerSkeleton/CoDrawerSkeleton";
 import {
@@ -28,6 +30,7 @@ interface CoDrawerProps {}
 const CoDrawer: FC<CoDrawerProps> = () => {
   const { navigations } = useNavigationItems();
   const loading = useAppSelector(getAppLoading);
+  const { animatePageOut } = usePageAnimations();
 
   const [open, setOpen] = useState(false);
 
@@ -66,6 +69,10 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                               <DropdownMenuItem key={content.label}>
                                 <Link
                                   onClick={handleClose}
+                                  onNavigate={(e) => {
+                                    e.preventDefault();
+                                    animatePageOut(content.href);
+                                  }}
                                   key={content.label}
                                   href={content.href}
                                   className="text-base font-semibold break-all capitalize"

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { genFeatureRoute } from "@/helpers/features";
+import { genFeatureRoute } from "@/utils/features";
 import { useTranslations } from "next-intl";
 
 import { FEATURE } from "@/types/features";

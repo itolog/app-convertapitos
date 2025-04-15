@@ -1,5 +1,6 @@
 "use client";
 
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -23,6 +24,7 @@ import { getUser } from "@/store/user/selectors";
 const AppSettings = () => {
   const t = useTranslations();
   const user = useAppSelector(getUser);
+  const { animatePageOut } = usePageAnimations();
 
   return (
     <div className="flex flex-row gap-2">
@@ -49,7 +51,13 @@ const AppSettings = () => {
         <DropdownMenuContent>
           {user && (
             <DropdownMenuItem>
-              <Link className={"text-center w-full"} href={"/profile"}>
+              <Link
+                className={"text-center w-full"}
+                href={"/profile"}
+                onNavigate={(e) => {
+                  e.preventDefault();
+                  animatePageOut("/profile");
+                }}>
                 {t("Profile")}
               </Link>
             </DropdownMenuItem>

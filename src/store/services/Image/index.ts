@@ -1,5 +1,6 @@
-import payloadToFormData from "@/helpers/forms/payloadToFormData";
 import { ApiResponse } from "@/types";
+
+import payloadToFormData from "@/utils/forms/payloadToFormData";
 
 import { apiSlice } from "@/store/services/api";
 import { DataResponse, ImagePayload } from "@/store/services/Image/types";

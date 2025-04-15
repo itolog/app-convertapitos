@@ -1,6 +1,6 @@
 "use client";
 
-import { genFeatureRoute } from "@/helpers/features/genFeatureRoute";
+import { genFeatureRoute } from "@/utils/features/genFeatureRoute";
 
 export const checkFeatureUnavailableRoute = (feature: string, pathName: string): boolean => {
   const [root, sub] = feature.split(":");

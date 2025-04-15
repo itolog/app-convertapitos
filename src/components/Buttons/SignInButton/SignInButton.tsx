@@ -1,25 +1,17 @@
 "use client";
 
-import React, { FC, useCallback } from "react";
+import { useCallback } from "react";
 
-import { useRouter } from "next/navigation";
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 
 import CoButton from "@/components/Buttons/CoButton/CoButton";
 
-interface SignInButtonProps {
-  onClick?: () => void;
-}
-
-const SignInButton: FC<SignInButtonProps> = ({ onClick }) => {
-  const router = useRouter();
+const SignInButton = () => {
+  const { animatePageOut } = usePageAnimations();
 
   const handleSignIn = useCallback(async () => {
-    router.push("/auth");
-
-    if (onClick) {
-      onClick();
-    }
-  }, [onClick, router]);
+    animatePageOut("/auth");
+  }, [animatePageOut]);
 
   return (
     <CoButton
