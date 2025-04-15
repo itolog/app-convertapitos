@@ -43,7 +43,6 @@ const usePageAnimations = () => {
           yPercent: -100,
         }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
           yPercent: 0,
-
           stagger: 0.2,
           onComplete: () => {
             router.push(href);

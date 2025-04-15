@@ -30,15 +30,13 @@ const LangSwitcher = () => {
         trigger: "px-2",
       }}
       icon={
-        <div className={"w-[20px] h-[15px] relative"}>
-          <Image
-            src={`https://flagcdn.com/h20/${optionsNormalized[value].code}.png`}
-            alt={value}
-            fill
-            priority
-            sizes="(min-width: 808px) 50vw, 100vw"
-          />
-        </div>
+        <Image
+          src={`https://flagcdn.com/20x15/${optionsNormalized[value].code}.png`}
+          alt={value}
+          width={20}
+          height={15}
+          priority
+        />
       }
       options={options}
       onSelect={handleChange}

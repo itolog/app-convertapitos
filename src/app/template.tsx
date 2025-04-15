@@ -1,7 +1,7 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import cl from "clsx";
@@ -25,15 +25,13 @@ export default function Template({ children }: { children: ReactNode }) {
   const pathName = usePathname();
   const { animatePageIn } = usePageAnimations();
 
-  const container = useRef<HTMLDivElement>(null);
-
   const [featureDisabled, setFeatureDisabled] = useState(false);
 
   useGSAP(
     () => {
       animatePageIn();
     },
-    { scope: container },
+    { dependencies: [pathName] },
   );
 
   useEffect(() => {
@@ -47,7 +45,7 @@ export default function Template({ children }: { children: ReactNode }) {
   }, [disabledFeatures, pathName]);
 
   return (
-    <div ref={container} className={"wrapper flex items-center justify-center p-4 md:p-10"}>
+    <div className={"wrapper flex items-center justify-center p-4 md:p-10"}>
       <div id="banner-1" className={cl(baseBannerClass, "left-0")} />
       <div id="banner-2" className={cl(baseBannerClass, "left-1/4")} />
       <div id="banner-3" className={cl(baseBannerClass, "left-2/4")} />
