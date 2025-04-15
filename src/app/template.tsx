@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
+import cl from "clsx";
 import { usePathname } from "next/navigation";
 
 import checkIsLoading from "@/utils/checkIsLoading";
@@ -15,6 +16,8 @@ import UnavailableFeature from "@/components/UnavailableFeature/UnavailableFeatu
 import { getAppLoading } from "@/store/app/selectors";
 import { getDisabledFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
+
+const baseBannerClass = "min-h-screen bg-background z-10 fixed top-0 w-1/4";
 
 export default function Template({ children }: { children: ReactNode }) {
   const disabledFeatures = useAppSelector(getDisabledFeatures);
@@ -45,10 +48,10 @@ export default function Template({ children }: { children: ReactNode }) {
 
   return (
     <div ref={container} className={"wrapper flex items-center justify-center p-4 md:p-10"}>
-      <div id="banner-1" className="min-h-screen bg-neutral-950 z-10 fixed top-0 left-0 w-1/4" />
-      <div id="banner-2" className="min-h-screen bg-neutral-950 z-10 fixed top-0 left-1/4 w-1/4" />
-      <div id="banner-3" className="min-h-screen bg-neutral-950 z-10 fixed top-0 left-2/4 w-1/4" />
-      <div id="banner-4" className="min-h-screen bg-neutral-950 z-10 fixed top-0 left-3/4 w-1/4" />
+      <div id="banner-1" className={cl(baseBannerClass, "left-0")} />
+      <div id="banner-2" className={cl(baseBannerClass, "left-1/4")} />
+      <div id="banner-3" className={cl(baseBannerClass, "left-2/4")} />
+      <div id="banner-4" className={cl(baseBannerClass, "left-3/4")} />
       {checkIsLoading(loading) ? (
         <AppSpinner />
       ) : featureDisabled ? (
