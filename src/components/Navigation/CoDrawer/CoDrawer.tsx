@@ -47,6 +47,8 @@ const CoDrawer: FC<CoDrawerProps> = () => {
           {!checkIsLoading(loading) && (
             <DropdownMenuGroup>
               {navigations.map((item) => {
+                if (!item.enabled) return null;
+
                 if (!item.content) {
                   return <DropdownMenuItem key={item.label}>{item.label}</DropdownMenuItem>;
                 } else {
@@ -58,6 +60,8 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                       <DropdownMenuPortal>
                         <DropdownMenuSubContent className={"max-w-[50vw]"}>
                           {item.content.map((content) => {
+                            if (!content.enabled) return null;
+
                             return (
                               <DropdownMenuItem key={content.label}>
                                 <Link
