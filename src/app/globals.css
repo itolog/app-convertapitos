@@ -357,8 +357,3 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 }
-
-/* Buttons */
-.co-anim-btn-1 {
-    @apply text-primary hover:text-green-600 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-md py-1 px-1 shadow hover:shadow-green-600 duration-700;
-}

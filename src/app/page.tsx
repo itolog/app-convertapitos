@@ -8,6 +8,8 @@ import gsap from "gsap";
 
 import NavigationCard from "@/components/Navigation/components/NavigationCard/NavigationCard";
 
+const RANGE_MULT = 50;
+
 export default function Home() {
   const container = useRef<HTMLDivElement>(null);
 
@@ -23,6 +25,18 @@ export default function Home() {
       }).from(
         ".nav-card",
         {
+          x: (i) => {
+            return gsap.utils.random(-(i * RANGE_MULT), i * RANGE_MULT);
+          },
+          y: (i) => {
+            return gsap.utils.random(-(i * RANGE_MULT), i * RANGE_MULT);
+          },
+          skewX: (i) => {
+            return gsap.utils.random(-(i * 10), i * 10);
+          },
+          skewY: (i) => {
+            return gsap.utils.random(-(i * 10), i * 10);
+          },
           scale: 0.5,
           opacity: 0,
           stagger: {
@@ -30,7 +44,7 @@ export default function Home() {
             from: "random",
           },
         },
-        "-=.4",
+        "+=.4",
       );
     },
     { scope: container },
