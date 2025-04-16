@@ -36,9 +36,9 @@ const BaseNavigation = () => {
     <NavigationMenu orientation={"vertical"}>
       <NavigationMenuList>
         {navigations.map((item) => {
-          if (item.content?.every((i) => !i.enabled) || !item.enabled) return null;
+          if (item.children?.every((i) => !i.enabled) || !item.enabled) return null;
 
-          if (item.content) {
+          if (item.children) {
             return (
               <NavigationMenuItem key={item.label}>
                 <NavigationMenuTrigger
@@ -47,7 +47,7 @@ const BaseNavigation = () => {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {item.content.map((component) => {
+                    {item.children.map((component) => {
                       if (!component.enabled) return null;
 
                       return (

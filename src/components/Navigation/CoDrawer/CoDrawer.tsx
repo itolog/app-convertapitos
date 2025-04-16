@@ -52,7 +52,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
               {navigations.map((item) => {
                 if (!item.enabled) return null;
 
-                if (!item.content) {
+                if (!item.children) {
                   return <DropdownMenuItem key={item.label}>{item.label}</DropdownMenuItem>;
                 } else {
                   return (
@@ -62,7 +62,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
                       </DropdownMenuSubTrigger>
                       <DropdownMenuPortal>
                         <DropdownMenuSubContent className={"max-w-[50vw]"}>
-                          {item.content.map((content) => {
+                          {item.children.map((content) => {
                             if (!content.enabled) return null;
 
                             return (

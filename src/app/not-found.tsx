@@ -1,3 +1,5 @@
+"use client";
+
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { useTranslations } from "next-intl";
 
