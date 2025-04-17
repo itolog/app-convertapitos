@@ -6,7 +6,7 @@ import { useRef } from "react";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import gsap from "gsap";
 
-import NavigationCard from "@/components/Navigation/components/NavigationCard/NavigationCard";
+import NavigationCard from "@/components/common/Cards/NavigationCard/NavigationCard";
 
 const RANGE_MULTI = 50;
 

@@ -5,6 +5,7 @@ import { ReactNode, useEffect, useState } from "react";
 
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import cl from "clsx";
+import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
 import checkIsLoading from "@/utils/checkIsLoading";
@@ -18,6 +19,10 @@ import { getDisabledFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
 
 const baseBannerClass = "min-h-screen bg-background z-10 fixed top-0 w-1/4";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP);
+}
 
 export default function Template({ children }: { children: ReactNode }) {
   const disabledFeatures = useAppSelector(getDisabledFeatures);
