@@ -62,5 +62,9 @@
   "The feature is unavailable": "Функція недоступна",
   "Go to Home": "Перейти на головну",
   "Page not found": "Сторінку не знайдено",
-  "Go to": "Перейти"
+  "Go to": "Перейти",
+  "File Conversion and Generation": "Конвертація та генерація файлів",
+  "QR Code generator": "Генератор QR-кодів",
+  "Home Page Title": "Ласкаво просимо до ConvertApiTos",
+  "Home Page Description": "Наш додаток пропонує вам зручні інструменти для конвертації файлів і створення QR-кодів. Виберіть потрібний вам розділ, щоб почати роботу."
 }

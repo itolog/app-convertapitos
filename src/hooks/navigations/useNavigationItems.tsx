@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { FileBox, QrCode } from "lucide-react";
+import { ReactNode, useMemo } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -10,15 +11,18 @@ import { genFeatureRoute } from "@/utils/features";
 import { getFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
 
-type NavigationItem = {
+export type NavigationItem = {
   id: string;
   parentId: string | null;
   href: string;
   label: string;
   enabled: boolean;
   description?: string;
+  icon?: ReactNode;
   children?: NavigationItem[];
 };
+
+const iconClassName = "stroke-current";
 
 const useNavigationItems = () => {
   const t = useTranslations();
@@ -31,7 +35,9 @@ const useNavigationItems = () => {
         parentId: null,
         label: t("Convert"),
         href: genFeatureRoute(FEATURE.CONVERT),
+        description: t("File Conversion and Generation"),
         enabled: featuresState[FEATURE.CONVERT],
+        icon: <FileBox className={iconClassName} />,
       },
       {
         id: FEATURE.CONVERT_IMAGE,
@@ -55,7 +61,9 @@ const useNavigationItems = () => {
         parentId: null,
         label: t("QR Code"),
         href: genFeatureRoute(FEATURE.QRCODE),
+        description: t("QR Code generator"),
         enabled: featuresState[FEATURE.QRCODE],
+        icon: <QrCode className={iconClassName} />,
       },
 
       {

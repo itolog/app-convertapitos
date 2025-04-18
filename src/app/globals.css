@@ -11,7 +11,6 @@
     --color-background: hsl(var(--background));
     --color-foreground: hsl(var(--foreground));
     --color-card: hsl(var(--card));
-    --color-card-background: hsl(var(--card-background));
     --color-card-foreground: hsl(var(--card-foreground));
     --color-popover: hsl(var(--popover));
     --color-popover-foreground: hsl(var(--popover-foreground));
@@ -62,9 +61,8 @@
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.129 0.042 264.695);
-    --card: oklch(1 0 0);
+    --card: oklch(0.98 0 0);
     --card-foreground: oklch(0.129 0.042 264.695);
-    --card-background: oklch(0.98 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.129 0.042 264.695);
     --primary: oklch(0.208 0.042 265.755);
@@ -243,9 +241,8 @@
 .dark {
     --background: oklch(0.21 0.03 264.68);
     --foreground: oklch(0.984 0.003 247.858);
-    --card: oklch(0.208 0.042 265.755);
+    --card: oklch(0.23 0.04 263.28);
     --card-foreground: oklch(0.984 0.003 247.858);
-    --card-background: oklch(0.23 0.04 263.28);
     --popover: oklch(0.208 0.042 265.755);
     --popover-foreground: oklch(0.984 0.003 247.858);
     --primary: oklch(0.929 0.013 255.508);
@@ -276,55 +273,71 @@
     --upload-bg: #475569;
     --footer-shadow-color: #22d3ee;
 
+    /*.gradient-bg {*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    --color1: #a1000e;*/
+
+    /*    background: radial-gradient(*/
+    /*            circle farthest-side at 0% 50%,*/
+    /*            var(--background) 23.5%,*/
+    /*            rgba(255, 170, 0, 0) 0*/
+    /*    )*/
+    /*    21px 30px,*/
+    /*    radial-gradient(*/
+    /*            circle farthest-side at 0% 50%,*/
+    /*            var(--color1) 24%,*/
+    /*            rgba(240, 166, 17, 0) 0*/
+    /*    )*/
+    /*    19px 30px,*/
+    /*    linear-gradient(*/
+    /*            var(--background) 14%,*/
+    /*            rgba(240, 166, 17, 0) 0,*/
+    /*            rgba(240, 166, 17, 0) 85%,*/
+    /*            var(--background) 0*/
+    /*    )*/
+    /*    0 0,*/
+    /*    linear-gradient(*/
+    /*            150deg,*/
+    /*            var(--background) 24%,*/
+    /*            var(--color1) 0,*/
+    /*            var(--color1) 26%,*/
+    /*            rgba(240, 166, 17, 0) 0,*/
+    /*            rgba(240, 166, 17, 0) 74%,*/
+    /*            var(--color1) 0,*/
+    /*            var(--color1) 76%,*/
+    /*            var(--background) 0*/
+    /*    )*/
+    /*    0 0,*/
+    /*    linear-gradient(*/
+    /*            30deg,*/
+    /*            var(--background) 24%,*/
+    /*            var(--color1) 0,*/
+    /*            var(--color1) 26%,*/
+    /*            rgba(240, 166, 17, 0) 0,*/
+    /*            rgba(240, 166, 17, 0) 74%,*/
+    /*            var(--color1) 0,*/
+    /*            var(--color1) 76%,*/
+    /*            var(--background) 0*/
+    /*    )*/
+    /*    0 0,*/
+    /*    linear-gradient(90deg, var(--color1) 2%, var(--background) 0, var(--background) 98%, var(--color1) 0%) 0 0*/
+    /*    var(--background);*/
+    /*    background-size: 40px 60px;*/
+    /*}*/
     .gradient-bg {
         width: 100%;
         height: 100%;
-        background: radial-gradient(
-                circle farthest-side at 0% 50%,
-                var(--background) 23.5%,
-                rgba(255, 170, 0, 0) 0
-        )
-        21px 30px,
-        radial-gradient(
-                circle farthest-side at 0% 50%,
-                #a1000e 24%,
-                rgba(240, 166, 17, 0) 0
-        )
-        19px 30px,
-        linear-gradient(
-                var(--background) 14%,
-                rgba(240, 166, 17, 0) 0,
-                rgba(240, 166, 17, 0) 85%,
-                var(--background) 0
-        )
-        0 0,
-        linear-gradient(
-                150deg,
-                var(--background) 24%,
-                #a1000e 0,
-                #a1000e 26%,
-                rgba(240, 166, 17, 0) 0,
-                rgba(240, 166, 17, 0) 74%,
-                #a1000e 0,
-                #a1000e 76%,
-                var(--background) 0
-        )
-        0 0,
-        linear-gradient(
-                30deg,
-                var(--background) 24%,
-                #a1000e 0,
-                #a1000e 26%,
-                rgba(240, 166, 17, 0) 0,
-                rgba(240, 166, 17, 0) 74%,
-                #a1000e 0,
-                #a1000e 76%,
-                var(--background) 0
-        )
-        0 0,
-        linear-gradient(90deg, #a1000e 2%, var(--background) 0, var(--background) 98%, #a1000e 0%) 0 0
-        var(--background);
-        background-size: 40px 60px;
+        --s: 25px;
+
+        --c: #0000, #181a20 0.5deg 119.5deg, #0000 120deg;
+        --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+        --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+        --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+        background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+        var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+        var(--g3) 0 calc(1.73 * var(--s)) #232730;
+        background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
     }
 }
 

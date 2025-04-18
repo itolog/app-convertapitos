@@ -5,7 +5,7 @@
   width: 100%;
   min-width: 50px;
   min-height: 50px;
-  background: var(--card-background);
+  background: var(--card);
 }
 
 .inner::after,

@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import { ReactNode, useEffect, useState } from "react";
 
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
-import cl from "clsx";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
@@ -12,13 +11,12 @@ import checkIsLoading from "@/utils/checkIsLoading";
 import { checkFeatureUnavailableRoute } from "@/utils/features";
 
 import AppSpinner from "@/components/common/Loaders/AppSpinner/AppSpinner";
+import PageTransition from "@/components/common/Loaders/PageTransition/PageTransition";
 import UnavailableFeature from "@/components/UnavailableFeature/UnavailableFeature";
 
 import { getAppLoading } from "@/store/app/selectors";
 import { getDisabledFeatures } from "@/store/features/selectors";
 import { useAppSelector } from "@/store/hooks";
-
-const baseBannerClass = "min-h-screen bg-background z-10 fixed top-0 w-1/4";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(useGSAP);
@@ -51,10 +49,7 @@ export default function Template({ children }: { children: ReactNode }) {
 
   return (
     <div className={"wrapper flex items-center justify-center p-4 md:p-10"}>
-      <div id="banner-1" className={cl(baseBannerClass, "left-0")} />
-      <div id="banner-2" className={cl(baseBannerClass, "left-1/4")} />
-      <div id="banner-3" className={cl(baseBannerClass, "left-2/4")} />
-      <div id="banner-4" className={cl(baseBannerClass, "left-3/4")} />
+      <PageTransition />
       {checkIsLoading(loading) ? (
         <AppSpinner />
       ) : featureDisabled ? (

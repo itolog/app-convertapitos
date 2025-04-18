@@ -3,8 +3,8 @@
 import React, { PropsWithChildren, useCallback, useEffect } from "react";
 import { FieldValues, Path, PathValue, useForm } from "react-hook-form";
 
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import cl from "clsx";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 
@@ -29,10 +29,10 @@ const CoQrCode = dynamic(() => import("@/components/QrCode/components/CoQrCode/C
   ssr: false,
   loading: () => (
     <div className={"qrcode-container"}>
-      <Skeleton className={"rounded-none w-[240px] h-[240px] md:w-[256px] md:h-[256px]"} />
-      <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
-        <Skeleton className={"rounded-md w-36 h-[36px]"} />
-        <Skeleton className={"rounded-md w-24 h-[36px]"} />
+      <Skeleton className={"h-[240px] w-[240px] rounded-none md:h-[256px] md:w-[256px]"} />
+      <div className={"flex w-full flex-row flex-wrap items-center justify-between"}>
+        <Skeleton className={"h-[36px] w-36 rounded-md"} />
+        <Skeleton className={"h-[36px] w-24 rounded-md"} />
       </div>
     </div>
   ),
@@ -62,12 +62,12 @@ function QrCodeForm<FormValues extends FieldValues>({
     };
   }, [dispatch]);
 
-  const fromClass = cl(
+  const fromClass = cn(
     "flex w-full flex-col md:w-fit max-w-[436px] justify-center items-center gap-6 p-4 border-solid border-2 border-black rounded-md dark:border-cyan-900",
     classes?.form,
   );
 
-  const fieldsContainerClasses = cl("grid w-full", classes?.fieldsContainer);
+  const fieldsContainerClasses = cn("grid w-full", classes?.fieldsContainer);
 
   const getErrorMessage = useCallback(
     (item: string): string => {
@@ -87,7 +87,7 @@ function QrCodeForm<FormValues extends FieldValues>({
       }}>
       <div
         className={
-          "flex w-full md:w-fit gap-4 md:gap-10 justify-center items-start p-3 md:p-6 flex-wrap"
+          "flex w-full flex-wrap items-start justify-center gap-4 p-3 md:w-fit md:gap-10 md:p-6"
         }>
         <Form {...form}>
           <form noValidate className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
@@ -136,7 +136,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       control={form.control}
                       name={item.name as Path<FormValues>}
                       render={({ field }) => (
-                        <FormItem className="flex flex-row items-center space-x-2 space-y-0 rounded-md border px-2 h-9 shadow-sm dark:shadow-cyan-500">
+                        <FormItem className="flex h-9 flex-row items-center space-y-0 space-x-2 rounded-md border px-2 shadow-sm dark:shadow-cyan-500">
                           <FormControl>
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>

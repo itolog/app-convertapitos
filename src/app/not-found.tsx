@@ -12,8 +12,8 @@ export default function NotFound() {
 
   return (
     <CoCard>
-      <div className={"flex flex-col p-4 gap-6"}>
-        <h2 className={"font-bold text-9xl"}>404</h2>
+      <div className={"flex flex-col gap-6 p-4"}>
+        <h2 className={"text-9xl font-bold"}>404</h2>
         <p className={"text-3xl break-words"}>{t("Page not found")}</p>
         <CoLink
           href="/"

@@ -38,10 +38,10 @@ const CoButton: FC<CoButtonProps> = ({
       )}
       {icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
       {text && !children && (
-        <span className={"truncate hover:text-clip leading-normal"}>{t(text, textOption)}</span>
+        <span className={"truncate leading-normal hover:text-clip"}>{t(text, textOption)}</span>
       )}
       {!text && children && (
-        <span className={"truncate hover:text-clip leading-normal"}>{children}</span>
+        <span className={"truncate leading-normal hover:text-clip"}>{children}</span>
       )}
     </Button>
   );

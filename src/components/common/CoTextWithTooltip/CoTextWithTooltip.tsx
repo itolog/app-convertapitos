@@ -66,10 +66,10 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
   }, [text]);
 
   return (
-    <div className={"w-full h-fit overflow-hidden"}>
+    <div className={"h-fit w-full overflow-hidden"}>
       <TooltipProvider delayDuration={400}>
         <Tooltip>
-          <TooltipTrigger className={"w-full block overflow-hidden"}>
+          <TooltipTrigger className={"block w-full overflow-hidden"}>
             <CoText text={text} textProps={textProps} className={textClass} ref={textRef}>
               {children}
             </CoText>

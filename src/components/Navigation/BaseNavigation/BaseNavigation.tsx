@@ -29,7 +29,7 @@ const BaseNavigation = () => {
   const { animatePageOut } = usePageAnimations();
 
   if (checkIsLoading(loading)) {
-    return <Skeleton className="w-[40%] h-[36px] rounded-sm" />;
+    return <Skeleton className="h-[36px] w-[40%] rounded-sm" />;
   }
 
   return (
@@ -42,11 +42,11 @@ const BaseNavigation = () => {
             return (
               <NavigationMenuItem key={item.label}>
                 <NavigationMenuTrigger
-                  className={"text-base font-semibold leading-normal items-baseline"}>
+                  className={"items-baseline text-base leading-normal font-semibold"}>
                   {item.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-full gap-1 p-1 md:gap-3 md:p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ul className="grid w-full gap-1 p-1 md:w-[500px] md:grid-cols-2 md:gap-3 md:p-4 lg:w-[600px]">
                     {item.children.map((component) => {
                       if (!component.enabled) return null;
 
@@ -55,17 +55,17 @@ const BaseNavigation = () => {
                           <NavigationMenuLink asChild>
                             <Link
                               className={cn(
-                                "block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-2 leading-none no-underline outline-hidden transition-colors select-none",
                               )}
                               href={component.href}
                               onNavigate={(e) => {
                                 e.preventDefault();
                                 animatePageOut(component.href);
                               }}>
-                              <div className="text-base font-semibold leading-none capitalize">
+                              <div className="text-base leading-none font-semibold capitalize">
                                 {component.label}
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                                 {component.description}
                               </p>
                             </Link>

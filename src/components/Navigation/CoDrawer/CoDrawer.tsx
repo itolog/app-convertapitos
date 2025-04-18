@@ -39,7 +39,7 @@ const CoDrawer: FC<CoDrawerProps> = () => {
   };
 
   return (
-    <div className={"flex md:hidden items-center"}>
+    <div className={"flex items-center md:hidden"}>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className={"cursor-pointer"} asChild>
           <HamburgerMenuIcon width={30} height={30} />

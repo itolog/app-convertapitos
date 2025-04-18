@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const CoMap = dynamic(() => import("@/components/CoMap/CoMap"), {
   ssr: false,
-  loading: () => <Skeleton className={"rounded-none w-full h-80"} />,
+  loading: () => <Skeleton className={"h-80 w-full rounded-none"} />,
 });
 
 function Map({ setValue, watch }) {
@@ -59,7 +59,7 @@ function Map({ setValue, watch }) {
   );
 
   return (
-    <div className={"relative flex flex-col z-0 gap-4"}>
+    <div className={"relative z-0 flex flex-col gap-4"}>
       <CoPlaces width={"w-72 md:w-96"} onChange={handleChangeSearch} />
       <div
         className={cl("flex w-full justify-end", {

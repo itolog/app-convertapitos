@@ -2,7 +2,7 @@
 
 import { Controller, FieldValues } from "react-hook-form";
 
-import cl from "clsx";
+import { cn } from "@/lib/utils";
 
 import FormError from "@/components/Errors/FormError/FormError";
 import { CoFormInputProps } from "@/components/Inputs/CoFormInput/types";
@@ -18,10 +18,10 @@ function CoFormInput<T extends FieldValues>({
   classes,
   ...props
 }: CoFormInputProps<T>) {
-  const rootClass = cl("relative w-full flex flex-col gap-1", classes?.root);
-  const labelClass = cl("font-semibold capitalize text-left", classes?.label);
+  const rootClass = cn("relative w-full flex flex-col gap-1", classes?.root);
+  const labelClass = cn("font-semibold capitalize text-left", classes?.label);
 
-  const inputClass = cl(classes?.input, {
+  const inputClass = cn(classes?.input, {
     "border-slate-950 dark:border-cyan-500": !error,
     "border-red-500 focus-visible:ring-red-500": error,
   });

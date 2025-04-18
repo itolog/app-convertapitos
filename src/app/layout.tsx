@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children }: { children: ReactNode }
                 <ProgressBarProvider>
                   <BootstrapAppProvider>
                     <CoAppBar />
-                    <main className={"flex w-full h-full gradient-bg"}>{children}</main>
+                    <main className={"gradient-bg flex h-full w-full"}>{children}</main>
                     <AppFooter />
                     <Toaster closeButton richColors position="top-center" />
                   </BootstrapAppProvider>
