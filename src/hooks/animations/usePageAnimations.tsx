@@ -10,45 +10,50 @@ const usePageAnimations = () => {
   const pathname = usePathname();
 
   const animatePageIn = useCallback(() => {
-    const bannerOne = document.getElementById("banner-1");
-    const bannerTwo = document.getElementById("banner-2");
-    const bannerThree = document.getElementById("banner-3");
-    const bannerFour = document.getElementById("banner-4");
+    const tl = gsap.timeline();
+    const boxes = gsap.utils.toArray(".page-transition--box");
 
-    if (bannerOne && bannerTwo && bannerThree && bannerFour) {
-      const tl = gsap.timeline();
-
-      tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
-        yPercent: 0,
-      }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-        yPercent: 100,
-        stagger: 0.2,
+    tl.set(boxes, {
+      opacity: 1,
+      scale: 1,
+    })
+      .to(boxes, {
+        opacity: 0,
+        scale: 0,
+        stagger: {
+          from: "random",
+          amount: 0.4,
+        },
+      })
+      .to(".page-transition", {
+        yPercent: -100,
       });
-    }
   }, []);
 
   const animatePageOut = useCallback(
     (href: string) => {
       if (pathname === href) return;
 
-      const bannerOne = document.getElementById("banner-1");
-      const bannerTwo = document.getElementById("banner-2");
-      const bannerThree = document.getElementById("banner-3");
-      const bannerFour = document.getElementById("banner-4");
+      const tl = gsap.timeline();
 
-      if (bannerOne && bannerTwo && bannerThree && bannerFour) {
-        const tl = gsap.timeline();
-
-        tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
-          yPercent: -100,
-        }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
+      tl.set(".page-transition--box", {
+        opacity: 0,
+        scale: 0,
+      })
+        .to(".page-transition", {
           yPercent: 0,
-          stagger: 0.2,
+        })
+        .to(".page-transition--box", {
+          opacity: 1,
+          scale: 1,
+          stagger: {
+            from: "random",
+            amount: 0.4,
+          },
           onComplete: () => {
             router.push(href);
           },
         });
-      }
     },
     [pathname, router],
   );

@@ -2,15 +2,16 @@ import React from "react";
 
 import cl from "clsx";
 
-const baseBannerClass = "min-h-screen bg-background z-100 fixed top-0 w-1/4";
-
 const PageTransition = () => {
   return (
-    <div>
-      <div id="banner-1" className={cl(baseBannerClass, "left-0")} />
-      <div id="banner-2" className={cl(baseBannerClass, "left-1/4")} />
-      <div id="banner-3" className={cl(baseBannerClass, "left-2/4")} />
-      <div id="banner-4" className={cl(baseBannerClass, "left-3/4")} />
+    <div
+      className={cl(
+        "page-transition absolute top-0 left-0 z-100 h-full min-h-screen w-full bg-[rgba(0,0,0,0.5)]",
+        "grid grid-cols-5 grid-rows-5",
+      )}>
+      {Array.from({ length: 25 }, (value, index) => index).map((value) => {
+        return <div key={value} className={"page-transition--box bg-background"} />;
+      })}
     </div>
   );
 };
