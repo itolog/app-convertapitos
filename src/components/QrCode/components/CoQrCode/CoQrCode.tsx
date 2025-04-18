@@ -85,7 +85,7 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   return (
     <div className={"qrcode-container sticky top-2"}>
       <div ref={ref} />
-      <div className={"flex flex-row w-full justify-between items-center flex-wrap"}>
+      <div className={"flex w-full flex-row flex-wrap items-center justify-between"}>
         <CoButton
           variant={"success"}
           type="button"

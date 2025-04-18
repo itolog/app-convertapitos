@@ -43,7 +43,7 @@ const CoPlaces: FC<CoPlacesProps> = ({ onChange, width = "w-[250px]" }) => {
         <Button
           variant="outline"
           role="combobox"
-          className={clsx("justify-between select-border", width)}>
+          className={clsx("select-border justify-between", width)}>
           {displayName}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

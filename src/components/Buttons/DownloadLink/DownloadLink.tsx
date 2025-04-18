@@ -42,7 +42,7 @@ const DownloadLink: FC<DownloadLinkProps> = ({
       {isDownloading && (
         <span
           className={
-            "absolute flex items-center justify-center top-0 right-0 bottom-0 left-0 bg-teal-500/70 text-white text-xl font-semibold text-center"
+            "absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-teal-500/70 text-center text-xl font-semibold text-white"
           }>
           {progress ?? 0}%
         </span>

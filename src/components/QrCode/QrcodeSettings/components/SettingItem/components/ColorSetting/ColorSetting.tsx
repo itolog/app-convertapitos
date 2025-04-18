@@ -80,7 +80,7 @@ const ColorSetting: FC<ColorSettingProps> = ({ id }) => {
         </div>
       </RadioGroup>
 
-      <div className={"flex gap-2 h-10 pr-2"}>
+      <div className={"flex h-10 gap-2 pr-2"}>
         {!isGradient ? (
           <CoColorPicker color={options[id].color} handleChangeColor={handleChangeColor} />
         ) : (

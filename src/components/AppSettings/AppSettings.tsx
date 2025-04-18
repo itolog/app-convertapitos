@@ -52,7 +52,7 @@ const AppSettings = () => {
           {user && (
             <DropdownMenuItem>
               <Link
-                className={"text-center w-full"}
+                className={"w-full text-center"}
                 href={"/profile"}
                 onNavigate={(e) => {
                   e.preventDefault();

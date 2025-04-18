@@ -19,7 +19,7 @@ const PageError: FC<PageErrorProps> = ({ reset }) => {
     <Alert variant="destructive">
       <ExclamationTriangleIcon className="h-4 w-4" />
       <AlertTitle>{t("Error")}</AlertTitle>
-      <AlertDescription className={"flex justify-between items-center"}>
+      <AlertDescription className={"flex items-center justify-between"}>
         <span>{t("Something went wrong")}</span>
         <CoButton variant={"destructive"} className={"w-fit"} onClick={reset} text={"Try again"} />
       </AlertDescription>

@@ -33,7 +33,7 @@ const SimpleImageUpload: FC<SimpleImageUploadProps> = ({ onChange }) => {
   };
 
   return (
-    <div className="grid w-full overflow-hidden rounded items-center h-[76px]">
+    <div className="grid h-[76px] w-full items-center overflow-hidden rounded">
       <FilePond onupdatefiles={handleChange} onremovefile={handleRemoveFile} {...config} />
     </div>
   );

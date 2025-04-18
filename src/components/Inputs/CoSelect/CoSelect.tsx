@@ -31,7 +31,7 @@ const CoSelect: FC<CoSelectProps> = ({
   return (
     <div className={rootClass}>
       {label && (
-        <Label className={"font-semibold capitalize text-left"} htmlFor={label}>
+        <Label className={"text-left font-semibold capitalize"} htmlFor={label}>
           {label}
         </Label>
       )}

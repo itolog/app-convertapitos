@@ -18,7 +18,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const FileUpload = dynamic(() => import("@/components/FileUpload/FileUpload"), {
   ssr: false,
-  loading: () => <Skeleton className={"w-full h-[288px] mb-4"} />,
+  loading: () => <Skeleton className={"mb-4 h-[288px] w-full"} />,
 });
 
 const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
@@ -70,11 +70,11 @@ const FileForm: FC<FileFormProps> = ({ onSubmit, onRemoveFile, loading }) => {
         root: "w-full md:w-fit",
       }}>
       <form
-        className={"flex flex-col gap-6 m-5"}
+        className={"m-5 flex flex-col gap-6"}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete={"off"}>
         <div className={"flex justify-end gap-2 md:gap-4"}>
-          <div className={"flex relative w-3/6 md:w-48"}>
+          <div className={"relative flex w-3/6 md:w-48"}>
             <CoAutocomplete
               options={fileTypeOptions}
               disabled={loading || !getValues(FORM_FIELD.IMAGE_FILE)}

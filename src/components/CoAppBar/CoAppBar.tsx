@@ -12,10 +12,10 @@ function CoAppBar() {
   const { animatePageOut } = usePageAnimations();
 
   return (
-    <header className="relative flex items-center justify-center h-16 shadow-sm dark:shadow-cyan-400">
+    <header className="relative flex h-16 items-center justify-center shadow-sm dark:shadow-cyan-400">
       <div
         className={
-          "wrapper grid grid-cols-[80px_1fr] md:grid-cols-[40px_1fr_170px] w-full items-center justify-between"
+          "wrapper grid w-full grid-cols-[80px_1fr] items-center justify-between md:grid-cols-[40px_1fr_170px]"
         }>
         <div className={"flex gap-2"}>
           <CoDrawer />
@@ -32,11 +32,11 @@ function CoAppBar() {
           </Link>
         </div>
 
-        <div className={"hidden md:flex items-center justify-center"}>
+        <div className={"hidden items-center justify-center md:flex"}>
           <BaseNavigation />
         </div>
 
-        <div className="flex items-center justify-end gap-4 w-full">
+        <div className="flex w-full items-center justify-end gap-4">
           <AppSettings />
         </div>
       </div>

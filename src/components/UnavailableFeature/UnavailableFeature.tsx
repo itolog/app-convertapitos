@@ -12,7 +12,7 @@ const UnavailableFeature = () => {
 
   return (
     <CoCard>
-      <div className={"flex h-full flex-col gap-6 items-center p-3 text-xl md:text-2xl"}>
+      <div className={"flex h-full flex-col items-center gap-6 p-3 text-xl md:text-2xl"}>
         {t("The feature is unavailable")}
         <CoLink
           href={"/"}

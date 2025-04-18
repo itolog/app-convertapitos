@@ -19,18 +19,18 @@ const components: { title: Icons; href: string }[] = [
 
 const AppFooter = () => {
   return (
-    <div className={"relative py-2.5 shadow-inner footer-shadow"}>
+    <div className={"footer-shadow relative py-2.5 shadow-inner"}>
       <div className={"wrapper flex justify-end"}>
         <ul className={"flex gap-2"}>
           {components.map((item) => {
             return (
               <li
-                className={"flex text-xl rounded-md hover:shadow-sm shadow-cyan-100 cursor-pointer"}
+                className={"flex cursor-pointer rounded-md text-xl shadow-cyan-100 hover:shadow-sm"}
                 key={item.title}>
                 <Link
                   target={"_blank"}
                   className={cn(
-                    "block select-none no-underline rounded-md transition-colors p-1 hover:bg-accent dark:hover:bg-white hover:text-accent-foreground focus:bg-accent",
+                    "hover:bg-accent hover:text-accent-foreground focus:bg-accent block rounded-md p-1 no-underline transition-colors select-none dark:hover:bg-white",
                   )}
                   href={item.href}>
                   <SvgIcons name={item.title} size={"24px"} color={"black"} />

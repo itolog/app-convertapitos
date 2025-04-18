@@ -77,9 +77,9 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
   return (
     <section
       className={cl(
-        "border-solid border-2  dark:border-cyan-900 border-black rounded-md py-4 px-1",
+        "rounded-md border-2 border-solid border-black px-1 py-4 dark:border-cyan-900",
         {
-          "grid-cols-1  md:col-span-2": id === "imageOptions",
+          "grid-cols-1 md:col-span-2": id === "imageOptions",
         },
       )}
       key={id}>
@@ -89,7 +89,7 @@ const SettingItem: FC<SettingItemProps> = ({ item: { id, ...items } }) => {
           return (
             <li
               key={option}
-              className={cl("flex overflow-hidden items-center", {
+              className={cl("flex items-center overflow-hidden", {
                 "col-span-2":
                   option === OPTION_KEYS.TYPE ||
                   option === OPTION_KEYS.COLOR ||

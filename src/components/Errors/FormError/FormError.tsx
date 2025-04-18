@@ -20,7 +20,7 @@ const FormError: FC<FormErrorProps> = ({ error, classes }) => {
   if (!error) return null;
 
   return (
-    <div className={cl("absolute bottom-[-20px] overflow-hidden max-w-full", classes?.root)}>
+    <div className={cl("absolute bottom-[-20px] max-w-full overflow-hidden", classes?.root)}>
       <CoTextWithTooltip
         classes={{
           text: cl("text-sm text-red-500", classes?.text),

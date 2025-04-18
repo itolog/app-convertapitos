@@ -28,7 +28,7 @@ const Search = ({ selectedResult, onSelectResult }: SearchProps) => {
   };
 
   return (
-    <Command shouldFilter={false} className="h-auto rounded-lg border border-b-0 shadow-md w-full">
+    <Command shouldFilter={false} className="h-auto w-full rounded-lg border border-b-0 shadow-md">
       <Input
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}

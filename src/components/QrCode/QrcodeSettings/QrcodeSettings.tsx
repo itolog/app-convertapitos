@@ -19,7 +19,7 @@ const QrcodeSettings = () => {
       <AccordionItem value="item-1">
         <AccordionTrigger>{t("Styling")}</AccordionTrigger>
         <AccordionContent>
-          <div className={"grid grid-cols-1 md:grid-cols-2 gap-5"}>
+          <div className={"grid grid-cols-1 gap-5 md:grid-cols-2"}>
             {settings.map((item) => {
               return <SettingItem key={item?.id} item={item} />;
             })}

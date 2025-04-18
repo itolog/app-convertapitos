@@ -27,11 +27,11 @@ const CoColorPicker: FC<CoColorPickerProps> = ({ color = "black", handleChangeCo
     <Popover>
       <PopoverTrigger>
         <div
-          className={"w-[24px] h-[24px] border border-black dark:border-zinc-50 rounded"}
+          className={"h-[24px] w-[24px] rounded border border-black dark:border-zinc-50"}
           style={{ background: color }}
         />
       </PopoverTrigger>
-      <PopoverContent className={"w-fit p-2 zoom-in-100"}>
+      <PopoverContent className={"zoom-in-100 w-fit p-2"}>
         <ColorPicker
           {...options}
           className={"co-color-picker"}

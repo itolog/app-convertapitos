@@ -11,7 +11,7 @@ const Page = () => {
   return (
     <div className={"flex justify-center"}>
       <CoCard>
-        <div className={"flex flex-col p-4 gap-4"}>
+        <div className={"flex flex-col gap-4 p-4"}>
           <CoText className="text-xl md:text-3xl" text={"Sign In"} textProps={{ target: "Auth" }} />
 
           <div className={"flex flex-col gap-3"}>

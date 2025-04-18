@@ -13,7 +13,7 @@ const CoDrawerSkeleton: FC<CoDrawerSkeletonProps> = ({ visible, itemsCount = 2 }
   return (
     <div className="flex flex-col gap-2">
       {Array.from({ length: itemsCount }, (value, key) => key).map((i) => {
-        return <Skeleton key={i} className="w-full h-[20px] rounded-sm" />;
+        return <Skeleton key={i} className="h-[20px] w-full rounded-sm" />;
       })}
     </div>
   );
