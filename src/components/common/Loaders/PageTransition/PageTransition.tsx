@@ -6,11 +6,20 @@ const PageTransition = () => {
   return (
     <div
       className={cl(
-        "page-transition absolute top-0 left-0 z-100 h-full min-h-screen w-full bg-[rgba(0,0,0,0.5)]",
-        "grid grid-cols-5 grid-rows-5",
+        "absolute top-0 left-0 z-100 h-full min-h-screen w-full bg-[rgba(0,0,0,0.7)]",
+        "grid grid-cols-8 grid-rows-8",
+        "page-transition",
       )}>
-      {Array.from({ length: 25 }, (value, index) => index).map((value) => {
-        return <div key={value} className={"page-transition--box bg-background"} />;
+      {Array.from({ length: 64 }, (_value, index) => index).map((value) => {
+        return (
+          <div
+            key={value}
+            className={cl(
+              "bg-card rounded-md shadow-[inset_-9px_-8px_17px_0px_rgba(96,_168,_21,_0.50)]",
+              "page-transition--box",
+            )}
+          />
+        );
       })}
     </div>
   );
