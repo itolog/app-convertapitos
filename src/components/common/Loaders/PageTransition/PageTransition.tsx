@@ -6,7 +6,7 @@ const PageTransition = () => {
   return (
     <div
       className={cl(
-        "absolute top-0 left-0 z-100 h-full min-h-screen w-full bg-[rgba(0,0,0,0.7)]",
+        "fixed top-0 left-0 z-100 h-screen min-h-screen w-full overflow-hidden bg-[rgba(0,0,0,0.8)]",
         "grid grid-cols-8 grid-rows-8",
         "page-transition",
       )}>
@@ -15,7 +15,7 @@ const PageTransition = () => {
           <div
             key={value}
             className={cl(
-              "bg-card rounded-md shadow-[inset_-9px_-8px_17px_0px_rgba(96,_168,_21,_0.50)]",
+              "bg-card shadow-[inset_2px_0px_10px_5px_rgba(0,0,0,0.85)] dark:shadow-[inset_2px_0px_10px_5px_rgba(135,42,141,0.85)]",
               "page-transition--box",
             )}
           />
