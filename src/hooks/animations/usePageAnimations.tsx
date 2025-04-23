@@ -10,7 +10,7 @@ const PAGE_DURATION = 0.2;
 const BOX_ANIM = {
   scale: 0,
   opacity: 0,
-  y: (i) => i * 40,
+  y: (i: number) => i * 40,
 };
 
 const usePageAnimations = () => {
