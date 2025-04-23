@@ -1,19 +1,15 @@
-import React, { forwardRef } from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Skeleton = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn("animate-pulse rounded-md bg-slate-700", className)}
-        {...props}
-      />
-    );
-  },
-);
-
-Skeleton.displayName = "Skeleton";
+function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="skeleton"
+      className={cn("bg-accent animate-pulse rounded-md", className)}
+      {...props}
+    />
+  );
+}
 
 export { Skeleton };
