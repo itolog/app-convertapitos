@@ -10,6 +10,7 @@ export interface Option {
 interface Classes {
   content?: string;
   trigger?: string;
+  itemText?: string;
 }
 
 export interface CoAutocompleteProps {

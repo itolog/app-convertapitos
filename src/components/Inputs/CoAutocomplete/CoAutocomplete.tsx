@@ -72,17 +72,20 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
         </PopoverTrigger>
         <PopoverContent className={contentClass}>
           <Command>
-            <CommandInput placeholder={t("Search")} className="h-9" />
+            <CommandInput placeholder={t("Search")} className="h-9 text-base" />
             <CommandList>
               <CommandEmpty>{t("No Options")}</CommandEmpty>
-              <CommandGroup>
+              <CommandGroup className={"overflow-hidden"}>
                 {options.map((item) => (
                   <CommandItem
                     disabled={item.value === disabledOption}
                     key={item.value}
                     value={item.value}
                     onSelect={handleChange}>
-                    {item.label}
+                    <span className={cl("cursor-pointer text-base break-words", classes?.itemText)}>
+                      {item.label}
+                    </span>
+
                     <CheckIcon
                       className={cn(
                         "ml-auto h-4 w-4",

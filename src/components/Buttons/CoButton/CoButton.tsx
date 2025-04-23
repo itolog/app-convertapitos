@@ -28,6 +28,7 @@ const CoButton: FC<CoButtonProps> = ({
   const t = useTranslations(target);
 
   const rootClass = cl("flex gap-2 w-full font-semibold", className);
+  const textClass = cl("truncate leading-normal text-base hover:text-clip");
 
   return (
     <Button disabled={loading || disabled} className={rootClass} type={type} {...props}>
@@ -37,12 +38,8 @@ const CoButton: FC<CoButtonProps> = ({
         </div>
       )}
       {icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
-      {text && !children && (
-        <span className={"truncate leading-normal hover:text-clip"}>{t(text, textOption)}</span>
-      )}
-      {!text && children && (
-        <span className={"truncate leading-normal hover:text-clip"}>{children}</span>
-      )}
+      {text && !children && <span className={textClass}>{t(text, textOption)}</span>}
+      {!text && children && <span className={textClass}>{children}</span>}
     </Button>
   );
 };
