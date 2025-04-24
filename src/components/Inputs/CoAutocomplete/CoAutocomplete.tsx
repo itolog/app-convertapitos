@@ -26,6 +26,8 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
   onSelect,
   classes,
   placeholder = "Select",
+  withSortIcon = true,
+  popoverContentAlign = "start",
   icon,
   disabled,
   disabledOption,
@@ -50,11 +52,12 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
     [onSelect],
   );
 
+  const rootClass = cl("relative", classes?.root);
   const contentClass = cl("w-[200px] p-0", classes?.content);
   const triggerClass = cl("justify-between w-full", classes?.trigger);
 
   return (
-    <div className={"relative flex w-full"}>
+    <div className={rootClass}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger className={"select-border"} disabled={disabled} asChild>
           <Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
@@ -67,10 +70,10 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
                   : t(placeholder)}
             </div>
 
-            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            {withSortIcon && <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className={contentClass}>
+        <PopoverContent align={popoverContentAlign} className={contentClass}>
           <Command>
             <CommandInput placeholder={t("Search")} className="h-9 text-base" />
             <CommandList>

@@ -26,15 +26,17 @@ const LangSwitcher = () => {
       value={value}
       placeholder={"Choose a language"}
       onlyIcon
+      withSortIcon={false}
       classes={{
-        trigger: "px-2",
+        trigger: "p-0 flex justify-center items-center size-[32px]",
       }}
       icon={
         <Image
-          src={`https://flagcdn.com/20x15/${optionsNormalized[value].code}.png`}
+          src={`https://flagcdn.com/${optionsNormalized[value].code}.svg`}
           alt={value}
-          width={20}
-          height={15}
+          width={16}
+          height={16}
+          style={{ width: "16px", height: "16px" }}
           priority
         />
       }
