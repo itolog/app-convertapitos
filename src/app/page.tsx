@@ -10,7 +10,7 @@ export default function Home() {
   const { navigations } = useNavigationItems();
 
   return (
-    <div className="container h-full w-full py-8">
+    <div className="container h-full w-full">
       <h1 className="mb-4 text-center text-3xl font-bold">{t("Home Page Title")}</h1>
 
       <p className="mx-auto mb-12 max-w-3xl text-center text-2xl">{t("Home Page Description")}</p>

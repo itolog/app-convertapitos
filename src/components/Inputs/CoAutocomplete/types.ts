@@ -8,6 +8,7 @@ export interface Option {
 }
 
 interface Classes {
+  root?: string;
   content?: string;
   trigger?: string;
   itemText?: string;
@@ -24,4 +25,6 @@ export interface CoAutocompleteProps {
   disabledOption?: string;
   error?: string;
   value?: string;
+  withSortIcon?: boolean;
+  popoverContentAlign?: "center" | "start" | "end";
 }

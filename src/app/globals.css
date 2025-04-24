@@ -404,10 +404,8 @@
   display: none;
 }
 
-.footer-shadow {
-  box-shadow:
-    0 -5px 20px -14px var(--footer-shadow-color),
-    0 25px 20px -20px rgb(0 0 0 / 45%);
+.app-shadow {
+   @apply shadow-xl/20 dark:shadow-cyan-500/50;
 }
 
 .co-color-picker {

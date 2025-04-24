@@ -19,11 +19,7 @@ const BootstrapAppProvider = ({ children }: { children: ReactNode }) => {
     dispatch(setAppLoading(featureLoading || userLoading));
   }, [dispatch, featureLoading, userLoading]);
 
-  return (
-    <div className={cl("app-font relative grid min-h-screen grid-rows-[auto_1fr_auto]")}>
-      {children}
-    </div>
-  );
+  return <div className={cl("app-font relative min-h-screen")}>{children}</div>;
 };
 
 export default BootstrapAppProvider;
