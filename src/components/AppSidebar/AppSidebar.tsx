@@ -2,6 +2,7 @@
 
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,7 +31,7 @@ export function AppSidebar() {
   const { navigations } = useNavigationItems();
   const { animatePageOut } = usePageAnimations();
   const pathname = usePathname();
-  const { setOpenMobile } = useSidebar();
+  const { setOpenMobile, open } = useSidebar();
 
   return (
     <Sidebar collapsible={"icon"} variant={"floating"}>
@@ -38,7 +39,9 @@ export function AppSidebar() {
         <ThemeSwitch />
         <LangSwitcher
           classes={{
-            trigger: "w-[140px] md:w-[32px] gap-2 p-2",
+            trigger: cn("w-[140px] md:w-[32px]", {
+              "md:w-full": open,
+            }),
           }}
         />
       </SidebarHeader>

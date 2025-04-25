@@ -6,8 +6,7 @@ import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-import SvgIcons from "@/components/common/SvgIcon/SvgIcons";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import UserInfo from "@/components/AppSettings/components/UserInfo/UserInfo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -43,22 +43,7 @@ const AppSettings = () => {
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-              <Avatar className="h-8 w-8 rounded-md">
-                <AvatarImage src={user?.image ?? ""} alt={user?.name ?? "avatar"} />
-                <AvatarFallback>
-                  <SvgIcons
-                    classes={{
-                      root: "p-1",
-                    }}
-                    name={"anonymous"}
-                  />
-                </AvatarFallback>
-                <span className="sr-only">Toggle user menu</span>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user?.name}</span>
-                <span className="truncate text-xs">{user?.email}</span>
-              </div>
+              <UserInfo user={user} />
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -69,24 +54,10 @@ const AppSettings = () => {
             sideOffset={4}>
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-9 w-9">
-                  <AvatarImage src={user?.image ?? ""} alt={user?.name ?? "avatar"} />
-                  <AvatarFallback>
-                    <SvgIcons
-                      classes={{
-                        root: "p-1",
-                      }}
-                      name={"anonymous"}
-                    />
-                  </AvatarFallback>
-                  <span className="sr-only">Toggle user menu</span>
-                </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user?.name}</span>
-                  <span className="truncate text-xs">{user?.email}</span>
-                </div>
+                <UserInfo user={user} />
               </div>
             </DropdownMenuLabel>
+            <Separator className="my-1 dark:bg-sky-500/40" />
 
             {user && (
               <DropdownMenuItem>

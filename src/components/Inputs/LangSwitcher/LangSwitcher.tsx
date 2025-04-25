@@ -38,15 +38,15 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ onlyIcon = false, classes }) => {
       onlyIcon={onlyIcon}
       withSortIcon={false}
       classes={{
-        trigger: cn("p-0 flex justify-center items-center size-[32px]", classes?.trigger),
+        trigger: cn("p-2 flex justify-center items-center size-[32px]", classes?.trigger),
       }}
       icon={
         <Image
-          src={`https://flagcdn.com/${optionsNormalized[value].code}.svg`}
           alt={value}
-          width={16}
-          height={16}
-          style={{ width: "16px", height: "16px" }}
+          src={`https://flagcdn.com/16x12/${optionsNormalized[value].code}.png`}
+          width="14"
+          height="12"
+          style={{ width: "14px", height: "12px" }}
           priority
         />
       }
