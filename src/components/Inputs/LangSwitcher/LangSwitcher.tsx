@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
+import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 
@@ -11,7 +12,16 @@ import { setUserLocale } from "@/services/locale";
 import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import useOptions from "@/components/Inputs/LangSwitcher/hooks/useOptions";
 
-const LangSwitcher = () => {
+type Classes = {
+  trigger?: string;
+};
+
+type LangSwitcherProps = {
+  onlyIcon?: boolean;
+  classes?: Classes;
+};
+
+const LangSwitcher: FC<LangSwitcherProps> = ({ onlyIcon = false, classes }) => {
   const { options, optionsNormalized } = useOptions();
   const locale = useLocale();
   const [value, setValue] = useState(locale);
@@ -25,10 +35,10 @@ const LangSwitcher = () => {
     <CoAutocomplete
       value={value}
       placeholder={"Choose a language"}
-      onlyIcon
+      onlyIcon={onlyIcon}
       withSortIcon={false}
       classes={{
-        trigger: "p-0 flex justify-center items-center size-[32px]",
+        trigger: cn("p-0 flex justify-center items-center size-[32px]", classes?.trigger),
       }}
       icon={
         <Image

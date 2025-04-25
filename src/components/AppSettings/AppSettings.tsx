@@ -43,7 +43,7 @@ const AppSettings = () => {
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-              <Avatar className="h-8 w-8">
+              <Avatar className="h-8 w-8 rounded-md">
                 <AvatarImage src={user?.image ?? ""} alt={user?.name ?? "avatar"} />
                 <AvatarFallback>
                   <SvgIcons
@@ -87,28 +87,7 @@ const AppSettings = () => {
                 </div>
               </div>
             </DropdownMenuLabel>
-            {/* <DropdownMenuSeparator /> */}
-            {/* <DropdownMenuGroup> */}
-            {/*   <DropdownMenuItem> */}
-            {/*     <Sparkles /> */}
-            {/*     Upgrade to Pro */}
-            {/*   </DropdownMenuItem> */}
-            {/* </DropdownMenuGroup> */}
-            {/* <DropdownMenuSeparator /> */}
-            {/* <DropdownMenuGroup> */}
-            {/*   <DropdownMenuItem> */}
-            {/*     <BadgeCheck /> */}
-            {/*     Account */}
-            {/*   </DropdownMenuItem> */}
-            {/*   <DropdownMenuItem> */}
-            {/*     <CreditCard /> */}
-            {/*     Billing */}
-            {/*   </DropdownMenuItem> */}
-            {/*   <DropdownMenuItem> */}
-            {/*     <Bell /> */}
-            {/*     Notifications */}
-            {/*   </DropdownMenuItem> */}
-            {/* </DropdownMenuGroup> */}
+
             {user && (
               <DropdownMenuItem>
                 <Link

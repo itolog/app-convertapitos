@@ -2,7 +2,7 @@
 
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as React from "react";
-import { FC, useCallback, useState, useTransition } from "react";
+import { FC, useCallback, useMemo, useState, useTransition } from "react";
 
 import { cn } from "@/lib/utils";
 import cl from "clsx";
@@ -56,18 +56,31 @@ const CoAutocomplete: FC<CoAutocompleteProps> = ({
   const contentClass = cl("w-[200px] p-0", classes?.content);
   const triggerClass = cl("justify-between w-full", classes?.trigger);
 
+  const triggerText = useMemo(() => {
+    if (onlyIcon) return null;
+
+    if (value) {
+      return (
+        <span className={"truncate leading-normal"}>
+          {options.find((option) => option.value === value)?.label}
+        </span>
+      );
+    }
+
+    return <span className={"truncate leading-normal"}>{t(placeholder)}</span>;
+  }, [onlyIcon, options, placeholder, t, value]);
+
   return (
     <div className={rootClass}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger className={"select-border"} disabled={disabled} asChild>
           <Button variant="outline" role="combobox" aria-expanded={open} className={triggerClass}>
-            <div className={"relative flex gap-1 overflow-hidden text-ellipsis"}>
+            <div
+              className={
+                "relative flex h-full w-full items-center justify-start gap-1 overflow-hidden"
+              }>
               {icon && icon}
-              {onlyIcon
-                ? null
-                : value
-                  ? options.find((option) => option.value === value)?.label
-                  : t(placeholder)}
+              {triggerText}
             </div>
 
             {withSortIcon && <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />}

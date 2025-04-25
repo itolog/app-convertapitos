@@ -19,21 +19,30 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 import LangSwitcher from "../Inputs/LangSwitcher/LangSwitcher";
 import ThemeSwitch from "../Inputs/ThemeSwitch/ThemeSwitch";
+import { Separator } from "../ui/separator";
 
 export function AppSidebar() {
   const { navigations } = useNavigationItems();
   const { animatePageOut } = usePageAnimations();
   const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar collapsible={"icon"} variant={"floating"}>
-      <SidebarHeader>
-        <AppSettings />
+      <SidebarHeader className={"flex w-full flex-row gap-4 md:flex-col"}>
+        <ThemeSwitch />
+        <LangSwitcher
+          classes={{
+            trigger: "w-[140px] md:w-[32px] gap-2 p-2",
+          }}
+        />
       </SidebarHeader>
+      <Separator className="my-1 dark:bg-sky-500/40" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -46,6 +55,7 @@ export function AppSidebar() {
                       onNavigate={(e) => {
                         e.preventDefault();
                         animatePageOut(item.href);
+                        setOpenMobile(false);
                       }}
                       className="font-medium">
                       {item.icon}
@@ -63,6 +73,7 @@ export function AppSidebar() {
                                 onNavigate={(e) => {
                                   e.preventDefault();
                                   animatePageOut(item.href);
+                                  setOpenMobile(false);
                                 }}>
                                 {item.label}
                               </Link>
@@ -78,9 +89,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className={"flex w-full flex-row gap-2 md:flex-col"}>
-        <LangSwitcher />
-        <ThemeSwitch />
+      <Separator className="my-1 dark:bg-sky-500/40" />
+      <SidebarFooter>
+        <AppSettings />
       </SidebarFooter>
     </Sidebar>
   );
