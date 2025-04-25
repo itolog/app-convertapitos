@@ -15,7 +15,7 @@ export default function Home() {
 
       <p className="mx-auto mb-12 max-w-3xl text-center text-2xl">{t("Home Page Description")}</p>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {navigations.map((section) => {
           if (!section.enabled || section.children?.every((i) => !i.enabled)) return null;
 

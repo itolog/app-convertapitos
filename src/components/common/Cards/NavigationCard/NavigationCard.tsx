@@ -52,6 +52,7 @@ const NavigationCard: FC<NavigationCardProps> = ({ item, classes }) => {
         }>
         <div className={"grid grid-cols-1 gap-4 sm:grid-cols-2"}>
           {item.children?.map((subItem) => {
+            if (!subItem.enabled) return null;
             return (
               <CoLink
                 key={subItem.id}
