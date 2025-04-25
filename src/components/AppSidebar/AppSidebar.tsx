@@ -49,7 +49,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {navigations.map((item) => (
                 <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton asChild isActive={item.href === pathname}>
+                  <SidebarMenuButton tooltip={item.label} asChild isActive={item.href === pathname}>
                     <Link
                       href={item.href}
                       onNavigate={(e) => {
