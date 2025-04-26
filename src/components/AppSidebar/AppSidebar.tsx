@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { checkFeatureAvailability } from "@/utils/features";
+
 import AppSettings from "@/components/AppSettings/AppSettings";
 import {
   Sidebar,
@@ -50,44 +52,53 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navigations.map((item) => (
-                <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton tooltip={item.label} asChild isActive={item.href === pathname}>
-                    <Link
-                      href={item.href}
-                      onNavigate={(e) => {
-                        e.preventDefault();
-                        animatePageOut(item.href);
-                        setOpenMobile(false);
-                      }}
-                      className="font-medium">
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                  {item.children?.length ? (
-                    <SidebarMenuSub>
-                      {item.children.map((item) => {
-                        return (
-                          <SidebarMenuSubItem key={item.label}>
-                            <SidebarMenuSubButton asChild isActive={item.href === pathname}>
-                              <Link
-                                href={item.href}
-                                onNavigate={(e) => {
-                                  e.preventDefault();
-                                  animatePageOut(item.href);
-                                  setOpenMobile(false);
-                                }}>
-                                {item.label}
-                              </Link>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        );
-                      })}
-                    </SidebarMenuSub>
-                  ) : null}
-                </SidebarMenuItem>
-              ))}
+              {navigations.map((item) => {
+                if (checkFeatureAvailability(item)) return null;
+
+                return (
+                  <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton
+                      tooltip={item.label}
+                      asChild
+                      isActive={item.href === pathname}>
+                      <Link
+                        href={item.href}
+                        onNavigate={(e) => {
+                          e.preventDefault();
+                          animatePageOut(item.href);
+                          setOpenMobile(false);
+                        }}
+                        className="font-medium">
+                        {item.icon}
+                        <span>{item.label}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                    {item.children?.length ? (
+                      <SidebarMenuSub>
+                        {item.children.map((item) => {
+                          if (!item.enabled) return null;
+
+                          return (
+                            <SidebarMenuSubItem key={item.label}>
+                              <SidebarMenuSubButton asChild isActive={item.href === pathname}>
+                                <Link
+                                  href={item.href}
+                                  onNavigate={(e) => {
+                                    e.preventDefault();
+                                    animatePageOut(item.href);
+                                    setOpenMobile(false);
+                                  }}>
+                                  {item.label}
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          );
+                        })}
+                      </SidebarMenuSub>
+                    ) : null}
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
