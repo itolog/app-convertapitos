@@ -26,6 +26,7 @@ export default function Template({ children }: { children: ReactNode }) {
   const disabledFeatures = useAppSelector(getDisabledFeatures);
   const loading = useAppSelector(getAppLoading);
   const pathName = usePathname();
+
   const { animatePageIn } = usePageAnimations();
 
   const [featureDisabled, setFeatureDisabled] = useState(false);

@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, HTMLAttributes, PropsWithChildren } from "react";
 
-import cl from "clsx";
+import { cn } from "@/lib/utils";
 
 import styles from "./co-card.module.css";
 
@@ -9,16 +9,16 @@ interface Classes {
   inner?: string;
 }
 
-interface CoCardProps {
+interface CoCardProps extends Omit<HTMLAttributes<HTMLDivElement>, "className"> {
   classes?: Classes;
 }
 
-const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes }) => {
-  const rootClass = cl("relative flex z-1 p-[3px]", classes?.root);
-  const innerClass = cl(styles.inner, classes?.inner);
+const CoCard: FC<PropsWithChildren<CoCardProps>> = ({ children, classes, ...props }) => {
+  const rootClass = cn("relative flex z-1 p-[3px]", classes?.root);
+  const innerClass = cn(styles.inner, classes?.inner);
 
   return (
-    <div className={rootClass}>
+    <div className={rootClass} {...props}>
       <div className={innerClass}>{children}</div>
     </div>
   );

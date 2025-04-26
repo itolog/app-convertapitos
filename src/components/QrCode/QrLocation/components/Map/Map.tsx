@@ -52,19 +52,18 @@ function Map({ setValue, watch }) {
 
   return (
     <div className={"relative z-0 flex flex-col gap-4"}>
-      <CoPlaces width={"w-72 md:w-96"} onChange={handleChangeSearch} />
+      <CoPlaces width={"w-full"} onChange={handleChangeSearch} />
       <div
         className={cl("flex w-full justify-end", {
           "cursor-not-allowed": Boolean(error),
         })}>
-        {!Boolean(error) && (
-          <CoButton
-            loading={loading}
-            variant={"secondary"}
-            text={"set my position"}
-            onClick={handleSetMyPos}
-          />
-        )}
+        <CoButton
+          disabled={Boolean(error)}
+          loading={loading}
+          variant={"secondary"}
+          text={"set my position"}
+          onClick={handleSetMyPos}
+        />
       </div>
 
       <div className={"h-80"}>

@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { CoButtonProps } from "@/components/Buttons/CoButton/types";
 import SvgIcons from "@/components/common/SvgIcon/SvgIcons";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const CoButton: FC<CoButtonProps> = ({
   children,
@@ -21,6 +22,7 @@ const CoButton: FC<CoButtonProps> = ({
     target: undefined,
   },
   disabled,
+  tooltip,
   loading,
   ...props
 }) => {
@@ -31,16 +33,27 @@ const CoButton: FC<CoButtonProps> = ({
   const textClass = cl("truncate leading-normal text-base hover:text-clip");
 
   return (
-    <Button disabled={loading || disabled} className={rootClass} type={type} {...props}>
-      {loading && (
-        <div className="flex h-[18px] w-[18px]">
-          <ReloadIcon className="h-[18px] w-[18px] animate-spin" />
-        </div>
-      )}
-      {icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
-      {text && !children && <span className={textClass}>{t(text, textOption)}</span>}
-      {!text && children && <span className={textClass}>{children}</span>}
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button disabled={loading || disabled} className={rootClass} type={type} {...props}>
+            {loading && (
+              <div className="flex h-[18px] w-[18px]">
+                <ReloadIcon className="h-[18px] w-[18px] animate-spin" />
+              </div>
+            )}
+            {icon && <SvgIcons color={"var(--primary)"} size={iconSize} name={icon} />}
+            {text && !children && <span className={textClass}>{t(text, textOption)}</span>}
+            {!text && children && <div className={textClass}>{children}</div>}
+          </Button>
+        </TooltipTrigger>
+        {tooltip && (
+          <TooltipContent>
+            <p>{tooltip}</p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

@@ -63,11 +63,11 @@ function QrCodeForm<FormValues extends FieldValues>({
   }, [dispatch]);
 
   const fromClass = cn(
-    "flex w-full flex-col md:w-fit max-w-[436px] justify-center items-center gap-6 p-4 border-solid border-2 border-black rounded-md dark:border-cyan-900",
+    "flex w-full flex-col w-full lg:w-[440px] justify-center items-center gap-6 p-2 md:p-4 border-solid border-2 border-black rounded-md dark:border-cyan-900",
     classes?.form,
   );
 
-  const fieldsContainerClasses = cn("grid w-full", classes?.fieldsContainer);
+  const fieldsContainerClasses = cn("grid w-full gap-6", classes?.fieldsContainer);
 
   const getErrorMessage = useCallback(
     (item: string): string => {
@@ -81,14 +81,8 @@ function QrCodeForm<FormValues extends FieldValues>({
   );
 
   return (
-    <CoCard
-      classes={{
-        root: "w-full md:w-fit h-fit",
-      }}>
-      <div
-        className={
-          "flex w-full flex-wrap items-start justify-center gap-4 p-3 md:w-fit md:gap-10 md:p-6"
-        }>
+    <CoCard>
+      <div className={"flex flex-wrap items-start justify-center gap-4 p-3 md:gap-10 md:p-4"}>
         <Form {...form}>
           <form noValidate className={fromClass} onSubmit={form.handleSubmit(onSubmit)}>
             <div className={fieldsContainerClasses}>
@@ -118,7 +112,7 @@ function QrCodeForm<FormValues extends FieldValues>({
                       render={({ field }) => (
                         <FormItem className={"relative"}>
                           <Textarea
-                            className={item.className}
+                            className={cn(item.className)}
                             value={field.value}
                             placeholder={item.placeholder}
                             onChange={field.onChange}

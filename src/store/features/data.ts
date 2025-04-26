@@ -12,5 +12,6 @@ export const initialState: FeaturesState = {
     "qrcode:phone": true,
     "qrcode:wifi": true,
     "qrcode:location": true,
+    "qrcode:vcard": true,
   },
 };

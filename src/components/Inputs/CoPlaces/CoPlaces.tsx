@@ -4,7 +4,7 @@ import { ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 import { FC, useCallback, useState } from "react";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 
@@ -43,13 +43,13 @@ const CoPlaces: FC<CoPlacesProps> = ({ onChange, width = "w-[250px]" }) => {
         <Button
           variant="outline"
           role="combobox"
-          className={clsx("select-border justify-between", width)}>
+          className={cn("select-border justify-between", width)}>
           {displayName}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent side="bottom" className={clsx("p-0", width)}>
+      <PopoverContent side="bottom" className={cn("p-0", width)}>
         <Search selectedResult={selected} onSelectResult={handleSetActive} />
       </PopoverContent>
     </Popover>

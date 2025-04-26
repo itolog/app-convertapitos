@@ -13,6 +13,7 @@ import CoAutocomplete from "@/components/Inputs/CoAutocomplete/CoAutocomplete";
 import useOptions from "@/components/Inputs/LangSwitcher/hooks/useOptions";
 
 type Classes = {
+  root?: string;
   trigger?: string;
 };
 
@@ -38,6 +39,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ onlyIcon = false, classes }) => {
       onlyIcon={onlyIcon}
       withSortIcon={false}
       classes={{
+        root: classes?.root,
         trigger: cn("p-2 flex justify-center items-center size-[32px]", classes?.trigger),
       }}
       icon={

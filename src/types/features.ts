@@ -9,6 +9,7 @@ export enum FEATURE {
   QRCODE_PHONE = "qrcode:phone",
   QRCODE_WIFI = "qrcode:wifi",
   QRCODE_LOCATION = "qrcode:location",
+  QRCODE_VCARD = "qrcode:vcard",
 }
 
 export type FeatureKey = (typeof FEATURE)[keyof typeof FEATURE];

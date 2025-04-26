@@ -9,4 +9,6 @@ export const FORM_FIELD = {
   PHONE: "phone",
   LATITUDE: "lat",
   LONGITUDE: "lng",
+  FIRST_NAME: "first_name",
+  LAST_NAME: "last_name",
 } as const;

@@ -33,6 +33,7 @@
   "email": "Email",
   "phone": "Phone",
   "location": "Location",
+  "vCard": "Virtual card",
   "lat": "latitude",
   "lng": "longitude",
   "set my position": "Set my position",
@@ -67,5 +68,7 @@
   "QR Code generator": "QR Code generator",
   "Home": "Home",
   "Home Page Title": "Welcome to ConvertApiTos",
-  "Home Page Description": "Our application offers you convenient tools for converting files and creating QR codes. Select the section you need to get started."
+  "Home Page Description": "Our application offers you convenient tools for converting files and creating QR codes. Select the section you need to get started.",
+  "First name": "First name",
+  "Last name": "Last name"
 }

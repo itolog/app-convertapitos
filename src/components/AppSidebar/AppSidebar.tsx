@@ -3,6 +3,8 @@
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -31,17 +33,33 @@ import { Separator } from "../ui/separator";
 
 export function AppSidebar() {
   const { navigations } = useNavigationItems();
+  const t = useTranslations("Theme");
+  const { theme } = useTheme();
   const { animatePageOut } = usePageAnimations();
   const pathname = usePathname();
   const { setOpenMobile, open } = useSidebar();
 
   return (
     <Sidebar collapsible={"icon"} variant={"floating"}>
-      <SidebarHeader className={"flex w-full flex-row gap-4 md:flex-col"}>
-        <ThemeSwitch />
+      <SidebarHeader className={"flex w-full flex-col gap-4"}>
+        <div className={"flex w-full gap-4 overflow-hidden"}>
+          <ThemeSwitch
+            classes={{
+              button: "min-w-[32px]",
+            }}
+          />
+          <div
+            className={
+              "flex w-full items-center justify-center border-b text-base font-medium capitalize dark:border-sky-500"
+            }>
+            {theme && t(theme[0].toUpperCase() + theme.slice(1))}
+          </div>
+        </div>
+
         <LangSwitcher
           classes={{
-            trigger: cn("w-[140px] md:w-[32px]", {
+            root: "w-full",
+            trigger: cn("w-full md:w-[32px]", {
               "md:w-full": open,
             }),
           }}

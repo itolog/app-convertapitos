@@ -3,6 +3,7 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 
 import useErrors from "@/hooks/errors/useErrors";
+import { cn } from "@/lib/utils";
 import QRCodeStyling from "qr-code-styling";
 import { type FileExtension } from "qr-code-styling";
 
@@ -12,8 +13,13 @@ import CoSelect from "@/components/Inputs/CoSelect/CoSelect";
 import { useAppSelector } from "@/store/hooks";
 import { getOptions } from "@/store/qrcode/selectors";
 
+interface Classes {
+  root?: string;
+}
+
 interface CoQrCodeProps {
   fileName?: string;
+  classes?: Classes;
 }
 
 declare global {
@@ -29,7 +35,7 @@ const extOptions = [
   { label: "svg", value: "svg" },
 ];
 
-const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
+const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode", classes }) => {
   const ref = useRef<HTMLDivElement>(null);
   const options = useAppSelector(getOptions);
   const [qrCode] = useState<QRCodeStyling>(new QRCodeStyling());
@@ -83,13 +89,13 @@ const CoQrCode: FC<CoQrCodeProps> = ({ fileName = "qrcode" }) => {
   }, [ext, fileName, handleError, qrCode]);
 
   return (
-    <div className={"qrcode-container sticky top-2"}>
+    <div className={cn("qrcode-container sticky top-2", classes?.root)}>
       <div ref={ref} />
-      <div className={"flex w-full flex-row flex-wrap items-center justify-between"}>
+      <div className={"flex w-full flex-row flex-wrap items-center justify-between gap-2"}>
         <CoButton
           variant={"success"}
           type="button"
-          className={"w-32"}
+          className={"flex-1"}
           disabled={!options.data}
           text={"Download"}
           onClick={handleDownload}

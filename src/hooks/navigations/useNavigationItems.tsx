@@ -108,6 +108,13 @@ const useNavigationItems = () => {
         href: genFeatureRoute(FEATURE.QRCODE_LOCATION),
         enabled: featuresState[FEATURE.QRCODE_LOCATION],
       },
+      {
+        id: FEATURE.QRCODE_VCARD,
+        parentId: FEATURE.QRCODE,
+        label: t("vCard"),
+        href: genFeatureRoute(FEATURE.QRCODE_VCARD),
+        enabled: featuresState[FEATURE.QRCODE_VCARD],
+      },
     ];
   }, [featuresState, t]);
 
