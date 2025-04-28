@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import { FC, useCallback, useState } from "react";
+import { FlagImage } from "react-international-phone";
 
 import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
-import Image from "next/image";
 
 import { setUserLocale } from "@/services/locale";
 
@@ -42,16 +42,7 @@ const LangSwitcher: FC<LangSwitcherProps> = ({ onlyIcon = false, classes }) => {
         root: classes?.root,
         trigger: cn("p-2 flex justify-center items-center size-[32px]", classes?.trigger),
       }}
-      icon={
-        <Image
-          alt={value}
-          src={`https://flagcdn.com/16x12/${optionsNormalized[value].code}.png`}
-          width="14"
-          height="12"
-          style={{ width: "14px", height: "12px" }}
-          priority
-        />
-      }
+      icon={<FlagImage iso2={optionsNormalized[value].code} size={14} />}
       options={options}
       onSelect={handleChange}
     />

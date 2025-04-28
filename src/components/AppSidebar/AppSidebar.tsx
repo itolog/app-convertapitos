@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import { cn } from "@/lib/utils";
@@ -39,6 +41,12 @@ export function AppSidebar() {
   const pathname = usePathname();
   const { setOpenMobile, open } = useSidebar();
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <Sidebar collapsible={"icon"} variant={"floating"}>
       <SidebarHeader className={"flex w-full flex-col gap-4"}>
@@ -52,7 +60,7 @@ export function AppSidebar() {
             className={
               "flex w-full items-center justify-center border-b text-base font-medium capitalize dark:border-sky-500"
             }>
-            {theme && t(theme[0].toUpperCase() + theme.slice(1))}
+            {isClient && theme && t(theme[0].toUpperCase() + theme.slice(1))}
           </div>
         </div>
 

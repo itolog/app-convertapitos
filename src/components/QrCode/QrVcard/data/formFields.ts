@@ -18,6 +18,12 @@ export const formFields: FormItem[] = [
     name: FORM_FIELD.PHONE,
     placeholder: FORM_FIELD.PHONE,
     label: FORM_FIELD.PHONE,
-    type: "phone",
+    type: "tel",
+  },
+  {
+    name: FORM_FIELD.EMAIL,
+    placeholder: FORM_FIELD.EMAIL,
+    label: FORM_FIELD.EMAIL,
+    type: "email",
   },
 ];

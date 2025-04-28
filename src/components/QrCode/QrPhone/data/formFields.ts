@@ -7,6 +7,5 @@ export const formFields: FormItem[] = [
     placeholder: "Enter phone number",
     label: "phone",
     type: "tel",
-    className: "w-full md:w-96 select-border",
   },
 ];

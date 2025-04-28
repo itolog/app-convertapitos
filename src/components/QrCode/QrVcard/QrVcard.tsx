@@ -14,6 +14,8 @@ import { setOptions } from "@/store/qrcode/qrcodeSlice";
 const initialValues = {
   [FORM_FIELD.FIRST_NAME]: "",
   [FORM_FIELD.LAST_NAME]: "",
+  [FORM_FIELD.PHONE]: "",
+  [FORM_FIELD.EMAIL]: "",
 };
 
 const QrVcard = () => {

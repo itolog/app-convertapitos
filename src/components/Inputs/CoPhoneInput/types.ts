@@ -6,4 +6,5 @@ interface Classes {
 
 export interface CoPhoneInputProps extends PhoneInputProps {
   classes?: Classes;
+  label?: string;
 }

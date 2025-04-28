@@ -95,7 +95,14 @@ function QrCodeForm<FormValues extends FieldValues>({
                       name={item.name as Path<FormValues>}
                       render={({ field }) => (
                         <FormItem className={"relative"}>
-                          <CoPhoneInput value={field.value} onChange={field.onChange} />
+                          <CoPhoneInput
+                            value={field.value}
+                            label={t(item.label)}
+                            classes={{
+                              root: item.className,
+                            }}
+                            onChange={field.onChange}
+                          />
                           <FormError error={getErrorMessage(item.name)} />
                         </FormItem>
                       )}

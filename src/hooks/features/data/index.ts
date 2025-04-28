@@ -1,5 +1,6 @@
-import { FeatureItemsMap } from "@/types/features";
+import { FEATURE, FeatureItemsMap } from "@/types/features";
 
 export const disabledFeatures: Partial<FeatureItemsMap> = {
-  convert: false,
+  [FEATURE.CONVERT]: false,
+  [FEATURE.QRCODE_VCARD]: false,
 };
