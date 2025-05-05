@@ -62,7 +62,7 @@
     --foreground: oklch(12.9% 0.042 264.695deg);
 
     /* --card: oklch(0.98 0 0); */
-    --card: oklch(98% 0.0373 95.44deg);
+    --card: oklch(98% 0 0deg);
     --card-foreground: oklch(12.9% 0.042 264.695deg);
     --popover: oklch(100% 0 0deg);
     --popover-foreground: oklch(12.9% 0.042 264.695deg);
