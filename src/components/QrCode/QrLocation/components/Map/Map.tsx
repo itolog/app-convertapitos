@@ -52,7 +52,7 @@ function Map({ setValue, watch }) {
 
   return (
     <div className={"relative z-0 flex flex-col gap-4"}>
-      <CoPlaces width={"w-full"} onChange={handleChangeSearch} />
+      <CoPlaces onChange={handleChangeSearch} />
       <div
         className={cl("flex w-full justify-end", {
           "cursor-not-allowed": Boolean(error),

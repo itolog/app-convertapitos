@@ -59,7 +59,7 @@ const CoAppBreadcrumb = () => {
                 animatePageOut("/");
               }}
               className={"capitalize"}>
-              <CoLogo classes={{ root: "size-8" }} />
+              <CoLogo classes={{ root: "size-7" }} />
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>

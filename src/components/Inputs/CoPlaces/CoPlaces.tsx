@@ -18,10 +18,9 @@ const Search = dynamic(() => import("@/components/Inputs/CoPlaces/components/Sea
 
 interface CoPlacesProps {
   onChange: (item: Item) => void;
-  width?: string;
 }
 
-const CoPlaces: FC<CoPlacesProps> = ({ onChange, width = "w-[250px]" }) => {
+const CoPlaces: FC<CoPlacesProps> = ({ onChange }) => {
   const t = useTranslations();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Item | undefined>();
@@ -40,16 +39,13 @@ const CoPlaces: FC<CoPlacesProps> = ({ onChange, width = "w-[250px]" }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          className={cn("select-border justify-between", width)}>
+        <Button variant="outline" role="combobox" className={cn("select-border justify-between")}>
           {displayName}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent side="bottom" className={cn("p-0", width)}>
+      <PopoverContent side="bottom" className={cn("p-0")}>
         <Search selectedResult={selected} onSelectResult={handleSetActive} />
       </PopoverContent>
     </Popover>
