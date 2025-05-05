@@ -26,4 +26,22 @@ export const formFields: FormItem[] = [
     label: FORM_FIELD.EMAIL,
     type: "email",
   },
+  {
+    name: FORM_FIELD.COMPANY,
+    placeholder: "company",
+    label: "company",
+    type: "text",
+  },
+  {
+    name: FORM_FIELD.JOB_TITLE,
+    placeholder: "job title",
+    label: "job title",
+    type: "text",
+  },
+  {
+    name: FORM_FIELD.URL,
+    placeholder: "website",
+    label: "website",
+    type: "url",
+  },
 ];

@@ -149,26 +149,6 @@
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
 
-
-    html {
-        .filepond--credits {
-            display: none;
-        }
-
-        .filepond--root {
-            margin-bottom: 0;
-            height: 288px;
-        }
-
-        .filepond--panel-root {
-            background-color: var(--upload-bg);
-        }
-
-        .filepond--drop-label {
-            color: var(--primary);
-        }
-    }
-
     body {
         @apply bg-background text-foreground;
     }
@@ -481,5 +461,22 @@ html {
         .co-phone-input {
             @apply w-full rounded-br-md rounded-tr-md bg-card dark:text-foreground dark:bg-input/30 border-slate-950 dark:border-cyan-500;
         }
+    }
+
+    .filepond--credits {
+        display: none;
+    }
+
+    .filepond--root {
+        margin-bottom: 0;
+        height: 288px;
+    }
+
+    .filepond--panel-root {
+        background-color: var(--upload-bg);
+    }
+
+    .filepond--drop-label {
+        color: var(--primary);
     }
 }

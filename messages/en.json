@@ -70,5 +70,11 @@
   "Home Page Title": "Welcome to ConvertApiTos",
   "Home Page Description": "Our application offers you convenient tools for converting files and creating QR codes. Select the section you need to get started.",
   "First name": "First name",
-  "Last name": "Last name"
+  "Last name": "Last name",
+  "Expected number, received string": "Expected number, received string",
+  "Invalid phone number": "Invalid phone number",
+  "company": "Company",
+  "job title": "Job title",
+  "website": "Website",
+  "Invalid url": "Invalid url"
 }

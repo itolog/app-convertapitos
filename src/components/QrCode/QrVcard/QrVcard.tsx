@@ -2,6 +2,9 @@
 
 import { useCallback } from "react";
 
+import generateVCard from "@/utils/generateVCard/generateVCard";
+import { VCardData } from "@/utils/generateVCard/types";
+
 import { FORM_FIELD } from "@/components/QrCode/constants";
 import QrCodeForm from "@/components/QrCode/forms/QrCodeForm/QrCodeForm";
 import { formFields } from "@/components/QrCode/QrVcard/data/formFields";
@@ -16,6 +19,9 @@ const initialValues = {
   [FORM_FIELD.LAST_NAME]: "",
   [FORM_FIELD.PHONE]: "",
   [FORM_FIELD.EMAIL]: "",
+  [FORM_FIELD.COMPANY]: "",
+  [FORM_FIELD.JOB_TITLE]: "",
+  [FORM_FIELD.URL]: "",
 };
 
 const QrVcard = () => {
@@ -23,8 +29,19 @@ const QrVcard = () => {
 
   const handleSubmit = useCallback(
     (data: FormValues) => {
-      console.log(data);
-      // dispatch(setOptions({ data: data[FORM_FIELD.URL] }));
+      const vcardData: VCardData = {
+        firstName: data[FORM_FIELD.FIRST_NAME],
+        lastName: data[FORM_FIELD.LAST_NAME],
+        phone: data[FORM_FIELD.PHONE],
+        email: data[FORM_FIELD.EMAIL],
+        company: data[FORM_FIELD.COMPANY],
+        title: data[FORM_FIELD.JOB_TITLE],
+        website: data[FORM_FIELD.URL],
+      };
+
+      const vCardString = generateVCard(vcardData, "4.0");
+
+      dispatch(setOptions({ data: vCardString }));
     },
     [dispatch],
   );

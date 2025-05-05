@@ -11,4 +11,6 @@ export const FORM_FIELD = {
   LONGITUDE: "lng",
   FIRST_NAME: "first_name",
   LAST_NAME: "last_name",
+  COMPANY: "company",
+  JOB_TITLE: "job_title",
 } as const;

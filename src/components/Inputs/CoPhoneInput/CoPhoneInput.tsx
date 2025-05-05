@@ -18,7 +18,7 @@ const CoPhoneInput: FC<CoPhoneInputProps> = ({ label, classes, ...props }) => {
   }, [locale]);
 
   return (
-    <div className={cn("flex flex-col gap-1", classes?.root)}>
+    <div className={cn("mb-0 flex flex-col gap-1", classes?.root)}>
       <span
         className={
           "block truncate text-left text-sm leading-none font-semibold capitalize peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
