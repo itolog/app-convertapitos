@@ -1,12 +1,16 @@
 import * as z from "zod";
 
+import { stringRequired } from "@/utils/validators";
+
 import { FORM_FIELD } from "@/components/QrCode/constants";
 
 const validationSchema = z.object({
-  [FORM_FIELD.SSID]: z.string().min(1, { message: "Required" }),
-  [FORM_FIELD.PASSWORD]: z.string().min(1, { message: "Required" }),
-  [FORM_FIELD.ENCRYPTION]: z.string().min(1, { message: "Required" }),
+  [FORM_FIELD.SSID]: stringRequired(),
+  [FORM_FIELD.PASSWORD]: stringRequired(),
+  [FORM_FIELD.ENCRYPTION]: stringRequired(),
   [FORM_FIELD.WIFI_HIDDEN]: z.boolean(),
 });
+
+export type FormValues = z.infer<typeof validationSchema>;
 
 export default validationSchema;

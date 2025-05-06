@@ -8,13 +8,12 @@ import { VCardData } from "@/utils/generateVCard/types";
 import { FORM_FIELD } from "@/components/QrCode/constants";
 import QrCodeForm from "@/components/QrCode/forms/QrCodeForm/QrCodeForm";
 import { formFields } from "@/components/QrCode/QrVcard/data/formFields";
-import { FormValues } from "@/components/QrCode/QrVcard/types";
-import validationSchema from "@/components/QrCode/QrVcard/validationSchema";
+import validationSchema, { type FormValues } from "@/components/QrCode/QrVcard/validationSchema";
 
 import { useAppDispatch } from "@/store/hooks";
 import { setOptions } from "@/store/qrcode/qrcodeSlice";
 
-const initialValues = {
+const initialValues: FormValues = {
   [FORM_FIELD.FIRST_NAME]: "",
   [FORM_FIELD.LAST_NAME]: "",
   [FORM_FIELD.PHONE]: "",

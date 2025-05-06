@@ -24,6 +24,7 @@ const generateVCard = (data: VCardData, version: "3.0" | "4.0" = "3.0"): string 
   if (data.workPhone) vCard += `TEL;TYPE=WORK:${data.workPhone}` + newline;
 
   if (data.email) vCard += `EMAIL;TYPE=INTERNET:${data.email}` + newline;
+  if (data.lang) vCard += `LANG:${data.lang}` + newline;
 
   if (data.company || data.department) {
     vCard += `ORG:${data.company || ""}${data.department ? ";" + data.department : ""}` + newline;

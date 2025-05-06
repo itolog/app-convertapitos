@@ -9,4 +9,6 @@ const validationSchema = z.object({
   [FORM_FIELD.LONGITUDE]: numberValidator,
 });
 
+export type FormValues = z.infer<typeof validationSchema>;
+
 export default validationSchema;

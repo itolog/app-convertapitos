@@ -1,4 +1,4 @@
-export { phoneValidator } from "./phoneValidator";
-export { emailValidator } from "./emailValidator";
-export { requiredStringValidator } from "./requiredStringValidator";
-export { urlValidator } from "./urlValidator";
+export * from "./phone";
+export * from "./email";
+export * from "./stringRequired";
+export * from "./url";

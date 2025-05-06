@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 import QrCodeForm from "@/components/QrCode/forms/QrCodeForm/QrCodeForm";
 import { formFields } from "@/components/QrCode/QrWifi/data/formFields";
-import { FormValues } from "@/components/QrCode/QrWifi/type";
-import validationSchema from "@/components/QrCode/QrWifi/validationSchema";
+import validationSchema, { type FormValues } from "@/components/QrCode/QrWifi/validationSchema";
 
 import { useAppDispatch } from "@/store/hooks";
 import { setOptions } from "@/store/qrcode/qrcodeSlice";
 
-const initialValues = {
+const initialValues: FormValues = {
   [FORM_FIELD.SSID]: "",
   [FORM_FIELD.PASSWORD]: "",
   [FORM_FIELD.ENCRYPTION]: "wpa",

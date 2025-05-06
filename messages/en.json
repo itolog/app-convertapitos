@@ -76,5 +76,7 @@
   "company": "Company",
   "job title": "Job title",
   "website": "Website",
-  "Invalid url": "Invalid url"
+  "Invalid url": "Invalid url",
+  "Max characters": "Max {value} characters allowed",
+  "Min characters": "Min {value} characters"
 }

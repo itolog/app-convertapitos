@@ -8,13 +8,12 @@ import { FORM_FIELD } from "@/components/QrCode/constants";
 import QrCodeForm from "@/components/QrCode/forms/QrCodeForm/QrCodeForm";
 import Map from "@/components/QrCode/QrLocation/components/Map/Map";
 import { formFields } from "@/components/QrCode/QrLocation/formFields";
-import { FormValues } from "@/components/QrCode/QrLocation/types";
-import validationSchema from "@/components/QrCode/QrLocation/validationSchema";
+import validationSchema, { type FormValues } from "@/components/QrCode/QrLocation/validationSchema";
 
 import { useAppDispatch } from "@/store/hooks";
 import { setOptions } from "@/store/qrcode/qrcodeSlice";
 
-const initialValues = {
+const initialValues: FormValues = {
   [FORM_FIELD.LATITUDE]: mapConfig.INIT_LAT,
   [FORM_FIELD.LONGITUDE]: mapConfig.INIT_LONG,
 };

@@ -76,5 +76,7 @@
   "company": "Компанія",
   "job title": "Посада",
   "website": "Веб-сайт",
-  "Invalid url": "Недійсна URL-адреса"
+  "Invalid url": "Недійсна URL-адреса",
+  "Max characters": "Дозволено не більше {value} символів",
+  "Min characters": "Мінімум {value} символів"
 }

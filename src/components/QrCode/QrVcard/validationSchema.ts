@@ -1,22 +1,21 @@
 import * as z from "zod";
 
-import {
-  emailValidator,
-  phoneValidator,
-  requiredStringValidator,
-  urlValidator,
-} from "@/utils/validators";
+import { email, phone, stringRequired, url } from "@/utils/validators";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 
+const stringValidator = z.string().optional();
+
 const validationSchema = z.object({
-  [FORM_FIELD.FIRST_NAME]: requiredStringValidator(),
-  [FORM_FIELD.LAST_NAME]: requiredStringValidator(),
-  [FORM_FIELD.PHONE]: phoneValidator(),
-  [FORM_FIELD.EMAIL]: emailValidator(),
-  [FORM_FIELD.COMPANY]: requiredStringValidator(),
-  [FORM_FIELD.JOB_TITLE]: requiredStringValidator(),
-  [FORM_FIELD.URL]: urlValidator(),
+  [FORM_FIELD.FIRST_NAME]: stringRequired(),
+  [FORM_FIELD.LAST_NAME]: stringRequired(),
+  [FORM_FIELD.PHONE]: phone(),
+  [FORM_FIELD.EMAIL]: email(),
+  [FORM_FIELD.COMPANY]: stringValidator,
+  [FORM_FIELD.JOB_TITLE]: stringValidator,
+  [FORM_FIELD.URL]: url(),
 });
+
+export type FormValues = z.infer<typeof validationSchema>;
 
 export default validationSchema;

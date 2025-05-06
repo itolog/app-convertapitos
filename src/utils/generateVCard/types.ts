@@ -36,5 +36,6 @@ export interface VCardData {
   note?: string;
   timezone?: string;
   uid?: string;
+  lang?: string;
   revision?: string; // timestamp
 }

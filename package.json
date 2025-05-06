@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "ts-lint:warch": "concurrently \"tsc --noEmit --watch\"",
+    "ts-lint:watch": "concurrently \"tsc --noEmit --watch\"",
     "stylelint": "stylelint \"src/**/*.css\"",
     "stylelint:fix": "stylelint \"src/**/*.css\" --fix",
     "test": "jest",
