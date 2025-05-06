@@ -3,7 +3,6 @@
 import React, { PropsWithChildren, useCallback, useEffect } from "react";
 import { FieldValues, Path, PathValue, useForm } from "react-hook-form";
 
-import { useI18nZodErrors } from "@/hooks/zodI18n/useI18nZodErrors";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -48,7 +47,6 @@ function QrCodeForm<FormValues extends FieldValues>({
   renderChildren,
 }: PropsWithChildren<QrCodeFormProps<FormValues>>) {
   const dispatch = useAppDispatch();
-  useI18nZodErrors();
   const t = useTranslations();
 
   const form = useForm<FormValues>({
@@ -74,11 +72,7 @@ function QrCodeForm<FormValues extends FieldValues>({
   const getErrorMessage = useCallback(
     (item: string): string => {
       if (form.formState.errors?.[item]?.message) {
-        if (form.formState.errors[item].type === "custom") {
-          return t(form.formState.errors[item].message.toString());
-        }
-
-        return form.formState.errors[item].message.toString();
+        return t(form.formState.errors[item].message.toString());
       }
 
       return "";

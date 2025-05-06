@@ -3,7 +3,11 @@ import * as z from "zod";
 import { VALIDATOR_ERROR } from "@/utils/validators/validatorError";
 
 export const emailRequired = () => {
-  return z.string().trim().min(1).email();
+  return z
+    .string()
+    .trim()
+    .min(1, { message: VALIDATOR_ERROR.REQUIRED })
+    .email({ message: VALIDATOR_ERROR.INVALID_EMAIL });
 };
 
 export const email = () => {

@@ -2,10 +2,8 @@
 
 import { FC, PropsWithChildren, ReactElement, useEffect, useRef, useState } from "react";
 
-import { TextProps } from "@/types";
 import cl from "clsx";
 
-import CoText from "@/components/common/CoText/CoText";
 import {
   Tooltip,
   TooltipArrow,
@@ -24,8 +22,7 @@ interface CoTextWithTooltipProps {
   tooltip?: string | ReactElement;
   tooltipAutoDetect?: boolean;
   classes?: Classes;
-  textProps?: TextProps;
-  tooltipProps?: TextProps;
+
   arrow?: boolean;
 }
 
@@ -34,8 +31,7 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
   text,
   tooltip,
   tooltipAutoDetect = false,
-  textProps,
-  tooltipProps,
+
   arrow = true,
   classes,
 }) => {
@@ -47,7 +43,7 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
     classes?.text,
   );
 
-  const tooltipClass = cl("break-words", classes?.tooltip);
+  const tooltipClass = cl("break-words text-center", classes?.tooltip);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(([entry]) => {
@@ -70,24 +66,20 @@ const CoTextWithTooltip: FC<PropsWithChildren<CoTextWithTooltipProps>> = ({
       <TooltipProvider delayDuration={400}>
         <Tooltip>
           <TooltipTrigger className={"block w-full overflow-hidden"}>
-            <CoText text={text} textProps={textProps} className={textClass} ref={textRef}>
+            <span className={textClass} ref={textRef}>
               {children}
-            </CoText>
+            </span>
           </TooltipTrigger>
           {!tooltip && tooltipAutoDetect && isTooltipVisible && (
             <TooltipContent sideOffset={5} className={"max-w-[300px]"}>
-              <CoText text={text} className={tooltipClass} textProps={textProps}>
-                {children}
-              </CoText>
+              <span className={tooltipClass}>{children}</span>
               {arrow && <TooltipArrow />}
             </TooltipContent>
           )}
 
           {tooltip && (
             <TooltipContent sideOffset={5} className={"max-w-[300px]"}>
-              <CoText className={tooltipClass} textProps={tooltipProps}>
-                {tooltip}
-              </CoText>
+              <span className={tooltipClass}>{tooltip}</span>
               {arrow && <TooltipArrow />}
             </TooltipContent>
           )}
