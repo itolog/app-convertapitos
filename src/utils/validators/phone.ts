@@ -7,7 +7,7 @@ export const phoneRequired = () => {
   return z
     .string()
     .trim()
-    .min(1, { message: VALIDATOR_ERROR.REQUIRED })
+    .min(1)
     .refine(
       (value) => {
         try {

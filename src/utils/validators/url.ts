@@ -3,11 +3,7 @@ import * as z from "zod";
 import { VALIDATOR_ERROR } from "@/utils/validators/validatorError";
 
 export const urlRequired = () => {
-  return z
-    .string()
-    .trim()
-    .min(1, { message: VALIDATOR_ERROR.REQUIRED })
-    .url({ message: VALIDATOR_ERROR.INVALID_URL });
+  return z.string().trim().min(1).url();
 };
 
 export const url = () => {
