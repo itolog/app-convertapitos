@@ -1,10 +1,24 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
+
+import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 import CoLogo from "@/components/CoLogo/CoLogo";
 
 const PageTransition = () => {
+  const { animatePageIn } = usePageAnimations();
+  const pathName = usePathname();
+
+  useGSAP(
+    () => {
+      animatePageIn();
+    },
+    { dependencies: [pathName] },
+  );
+
   return (
     <div
       className={cn(

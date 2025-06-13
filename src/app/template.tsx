@@ -3,7 +3,6 @@
 import { useGSAP } from "@gsap/react";
 import { ReactNode, useEffect, useState } from "react";
 
-import usePageAnimations from "@/hooks/animations/usePageAnimations";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
@@ -27,16 +26,7 @@ export default function Template({ children }: { children: ReactNode }) {
   const loading = useAppSelector(getAppLoading);
   const pathName = usePathname();
 
-  const { animatePageIn } = usePageAnimations();
-
   const [featureDisabled, setFeatureDisabled] = useState(false);
-
-  useGSAP(
-    () => {
-      animatePageIn();
-    },
-    { dependencies: [pathName] },
-  );
 
   useEffect(() => {
     disabledFeatures.forEach((feature) => {
