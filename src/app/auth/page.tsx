@@ -1,6 +1,7 @@
-import React from "react";
+"use client";
 
-import { signIn } from "@/auth";
+import { signIn } from "next-auth/react";
+
 import { providerData } from "@/data/auth/providers";
 import { useTranslations } from "next-intl";
 
@@ -19,23 +20,19 @@ const Page = () => {
           <div className={"flex flex-col gap-3"}>
             {providerData.map((item) => {
               return (
-                <form
+                <CoButton
                   key={item.provider}
-                  action={async () => {
-                    "use server";
-
+                  type={"button"}
+                  text={"Continue with"}
+                  textProps={{
+                    provider: item.providerMessage,
+                    target: "Auth",
+                  }}
+                  onClick={async () => {
                     await signIn(item.provider, { redirectTo: "/" });
-                  }}>
-                  <CoButton
-                    type={"submit"}
-                    text={"Continue with"}
-                    textProps={{
-                      provider: item.providerMessage,
-                      target: "Auth",
-                    }}
-                    icon={item.icon}
-                  />
-                </form>
+                  }}
+                  icon={item.icon}
+                />
               );
             })}
           </div>

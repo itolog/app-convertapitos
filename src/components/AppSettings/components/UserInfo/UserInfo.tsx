@@ -1,15 +1,15 @@
+"use client";
+
 import { SquareUser } from "lucide-react";
-import React, { FC } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { Me } from "@/store/user/types";
+import { useAppSelector } from "@/store/hooks";
+import { getUser } from "@/store/user/selectors";
 
-type UserInfoProps = {
-  user?: Me | null;
-};
+const UserInfo = () => {
+  const user = useAppSelector(getUser);
 
-const UserInfo: FC<UserInfoProps> = ({ user }) => {
   return (
     <>
       <Avatar className="h-8 w-8 rounded-md">
