@@ -14,6 +14,7 @@
     "stylelint:fix": "stylelint \"src/**/*.css\" --fix",
     "test": "jest",
     "test:watch": "jest --watch --coverage false",
+    "bundle-analize": "ANALYZE=true yarn build",
     "check-deps": "ncu",
     "up-deps": "ncu -u"
   },
@@ -71,6 +72,7 @@
     "zod": "3.25.67"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.3",
     "@tailwindcss/postcss": "^4.1.10",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
