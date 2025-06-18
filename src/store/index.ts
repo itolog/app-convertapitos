@@ -1,5 +1,6 @@
-import { IS_PROD } from "@/constants";
 import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
+
+import { IS_PROD } from "@/constants/appConstants";
 
 import appReducer from "@/store/app/appSlice";
 import featuresReducer from "@/store/features/featuresSlice";
@@ -10,6 +11,7 @@ import userSlice from "./user/userSlice";
 
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
+
   user: userSlice,
   qrcode: qrcodeSlice,
   features: featuresReducer,

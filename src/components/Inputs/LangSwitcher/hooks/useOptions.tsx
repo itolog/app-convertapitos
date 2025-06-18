@@ -2,8 +2,9 @@
 
 import { useMemo } from "react";
 
-import { AppLang } from "@/constants";
 import { useTranslations } from "next-intl";
+
+import { AppLang } from "@/constants/translations";
 
 import { Option } from "@/components/Inputs/CoAutocomplete/types";
 

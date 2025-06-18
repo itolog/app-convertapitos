@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
 import checkIsLoading from "@/utils/checkIsLoading";
-import { checkFeatureUnavailableRoute } from "@/utils/features";
+import { checkFeatureUnavailableRoute } from "@/utils/features/checkFeatureUnavailableRoute";
 
 import AppSpinner from "@/components/common/Loaders/AppSpinner/AppSpinner";
 import PageTransition from "@/components/common/Loaders/PageTransition/PageTransition";

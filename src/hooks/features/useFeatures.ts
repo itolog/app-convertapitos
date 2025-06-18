@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-import { APP_ENV } from "@/constants";
 import useErrors from "@/hooks/errors/useErrors";
 import { disabledFeatures } from "@/hooks/features/data";
+
+import { APP_ENV } from "@/constants/appConstants";
 
 import { setFeatureMultipleAsync } from "@/store/features/featuresSlice";
 import { useAppDispatch } from "@/store/hooks";

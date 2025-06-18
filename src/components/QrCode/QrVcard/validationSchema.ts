@@ -1,6 +1,9 @@
 import * as z from "zod";
 
-import { email, phone, stringRequired, url } from "@/utils/validators";
+import { email } from "@/utils/validators/email";
+import { phone } from "@/utils/validators/phone";
+import { stringRequired } from "@/utils/validators/stringRequired";
+import { url } from "@/utils/validators/url";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 

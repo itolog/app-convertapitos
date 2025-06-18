@@ -1,6 +1,7 @@
 import { AppDispatch } from "@/store";
-import { FeatureKey } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { FeatureKey } from "@/types/features";
 
 import { initialState } from "./data";
 

@@ -9,7 +9,7 @@
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
-  "plugins": ["jest", "testing-library"],
+  "plugins": ["jest", "testing-library", "no-barrel-files"],
   "overrides": [
     {
       "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
@@ -67,6 +67,7 @@
     "require-yield": "warn",
     "spaced-comment": "error",
     "jest/no-focused-tests": "off",
-    "jest/no-disabled-tests": "off"
+    "jest/no-disabled-tests": "off",
+    "no-barrel-files/no-barrel-files": "error"
   }
 }

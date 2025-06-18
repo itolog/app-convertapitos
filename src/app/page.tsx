@@ -3,7 +3,7 @@
 import useNavigationItems from "@/hooks/navigations/useNavigationItems";
 import { useTranslations } from "next-intl";
 
-import { checkFeatureAvailability } from "@/utils/features";
+import { checkFeatureAvailability } from "@/utils/features/checkFeatureAvailability";
 
 import NavigationCard from "@/components/common/Cards/NavigationCard/NavigationCard";
 

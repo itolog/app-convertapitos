@@ -2,7 +2,7 @@
 
 import React, { useCallback } from "react";
 
-import { mapConfig } from "@/configs";
+import { mapConfig } from "@/configs/map";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 import QrCodeForm from "@/components/QrCode/forms/QrCodeForm/QrCodeForm";

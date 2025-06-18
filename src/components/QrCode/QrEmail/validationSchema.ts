@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { emailRequired } from "@/utils/validators";
+import { emailRequired } from "@/utils/validators/email";
 
 import { FORM_FIELD } from "@/components/QrCode/constants";
 
