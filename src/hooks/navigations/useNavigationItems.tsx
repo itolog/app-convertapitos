@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { FEATURE } from "@/types/features";
 
-import { buildTree } from "@/utils/buildTree";
+import { buildTree } from "@/utils/buildTree/buildTree";
 import { genFeatureRoute } from "@/utils/features/genFeatureRoute";
 
 import { getFeatures } from "@/store/features/selectors";
