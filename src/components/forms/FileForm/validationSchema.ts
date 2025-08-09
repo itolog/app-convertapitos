@@ -8,6 +8,7 @@ const validationSchema = z.object({
   [FORM_FIELD.CONVERT_TO]: z.string().min(1, { message: "Required" }),
   [FORM_FIELD.IMAGE_FILE]: z
     .any()
+    .optional()
     .refine((file: File) => {
       return file;
     }, "File is required")
