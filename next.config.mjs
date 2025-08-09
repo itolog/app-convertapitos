@@ -13,11 +13,11 @@ const nextConfig = {
   images: {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
-      // {
-      //   protocol: "https",
-      //   hostname: "*",
-      //   port: "",
-      // },
+      {
+        protocol: "https",
+        hostname: "*",
+        port: "",
+      },
     ],
   },
 };
