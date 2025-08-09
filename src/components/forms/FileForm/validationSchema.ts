@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 
 import { SUPPORTED_IMAGE_FORMATS } from "@/constants/fileUploadConstants";
 

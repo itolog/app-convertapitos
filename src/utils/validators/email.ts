@@ -1,13 +1,12 @@
-import * as z from "zod";
+import * as z from "zod/v4";
 
 import { VALIDATOR_ERROR } from "@/utils/validators/validatorError";
 
 export const emailRequired = () => {
   return z
-    .string()
+    .email({ message: VALIDATOR_ERROR.INVALID_EMAIL })
     .trim()
-    .min(1, { message: VALIDATOR_ERROR.REQUIRED })
-    .email({ message: VALIDATOR_ERROR.INVALID_EMAIL });
+    .min(1, { message: VALIDATOR_ERROR.REQUIRED });
 };
 
 export const email = () => {

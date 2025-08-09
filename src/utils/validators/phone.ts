@@ -1,5 +1,5 @@
 import { parsePhoneNumberFromString } from "libphonenumber-js";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import { VALIDATOR_ERROR } from "@/utils/validators/validatorError";
 
