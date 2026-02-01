@@ -15,7 +15,8 @@
     "start": "next start",
     "stylelint": "stylelint \"src/**/*.css\"",
     "stylelint:fix": "stylelint \"src/**/*.css\" --fix",
-    "ts-lint:watch": "concurrently \"tsc --noEmit --watch\""
+    "ts-lint:watch": "concurrently \"tsc --noEmit --watch\"",
+    "lint:types": "tsc --noEmit --incremental --tsBuildInfoFile .cache/.tsccache --pretty --diagnostics -p ./tsconfig.json"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
