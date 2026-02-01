@@ -1,21 +1,11 @@
 {
-  "env": {
-    "jest/globals": true
-  },
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["jest", "testing-library", "no-barrel-files"],
-  "overrides": [
-    {
-      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "extends": ["plugin:testing-library/react"]
-    }
-  ],
+  "plugins": ["no-barrel-files"],
+
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -66,8 +56,6 @@
     "no-inner-declarations": "warn",
     "require-yield": "warn",
     "spaced-comment": "error",
-    "jest/no-focused-tests": "off",
-    "jest/no-disabled-tests": "off",
     "no-barrel-files/no-barrel-files": "error"
   }
 }
